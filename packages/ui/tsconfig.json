@@ -1,5 +1,16 @@
 {
   "extends": "tsconfig/react-library.json",
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@medusajs/ui": ["./src/index.ts"],
+      "@/components/*": ["./src/components/*"],
+      "@/hooks/*": ["./src/hooks/*"],
+      "@/utils/*": ["./src/utils/*"]
+    }
+  },
   "include": ["."],
   "exclude": ["dist", "build", "node_modules"]
 }
