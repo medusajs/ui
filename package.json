@@ -4,7 +4,12 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "release": "changeset publish",
+    "version": "changeset version && yarn install --no-immutable",
+    "release:next": "changeset publish --no-git-tags --snapshot --tag next",
+    "version:next": "changeset version --snapshot next",
+    "release:snapshot": "changeset publish --no-git-tags --snapshot --tag snapshot"
   },
   "devDependencies": {
     "@turbo/gen": "^1.9.7",
@@ -18,5 +23,8 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "@changesets/cli": "^2.26.1"
+  }
 }
