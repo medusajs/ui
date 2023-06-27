@@ -4,6 +4,9 @@ module.exports = {
   theme: {
     extend: {
       backgroundColor: {
+        base: "#FFFFFF",
+        "base-hover": "#F8F9FA",
+        "base-active": "#F1F3F5",
         disabled: "#ECEEF0",
         "button-brand": "#6E56CF",
         "button-brand-hover": "#644FC1",
