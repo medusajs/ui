@@ -21,3 +21,25 @@ export const Default: Story = {
     children: "Action",
   },
 }
+
+export const Disabled: Story = {
+  args: {
+    variant: "brand",
+    size: "md",
+    children: "Action",
+    disabled: true,
+  },
+}
+
+export const WithIcon: Story = {
+  args: {
+    variant: "brand",
+    size: "md",
+    children: [
+      "Action",
+      <span key={1} className="w-5 h-5 flex items-center justify-center">
+        x
+      </span>,
+    ],
+  },
+}
