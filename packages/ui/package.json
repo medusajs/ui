@@ -6,8 +6,8 @@
   "author": "Kasper Kristensen <kasper@medusajs.com>",
   "license": "MIT",
   "scripts": {
-    "test": "vitest",
-    "test:ci": "vitest --run --coverage",
+    "test": "vitest --run",
+    "test:watch": "vitest",
     "lint": "eslint \"**/*.ts*\"",
     "storybook": "storybook dev -p 6006",
     "typecheck": "tsc --noEmit"
