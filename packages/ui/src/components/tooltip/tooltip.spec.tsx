@@ -1,18 +1,31 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react"
+import userEvent from "@testing-library/user-event"
+
 import Tooltip from "./tooltip"
 
-test("renders tooltip on hover", async () => {
+test("Tooltip renders trigger element", () => {
+  render(
+    <Tooltip content="Tooltip text">
+      <div>Hover me</div>
+    </Tooltip>
+  )
+
+  const triggerElement = screen.getByText("Hover me")
+  expect(triggerElement).toBeInTheDocument()
+})
+
+test("Tooltip shows on hover", async () => {
   render(
     <Tooltip content="Tooltip text" data-testid="tooltip">
       <div>Hover me</div>
     </Tooltip>
   )
-  const hoverableArea = screen.getByText("Hover me")
+  const triggerElement = screen.getByText("Hover me")
 
-  expect(hoverableArea).toBeInTheDocument()
+  const user = userEvent.setup()
 
-  fireEvent.mouseOver(hoverableArea)
+  await user.hover(triggerElement)
 
-  await waitFor(() => screen.getByTestId("tooltip"))
-  expect(screen.getByText("Tooltip text")).toBeInTheDocument()
+  const tooltipContent = await screen.getByTestId("tooltip")
+  expect(tooltipContent).toBeInTheDocument()
 })

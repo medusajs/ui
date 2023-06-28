@@ -50,6 +50,7 @@
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-tooltip": "^1.0.6",
+    "@testing-library/user-event": "^14.4.3",
     "@vitejs/plugin-react": "^4.0.1",
     "class-variance-authority": "^0.6.1",
     "clsx": "^1.2.1",
