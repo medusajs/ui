@@ -52,11 +52,3 @@ export const WithKeyboardShortcut: Story = {
     children: <Button>Hover me</Button>,
   },
 }
-
-export const TestTest: Story = {
-  render: () => (
-    <Tooltip open={true} data-testid="tooltip" content="test">
-      <div>test hover</div>
-    </Tooltip>
-  ),
-}
