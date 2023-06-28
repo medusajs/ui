@@ -40,7 +40,7 @@ const ModalContent = React.forwardRef<
       <Primitives.Content
         ref={ref}
         className={clx(
-          "flex flex-col fixed left-[50%] top-[50%] right-[50%] z-50 w-full max-w-[560px] h-full max-h-[560px] translate-x-[-50%] translate-y-[-50%] border bg-base shadow-lg rounded-lg",
+          "flex flex-col fixed left-[50%] top-[50%] z-50 w-full max-w-[560px] h-full max-h-[560px] translate-x-[-50%] translate-y-[-50%] border bg-base shadow-lg rounded-lg",
           className
         )}
         {...props}
@@ -84,7 +84,7 @@ const ModalFooter = ({
   return (
     <div
       className={clx(
-        "flex items-center justify-end pt-4 pb-6 px-8 space-x-2 border-t border-base",
+        "flex items-center justify-end pt-4 pb-6 px-8 space-x-2 border-t border-base overflow-y-scroll",
         className
       )}
       {...props}

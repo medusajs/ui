@@ -41,7 +41,7 @@ export const Default: Story = {
           </ModalHeader>
           <ModalBody></ModalBody>
           <ModalFooter>
-            <Button variant="brand">Save</Button>
+            <Button>Save</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
