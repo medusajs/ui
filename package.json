@@ -26,6 +26,7 @@
     "packages/*"
   ],
   "dependencies": {
-    "@changesets/cli": "^2.26.1"
+    "@changesets/cli": "^2.26.1",
+    "@radix-ui/react-dialog": "^1.0.4"
   }
 }

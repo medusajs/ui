@@ -16,7 +16,7 @@ type Story = StoryObj<typeof Button>
 
 export const Default: Story = {
   args: {
-    variant: "brand",
+    variant: "inverted",
     size: "md",
     children: "Action",
   },
@@ -24,7 +24,7 @@ export const Default: Story = {
 
 export const Disabled: Story = {
   args: {
-    variant: "brand",
+    variant: "inverted",
     size: "md",
     children: "Action",
     disabled: true,
@@ -33,7 +33,7 @@ export const Disabled: Story = {
 
 export const WithIcon: Story = {
   args: {
-    variant: "brand",
+    variant: "inverted",
     size: "md",
     children: [
       "Action",
