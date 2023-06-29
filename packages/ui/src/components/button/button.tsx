@@ -25,7 +25,7 @@ const buttonVariants = cva(
           labelVariants({ variant: "xs", weight: "plus" })
         ),
         md: clx(
-          "px-[11px] py-[5px] gap-x-4",
+          "px-[11px] py-[5px] gap-x-1.5",
           labelVariants({ variant: "sm", weight: "plus" })
         ),
         lg: clx(
@@ -40,11 +40,38 @@ const buttonVariants = cva(
           })
         ),
       },
+      format: {
+        default: "",
+        icon: "",
+      },
     },
     defaultVariants: {
       variant: "inverted",
       size: "md",
+      format: "default",
     },
+    compoundVariants: [
+      {
+        size: "sm",
+        format: "icon",
+        className: "px-px py-px",
+      },
+      {
+        size: "md",
+        format: "icon",
+        className: "px-[5px] py-[5px]",
+      },
+      {
+        size: "lg",
+        format: "icon",
+        className: "px-[9px] py-[9px]",
+      },
+      {
+        size: "xl",
+        format: "icon",
+        className: "px-[13px] py-[13px]",
+      },
+    ],
   }
 )
 
@@ -56,14 +83,17 @@ interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ size, variant, className, asChild = false, children, ...props }, ref) => {
+  (
+    { size, variant, format, className, asChild = false, children, ...props },
+    ref
+  ) => {
     const Component = asChild ? Slot : "button"
 
     return (
       <Component
         ref={ref}
         {...props}
-        className={clx(buttonVariants({ variant, size }), className)}
+        className={clx(buttonVariants({ variant, size, format }), className)}
       >
         {children}
       </Component>
