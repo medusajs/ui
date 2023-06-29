@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 
-import Tooltip from "./tooltip"
+import { Tooltip } from "./tooltip"
 
 test("Tooltip renders trigger element", () => {
   render(
