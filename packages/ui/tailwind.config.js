@@ -9,6 +9,7 @@ module.exports = {
         "base-active": "#F1F3F5",
         field: "#F8F9FA",
         "field-hover": "#F1F3F5",
+        muted: "#E6E8EB",
         disabled: "#ECEEF0",
         "button-transparent": "transparent",
         "button-transparent-hover": "#F8F9FA",
