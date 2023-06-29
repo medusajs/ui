@@ -26,6 +26,9 @@ test("Tooltip shows on hover", async () => {
 
   await user.hover(triggerElement)
 
-  const tooltipContent = await screen.getByTestId("tooltip")
-  expect(tooltipContent).toBeInTheDocument()
+  await waitFor(() => {
+    const tooltip = screen.getByTestId("tooltip")
+
+    expect(tooltip).toBeInTheDocument()
+  })
 })
