@@ -3,6 +3,7 @@
   "compilerOptions": {
     "resolveJsonModule": true,
     "outDir": "dist",
+    "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
       "@medusajs/ui": ["./src/index.ts"],

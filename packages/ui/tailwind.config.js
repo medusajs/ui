@@ -39,6 +39,10 @@ module.exports = {
         muted: "#889096",
         subtle: "#687076",
         "on-color": "#FFFFFF",
+        subtle: "#687076",
+      },
+      boxShadow: {
+        high: "0px 4px 8px 0px rgba(17, 24, 28, 0.08), 0px 0px 0px 1px rgba(17, 24, 28, 0.08)",
       },
     },
   },
