@@ -1,8 +1,9 @@
 import * as Primitives from "@radix-ui/react-tooltip"
+import * as React from "react"
 
-import React from "react"
-import clsx from "clsx"
-import Kbd, { KbdContainer } from "../kbd/kbd"
+import { Kbd, KbdContainer } from "../kbd/kbd"
+import { labelVariants } from "@/components/label"
+import { clx } from "@/utils/clx"
 
 export type TooltipProps = Primitives.TooltipContentProps &
   Pick<
@@ -46,8 +47,9 @@ const Tooltip = ({
             side={side ?? "bottom"}
             sideOffset={10}
             align="center"
-            className={clsx(
-              "font-sans font-medium text-xs text-subtle z-[999]",
+            className={clx(
+              "text-subtle z-[999]",
+              labelVariants({ variant: "xs", weight: "plus" }),
               "bg-button-neutral rounded-lg py-2 px-4 shadow-high",
               className
             )}
@@ -69,4 +71,4 @@ const Tooltip = ({
   )
 }
 
-export default Tooltip
+export { Tooltip }

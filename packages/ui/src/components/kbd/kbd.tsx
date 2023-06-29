@@ -24,7 +24,7 @@ const Kbd = React.forwardRef<HTMLElement, KbdProps>(
 
 interface KbdContainerProps extends React.ComponentPropsWithoutRef<"div"> {}
 
-export const KbdContainer = React.forwardRef<HTMLDivElement, KbdContainerProps>(
+const KbdContainer = React.forwardRef<HTMLDivElement, KbdContainerProps>(
   ({ children, className, ...props }, ref) => {
     return (
       <div
@@ -42,4 +42,4 @@ KbdContainer.displayName = "KbdContainer"
 
 Kbd.displayName = "Kbd"
 
-export default Kbd
+export { Kbd, KbdContainer }
