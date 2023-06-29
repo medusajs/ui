@@ -6,18 +6,16 @@ import { labelVariants } from "@/components/label"
 import { clx } from "@/utils/clx"
 
 const buttonVariants = cva(
-  "outline-none focus:ring-2 ring-offset-2 ring-[#0081F1] rounded-lg transition-colors disabled:bg-disabled disabled:border-base disabled:text-disabled border inline-flex items-center",
+  "outline-none focus:ring-2 ring-offset-2 ring-interactive rounded-lg transition-all disabled:bg-disabled disabled:border-base disabled:text-disabled border inline-flex items-center",
   {
     variants: {
       variant: {
-        brand:
-          "text-on-color border-colored-button bg-button-brand hover:bg-button-brand-hover active:bg-button-brand-active",
         neutral:
-          "text-base bg-button-neutral hover:bg-button-neutral-hover active:bg-button-neutral-active",
+          "text-default bg-button-neutral hover:bg-button-neutral-hover active:bg-button-neutral-active",
         inverted:
           "text-on-color bg-button-inverted hover:bg-button-inverted-hover active:bg-button-inverted-active border-colored-button",
         transparent:
-          "text-base border-transparent bg-button-transparent hover:bg-button-transparent-hover hover:border-neutral-button focus:bg-button-neutral focus:border-neutral-button active:border-neutral-button active:bg-button-transparent-active",
+          "text-default border-transparent bg-button-transparent hover:bg-button-transparent-hover hover:border-neutral-button focus:bg-button-neutral focus:border-neutral-button active:border-neutral-button active:bg-button-transparent-active",
         danger:
           "text-on-color border-colored-button bg-button-danger hover:bg-button-danger-hover active:bg-button-danger-active",
       },
@@ -27,7 +25,7 @@ const buttonVariants = cva(
           labelVariants({ variant: "xs", weight: "plus" })
         ),
         md: clx(
-          "px-[11px] py-[5px] gap-x-4",
+          "px-[11px] py-[5px] gap-x-1.5",
           labelVariants({ variant: "sm", weight: "plus" })
         ),
         lg: clx(
@@ -42,11 +40,38 @@ const buttonVariants = cva(
           })
         ),
       },
+      format: {
+        default: "",
+        icon: "",
+      },
     },
     defaultVariants: {
-      variant: "brand",
+      variant: "inverted",
       size: "md",
+      format: "default",
     },
+    compoundVariants: [
+      {
+        size: "sm",
+        format: "icon",
+        className: "px-px py-px",
+      },
+      {
+        size: "md",
+        format: "icon",
+        className: "px-[5px] py-[5px]",
+      },
+      {
+        size: "lg",
+        format: "icon",
+        className: "px-[9px] py-[9px]",
+      },
+      {
+        size: "xl",
+        format: "icon",
+        className: "px-[13px] py-[13px]",
+      },
+    ],
   }
 )
 
@@ -58,14 +83,17 @@ interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ size, variant, className, asChild = false, children, ...props }, ref) => {
+  (
+    { size, variant, format, className, asChild = false, children, ...props },
+    ref
+  ) => {
     const Component = asChild ? Slot : "button"
 
     return (
       <Component
         ref={ref}
         {...props}
-        className={clx(buttonVariants({ variant, size }), className)}
+        className={clx(buttonVariants({ variant, size, format }), className)}
       >
         {children}
       </Component>

@@ -59,7 +59,7 @@ export default defineConfig({
       all: true,
       reporter: ["lcov", "text"],
       include: ["src/**"],
-      exclude: ["**/*.stories.tsx"],
+      exclude: ["**/*.stories.tsx", "**/index.ts"], // exclude stories and index files
     },
     globals: true,
     environment: "jsdom",

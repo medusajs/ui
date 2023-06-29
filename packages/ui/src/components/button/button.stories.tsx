@@ -14,18 +14,35 @@ export default meta
 
 type Story = StoryObj<typeof Button>
 
-export const Default: Story = {
+export const Inverted: Story = {
   args: {
-    variant: "brand",
-    size: "md",
     children: "Action",
+  },
+}
+
+export const Neutral: Story = {
+  args: {
+    children: "Action",
+    variant: "neutral",
+  },
+}
+
+export const Transparent: Story = {
+  args: {
+    children: "Action",
+    variant: "transparent",
+  },
+}
+
+export const Danger: Story = {
+  args: {
+    children: "Action",
+    variant: "danger",
   },
 }
 
 export const Disabled: Story = {
   args: {
-    variant: "brand",
-    size: "md",
     children: "Action",
     disabled: true,
   },
@@ -33,13 +50,20 @@ export const Disabled: Story = {
 
 export const WithIcon: Story = {
   args: {
-    variant: "brand",
-    size: "md",
     children: [
       "Action",
       <span key={1} className="w-5 h-5 flex items-center justify-center">
         x
       </span>,
     ],
+  },
+}
+
+export const IconOnly: Story = {
+  args: {
+    children: (
+      <span className="w-5 h-5 flex items-center justify-center">x</span>
+    ),
+    format: "icon",
   },
 }
