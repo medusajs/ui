@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import Kbd from "./kbd"
+
+import { Kbd } from "./kbd"
 
 const meta: Meta<typeof Kbd> = {
   title: "Components/Kbd",

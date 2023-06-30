@@ -1,0 +1,33 @@
+{
+  "name": "@medusajs/figma-api",
+  "version": "0.0.0",
+  "description": "Figma API client for Medusa UI generation tools",
+  "author": "Kasper Kristensen <kasper@medusajs.com>",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "axios": "1.4.0",
+    "axios-retry": "3.5.1"
+  },
+  "devDependencies": {
+    "@medusajs/eslint-config-ui": "*",
+    "@medusajs/tsconfig-ui": "*",
+    "eslint": "^7.32.0",
+    "tsup": "7.1.0",
+    "typescript": "5.1.6"
+  },
+  "private": true,
+  "access": "public",
+  "packageManager": "yarn@3.5.0"
+}

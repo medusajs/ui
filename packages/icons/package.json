@@ -1,0 +1,14 @@
+{
+  "name": "@medusajs/icons",
+  "version": "0.0.0",
+  "description": "Medusa UI React icon library",
+  "devDependencies": {
+    "@medusajs/eslint-config-ui": "*",
+    "@medusajs/tsconfig-ui": "*",
+    "eslint": "^7.32.0"
+  },
+  "peerDependencies": {
+    "react": "^16.x || ^17.x || ^18.x"
+  },
+  "packageManager": "yarn@3.5.0"
+}
