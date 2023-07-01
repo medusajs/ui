@@ -2927,7 +2927,6 @@ __metadata:
     eslint: ^7.32.0
     eslint-plugin-storybook: ^0.6.12
     jsdom: ^22.1.0
-    lucide-react: ^0.257.0
     postcss: ^8.4.24
     prop-types: ^15.8.1
     react: 18.2.0
@@ -11220,15 +11219,6 @@ __metadata:
   version: 10.0.0
   resolution: "lru-cache@npm:10.0.0"
   checksum: 18f101675fe283bc09cda0ef1e3cc83781aeb8373b439f086f758d1d91b28730950db785999cd060d3c825a8571c03073e8c14512b6655af2188d623031baf50
-  languageName: node
-  linkType: hard
-
-"lucide-react@npm:^0.257.0":
-  version: 0.257.0
-  resolution: "lucide-react@npm:0.257.0"
-  peerDependencies:
-    react: ^16.5.1 || ^17.0.0 || ^18.0.0
-  checksum: b3ce7c5a9752646221353f71293ddb839a82c11abd6564082aec40891f496f390d50e330956bc1f1d6f2fc9f9baff8a6a69af2ff52cf094b62d99c5886d3ab52
   languageName: node
   linkType: hard
 
