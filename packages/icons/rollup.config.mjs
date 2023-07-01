@@ -1,4 +1,5 @@
 import bundleSize from "@atomico/rollup-plugin-sizes"
+import nodeResolve from "@rollup/plugin-node-resolve"
 import replace from "@rollup/plugin-replace"
 import esbuild from "rollup-plugin-esbuild"
 import license from "rollup-plugin-license"
@@ -20,6 +21,7 @@ const plugins = (pkg, minify, esbuildOptions = {}) =>
       sourcemap: true,
       filename: `stats/${pkg.name}${minify ? "-min" : ""}.html`,
     }),
+    nodeResolve(),
     // ts({
     //   tsconfig: "tsconfig.json",
     //   allowJs: false,
@@ -30,7 +32,7 @@ const plugins = (pkg, minify, esbuildOptions = {}) =>
 const packageName = "@medusajs/icons"
 const outputFileName = "medusa-icons"
 const outputDir = "dist"
-const inputs = ["src/index.ts"]
+const inputs = ["src/components/index.ts"]
 
 const bundles = [
   {
@@ -60,6 +62,7 @@ const bundles = [
     preserveModules: true,
     aliasesSupport: true,
     sourcemap: true,
+    dir: `${outputDir}/esm`, // Update this line
   },
 ]
 

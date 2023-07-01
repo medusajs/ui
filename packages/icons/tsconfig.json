@@ -5,7 +5,10 @@
     "outDir": "dist",
     "esModuleInterop": true,
     "baseUrl": "src",
-    "declarationDir": "dist"
+    "declarationDir": "dist",
+    "paths": {
+      "@medusajs/icon": ["src/index.ts"]
+    }
   },
   "include": ["src"],
   "exclude": ["dist", "build", "node_modules", "src/*.spec.tsx"]
