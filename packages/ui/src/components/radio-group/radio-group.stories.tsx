@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { RadioGroup } from "./radio-group"
+import { RadioGroup, RadioGroupDot, RadioGroupItem } from "./radio-group"
+import { Label } from "../label"
+import { Text } from "../text"
 
 const meta: Meta<typeof RadioGroup> = {
   title: "Components/RadioGroup",
@@ -15,86 +17,83 @@ type Story = StoryObj<typeof RadioGroup>
 
 export const Default: Story = {
   render: () => (
-    <RadioGroup.Root>
-      <RadioGroup.Item value={"1"} label="One" />
-      <RadioGroup.Item value={"2"} label="Two" />
-    </RadioGroup.Root>
+    <RadioGroup>
+      <div className="flex items-center space-x-2">
+        <RadioGroupItem value={"1"} id="r1" />
+        <Label htmlFor="r1">One</Label>
+      </div>
+      <div className="flex items-center space-x-2">
+        <RadioGroupItem value={"2"} id="r2" />
+        <Label htmlFor="r2">Two</Label>
+      </div>
+    </RadioGroup>
   ),
 }
 
 export const WithDescription: Story = {
   render: () => (
-    <RadioGroup.Root>
-      <RadioGroup.Item value={"1"} label="One" description="First option" />
-      <RadioGroup.Item value={"2"} label="Two" description="Second option" />
-    </RadioGroup.Root>
+    <RadioGroup>
+      <div className="flex items-center space-x-2 mb-4">
+        <RadioGroupItem value={"1"} id="r1" />
+        <div>
+          <Label htmlFor="r1">One</Label>
+          <Text className={"text-gray-500 truncate"}>First option</Text>
+        </div>
+      </div>
+      <div className="flex items-center space-x-2">
+        <RadioGroupItem value={"2"} id="r2" />
+        <div>
+          <Label htmlFor="r2">Two</Label>
+          <Text className={"text-gray-500 truncate"}>Second option</Text>
+        </div>
+      </div>
+    </RadioGroup>
   ),
 }
 
 export const WithDisabledItem: Story = {
   render: () => (
-    <RadioGroup.Root>
-      <RadioGroup.Item value={"1"} label="One" description="First option" />
-      <RadioGroup.Item
-        value={"2"}
-        label="Two"
-        description="Second option"
-        disabled={true}
-        disabledTooltip="Can't pick this"
-      />
-      <RadioGroup.Item value={"3"} label="Three" description="Third option" />
-    </RadioGroup.Root>
-  ),
-}
-
-export const SimpleItems: Story = {
-  render: () => (
-    <RadioGroup.Root>
-      <RadioGroup.SimpleItem value={"1"} label="One" />
-      <RadioGroup.SimpleItem value={"2"} label="Two" />
-    </RadioGroup.Root>
-  ),
-}
-
-export const SimpleItemsWithDescription: Story = {
-  render: () => (
-    <RadioGroup.Root>
-      <RadioGroup.SimpleItem
-        value={"1"}
-        label="One"
-        description="First option"
-      />
-      <RadioGroup.SimpleItem
-        value={"2"}
-        label="Two"
-        description="Second option"
-      />
-    </RadioGroup.Root>
+    <RadioGroup>
+      <div className="flex items-center space-x-2">
+        <RadioGroupItem value={"1"} id="r1" />
+        <Label htmlFor="r1">One</Label>
+      </div>
+      <div className="flex items-center space-x-2">
+        <RadioGroupItem
+          value={"2"}
+          disabled={true}
+          disabledTooltip="Can't pick this"
+          id="r2"
+        />
+        <Label htmlFor="r2">Two</Label>
+      </div>
+      <div className="flex items-center space-x-2">
+        <RadioGroupItem value={"3"} id="r3" />
+        <Label htmlFor="r3">Three</Label>
+      </div>
+    </RadioGroup>
   ),
 }
 
 export const Dot: Story = {
   render: () => (
-    <RadioGroup.Root value="1">
-      <RadioGroup.Dot value={"1"} />
-    </RadioGroup.Root>
+    <RadioGroup value="1">
+      <RadioGroupDot value={"1"} />
+    </RadioGroup>
   ),
 }
 
 export const Horizontal: Story = {
   render: () => (
-    <RadioGroup.Root orientation="horizontal">
-      <RadioGroup.Item value={"1"} label="One" description="First option" />
-      <RadioGroup.Item value={"2"} label="Two" description="Second option" />
-    </RadioGroup.Root>
-  ),
-}
-
-export const HorizontalSimpleItems: Story = {
-  render: () => (
-    <RadioGroup.Root orientation="horizontal">
-      <RadioGroup.SimpleItem value={"1"} label="One" />
-      <RadioGroup.SimpleItem value={"2"} label="Two" />
-    </RadioGroup.Root>
+    <RadioGroup orientation="horizontal">
+      <div className="flex items-center space-x-2">
+        <RadioGroupItem value={"1"} id="r1" />
+        <Label htmlFor="r1">One</Label>
+      </div>
+      <div className="flex items-center space-x-2">
+        <RadioGroupItem value={"2"} id="r2" />
+        <Label htmlFor="r2">Two</Label>
+      </div>
+    </RadioGroup>
   ),
 }

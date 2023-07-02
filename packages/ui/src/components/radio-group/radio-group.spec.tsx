@@ -1,5 +1,6 @@
-import { render, screen, within } from "@testing-library/react"
-import { RadioGroup } from "./radio-group"
+import { fireEvent, render, screen, within } from "@testing-library/react"
+import { RadioGroup, RadioGroupItem } from "./radio-group"
+import { Label } from "../label"
 
 const items = [
   {
@@ -19,58 +20,53 @@ const items = [
   },
 ]
 
-test("It renders all labels and descriptions on simple items", () => {
+test("Default value causes the correct radio to be toggled", () => {
+  const defaultItem = items[Math.floor(Math.random() * items.length)]
+
   render(
-    <RadioGroup.Root>
+    <RadioGroup defaultValue={defaultItem.value}>
       {items.map((item) => (
-        <RadioGroup.SimpleItem
-          key={item.value}
-          label={item.label}
-          value={item.value}
-          description={item.description}
-          data-testid={item.value}
-        />
+        <>
+          <RadioGroupItem
+            key={item.value}
+            value={item.value}
+            data-testid={item.value}
+            id={item.value}
+          />
+        </>
       ))}
-    </RadioGroup.Root>
+    </RadioGroup>
   )
 
-  items.forEach(({ value, label, description }) => {
-    const itemEl = screen.getByTestId(value)
-
-    expect(itemEl).toBeInTheDocument()
-
-    const labelEl = screen.getByText(label)
-    const descriptionEl = screen.getByText(description)
-
-    expect(labelEl).toBeInTheDocument()
-    expect(descriptionEl).toBeInTheDocument()
-  })
+  const radioButton = screen.getByTestId(defaultItem.value)
+  expect(radioButton).toHaveAttribute("aria-checked", "true")
 })
 
-test("It renders all labels and descriptions on regular items", () => {
+test("Clicking on a for-label toggles the correct radio", () => {
   render(
-    <RadioGroup.Root>
+    <RadioGroup>
       {items.map((item) => (
-        <RadioGroup.Item
-          key={item.value}
-          label={item.label}
-          value={item.value}
-          description={item.description}
-          data-testid={item.value}
-        />
+        <>
+          <RadioGroupItem
+            key={item.value}
+            value={item.value}
+            data-testid={item.value}
+            id={item.value}
+          />
+          <Label htmlFor={item.value}>{item.label}</Label>
+        </>
       ))}
-    </RadioGroup.Root>
+    </RadioGroup>
   )
 
-  items.forEach(({ value, label, description }) => {
-    const itemEl = screen.getByTestId(value)
+  const item = items[Math.floor(Math.random() * items.length)]
 
-    expect(itemEl).toBeInTheDocument()
+  const label = screen.getByText(item.label)
+  const radioButton = screen.getByTestId(item.value)
 
-    const labelEl = screen.getByText(label)
-    const descriptionEl = screen.getByText(description)
+  expect(radioButton).toHaveAttribute("aria-checked", "false")
 
-    expect(labelEl).toBeInTheDocument()
-    expect(descriptionEl).toBeInTheDocument()
-  })
+  fireEvent.click(label)
+
+  expect(radioButton).toHaveAttribute("aria-checked", "true")
 })
