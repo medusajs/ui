@@ -42,6 +42,7 @@ module.exports = {
         subtle: "#687076",
       },
       boxShadow: {
+        rest: "0px 2px 4px 0px rgba(17, 24, 28, 0.04), 0px 1px 2px -1px rgba(17, 24, 28, 0.08), 0px 0px 0px 1px rgba(17, 24, 28, 0.08)",
         high: "0px 4px 8px 0px rgba(17, 24, 28, 0.08), 0px 0px 0px 1px rgba(17, 24, 28, 0.08)",
       },
     },
