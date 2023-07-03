@@ -39,7 +39,6 @@ module.exports = {
         muted: "#889096",
         subtle: "#687076",
         "on-color": "#FFFFFF",
-        subtle: "#687076",
       },
       boxShadowColor: {
         interactive: "#0081F1",
