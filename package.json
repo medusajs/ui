@@ -10,23 +10,26 @@
     "version": "changeset version && yarn install --no-immutable",
     "release:next": "changeset publish --no-git-tags --snapshot --tag next",
     "version:next": "changeset version --snapshot next",
-    "release:snapshot": "changeset publish --no-git-tags --snapshot --tag snapshot"
+    "release:snapshot": "changeset publish --no-git-tags --snapshot --tag snapshot",
+    "generate:icons": "rimraf ./packages/icons/src/components && toolbox icons -o './packages/icons/src/components'"
   },
   "devDependencies": {
-    "@turbo/gen": "^1.9.7",
+    "@medusajs/eslint-config-ui": "*",
+    "@medusajs/toolbox": "*",
     "eslint": "^7.32.0",
-    "eslint-config-custom": "*",
     "prettier": "^2.5.1",
+    "rimraf": "^5.0.1",
     "turbo": "latest"
   },
   "name": "medusa-ui",
   "packageManager": "yarn@3.5.0",
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "packages/*",
+    "tools/*",
+    "configs/*"
   ],
   "dependencies": {
-    "@changesets/cli": "^2.26.1",
-    "@radix-ui/react-dialog": "^1.0.4"
+    "@changesets/cli": "^2.26.1"
   }
 }

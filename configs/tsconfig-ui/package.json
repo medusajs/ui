@@ -1,0 +1,10 @@
+{
+  "name": "@medusajs/tsconfig-ui",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "packageManager": "yarn@3.5.0"
+}

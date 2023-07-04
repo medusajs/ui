@@ -1,8 +1,10 @@
+import { XMark } from "@medusajs/icons"
 import * as Primitives from "@radix-ui/react-dialog"
 import * as React from "react"
 
+import { Header } from "@/components/header"
+import { Kbd } from "@/components/kbd"
 import { clx } from "@/utils/clx"
-import { Header } from "../header"
 
 const Modal = Primitives.Root
 Modal.displayName = "Modal"
@@ -61,8 +63,11 @@ const ModalHeader = ({
       {...props}
     >
       <div className={clx("flex flex-col gap-y-1", className)}>{children}</div>
-      <div>
-        <Primitives.Close>x</Primitives.Close>
+      <div className="flex items-center gap-x-2">
+        <Kbd>esc</Kbd>
+        <Primitives.Close>
+          <XMark />
+        </Primitives.Close>
       </div>
     </div>
   )
