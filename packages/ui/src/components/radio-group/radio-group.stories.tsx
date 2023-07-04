@@ -65,7 +65,9 @@ export const WithDisabledItem: Story = {
           disabledTooltip="Can't pick this"
           id="r2"
         />
-        <Label htmlFor="r2">Two</Label>
+        <Label htmlFor="r2" className="text-disabled">
+          Two
+        </Label>
       </div>
       <div className="flex items-center space-x-2">
         <RadioGroupItem value={"3"} id="r3" />

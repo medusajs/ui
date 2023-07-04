@@ -1,6 +1,6 @@
-import * as Primitives from "@radix-ui/react-radio-group"
 import React from "react"
-// import LockIcon from "../../fundamentals/icons/lock-icon"
+import * as Primitives from "@radix-ui/react-radio-group"
+import { LockClosedSolid } from "@medusajs/icons"
 import { Tooltip } from "@/components/tooltip"
 import { clx } from "@/utils/clx"
 
@@ -37,6 +37,7 @@ const RadioGroupItem = React.forwardRef<HTMLButtonElement, RadioGroupItemProps>(
       <div
         className={clx(
           "p-1 flex relative cursor-pointer items-center",
+          { "cursor-not-allowed": disabled },
           className
         )}
       >
@@ -59,8 +60,7 @@ const RadioGroupItem = React.forwardRef<HTMLButtonElement, RadioGroupItemProps>(
           </Primitives.Item>
         ) : (
           <Tooltip content={disabledTooltip}>
-            Lock
-            {/* <LockIcon size={20} className="text-grey-40" /> */}
+            <LockClosedSolid className="text-disabled" />
           </Tooltip>
         )}
       </div>
