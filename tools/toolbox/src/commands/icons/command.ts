@@ -12,6 +12,9 @@ type GenerateIconsArgs = {
   output: string
 }
 
+// We don't want to generate icons for these frames as they are not optimized
+const BANNED_FRAMES = ["Flags"]
+
 export async function generateIcons({ output }: GenerateIconsArgs) {
   const skippedIcons: string[] = []
 
@@ -41,6 +44,10 @@ export async function generateIcons({ output }: GenerateIconsArgs) {
     const frameInfo = component.containing_frame
 
     if (!frameInfo) {
+      return acc
+    }
+
+    if (BANNED_FRAMES.includes(frameInfo.name)) {
       return acc
     }
 
