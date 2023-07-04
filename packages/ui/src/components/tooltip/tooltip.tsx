@@ -1,7 +1,7 @@
 import * as Primitives from "@radix-ui/react-tooltip"
 import * as React from "react"
 
-import { Kbd, KbdContainer } from "../kbd/kbd"
+import { Kbd, KbdContainer } from "@/components/kbd"
 import { labelVariants } from "@/components/label"
 import { clx } from "@/utils/clx"
 

@@ -37,7 +37,6 @@ module.exports = {
         default: "#11181C",
         disabled: "#C1C8CD",
         muted: "#889096",
-        subtle: "#687076",
         "on-color": "#FFFFFF",
       },
       boxShadowColor: {

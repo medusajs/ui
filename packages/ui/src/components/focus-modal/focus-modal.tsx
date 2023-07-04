@@ -1,6 +1,8 @@
+import { XMark } from "@medusajs/icons"
 import * as Primitives from "@radix-ui/react-dialog"
 import * as React from "react"
 
+import { Kbd } from "@/components/kbd"
 import { clx } from "@/utils/clx"
 
 const FocusModal = Primitives.Root
@@ -67,8 +69,11 @@ const FocusModalHeader = ({
       )}
       {...props}
     >
-      <div>
-        <Primitives.Close>x</Primitives.Close>
+      <div className="flex items-center gap-x-2">
+        <Primitives.Close>
+          <XMark />
+        </Primitives.Close>
+        <Kbd>esc</Kbd>
       </div>
       <div>{children}</div>
     </div>

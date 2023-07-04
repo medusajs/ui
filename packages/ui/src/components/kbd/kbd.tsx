@@ -1,7 +1,8 @@
-import { clx } from "@/utils/clx"
-import React, { ReactNode } from "react"
+import * as React from "react"
 
-interface KbdProps extends React.ComponentPropsWithoutRef<"kbd"> {}
+import { clx } from "@/utils/clx"
+
+type KbdProps = React.ComponentPropsWithoutRef<"kbd">
 
 const Kbd = React.forwardRef<HTMLElement, KbdProps>(
   ({ children, ...props }, ref) => {
@@ -21,8 +22,9 @@ const Kbd = React.forwardRef<HTMLElement, KbdProps>(
     )
   }
 )
+Kbd.displayName = "Kbd"
 
-interface KbdContainerProps extends React.ComponentPropsWithoutRef<"div"> {}
+type KbdContainerProps = React.ComponentPropsWithoutRef<"div">
 
 const KbdContainer = React.forwardRef<HTMLDivElement, KbdContainerProps>(
   ({ children, className, ...props }, ref) => {
@@ -37,9 +39,6 @@ const KbdContainer = React.forwardRef<HTMLDivElement, KbdContainerProps>(
     )
   }
 )
-
 KbdContainer.displayName = "KbdContainer"
-
-Kbd.displayName = "Kbd"
 
 export { Kbd, KbdContainer }
