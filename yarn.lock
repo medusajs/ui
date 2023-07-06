@@ -2874,11 +2874,14 @@ __metadata:
     "@svgr/plugin-prettier": 8.0.1
     "@svgr/plugin-svgo": 8.0.1
     "@types/fs-extra": 11.0.1
+    "@types/react": ^18.2.14
     commander: 11.0.0
     dotenv: 16.3.1
     eslint: 7.32.0
     fs-extra: 11.1.1
     picocolors: ^1.0.0
+    prettier: ^3.0.0
+    react: ^18.2.0
     ts-dedent: 2.2.0
     tsup: 7.1.0
     typescript: 5.1.6
@@ -12690,6 +12693,15 @@ __metadata:
   bin:
     prettier: bin-prettier.js
   checksum: b49e409431bf129dd89238d64299ba80717b57ff5a6d1c1a8b1a28b590d998a34e083fa13573bc732bb8d2305becb4c9a4407f8486c81fa7d55100eb08263cf8
+  languageName: node
+  linkType: hard
+
+"prettier@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "prettier@npm:3.0.0"
+  bin:
+    prettier: bin/prettier.cjs
+  checksum: 6a832876a1552dc58330d2467874e5a0b46b9ccbfc5d3531eb69d15684743e7f83dc9fbd202db6270446deba9c82b79d24383d09924c462b457136a759425e33
   languageName: node
   linkType: hard
 

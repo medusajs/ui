@@ -6,6 +6,7 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
+      // We delibaretly don't include the theme path here as tw does not support it
       "@medusajs/ui": ["./src/index.ts"],
       "@/components/*": ["./src/components/*"],
       "@/hooks/*": ["./src/hooks/*"],

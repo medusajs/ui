@@ -17,7 +17,7 @@ const buttonVariants = cva(
         transparent:
           "text-default border-transparent bg-button-transparent hover:bg-button-transparent-hover hover:border-neutral-button focus:bg-button-neutral focus:border-neutral-button active:border-neutral-button active:bg-button-transparent-active",
         danger:
-          "text-on-color border-colored-button bg-button-danger hover:bg-button-danger-hover active:bg-button-danger-active",
+          "text-on-color border-colored-button bg-button-danger hover:bg-button-danger-hover active:bg-button-danger-active bg-ui-",
       },
       size: {
         sm: clx(
@@ -93,7 +93,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <Component
         ref={ref}
         {...props}
-        className={clx(buttonVariants({ variant, size, format }), className)}
+        className={clx(
+          buttonVariants({ variant, size, format }),
+          className,
+          "shadow-"
+        )}
       >
         {children}
       </Component>
