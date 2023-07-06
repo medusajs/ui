@@ -82,7 +82,9 @@ class Figma {
 
   async getFileNodes<TNode extends NodeType = "DOCUMENT">(
     file_key: string,
-    options?: {
+    options: {
+      /** A comma separated list of node IDs to retrieve and convert */
+      ids: string[]
       /** A specific version ID to get. Omitting this will get the current version of the file */
       version?: string
       /** Positive integer representing how deep into the document tree to traverse. For example, setting this to 1 returns only Pages, setting it to 2 returns Pages and all top level objects on each page. Not setting this parameter returns all nodes */
@@ -93,11 +95,10 @@ class Figma {
       plugin_data?: string
     }
   ): Promise<GetFileNodesResult<TNode>> {
-    const queryString = options
-      ? `?${encodeQuery({
-          ...options,
-        })}`
-      : ""
+    const queryString = `?${encodeQuery({
+      ...options,
+      ids: options.ids.join(","),
+    })}`
 
     return this._api.request("GET", `files/${file_key}/nodes${queryString}`)
   }
@@ -301,6 +302,7 @@ class Figma {
   // Dev Resources - Beta API (TODO)
 }
 
+export * from "./assertions"
 export * from "./types"
 
 export default Figma

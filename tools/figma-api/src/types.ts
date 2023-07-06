@@ -364,20 +364,6 @@ export type EffectBlur = {
 /** A visual effect such as a shadow or blur */
 export type Effect = { type: EffectType } & Effect_ & Partial<EffectShadow_>
 
-export function isEffectShadow(effect: Effect): effect is EffectShadow {
-  return (
-    effect.type === EffectType.DROP_SHADOW ||
-    effect.type === EffectType.INNER_SHADOW
-  )
-}
-
-export function isEffectBlur(effect: Effect): effect is EffectBlur {
-  return (
-    effect.type === EffectType.BACKGROUND_BLUR ||
-    effect.type === EffectType.LAYER_BLUR
-  )
-}
-
 export type Hyperlink = {
   /** Type of hyperlink */
   type: "URL" | "NODE"
@@ -475,23 +461,6 @@ export type Paint = { type: PaintType } & Paint_ &
   Partial<PaintSolid_> &
   Partial<PaintGradient_> &
   Partial<PaintImage_>
-
-export function isPaintSolid(paint: Paint): paint is PaintSolid {
-  return paint.type === PaintType.SOLID
-}
-
-export function isPaintGradient(paint: Paint): paint is PaintGradient {
-  return (
-    paint.type === PaintType.GRADIENT_ANGULAR ||
-    paint.type === PaintType.GRADIENT_DIAMOND ||
-    paint.type === PaintType.GRADIENT_LINEAR ||
-    paint.type === PaintType.GRADIENT_RADIAL
-  )
-}
-
-export function isPaintImage(paint: Paint): paint is PaintImage {
-  return paint.type === PaintType.IMAGE
-}
 
 /** A 2d vector */
 export type Vector = {
