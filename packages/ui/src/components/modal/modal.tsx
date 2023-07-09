@@ -2,14 +2,20 @@ import { XMark } from "@medusajs/icons"
 import * as Primitives from "@radix-ui/react-dialog"
 import * as React from "react"
 
+import { Badge } from "@/components/badge"
+import { Button } from "@/components/button"
 import { Header } from "@/components/header"
-import { Kbd } from "@/components/kbd"
 import { clx } from "@/utils/clx"
+import { Text } from "../text"
 
 const Modal = Primitives.Root
 Modal.displayName = "Modal"
 
 const ModalTrigger = Primitives.Trigger
+ModalTrigger.displayName = "ModalTrigger"
+
+const ModalClose = Primitives.Close
+ModalClose.displayName = "ModalClose"
 
 const ModalPortal = ({ className, ...props }: Primitives.DialogPortalProps) => {
   return <Primitives.DialogPortal className={clx(className)} {...props} />
@@ -22,10 +28,7 @@ const ModalOverlay = React.forwardRef<
   return (
     <Primitives.Overlay
       ref={ref}
-      className={clx(
-        "fixed inset-0 z-50 bg-background/80 backdrop-blur-sm",
-        className
-      )}
+      className={clx("fixed inset-0 z-50 backdrop-blur-sm", className)}
       {...props}
     />
   )
@@ -42,7 +45,7 @@ const ModalContent = React.forwardRef<
       <Primitives.Content
         ref={ref}
         className={clx(
-          "flex flex-col fixed left-[50%] top-[50%] z-50 w-full max-w-[560px] h-full max-h-[560px] translate-x-[-50%] translate-y-[-50%] border bg-base shadow-lg rounded-lg",
+          "bg-base shadow-elevation-modal fixed left-[50%] top-[50%] z-50 flex h-full max-h-[560px] w-full max-w-[560px] translate-x-[-50%] translate-y-[-50%] flex-col rounded-lg border",
           className
         )}
         {...props}
@@ -59,15 +62,19 @@ const ModalHeader = ({
 }: React.HTMLAttributes<HTMLDivElement>) => {
   return (
     <div
-      className="px-8 py-6 border-b border-base flex items-start justify-between gap-x-4"
+      className="border-ui-border-base flex items-start justify-between gap-x-4 border-b px-8 py-6"
       {...props}
     >
       <div className={clx("flex flex-col gap-y-1", className)}>{children}</div>
       <div className="flex items-center gap-x-2">
-        <Kbd>esc</Kbd>
-        <Primitives.Close>
-          <XMark />
-        </Primitives.Close>
+        <Badge size={"sm"} color={"grey"}>
+          esc
+        </Badge>
+        <ModalClose asChild>
+          <Button variant="transparent" size={"sm"} format={"icon"}>
+            <XMark />
+          </Button>
+        </ModalClose>
       </div>
     </div>
   )
@@ -89,7 +96,7 @@ const ModalFooter = ({
   return (
     <div
       className={clx(
-        "flex items-center justify-end pt-4 pb-6 px-8 space-x-2 border-t border-base overflow-y-scroll",
+        "border-ui-border-base flex items-center justify-end space-x-2 overflow-y-scroll border-t px-8 pb-6 pt-4",
         className
       )}
       {...props}
@@ -102,16 +109,8 @@ const ModalTitle = React.forwardRef<
   React.ElementRef<typeof Primitives.Title>,
   React.ComponentPropsWithoutRef<typeof Primitives.Title>
 >(({ className, children, ...props }, ref) => (
-  <Primitives.Title
-    ref={ref}
-    className={clx(
-      "text-lg font-semibold leading-none tracking-tight",
-      className
-    )}
-    asChild
-    {...props}
-  >
-    <Header>{children}</Header>
+  <Primitives.Title ref={ref} className={clx(className)} asChild {...props}>
+    <Header level="h1">{children}</Header>
   </Primitives.Title>
 ))
 ModalTitle.displayName = "ModalTitle"
@@ -119,18 +118,22 @@ ModalTitle.displayName = "ModalTitle"
 const ModalDescription = React.forwardRef<
   React.ElementRef<typeof Primitives.Description>,
   React.ComponentPropsWithoutRef<typeof Primitives.Description>
->(({ className, ...props }, ref) => (
+>(({ className, children, ...props }, ref) => (
   <Primitives.Description
     ref={ref}
-    className={clx("text-sm text-muted-foreground", className)}
+    className={clx(className)}
+    asChild
     {...props}
-  />
+  >
+    <Text>{children}</Text>
+  </Primitives.Description>
 ))
 ModalDescription.displayName = "ModalDescription"
 
 export {
   Modal,
   ModalBody,
+  ModalClose,
   ModalContent,
   ModalDescription,
   ModalFooter,

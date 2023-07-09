@@ -4,8 +4,8 @@ import { Button } from "../button"
 import {
   Modal,
   ModalBody,
+  ModalClose,
   ModalContent,
-  ModalDescription,
   ModalFooter,
   ModalHeader,
   ModalTitle,
@@ -28,19 +28,18 @@ export const Default: Story = {
   render: () => {
     return (
       <Modal>
-        <ModalTrigger>
+        <ModalTrigger asChild>
           <Button>Edit Variant</Button>
         </ModalTrigger>
         <ModalContent>
           <ModalHeader>
             <ModalTitle>Edit Variant</ModalTitle>
-            <ModalDescription>
-              Make changes to your variant here and click save when you&apos;re
-              done.
-            </ModalDescription>
           </ModalHeader>
           <ModalBody></ModalBody>
           <ModalFooter>
+            <ModalClose asChild>
+              <Button variant="secondary">Cancel</Button>
+            </ModalClose>
             <Button>Save</Button>
           </ModalFooter>
         </ModalContent>

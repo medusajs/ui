@@ -6,34 +6,34 @@ import { labelVariants } from "@/components/label"
 import { clx } from "@/utils/clx"
 
 const buttonVariants = cva(
-  "outline-none focus:ring-2 ring-offset-2 ring-interactive rounded-lg transition-all disabled:bg-disabled disabled:border-base disabled:text-disabled border inline-flex items-center",
+  "disabled:bg-disabled disabled:border-base disabled:text-disabled relative inline-flex items-center overflow-hidden rounded-lg border outline-none transition-all after:absolute after:inset-0 after:content-['']",
   {
     variants: {
       variant: {
-        neutral:
-          "text-default bg-button-neutral hover:bg-button-neutral-hover active:bg-button-neutral-active",
-        inverted:
-          "text-on-color bg-button-inverted hover:bg-button-inverted-hover active:bg-button-inverted-active border-colored-button",
+        primary:
+          "shadow-buttons-primary text-ui-fg-on-inverted border-ui-border-loud bg-ui-button-inverted after:button-inverted-gradient hover:bg-ui-button-inverted-hover hover:after:button-inverted-hover-gradient active:bg-ui-button-inverted-pressed active:after:button-inverted-pressed-gradient focus:shadow-buttons-primary-focus",
+        secondary:
+          "shadow-buttons-secondary text-ui-fg-base border-ui-border-loud-muted bg-ui-button-neutral after:button-neutral-gradient hover:bg-ui-button-neutral-hover hover:after:button-neutral-hover-gradient active:bg-ui-button-neutral-pressed active:after:button-neutral-pressed-gradient focus:shadow-buttons-secondary-focus bg-clip-padding",
         transparent:
-          "text-default border-transparent bg-button-transparent hover:bg-button-transparent-hover hover:border-neutral-button focus:bg-button-neutral focus:border-neutral-button active:border-neutral-button active:bg-button-transparent-active",
+          "text-ui-fg-base border-ui-border-loud-transparent bg-ui-button-transparent hover:bg-ui-button-transparent-hover hover:border-ui-border-loud-muted active:bg-ui-button-transparent-pressed active:border-ui-border-base focus:shadow-borders-focus focus:bg-ui-bg-base focus:border-ui-border-base",
         danger:
-          "text-on-color border-colored-button bg-button-danger hover:bg-button-danger-hover active:bg-button-danger-active bg-ui-",
+          "shadow-buttons-danger text-ui-fg-on-inverted border-ui-border-danger bg-ui-button-danger after:button-danger-gradient hover:bg-ui-button-danger-hover hover:after:button-danger-hover-gradient active:bg-ui-button-danger-pressed active:after:button-danger-pressed-gradient focus:shadow-buttons-danger-focus",
       },
       size: {
         sm: clx(
-          "px-[7px] py-[1px] gap-x-0.5",
+          "gap-x-0.5 px-[7px] py-[1px]",
           labelVariants({ variant: "xs", weight: "plus" })
         ),
         md: clx(
-          "px-[11px] py-[5px] gap-x-1.5",
+          "gap-x-1.5 px-[11px] py-[5px]",
           labelVariants({ variant: "sm", weight: "plus" })
         ),
         lg: clx(
-          "px-[15px] py-[9px] gap-x-2",
+          "gap-x-2 px-[15px] py-[9px]",
           labelVariants({ variant: "md", weight: "plus" })
         ),
         xl: clx(
-          "px-[19px] py-[13px] gap-x-2",
+          "gap-x-2 px-[19px] py-[13px]",
           labelVariants({
             variant: "lg",
             weight: "plus",
@@ -46,7 +46,7 @@ const buttonVariants = cva(
       },
     },
     defaultVariants: {
-      variant: "inverted",
+      variant: "primary",
       size: "md",
       format: "default",
     },
@@ -89,14 +89,42 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     const Component = asChild ? Slot : "button"
 
+    // Check if the last child is an svg
+    const lastChild = React.Children.toArray(children).slice(-1)[0]
+    const firstChild = React.Children.toArray(children)[0]
+
+    console.log(lastChild)
+
+    let iconPosition = undefined
+
+    const rightSideIcon =
+      React.isValidElement(firstChild) && firstChild.type === "svg"
+
+    console.log(React.isValidElement(firstChild) ? firstChild.type : "nope")
+
+    const leftSideIcon =
+      React.isValidElement(lastChild) && lastChild.type === "svg"
+
+    if (rightSideIcon && leftSideIcon) {
+      iconPosition = "both"
+    } else if (rightSideIcon) {
+      iconPosition = "right"
+    } else if (leftSideIcon) {
+      iconPosition = "left"
+    }
+
+    console.log(iconPosition)
+
     return (
       <Component
         ref={ref}
         {...props}
         className={clx(
           buttonVariants({ variant, size, format }),
-          className,
-          "shadow-"
+          {
+            "pr-2.5": iconPosition === "right" && size === "md",
+          },
+          className
         )}
       >
         {children}
