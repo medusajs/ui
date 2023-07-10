@@ -14,7 +14,7 @@ const Kbd = React.forwardRef<HTMLElement, KbdProps>(
         <Component
           ref={ref}
           {...props}
-          className="text-xs font-medium text-subtle font-sans bg-button-neutral-active inline-flex justify-center items-center min-w-[20px] h-[20px] px-1 rounded-md border border-neutral-button"
+          className="text-ui-fg-subtle bg-button-neutral-active border-neutral-button inline-flex h-[20px] min-w-[20px] items-center justify-center rounded-md border px-1 font-sans text-xs font-medium"
         >
           {children}
         </Component>
@@ -30,7 +30,7 @@ const KbdContainer = React.forwardRef<HTMLDivElement, KbdContainerProps>(
   ({ children, className, ...props }, ref) => {
     return (
       <div
-        className={clx("inline-flex gap-0.5 ml-2", className)}
+        className={clx("ml-2 inline-flex gap-0.5", className)}
         ref={ref}
         {...props}
       >

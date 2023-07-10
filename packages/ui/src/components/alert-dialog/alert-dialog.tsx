@@ -28,7 +28,7 @@ const AlertDialogOverlay = React.forwardRef<
     <Primitives.Overlay
       ref={ref}
       className={clx(
-        "fixed inset-0 z-50 bg-gray-200/80 backdrop-blur-sm",
+        "bg-ui-bg-overlay fixed inset-0 z-50 backdrop-blur-sm",
         className
       )}
       {...props}
@@ -42,12 +42,7 @@ const AlertDialogTitle = React.forwardRef<
   Omit<React.ComponentPropsWithoutRef<typeof Primitives.Title>, "asChild">
 >(({ className, children, ...props }, ref) => {
   return (
-    <Primitives.Title
-      ref={ref}
-      className={clx("", className)}
-      {...props}
-      asChild
-    >
+    <Primitives.Title ref={ref} className={clx(className)} {...props} asChild>
       <Header level="h2">{children}</Header>
     </Primitives.Title>
   )
@@ -64,7 +59,7 @@ const AlertDialogContent = React.forwardRef<
       <Primitives.Content
         ref={ref}
         className={clx(
-          "flex flex-col fixed left-[50%] top-[50%] z-50 w-full max-w-[400px] translate-x-[-50%] translate-y-[-50%] border bg-base shadow-lg rounded-lg",
+          "bg-ui-bg-base shadow-elevation-flyout fixed left-[50%] top-[50%] z-50 flex w-full max-w-[400px] translate-x-[-50%] translate-y-[-50%] flex-col rounded-lg border",
           className
         )}
         {...props}
@@ -115,7 +110,7 @@ const AlertDialogCancel = React.forwardRef<
 >(({ className, children, ...props }, ref) => {
   return (
     <Primitives.Cancel ref={ref} className={clx(className)} {...props} asChild>
-      <Button variant="neutral">{children}</Button>
+      <Button variant="secondary">{children}</Button>
     </Primitives.Cancel>
   )
 })

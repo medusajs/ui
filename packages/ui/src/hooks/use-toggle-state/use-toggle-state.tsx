@@ -7,7 +7,7 @@ type StateType = [boolean, () => void, () => void, () => void] & {
   toggle: () => void
 }
 
-export const useToggleState = (initial = false) => {
+const useToggleState = (initial = false) => {
   const [state, setState] = React.useState<boolean>(initial)
 
   const close = () => {
@@ -29,3 +29,5 @@ export const useToggleState = (initial = false) => {
   hookData.toggle = toggle
   return hookData
 }
+
+export { useToggleState }

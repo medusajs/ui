@@ -27,7 +27,7 @@ const FocusModalOverlay = React.forwardRef<
     <Primitives.Overlay
       ref={ref}
       className={clx(
-        "fixed inset-0 z-50 bg-gray-200/80 backdrop-blur-sm",
+        "bg-ui-bg-overlay fixed inset-0 z-50 backdrop-blur-sm",
         className
       )}
       {...props}
@@ -46,7 +46,7 @@ const FocusModalContent = React.forwardRef<
       <Primitives.Content
         ref={ref}
         className={clx(
-          "flex flex-col fixed inset-2 z-50 border bg-base shadow-lg rounded-lg",
+          "bg-ui-bg-base shadow-elevation-modal fixed inset-2 z-50 flex flex-col rounded-lg border",
           className
         )}
         {...props}
@@ -64,7 +64,7 @@ const FocusModalHeader = ({
   return (
     <div
       className={clx(
-        "p-4 border-b border-base flex items-start justify-between gap-x-4",
+        "border-ui-border-base flex items-start justify-between gap-x-4 border-b p-4",
         className
       )}
       {...props}

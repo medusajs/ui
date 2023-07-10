@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react"
+import * as React from "react"
 
 import { PlusMini } from "@medusajs/icons"
 import { Button } from "./button"
@@ -15,13 +16,13 @@ export default meta
 
 type Story = StoryObj<typeof Button>
 
-export const Inverted: Story = {
+export const Primary: Story = {
   args: {
     children: "Action",
   },
 }
 
-export const Neutral: Story = {
+export const Secondary: Story = {
   args: {
     children: "Action",
     variant: "secondary",

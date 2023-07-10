@@ -1,11 +1,11 @@
+import { Slot } from "@radix-ui/react-slot"
 import { VariantProps, cva } from "class-variance-authority"
 import * as React from "react"
 
+import { labelVariants } from "@/components/label"
 import { clx } from "@/utils/clx"
-import { Slot } from "@radix-ui/react-slot"
-import { labelVariants } from "../label"
 
-const badgeVariants = cva("border inline-flex items-center gap-x-0.5", {
+const badgeVariants = cva("inline-flex items-center gap-x-0.5 border", {
   variants: {
     type: {
       default: "rounded-md",

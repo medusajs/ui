@@ -6,7 +6,7 @@ import { labelVariants } from "@/components/label"
 import { clx } from "@/utils/clx"
 
 const buttonVariants = cva(
-  "disabled:bg-disabled disabled:border-base disabled:text-disabled relative inline-flex items-center overflow-hidden rounded-lg border outline-none transition-all after:absolute after:inset-0 after:content-['']",
+  "disabled:bg-disabled disabled:border-base disabled:text-disabled relative inline-flex items-center overflow-hidden rounded-lg border outline-none transition-all after:absolute after:inset-0 after:content-[''] disabled:!shadow-none",
   {
     variants: {
       variant: {
@@ -89,43 +89,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     const Component = asChild ? Slot : "button"
 
-    // Check if the last child is an svg
-    const lastChild = React.Children.toArray(children).slice(-1)[0]
-    const firstChild = React.Children.toArray(children)[0]
-
-    console.log(lastChild)
-
-    let iconPosition = undefined
-
-    const rightSideIcon =
-      React.isValidElement(firstChild) && firstChild.type === "svg"
-
-    console.log(React.isValidElement(firstChild) ? firstChild.type : "nope")
-
-    const leftSideIcon =
-      React.isValidElement(lastChild) && lastChild.type === "svg"
-
-    if (rightSideIcon && leftSideIcon) {
-      iconPosition = "both"
-    } else if (rightSideIcon) {
-      iconPosition = "right"
-    } else if (leftSideIcon) {
-      iconPosition = "left"
-    }
-
-    console.log(iconPosition)
-
     return (
       <Component
         ref={ref}
         {...props}
-        className={clx(
-          buttonVariants({ variant, size, format }),
-          {
-            "pr-2.5": iconPosition === "right" && size === "md",
-          },
-          className
-        )}
+        className={clx(buttonVariants({ variant, size, format }), className)}
       >
         {children}
       </Component>

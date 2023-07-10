@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react"
+import * as React from "react"
 
 import { BuildingTax, XMarkMini } from "@medusajs/icons"
 import { Badge } from "./badge"

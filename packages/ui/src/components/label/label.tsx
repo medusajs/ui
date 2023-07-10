@@ -1,7 +1,8 @@
-import { clx } from "@/utils/clx"
 import * as Primitives from "@radix-ui/react-label"
-import { VariantProps, cva } from "class-variance-authority"
+import { cva, type VariantProps } from "class-variance-authority"
 import * as React from "react"
+
+import { clx } from "@/utils/clx"
 
 const labelVariants = cva("font-sans", {
   variants: {

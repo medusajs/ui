@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react"
+import * as React from "react"
 
 import { Button } from "@/components/button"
 import {
@@ -25,7 +26,7 @@ export const Default: Story = {
   render: () => {
     return (
       <FocusModal>
-        <FocusModalTrigger>
+        <FocusModalTrigger asChild>
           <Button>Edit Variant</Button>
         </FocusModalTrigger>
         <FocusModalContent>

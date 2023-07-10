@@ -11,7 +11,8 @@ import {
   AlertDialogTitle,
 } from "@/components/alert-dialog"
 import { Input } from "@/components/input"
-import { Label } from "@/components/label"
+import { Label, labelVariants } from "@/components/label"
+import { clx } from "../../utils/clx"
 
 export type DialogProps = {
   open: boolean
@@ -56,10 +57,15 @@ const Dialog = ({
           <AlertDialogDescription>{description}</AlertDialogDescription>
         </AlertDialogHeader>
         {verificationText && (
-          <div className="border-y border-base p-6 mt-6 flex flex-col gap-y-4">
+          <div className="border-ui-border-base mt-6 flex flex-col gap-y-4 border-y p-6">
             <Label htmlFor="verificationText" className="text-subtle">
               Please type{" "}
-              <span className="font-medium text-default">
+              <span
+                className={clx(
+                  labelVariants({ variant: "md", weight: "plus" }),
+                  "text-ui-fg-base"
+                )}
+              >
                 {verificationText}
               </span>{" "}
               to confirm.
