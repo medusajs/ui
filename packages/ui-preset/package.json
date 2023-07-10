@@ -21,11 +21,11 @@
     "tailwindcss-animate": "^1.0.6"
   },
   "devDependencies": {
+    "@medusajs/eslint-config-ui": "*",
     "@medusajs/tsconfig-ui": "*",
-    "tsup": "^7.1.0",
-    "typescript": "^5.1.6",
     "eslint": "^7.32.0",
-    "@medusajs/eslint-config-ui": "*"
+    "tsup": "^7.1.0",
+    "typescript": "^5.1.6"
   },
   "packageManager": "yarn@3.5.0"
 }
