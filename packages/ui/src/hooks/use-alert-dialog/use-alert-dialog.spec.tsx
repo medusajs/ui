@@ -1,4 +1,6 @@
 import { RenderResult, fireEvent, render } from "@testing-library/react"
+import * as React from "react"
+
 import { useAlertDialog } from "./use-alert-dialog"
 
 const OPEN_TEXT = "Open dialog"

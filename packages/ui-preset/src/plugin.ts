@@ -1,10 +1,11 @@
 import plugin from "tailwindcss/plugin"
-import { theme } from "./extension/theme"
-import { colors } from "./tokens/colors"
-import { components } from "./tokens/components"
+import { theme } from "./theme/extension/theme"
+import { colors } from "./theme/tokens/colors"
+import { components } from "./theme/tokens/components"
+import { effects } from "./theme/tokens/effects"
 
 export default plugin(
-  function medusaUi({ addBase, addComponents, config, theme }) {
+  function medusaUi({ addBase, addComponents, addUtilities, config, theme }) {
     const [darkMode, className = ".dark"] = ([] as string[]).concat(
       config("darkMode", "media")
     )
@@ -21,17 +22,17 @@ export default plugin(
     addComponents(components)
 
     addBase({
-      ":root": colors.light,
+      ":root": { ...colors.light, ...effects.light },
     })
 
     if (darkMode === "class") {
       addBase({
-        [className]: colors.dark,
+        [className]: { ...colors.dark, ...effects.dark },
       })
     } else {
       addBase({
         "@media (prefers-color-scheme: dark)": {
-          ":root": colors.dark,
+          ":root": { ...colors.dark, ...effects.dark },
         },
       })
     }

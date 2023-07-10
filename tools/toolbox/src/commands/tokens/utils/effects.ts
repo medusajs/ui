@@ -1,7 +1,21 @@
 import { Effect } from "@medusajs/figma-api"
 import { colorToRGBA } from "./colors"
 
-function createDropShadowVariable(effects: Effect[]) {
+/**
+ * We know that we will need to correct the Y value of the inset shadows
+ * on these effects due to the difference in the way Figma and CSS
+ * handle shadows.
+ */
+const SPECIAL_IDENTIFIERS = [
+  "--buttons-primary",
+  "--buttons-secondary",
+  "--buttons-danger",
+  "--buttons-primary-focus",
+  "--buttons-secondary-focus",
+  "--buttons-danger-focus",
+]
+
+function createDropShadowVariable(effects: Effect[], identifier: string) {
   const shadows = effects.filter(
     (effect) => effect.type === "DROP_SHADOW" || effect.type === "INNER_SHADOW"
   )
@@ -15,7 +29,15 @@ function createDropShadowVariable(effects: Effect[]) {
       const { color, offset, radius, spread, type } = shadow
 
       const x = offset?.x ?? 0
-      const y = offset?.y ?? 0
+      let y = offset?.y ?? 0
+
+      if (
+        SPECIAL_IDENTIFIERS.includes(identifier) &&
+        type === "INNER_SHADOW" &&
+        y > 0
+      ) {
+        y = y - 1
+      }
 
       const b = radius
       const s = spread ?? 0

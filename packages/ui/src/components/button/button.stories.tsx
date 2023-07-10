@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
+import * as React from "react"
 
+import { PlusMini } from "@medusajs/icons"
 import { Button } from "./button"
 
 const meta: Meta<typeof Button> = {
@@ -14,16 +16,16 @@ export default meta
 
 type Story = StoryObj<typeof Button>
 
-export const Inverted: Story = {
+export const Primary: Story = {
   args: {
     children: "Action",
   },
 }
 
-export const Neutral: Story = {
+export const Secondary: Story = {
   args: {
     children: "Action",
-    variant: "neutral",
+    variant: "secondary",
   },
 }
 
@@ -50,20 +52,13 @@ export const Disabled: Story = {
 
 export const WithIcon: Story = {
   args: {
-    children: [
-      "Action",
-      <span key={1} className="w-5 h-5 flex items-center justify-center">
-        x
-      </span>,
-    ],
+    children: ["Action", <PlusMini key={1} />],
   },
 }
 
 export const IconOnly: Story = {
   args: {
-    children: (
-      <span className="w-5 h-5 flex items-center justify-center">x</span>
-    ),
+    children: <PlusMini />,
     format: "icon",
   },
 }

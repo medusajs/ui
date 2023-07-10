@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react"
+import * as React from "react"
 
 import { Button } from "@/components/button"
 import { Text } from "@/components/text"
@@ -8,7 +9,7 @@ const Demo = () => {
   const { state, open, close, toggle } = useToggleState()
 
   return (
-    <div className="flex flex-col gap-y-4 items-center">
+    <div className="flex flex-col items-center gap-y-4">
       <Text>State: {state ? "True" : "False"}</Text>
       <div className="flex items-center gap-x-4">
         <Button onClick={open}>Open</Button>

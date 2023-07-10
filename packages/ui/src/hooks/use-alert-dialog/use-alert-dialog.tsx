@@ -1,3 +1,4 @@
+import * as React from "react"
 import { createRoot } from "react-dom/client"
 import { DialogProps } from "./dialog"
 
@@ -5,7 +6,7 @@ import Dialog from "./dialog"
 
 type UseAlertDialogProps = Omit<DialogProps, "onConfirm" | "onCancel" | "open">
 
-export const useAlertDialog = () => {
+const useAlertDialog = () => {
   const dialog = async (props: UseAlertDialogProps): Promise<boolean> => {
     return new Promise((resolve) => {
       let open = true
@@ -41,3 +42,5 @@ export const useAlertDialog = () => {
 
   return dialog
 }
+
+export { useAlertDialog }

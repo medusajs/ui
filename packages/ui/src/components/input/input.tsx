@@ -1,7 +1,20 @@
+import { cva } from "class-variance-authority"
 import * as React from "react"
 
 import { labelVariants } from "@/components/label"
 import { clx } from "@/utils/clx"
+
+const inputVariants = cva(
+  "bg-ui-bg-subtle hover:bg-ui-bg-subtle-hover border-ui-border-loud-muted invalid:border-ui-border-error disabled:text-ui-fg-disabled disabled:!bg-ui-bg-disabled disabled:!border-ui-border-base focus:border-ui-border-interactive focus:shadow-borders-interactive-w-focus placeholder:text-ui-fg-muted text-ui-fg-base relative w-full rounded-md border outline-none transition-all disabled:cursor-not-allowed disabled:!shadow-none",
+  {
+    variants: {
+      size: {
+        base: "h-10 px-3 py-[9px]",
+        small: "h-8",
+      },
+    },
+  }
+)
 
 const Input = React.forwardRef<
   HTMLInputElement,
@@ -11,7 +24,7 @@ const Input = React.forwardRef<
     <input
       ref={ref}
       className={clx(
-        "outline-none focus:ring-2 ring-interactive ring-offset-2 transition-all h-10 bg-field hover:bg-field-hover text-default placeholder:text-muted rounded-lg px-4 border border-base disabled:bg-disabled disabled:text-disabled disabled:placeholder:text-disabled",
+        inputVariants({ size: "base" }),
         labelVariants({ variant: "md" }),
         className
       )}

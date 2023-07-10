@@ -102,6 +102,9 @@ export const theme = {
           },
           "purple": {
             "bg": {
+              "hover": {
+                "DEFAULT": "var(--tag-purple-bg-hover)"
+              },
               "DEFAULT": "var(--tag-purple-bg)"
             },
             "text": {
@@ -163,6 +166,9 @@ export const theme = {
             "DEFAULT": "var(--bg-highlight)"
           },
           "base": {
+            "hover": {
+              "DEFAULT": "var(--bg-base-hover)"
+            },
             "DEFAULT": "var(--bg-base)",
             "pressed": {
               "DEFAULT": "var(--bg-base-pressed)"
@@ -188,7 +194,10 @@ export const theme = {
           },
           "toggle": {
             "off": {
-              "DEFAULT": "var(--bg-toggle-off)"
+              "DEFAULT": "var(--bg-toggle-off)",
+              "hover": {
+                "DEFAULT": "var(--bg-toggle-off-hover)"
+              }
             }
           },
           "disabled": {
@@ -205,6 +214,9 @@ export const theme = {
             }
           },
           "interactive": {
+            "hover": {
+              "DEFAULT": "var(--fg-interactive-hover)"
+            },
             "DEFAULT": "var(--fg-interactive)"
           },
           "error": {
@@ -252,32 +264,41 @@ export const theme = {
             }
           },
           "inverted": {
+            "pressed": {
+              "DEFAULT": "var(--button-inverted-pressed)"
+            },
+            "hover": {
+              "DEFAULT": "var(--button-inverted-hover)"
+            },
             "DEFAULT": "var(--button-inverted)"
           }
         }
       }
     },
     "boxShadow": {
-      "form-focus": "var(--form-focus)",
+      "details-switch-handle": "var(--details-switch-handle)",
+      "details-switch-background-focus": "var(--details-switch-background-focus)",
+      "details-switch-background": "var(--details-switch-background)",
+      "borders-focus": "var(--borders-focus)",
+      "elevation-flyout": "var(--elevation-flyout)",
+      "borders-interactive": "var(--borders-interactive)",
+      "buttons-secondary": "var(--buttons-secondary)",
+      "buttons-danger": "var(--buttons-danger)",
+      "buttons-primary-focus": "var(--buttons-primary-focus)",
+      "elevation-modal": "var(--elevation-modal)",
+      "borders-interactive-w-focus": "var(--borders-interactive-w-focus)",
+      "borders-active": "var(--borders-active)",
+      "borders-base-w-shadow": "var(--borders-base-w-shadow)",
+      "borders-base": "var(--borders-base)",
+      "borders-strong-w-shadow": "var(--borders-strong-w-shadow)",
+      "borders-interactive-w-shadow": "var(--borders-interactive-w-shadow)",
+      "buttons-primary": "var(--buttons-primary)",
+      "buttons-secondary-focus": "var(--buttons-secondary-focus)",
+      "buttons-danger-focus": "var(--buttons-danger-focus)",
       "elevation-tooltip": "var(--elevation-tooltip)",
       "elevation-card-hover": "var(--elevation-card-hover)",
-      "elevation-flyout": "var(--elevation-flyout)",
       "elevation-card-rest": "var(--elevation-card-rest)",
-      "form-border-interactive": "var(--form-border-interactive)",
-      "form-border-strong-shadow": "var(--form-border-strong-shadow)",
-      "form-border-interactive-shadow": "var(--form-border-interactive-shadow)",
-      "form-border-base-shadow": "var(--form-border-base-shadow)",
-      "form-border-interactive-focus": "var(--form-border-interactive-focus)",
-      "form-button-danger": "var(--form-button-danger)",
-      "form-button-neutral": "var(--form-button-neutral)",
-      "form-active": "var(--form-active)",
-      "form-button-inverted-focus": "var(--form-button-inverted-focus)",
-      "form-button-danger-focus": "var(--form-button-danger-focus)",
-      "form-button-inverted": "var(--form-button-inverted)",
-      "form-button-neutral-focus": "var(--form-button-neutral-focus)",
-      "elevation-modal": "var(--elevation-modal)",
-      "form-border-base": "var(--form-border-base)",
-      "form-bg-interactive-enhancer": "var(--form-bg-interactive-enhancer)"
+      "details-contrast-on-bg-interactive": "var(--details-contrast-on-bg-interactive)"
     }
   }
 }

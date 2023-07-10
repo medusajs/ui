@@ -1,9 +1,9 @@
-import { VariantProps, cva } from "class-variance-authority"
+import { cva, type VariantProps } from "class-variance-authority"
 import * as React from "react"
 
 import { clx } from "@/utils/clx"
 
-const headerVariants = cva("font-medium font-sans", {
+const headerVariants = cva("font-sans font-medium", {
   variants: {
     level: {
       h1: "text-[20px]/[32px]",

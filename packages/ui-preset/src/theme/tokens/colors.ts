@@ -63,7 +63,7 @@ export const colors = {
     "--code-bg-header": "rgba(22, 22, 24, 1)",
     "--bg-base-pressed": "rgba(40, 40, 44, 1)",
     "--tag-orange-bg-hover": "rgba(74, 41, 0, 1)",
-    "--button-transparent": "rgba(0, 0, 0, 1)",
+    "--button-transparent": "rgba(0, 0, 0, 0)",
     "--button-transparent-pressed": "rgba(46, 46, 50, 1)",
     "--tag-pink-border": "rgba(96, 29, 72, 1)",
     "--tag-neutral-bg": "rgba(40, 40, 44, 1)",
@@ -132,7 +132,7 @@ export const colors = {
     "--button-danger-pressed": "rgba(225, 29, 72, 1)",
     "--button-danger-pressed-gradient-from": "rgba(255, 255, 255, 0)",
     "--button-danger-pressed-gradient-to": "rgba(255, 255, 255, 1)",
-    "--button-transparent": "rgba(255, 255, 255, 1)",
+    "--button-transparent": "rgba(255, 255, 255, 0)",
     "--button-inverted-pressed": "rgba(17, 24, 39, 1)",
     "--button-inverted-pressed-gradient-from": "rgba(255, 255, 255, 0)",
     "--button-inverted-pressed-gradient-to": "rgba(255, 255, 255, 1)",
@@ -149,9 +149,9 @@ export const colors = {
     "--fg-interactive-hover": "rgba(37, 99, 235, 1)",
     "--fg-interactive": "rgba(59, 130, 246, 1)",
     "--fg-error": "rgba(225, 29, 72, 1)",
-    "--border-loud-transparent": "rgba(3, 7, 18, 1)",
-    "--border-loud-muted": "rgba(3, 7, 18, 0.12)",
+    "--border-loud-transparent": "rgba(3, 7, 18, 0)",
     "--border-danger": "rgba(190, 18, 60, 1)",
+    "--border-loud-muted": "rgba(3, 7, 18, 0.1)",
     "--bg-overlay": "rgba(3, 7, 18, 0.4)",
     "--bg-toggle-off": "rgba(229, 231, 235, 1)",
     "--fg-base": "rgba(3, 7, 18, 1)",
@@ -187,6 +187,9 @@ export const colors = {
     "--button-transparent-pressed": "rgba(243, 244, 246, 1)",
     "--button-neutral-hover": "rgba(255, 255, 255, 1)",
     "--button-neutral-hover-gradient-from": "rgba(3, 7, 18, 0)",
-    "--button-neutral-hover-gradient-to": "rgba(3, 7, 18, 1)"
+    "--button-neutral-hover-gradient-to": "rgba(3, 7, 18, 1)",
+    "--bg-toggle-off-hover": "rgba(229, 231, 235, 1)",
+    "--bg-toggle-off-hover-gradient-from": "rgba(3, 7, 18, 0)",
+    "--bg-toggle-off-hover-gradient-to": "rgba(3, 7, 18, 1)"
   }
 }

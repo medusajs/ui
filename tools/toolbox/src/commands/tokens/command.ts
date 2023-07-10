@@ -141,7 +141,7 @@ export async function generateTokens({ output }: GenerateTokensArgs) {
             acc["colors"][lowerCaseTheme][fromVariable] = values.from
             acc["colors"][lowerCaseTheme][toVariable] = values.to
 
-            acc["components"][gradientIdentifier] = component
+            acc["components"][`.${gradientIdentifier}`] = component
           }
         } else {
           logger.warn(`Unsupported gradient type: ${values.type}`)
@@ -174,7 +174,13 @@ export async function generateTokens({ output }: GenerateTokensArgs) {
 
     const identifier = `--${lowerCaseType}-${variable}`
 
-    const value = createDropShadowVariable(effects)
+    /**
+     * Figma returns effects in reverse order
+     * so we need to reverse them back to get the correct order
+     */
+    const reversedEffects = effects.reverse()
+
+    const value = createDropShadowVariable(reversedEffects, identifier)
 
     if (!value) {
       return acc
@@ -246,7 +252,17 @@ export async function generateTokens({ output }: GenerateTokensArgs) {
   const colorsExtension: Record<string, any> = {}
 
   Object.keys(themeNode.colors.light).reduce((acc, curr) => {
-    const [prefix, style, state, context] = curr.split(/(?<=\w)-(?=\w)/)
+    const [prefix, style, state, context, ...others] =
+      curr.split(/(?<=\w)-(?=\w)/)
+
+    if (
+      state === "gradient" ||
+      context === "gradient" ||
+      (others.length > 0 && others.includes("gradient"))
+    ) {
+      // We don't want to add gradients to the tailwind config, as they are added as components
+      return acc
+    }
 
     const fixedPrefix = prefix.replace("--", "")
 
@@ -260,13 +276,10 @@ export async function generateTokens({ output }: GenerateTokensArgs) {
 
     if (!state) {
       acc[fixedPrefix][style] = {
+        ...acc[fixedPrefix][style],
         DEFAULT: `var(${curr})`,
       }
-      return acc
-    }
 
-    if (state === "gradient") {
-      // We don't want to add gradients to the tailwind config, as they are added as components
       return acc
     }
 
@@ -276,8 +289,10 @@ export async function generateTokens({ output }: GenerateTokensArgs) {
 
     if (!context) {
       acc[fixedPrefix][style][state] = {
+        ...acc[fixedPrefix][style][state],
         DEFAULT: `var(${curr})`,
       }
+
       return acc
     }
 
@@ -291,6 +306,7 @@ export async function generateTokens({ output }: GenerateTokensArgs) {
     }
 
     acc[fixedPrefix][style][state][context] = {
+      ...acc[fixedPrefix][style][state][context],
       DEFAULT: `var(${curr})`,
     }
 
@@ -300,7 +316,7 @@ export async function generateTokens({ output }: GenerateTokensArgs) {
   const boxShadowExtension: Record<string, any> = {}
 
   Object.keys(themeNode.effects.light).reduce((acc, curr) => {
-    const key = curr.replace("--", "")
+    const key = `${curr.replace("--", "")}`
 
     acc[key] = `var(${curr})`
 

@@ -22,14 +22,9 @@ const plugins = (pkg, minify, esbuildOptions = {}) =>
       filename: `stats/${pkg.name}${minify ? "-min" : ""}.html`,
     }),
     nodeResolve(),
-    // ts({
-    //   tsconfig: "tsconfig.json",
-    //   allowJs: false,
-    //   checkJs: false,
-    // }),
   ].filter(Boolean)
 
-const packageName = "@medusajs/icons"
+const packageName = pkg.name
 const outputFileName = "medusa-icons"
 const outputDir = "dist"
 const inputs = ["src/components/index.ts"]
@@ -40,12 +35,6 @@ const bundles = [
     inputs,
     outputDir,
     minify: true,
-    sourcemap: true,
-  },
-  {
-    format: "umd",
-    inputs,
-    outputDir,
     sourcemap: true,
   },
   {

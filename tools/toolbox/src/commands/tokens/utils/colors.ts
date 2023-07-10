@@ -13,7 +13,7 @@ import { logger } from "../../../logger"
  * @returns The normalized opacity.
  */
 function normalizeOpacity(opacity?: number) {
-  opacity = opacity || 1
+  opacity = opacity !== undefined ? opacity : 1
 
   return Math.round(opacity * 100) / 100
 }
@@ -45,9 +45,10 @@ function colorToRGBA(color: Color, opacity?: number): string {
    * So we need to check if the opacity is defined, and if it is,
    * use that for the alpha channel instead.
    */
-  const alpha = opacity
-    ? normalizeOpacity(opacity)
-    : Math.round(color.a * 100) / 100
+  const alpha =
+    opacity !== undefined
+      ? normalizeOpacity(opacity)
+      : Math.round(color.a * 100) / 100
 
   return `rgba(${red}, ${green}, ${blue}, ${alpha})`
 }
@@ -70,7 +71,10 @@ function calculateGradientDegree(handlebarPositions: Vector[]): number {
 
   const normalizedAngleDegrees = (angleDegrees + 360) % 360
 
-  return normalizedAngleDegrees
+  // Rotate the angle by -90 degrees to get the correct angle for CSS gradients
+  const rotatedAngleDegrees = normalizedAngleDegrees - 90
+
+  return rotatedAngleDegrees
 }
 
 interface GradientValues {

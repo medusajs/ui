@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
+import * as React from "react"
 
-import { Button } from "@/components/button"
+import { InformationCircleSolid } from "@medusajs/icons"
 import { Tooltip } from "./tooltip"
 
 const meta: Meta<typeof Tooltip> = {
@@ -13,9 +14,6 @@ const meta: Meta<typeof Tooltip> = {
     side: {
       options: ["top", "bottom", "left", "right"],
       control: { type: "radio" },
-    },
-    shortcut: {
-      control: { type: "object" },
     },
     children: {
       table: {
@@ -31,24 +29,8 @@ type Story = StoryObj<typeof Tooltip>
 
 export const Default: Story = {
   args: {
-    content: "Tooltip text",
+    content: "The quick brown fox jumps over the lazy dog.",
     side: "top",
-    children: <Button>Hover me</Button>,
-  },
-  argTypes: {
-    shortcut: {
-      table: {
-        disable: true,
-      },
-    },
-  },
-}
-
-export const WithKeyboardShortcut: Story = {
-  args: {
-    content: "Tooltip text",
-    side: "top",
-    shortcut: ["⌘", "\\"],
-    children: <Button>Hover me</Button>,
+    children: <InformationCircleSolid />,
   },
 }
