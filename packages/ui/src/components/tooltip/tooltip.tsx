@@ -1,7 +1,6 @@
 import * as Primitives from "@radix-ui/react-tooltip"
 import * as React from "react"
 
-import { Kbd, KbdContainer } from "@/components/kbd"
 import { labelVariants } from "@/components/label"
 import { clx } from "@/utils/clx"
 
@@ -14,7 +13,6 @@ export type TooltipProps = Primitives.TooltipContentProps &
     side?: "bottom" | "left" | "top" | "right"
     onClick?: React.ButtonHTMLAttributes<HTMLButtonElement>["onClick"]
     maxWidth?: number
-    shortcut?: string[]
   }
 
 const Tooltip = ({
@@ -27,8 +25,8 @@ const Tooltip = ({
   maxWidth = 220,
   className,
   side,
+  sideOffset = 4,
   onClick,
-  shortcut,
   ...props
 }: TooltipProps) => {
   return (
@@ -39,31 +37,23 @@ const Tooltip = ({
         onOpenChange={onOpenChange}
         delayDuration={delayDuration}
       >
-        <Primitives.Trigger onClick={onClick} asChild={true}>
-          <span>{children}</span>
+        <Primitives.Trigger onClick={onClick} asChild>
+          {children}
         </Primitives.Trigger>
         <Primitives.Portal>
           <Primitives.Content
-            side={side ?? "bottom"}
-            sideOffset={10}
+            side={side}
+            sideOffset={sideOffset}
             align="center"
             className={clx(
-              "text-subtle z-[999]",
+              "text-ui-fg-subtle animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 bg-ui-bg-base shadow-elevation-tooltip z-[999] rounded-lg px-3 py-2",
               labelVariants({ variant: "xs", weight: "plus" }),
-              "bg-button-neutral rounded-lg py-2 px-4 shadow-high",
               className
             )}
             {...props}
             style={{ ...props.style, maxWidth }}
           >
             {content}
-            {shortcut && (
-              <KbdContainer>
-                {shortcut.map((key) => (
-                  <Kbd key={key}>{key}</Kbd>
-                ))}
-              </KbdContainer>
-            )}
           </Primitives.Content>
         </Primitives.Portal>
       </Primitives.Root>

@@ -9,6 +9,9 @@ export const effects = {
     "--elevation-tooltip": "0px 0px 0px 1px rgba(255, 255, 255, 0.1), 0px 4px 8px 0px rgba(0, 0, 0, 0.32)"
   },
   "light": {
+    "--details-switch-handle": "0px 0px 2px 1px rgba(255, 255, 255, 1) inset, 0px 1px 0px 0px rgba(255, 255, 255, 1) inset, 0px 0px 0px 0.5px rgba(3, 7, 18, 0.02), 0px 5px 4px 0px rgba(3, 7, 18, 0.02), 0px 3px 3px 0px rgba(3, 7, 18, 0.04), 0px 1px 2px 0px rgba(3, 7, 18, 0.12), 0px 0px 1px 0px rgba(3, 7, 18, 0.08)",
+    "--details-switch-background-focus": "0px 0px 0px 1px rgba(255, 255, 255, 1), 0px 0px 0px 3px rgba(59, 130, 246, 0.6), 0px 1px 1px 0px rgba(3, 7, 18, 0.04) inset, 0px 2px 4px 0px rgba(3, 7, 18, 0.04) inset, 0px 0px 0px 0.5px rgba(3, 7, 18, 0.06) inset, 0px 0px 8px 0px rgba(3, 7, 18, 0.02) inset, 0px 1px 0px 0px rgba(255, 255, 255, 1), 0px 2px 4px 0px rgba(3, 7, 18, 0.04)",
+    "--details-switch-background": "0px 1px 1px 0px rgba(3, 7, 18, 0.04) inset, 0px 2px 4px 0px rgba(3, 7, 18, 0.04) inset, 0px 0px 0px 0.5px rgba(3, 7, 18, 0.06) inset, 0px 0px 8px 0px rgba(3, 7, 18, 0.02) inset, 0px 1px 0px 0px rgba(255, 255, 255, 1), 0px 2px 4px 0px rgba(3, 7, 18, 0.04)",
     "--borders-focus": "0px 0px 0px 1px rgba(255, 255, 255, 1), 0px 0px 0px 3px rgba(59, 130, 246, 0.6)",
     "--elevation-flyout": "0px 0px 0px 1px rgba(3, 7, 18, 0.08), 0px 8px 16px 0px rgba(3, 7, 18, 0.08)",
     "--borders-interactive": "0px 0px 0px 1px rgba(59, 130, 246, 1)",
@@ -28,9 +31,6 @@ export const effects = {
     "--elevation-tooltip": "0px 0px 0px 1px rgba(3, 7, 18, 0.08), 0px 4px 8px 0px rgba(3, 7, 18, 0.08)",
     "--elevation-card-hover": "0px 0px 0px 1px rgba(3, 7, 18, 0.08), 0px 1px 2px -1px rgba(3, 7, 18, 0.08), 0px 2px 8px 0px rgba(3, 7, 18, 0.1)",
     "--elevation-card-rest": "0px 0px 0px 1px rgba(3, 7, 18, 0.08), 0px 1px 2px -1px rgba(3, 7, 18, 0.08), 0px 2px 4px 0px rgba(3, 7, 18, 0.04)",
-    "--details-switch-background-focus": "0px 0px 0px 1px rgba(255, 255, 255, 1), 0px 0px 0px 3px rgba(59, 130, 246, 0.6), 0px 1px 1px 0px rgba(3, 7, 18, 0.04) inset, 0px 2px 4px 0px rgba(3, 7, 18, 0.04) inset, 0px 0px 0px 0.5px rgba(3, 7, 18, 0.06) inset, 0px 0px 8px 0px rgba(3, 7, 18, 0.02) inset, 0px 1px 0px 0px rgba(255, 255, 255, 1), 0px 2px 4px 0px rgba(3, 7, 18, 0.04)",
-    "--details-contrast-on-bg-interactive": "0px 1px 2px 0px rgba(30, 58, 138, 0.6)",
-    "--details-switch-thumb": "0px 0px 2px 1px rgba(255, 255, 255, 1) inset, 0px 1px 0px 0px rgba(255, 255, 255, 1) inset, 0px 0px 0px 0.5px rgba(3, 7, 18, 0.02), 0px 5px 4px 0px rgba(3, 7, 18, 0.02), 0px 3px 3px 0px rgba(3, 7, 18, 0.04), 0px 1px 2px 0px rgba(3, 7, 18, 0.12), 0px 0px 1px 0px rgba(3, 7, 18, 0.08)",
-    "--details-switch-background": "0px 1px 1px 0px rgba(3, 7, 18, 0.04) inset, 0px 2px 4px 0px rgba(3, 7, 18, 0.04) inset, 0px 0px 0px 0.5px rgba(3, 7, 18, 0.06) inset, 0px 0px 8px 0px rgba(3, 7, 18, 0.02) inset, 0px 1px 0px 0px rgba(255, 255, 255, 1), 0px 2px 4px 0px rgba(3, 7, 18, 0.04)"
+    "--details-contrast-on-bg-interactive": "0px 1px 2px 0px rgba(30, 58, 138, 0.6)"
   }
 }

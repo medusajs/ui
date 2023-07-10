@@ -12,7 +12,7 @@
     "version:next": "changeset version --snapshot next",
     "release:snapshot": "changeset publish --no-git-tags --snapshot --tag snapshot",
     "generate:icons": "rimraf ./packages/icons/src/components && toolbox icons -o './packages/icons/src/components'",
-    "generate:tokens": "toolbox tokens -o './packages/ui/src/theme'"
+    "generate:tokens": "toolbox tokens -o './packages/ui-preset/src/theme'"
   },
   "devDependencies": {
     "@medusajs/eslint-config-ui": "*",

@@ -14,6 +14,7 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
+    "@medusajs/ui-preset": "*",
     "@medusajs/eslint-config-ui": "*",
     "@medusajs/tsconfig-ui": "*",
     "@rollup/plugin-node-resolve": "^15.1.0",
@@ -64,7 +65,8 @@
     "@radix-ui/react-tooltip": "^1.0.6",
     "class-variance-authority": "^0.6.1",
     "clsx": "^1.2.1",
-    "tailwind-merge": "^1.13.2"
+    "tailwind-merge": "^1.13.2",
+    "tailwindcss-animate": "^1.0.6"
   },
   "peerDependencies": {
     "react": "^18.0.0",

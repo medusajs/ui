@@ -276,6 +276,9 @@ export const theme = {
       }
     },
     "boxShadow": {
+      "details-switch-handle": "var(--details-switch-handle)",
+      "details-switch-background-focus": "var(--details-switch-background-focus)",
+      "details-switch-background": "var(--details-switch-background)",
       "borders-focus": "var(--borders-focus)",
       "elevation-flyout": "var(--elevation-flyout)",
       "borders-interactive": "var(--borders-interactive)",
@@ -295,10 +298,7 @@ export const theme = {
       "elevation-tooltip": "var(--elevation-tooltip)",
       "elevation-card-hover": "var(--elevation-card-hover)",
       "elevation-card-rest": "var(--elevation-card-rest)",
-      "details-switch-background-focus": "var(--details-switch-background-focus)",
-      "details-contrast-on-bg-interactive": "var(--details-contrast-on-bg-interactive)",
-      "details-switch-thumb": "var(--details-switch-thumb)",
-      "details-switch-background": "var(--details-switch-background)"
+      "details-contrast-on-bg-interactive": "var(--details-contrast-on-bg-interactive)"
     }
   }
 }

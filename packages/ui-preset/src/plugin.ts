@@ -1,8 +1,8 @@
 import plugin from "tailwindcss/plugin"
-import { theme } from "./extension/theme"
-import { colors } from "./tokens/colors"
-import { components } from "./tokens/components"
-import { effects } from "./tokens/effects"
+import { theme } from "./theme/extension/theme"
+import { colors } from "./theme/tokens/colors"
+import { components } from "./theme/tokens/components"
+import { effects } from "./theme/tokens/effects"
 
 export default plugin(
   function medusaUi({ addBase, addComponents, addUtilities, config, theme }) {
@@ -20,15 +20,6 @@ export default plugin(
     })
 
     addComponents(components)
-
-    addUtilities({
-      ".btn-mix": {
-        // CSS selector that applies a style if the last child is a svg
-        "&:last-child:is(svg)": {
-          paddingRight: "0.5rem",
-        },
-      },
-    })
 
     addBase({
       ":root": { ...colors.light, ...effects.light },

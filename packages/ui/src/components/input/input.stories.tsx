@@ -16,13 +16,13 @@ type Story = StoryObj<typeof Input>
 
 export const Default: Story = {
   args: {
-    placeholder: "Floyd Mayweather",
+    placeholder: "Placeholder",
   },
 }
 
 export const Disabled: Story = {
   args: {
-    placeholder: "Floyd Mayweather",
+    value: "Floyd Mayweather",
     disabled: true,
   },
 }

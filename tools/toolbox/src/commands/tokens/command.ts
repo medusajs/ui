@@ -260,7 +260,6 @@ export async function generateTokens({ output }: GenerateTokensArgs) {
       context === "gradient" ||
       (others.length > 0 && others.includes("gradient"))
     ) {
-      console.log("Ignoring gradient: ", curr)
       // We don't want to add gradients to the tailwind config, as they are added as components
       return acc
     }
