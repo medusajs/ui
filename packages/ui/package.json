@@ -11,12 +11,13 @@
     "test:coverage": "vitest --run --coverage",
     "lint": "eslint \"**/*.ts*\"",
     "storybook": "storybook dev -p 6006",
+    "storybook:build": "storybook build",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@medusajs/ui-preset": "*",
     "@medusajs/eslint-config-ui": "*",
     "@medusajs/tsconfig-ui": "*",
+    "@medusajs/ui-preset": "*",
     "@rollup/plugin-node-resolve": "^15.1.0",
     "@storybook/addon-essentials": "^7.0.23",
     "@storybook/addon-interactions": "^7.0.23",
@@ -35,6 +36,7 @@
     "@vitejs/plugin-react": "^4.0.1",
     "@vitest/coverage-v8": "^0.32.2",
     "autoprefixer": "^10.4.14",
+    "chromatic": "^6.19.9",
     "eslint": "^7.32.0",
     "eslint-plugin-storybook": "^0.6.12",
     "jsdom": "^22.1.0",

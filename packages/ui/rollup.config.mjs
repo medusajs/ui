@@ -18,3 +18,5 @@ const input = [
   ...getIndexFiles("src/components"),
   ...getIndexFiles("src/hooks"),
 ]
+
+const presetInput = ["src/preset/index.ts"]
