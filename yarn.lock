@@ -2895,11 +2895,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@medusajs/ui-preset@workspace:packages/ui-preset":
+"@medusajs/ui-preset@*, @medusajs/ui-preset@workspace:packages/ui-preset":
   version: 0.0.0-use.local
   resolution: "@medusajs/ui-preset@workspace:packages/ui-preset"
   dependencies:
+    "@medusajs/eslint-config-ui": "*"
     "@medusajs/tsconfig-ui": "*"
+    eslint: ^7.32.0
     tailwindcss: ^3.3.2
     tailwindcss-animate: ^1.0.6
     tsup: ^7.1.0
@@ -2914,6 +2916,7 @@ __metadata:
     "@medusajs/eslint-config-ui": "*"
     "@medusajs/icons": "*"
     "@medusajs/tsconfig-ui": "*"
+    "@medusajs/ui-preset": "*"
     "@radix-ui/react-alert-dialog": ^1.0.4
     "@radix-ui/react-checkbox": ^1.0.4
     "@radix-ui/react-dialog": ^1.0.4
@@ -2941,6 +2944,7 @@ __metadata:
     "@vitejs/plugin-react": ^4.0.1
     "@vitest/coverage-v8": ^0.32.2
     autoprefixer: ^10.4.14
+    chromatic: ^6.19.9
     class-variance-authority: ^0.6.1
     clsx: ^1.2.1
     eslint: ^7.32.0
@@ -7073,6 +7077,17 @@ __metadata:
   version: 2.0.0
   resolution: "chownr@npm:2.0.0"
   checksum: c57cf9dd0791e2f18a5ee9c1a299ae6e801ff58fee96dc8bfd0dcb4738a6ce58dd252a3605b1c93c6418fe4f9d5093b28ffbf4d66648cb2a9c67eaef9679be2f
+  languageName: node
+  linkType: hard
+
+"chromatic@npm:^6.19.9":
+  version: 6.19.9
+  resolution: "chromatic@npm:6.19.9"
+  bin:
+    chroma: dist/bin.js
+    chromatic: dist/bin.js
+    chromatic-cli: dist/bin.js
+  checksum: 50552c3043d96e7badb0d16ddd1839c0601d0f5e0c2c573acda5d6b0d0fad96067f0c659ad0a2b278d8b28b46670549b4bcedfd2d350a9077975aff203c29193
   languageName: node
   linkType: hard
 

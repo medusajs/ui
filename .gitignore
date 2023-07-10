@@ -12,6 +12,10 @@ node_modules
 # testing
 coverage
 
+# storybook
+storybook-static
+build-storybook.log
+
 # next.js
 .next/
 out/
