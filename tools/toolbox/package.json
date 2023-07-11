@@ -1,5 +1,6 @@
 {
   "name": "@medusajs/toolbox",
+  "private": true,
   "version": "0.0.0",
   "description": "CLI tool for importing Figma designs for Medusa UI",
   "license": "MIT",
