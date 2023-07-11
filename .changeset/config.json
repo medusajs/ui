@@ -7,5 +7,5 @@
   "access": "restricted",
   "baseBranch": "develop",
   "updateInternalDependencies": "patch",
-  "ignore": ["tools", "apps", "configs"]
+  "ignore": ["@medusajs/toolbox", "@medusajs/figma-api", "www"]
 }
