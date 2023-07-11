@@ -1,11 +1,21 @@
 {
   "name": "@medusajs/ui",
   "version": "0.0.0",
-  "main": "./index.tsx",
-  "types": "./index.tsx",
   "author": "Kasper Kristensen <kasper@medusajs.com>",
   "license": "MIT",
+  "main": "build/cjs/index.js",
+  "module": "build/esm/index.js",
+  "types": "build/types/src/index.d.ts",
+  "files": [
+    "build/",
+    "!build/types/**/*.tsbuildinfo",
+    "package.json"
+  ],
+  "sideEffects": false,
   "scripts": {
+    "build": "rimraf build && yarn build:types && yarn build:js",
+    "build:js": "rollup -c",
+    "build:types": "tsc --project ./tsconfig.build.json",
     "test": "vitest --run",
     "test:watch": "vitest",
     "test:coverage": "vitest --run --coverage",
@@ -18,7 +28,14 @@
     "@medusajs/eslint-config-ui": "*",
     "@medusajs/tsconfig-ui": "*",
     "@medusajs/ui-preset": "*",
-    "@rollup/plugin-node-resolve": "^15.1.0",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-image": "^3.0.2",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-replace": "^5.0.2",
+    "@rollup/plugin-virtual": "^3.0.1",
+    "@rollup/pluginutils": "^5.0.2",
     "@storybook/addon-essentials": "^7.0.23",
     "@storybook/addon-interactions": "^7.0.23",
     "@storybook/addon-links": "^7.0.23",
@@ -45,11 +62,14 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "resize-observer-polyfill": "^1.5.1",
-    "rollup": "^3.26.2",
-    "rollup-plugin-license": "^3.0.1",
+    "rimraf": "^5.0.1",
+    "rollup": "^3.12.0",
+    "rollup-plugin-node-externals": "^6.1.1",
+    "rollup-plugin-typescript-paths": "^1.4.0",
     "storybook": "^7.0.23",
     "tailwindcss": "^3.3.2",
-    "typescript": "^4.5.2",
+    "typescript": "^5.1.6",
+    "typescript-transform-paths": "^3.4.6",
     "vite": "^4.3.9",
     "vite-plugin-dts": "^3.0.0-beta.1",
     "vitest": "^0.32.2"
@@ -67,8 +87,7 @@
     "@radix-ui/react-tooltip": "^1.0.6",
     "class-variance-authority": "^0.6.1",
     "clsx": "^1.2.1",
-    "tailwind-merge": "^1.13.2",
-    "tailwindcss-animate": "^1.0.6"
+    "tailwind-merge": "^1.13.2"
   },
   "peerDependencies": {
     "react": "^18.0.0",
@@ -78,5 +97,15 @@
     "extends": [
       "plugin:storybook/recommended"
     ]
-  }
+  },
+  "browserslist": [
+    "last 3 chrome versions",
+    "last 3 firefox versions",
+    "last 3 opera versions",
+    "last 3 edge versions",
+    "last 3 safari versions",
+    "last 3 chromeandroid versions",
+    "last 1 firefoxandroid versions",
+    "ios >= 13.4"
+  ]
 }

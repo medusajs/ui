@@ -6,21 +6,18 @@ import { Kbd } from "@/components/kbd"
 import { clx } from "@/utils/clx"
 import { Button } from "../button"
 
-const FocusModal = Primitives.Root
-FocusModal.displayName = "FocusModal"
+const Root = Primitives.Root
+Root.displayName = "FocusModal.Root"
 
-const FocusModalTrigger = Primitives.Trigger
-FocusModalTrigger.displayName = "FocusModalTrigger"
+const Trigger = Primitives.Trigger
+Trigger.displayName = "FocusModal.Trigger"
 
-const FocusModalPortal = ({
-  className,
-  ...props
-}: Primitives.DialogPortalProps) => {
+const Portal = ({ className, ...props }: Primitives.DialogPortalProps) => {
   return <Primitives.DialogPortal className={clx(className)} {...props} />
 }
-FocusModalPortal.displayName = "FocusModalPortal"
+Portal.displayName = "FocusModal.Portal"
 
-const FocusModalOverlay = React.forwardRef<
+const Overlay = React.forwardRef<
   React.ElementRef<typeof Primitives.Overlay>,
   React.ComponentPropsWithoutRef<typeof Primitives.Overlay>
 >(({ className, ...props }, ref) => {
@@ -36,15 +33,15 @@ const FocusModalOverlay = React.forwardRef<
     />
   )
 })
-FocusModalOverlay.displayName = "FocusModalOverlay"
+Overlay.displayName = "FocusModal.Overlay"
 
-const FocusModalContent = React.forwardRef<
+const Content = React.forwardRef<
   React.ElementRef<typeof Primitives.Content>,
   React.ComponentPropsWithoutRef<typeof Primitives.Content>
 >(({ className, ...props }, ref) => {
   return (
-    <FocusModalPortal>
-      <FocusModalOverlay />
+    <Portal>
+      <Overlay />
       <Primitives.Content
         ref={ref}
         className={clx(
@@ -54,12 +51,12 @@ const FocusModalContent = React.forwardRef<
         )}
         {...props}
       />
-    </FocusModalPortal>
+    </Portal>
   )
 })
-FocusModalContent.displayName = "FocusModalContent"
+Content.displayName = "FocusModal.Content"
 
-const FocusModalHeader = ({
+const Header = ({
   children,
   className,
   ...props
@@ -84,20 +81,20 @@ const FocusModalHeader = ({
     </div>
   )
 }
-FocusModalHeader.displayName = "FocusModalHeader"
+Header.displayName = "FocusModal.Header"
 
-const FocusModalBody = ({
+const Body = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => {
   return <div className={clx("flex-1", className)} {...props} />
 }
-FocusModalBody.displayName = "FocusModalBody"
+Body.displayName = "FocusModal.Body"
 
-export {
-  FocusModal,
-  FocusModalBody,
-  FocusModalContent,
-  FocusModalHeader,
-  FocusModalTrigger,
+export const FocusModal = {
+  Root,
+  Trigger,
+  Content,
+  Header,
+  Body,
 }

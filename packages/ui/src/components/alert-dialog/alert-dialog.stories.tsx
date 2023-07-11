@@ -2,21 +2,11 @@ import type { Meta, StoryObj } from "@storybook/react"
 import * as React from "react"
 
 import { Button } from "@/components/button"
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "./alert-dialog"
+import { AlertDialog } from "./alert-dialog"
 
-const meta: Meta<typeof AlertDialog> = {
+const meta: Meta<typeof AlertDialog.Root> = {
   title: "Components/AlertDialog",
-  component: AlertDialog,
+  component: AlertDialog.Root,
   parameters: {
     layout: "centered",
   },
@@ -24,28 +14,28 @@ const meta: Meta<typeof AlertDialog> = {
 
 export default meta
 
-type Story = StoryObj<typeof AlertDialog>
+type Story = StoryObj<typeof AlertDialog.Root>
 
 export const Default: Story = {
   render: () => {
     return (
-      <AlertDialog>
-        <AlertDialogTrigger asChild>
+      <AlertDialog.Root>
+        <AlertDialog.Trigger asChild>
           <Button>Open</Button>
-        </AlertDialogTrigger>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Delete something</AlertDialogTitle>
-            <AlertDialogDescription>
+        </AlertDialog.Trigger>
+        <AlertDialog.Content>
+          <AlertDialog.Header>
+            <AlertDialog.Title>Delete something</AlertDialog.Title>
+            <AlertDialog.Description>
               Are you sure? This cannot be undone.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction>Delete</AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+            </AlertDialog.Description>
+          </AlertDialog.Header>
+          <AlertDialog.Footer>
+            <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
+            <AlertDialog.Action>Delete</AlertDialog.Action>
+          </AlertDialog.Footer>
+        </AlertDialog.Content>
+      </AlertDialog.Root>
     )
   },
 }
