@@ -83,9 +83,7 @@ jobs:
           cache: "yarn"
 
       - name: Install dependencies
-        uses: ./.github/actions/cache-deps
-        with:
-          extension: snapshot-this
+        run: yarn install --frozen-lockfile
 
       - name: Build Packages
         shell: "bash"
