@@ -4,6 +4,9 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "composite": false,
+    "declaration": true,
+    "declarationMap": true,
     "inlineSources": false,
     "isolatedModules": true,
     "moduleResolution": "node",
