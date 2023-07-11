@@ -3,7 +3,7 @@ import * as React from "react"
 
 import { clx } from "@/utils/clx"
 
-const RadioGroup = React.forwardRef<
+const Root = React.forwardRef<
   React.ElementRef<typeof Primitives.Root>,
   React.ComponentPropsWithoutRef<typeof Primitives.Root>
 >(({ className, ...props }, ref) => {
@@ -15,9 +15,9 @@ const RadioGroup = React.forwardRef<
     />
   )
 })
-RadioGroup.displayName = Primitives.Root.displayName
+Root.displayName = "RadioGroup.Root"
 
-const RadioGroupItem = React.forwardRef<
+const Item = React.forwardRef<
   React.ElementRef<typeof Primitives.Item>,
   React.ComponentPropsWithoutRef<typeof Primitives.Item>
 >(({ className, children, ...props }, ref) => {
@@ -42,6 +42,9 @@ const RadioGroupItem = React.forwardRef<
     </Primitives.Item>
   )
 })
-RadioGroupItem.displayName = Primitives.Item.displayName
+Item.displayName = "RadioGroup.Item"
 
-export { RadioGroup, RadioGroupItem }
+export const RadioGroup = {
+  Root,
+  Item,
+}

@@ -118,12 +118,12 @@ function addToRemoveQueue(id: string) {
   }, TOAST_REMOVE_DELAY)
 }
 
-type Toast = Omit<ToasterToast, "id">
+type ToastArgs = Omit<ToasterToast, "id">
 
-function toast(props: Toast) {
+function toast(props: ToastArgs) {
   const id = generateId()
 
-  const update = (props: Partial<Toast>) => {
+  const update = (props: Partial<ToastArgs>) => {
     console.log("Updating toast: ", id, props)
 
     dispatch({
@@ -186,4 +186,4 @@ const useToast = () => {
   }
 }
 
-export { useToast, type Toast }
+export { useToast, type ToastArgs }

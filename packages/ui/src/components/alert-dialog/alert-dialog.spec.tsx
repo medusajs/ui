@@ -6,17 +6,7 @@ import {
 } from "@testing-library/react"
 import * as React from "react"
 
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "./alert-dialog"
+import { AlertDialog } from "./alert-dialog"
 
 import { Button } from "@/components/button"
 
@@ -32,21 +22,23 @@ describe("AlertDialog", () => {
 
   beforeEach(() => {
     rendered = render(
-      <AlertDialog>
-        <AlertDialogTrigger asChild>
+      <AlertDialog.Root>
+        <AlertDialog.Trigger asChild>
           <Button>{TRIGGER_TEXT}</Button>
-        </AlertDialogTrigger>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>{TITLE_TEXT}</AlertDialogTitle>
-            <AlertDialogDescription>{DESCRIPTION_TEXT}</AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>{CANCEL_TEXT}</AlertDialogCancel>
-            <AlertDialogAction>{CONFIRM_TEXT}</AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+        </AlertDialog.Trigger>
+        <AlertDialog.Content>
+          <AlertDialog.Header>
+            <AlertDialog.Title>{TITLE_TEXT}</AlertDialog.Title>
+            <AlertDialog.Description>
+              {DESCRIPTION_TEXT}
+            </AlertDialog.Description>
+          </AlertDialog.Header>
+          <AlertDialog.Footer>
+            <AlertDialog.Cancel>{CANCEL_TEXT}</AlertDialog.Cancel>
+            <AlertDialog.Action>{CONFIRM_TEXT}</AlertDialog.Action>
+          </AlertDialog.Footer>
+        </AlertDialog.Content>
+      </AlertDialog.Root>
     )
 
     trigger = rendered.getByText(TRIGGER_TEXT)

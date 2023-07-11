@@ -1,15 +1,6 @@
 import * as React from "react"
 
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/alert-dialog"
+import { AlertDialog } from "@/components/alert-dialog"
 import { Input } from "@/components/input"
 import { Label, labelVariants } from "@/components/label"
 import { clx } from "../../utils/clx"
@@ -50,12 +41,12 @@ const Dialog = ({
   }, [userInput, verificationText])
 
   return (
-    <AlertDialog open={open}>
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>{title}</AlertDialogTitle>
-          <AlertDialogDescription>{description}</AlertDialogDescription>
-        </AlertDialogHeader>
+    <AlertDialog.Root open={open}>
+      <AlertDialog.Content>
+        <AlertDialog.Header>
+          <AlertDialog.Title>{title}</AlertDialog.Title>
+          <AlertDialog.Description>{description}</AlertDialog.Description>
+        </AlertDialog.Header>
         {verificationText && (
           <div className="border-ui-border-base mt-6 flex flex-col gap-y-4 border-y p-6">
             <Label htmlFor="verificationText" className="text-subtle">
@@ -78,14 +69,16 @@ const Dialog = ({
             />
           </div>
         )}
-        <AlertDialogFooter>
-          <AlertDialogCancel onClick={onCancel}>{cancelText}</AlertDialogCancel>
-          <AlertDialogAction onClick={onConfirm} disabled={!validInput}>
+        <AlertDialog.Footer>
+          <AlertDialog.Cancel onClick={onCancel}>
+            {cancelText}
+          </AlertDialog.Cancel>
+          <AlertDialog.Action onClick={onConfirm} disabled={!validInput}>
             {confirmText}
-          </AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
+          </AlertDialog.Action>
+        </AlertDialog.Footer>
+      </AlertDialog.Content>
+    </AlertDialog.Root>
   )
 }
 

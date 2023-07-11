@@ -4,24 +4,23 @@ import * as React from "react"
 
 import { Badge } from "@/components/badge"
 import { Button } from "@/components/button"
-import { Header } from "@/components/header"
+import { Header as HeaderComponent } from "@/components/header"
 import { clx } from "@/utils/clx"
 import { Text } from "../text"
 
-const Modal = Primitives.Root
-Modal.displayName = "Modal"
+const Root = Primitives.Root
+Root.displayName = "Modal.Root"
 
-const ModalTrigger = Primitives.Trigger
-ModalTrigger.displayName = "ModalTrigger"
+const Trigger = Primitives.Trigger
+Trigger.displayName = "Modal.Trigger"
 
-const ModalClose = Primitives.Close
-ModalClose.displayName = "ModalClose"
+const Close = Primitives.Close
+Close.displayName = "Modal.Close"
 
-const ModalPortal = ({ className, ...props }: Primitives.DialogPortalProps) => {
-  return <Primitives.DialogPortal className={clx(className)} {...props} />
-}
+const Portal = Primitives.Portal
+Portal.displayName = "Modal.Portal"
 
-const ModalOverlay = React.forwardRef<
+const Overlay = React.forwardRef<
   React.ElementRef<typeof Primitives.Overlay>,
   React.ComponentPropsWithoutRef<typeof Primitives.Overlay>
 >(({ className, ...props }, ref) => {
@@ -37,15 +36,15 @@ const ModalOverlay = React.forwardRef<
     />
   )
 })
-ModalOverlay.displayName = "ModalOverlay"
+Overlay.displayName = "Modal.Overlay"
 
-const ModalContent = React.forwardRef<
+const Content = React.forwardRef<
   React.ElementRef<typeof Primitives.Content>,
   React.ComponentPropsWithoutRef<typeof Primitives.Content>
 >(({ className, ...props }, ref) => {
   return (
-    <ModalPortal>
-      <ModalOverlay />
+    <Portal>
+      <Overlay />
       <Primitives.Content
         ref={ref}
         className={clx(
@@ -55,12 +54,12 @@ const ModalContent = React.forwardRef<
         )}
         {...props}
       />
-    </ModalPortal>
+    </Portal>
   )
 })
-ModalContent.displayName = "ModalContent"
+Content.displayName = "Modal.Content"
 
-const ModalHeader = ({
+const Header = ({
   children,
   className,
   ...props
@@ -75,26 +74,26 @@ const ModalHeader = ({
         <Badge size={"sm"} color={"grey"}>
           esc
         </Badge>
-        <ModalClose asChild>
+        <Close asChild>
           <Button variant="transparent" size={"sm"} format={"icon"}>
             <XMark />
           </Button>
-        </ModalClose>
+        </Close>
       </div>
     </div>
   )
 }
-ModalHeader.displayName = "ModalHeader"
+Header.displayName = "Modal.Header"
 
-const ModalBody = ({
+const Body = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => {
   return <div className={clx("flex-1", className)} {...props} />
 }
-ModalBody.displayName = "ModalBody"
+Body.displayName = "Modal.Body"
 
-const ModalFooter = ({
+const Footer = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => {
@@ -108,19 +107,19 @@ const ModalFooter = ({
     />
   )
 }
-ModalFooter.displayName = "ModalFooter"
+Footer.displayName = "Modal.Footer"
 
-const ModalTitle = React.forwardRef<
+const Title = React.forwardRef<
   React.ElementRef<typeof Primitives.Title>,
   React.ComponentPropsWithoutRef<typeof Primitives.Title>
 >(({ className, children, ...props }, ref) => (
   <Primitives.Title ref={ref} className={clx(className)} asChild {...props}>
-    <Header level="h1">{children}</Header>
+    <HeaderComponent level="h1">{children}</HeaderComponent>
   </Primitives.Title>
 ))
-ModalTitle.displayName = "ModalTitle"
+Title.displayName = "Modal.Title"
 
-const ModalDescription = React.forwardRef<
+const Description = React.forwardRef<
   React.ElementRef<typeof Primitives.Description>,
   React.ComponentPropsWithoutRef<typeof Primitives.Description>
 >(({ className, children, ...props }, ref) => (
@@ -133,16 +132,16 @@ const ModalDescription = React.forwardRef<
     <Text>{children}</Text>
   </Primitives.Description>
 ))
-ModalDescription.displayName = "ModalDescription"
+Description.displayName = "Modal.Description"
 
-export {
-  Modal,
-  ModalBody,
-  ModalClose,
-  ModalContent,
-  ModalDescription,
-  ModalFooter,
-  ModalHeader,
-  ModalTitle,
-  ModalTrigger,
+export const Modal = {
+  Root,
+  Body,
+  Close,
+  Content,
+  Description,
+  Footer,
+  Header,
+  Title,
+  Trigger,
 }

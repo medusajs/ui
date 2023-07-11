@@ -6,14 +6,7 @@ import { defineConfig } from "vite"
 import dts from "vite-plugin-dts"
 
 export default defineConfig({
-  plugins: [
-    dts({
-      entryRoot: "src",
-      staticImport: true,
-      rollupTypes: false,
-    }),
-    react(),
-  ],
+  plugins: [dts(), react()],
   resolve: {
     alias: {
       "@/components": "/src/components",
