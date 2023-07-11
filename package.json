@@ -8,8 +8,8 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "release": "changeset publish",
     "version": "changeset version && yarn install --no-immutable",
-    "release:next": "changeset publish --no-git-tags --snapshot --tag next",
-    "version:next": "changeset version --snapshot next",
+    "release:beta": "changeset publish --no-git-tags --snapshot --tag beta",
+    "version:beta": "changeset version --snapshot beta",
     "release:snapshot": "changeset publish --no-git-tags --snapshot --tag snapshot",
     "generate:icons": "rimraf ./packages/icons/src/components && toolbox icons -o './packages/icons/src/components'",
     "generate:tokens": "toolbox tokens -o './packages/ui-preset/src/theme'"
