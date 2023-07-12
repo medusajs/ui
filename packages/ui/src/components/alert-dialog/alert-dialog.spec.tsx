@@ -22,7 +22,7 @@ describe("AlertDialog", () => {
 
   beforeEach(() => {
     rendered = render(
-      <AlertDialog.Root>
+      <AlertDialog>
         <AlertDialog.Trigger asChild>
           <Button>{TRIGGER_TEXT}</Button>
         </AlertDialog.Trigger>
@@ -38,7 +38,7 @@ describe("AlertDialog", () => {
             <AlertDialog.Action>{CONFIRM_TEXT}</AlertDialog.Action>
           </AlertDialog.Footer>
         </AlertDialog.Content>
-      </AlertDialog.Root>
+      </AlertDialog>
     )
 
     trigger = rendered.getByText(TRIGGER_TEXT)
