@@ -1,12 +1,12 @@
+import { EllipsisHorizontal, PencilSquare, Plus, Trash } from "@medusajs/icons"
 import type { Meta, StoryObj } from "@storybook/react"
 import * as React from "react"
 
-import { EllipsisHorizontal, PencilSquare, Plus, Trash } from "@medusajs/icons"
-import { Button } from "../button"
+import { Button } from "@/components/button"
 import { DropdownMenu } from "./dropdown-menu"
 
 const meta: Meta<typeof DropdownMenu> = {
-  title: "Components/DropdownMenu.",
+  title: "Components/DropdownMenu",
   component: DropdownMenu,
 }
 
@@ -38,19 +38,19 @@ const SortingDemo = () => {
             <DropdownMenu.Separator />
             <DropdownMenu.RadioItem value="alpha">
               Alphabetical
-              <DropdownMenu.SubText>A-Z</DropdownMenu.SubText>
+              <DropdownMenu.Hint>A-Z</DropdownMenu.Hint>
             </DropdownMenu.RadioItem>
             <DropdownMenu.RadioItem value="alpha-reverse">
               Reverse Alphabetical
-              <DropdownMenu.SubText>Z-A</DropdownMenu.SubText>
+              <DropdownMenu.Hint>Z-A</DropdownMenu.Hint>
             </DropdownMenu.RadioItem>
             <DropdownMenu.RadioItem value="asc">
               Created At - Ascending
-              <DropdownMenu.SubText>1 - 30</DropdownMenu.SubText>
+              <DropdownMenu.Hint>1 - 30</DropdownMenu.Hint>
             </DropdownMenu.RadioItem>
             <DropdownMenu.RadioItem value="desc">
               Created At - Descending
-              <DropdownMenu.SubText>30 - 1</DropdownMenu.SubText>
+              <DropdownMenu.Hint>30 - 1</DropdownMenu.Hint>
             </DropdownMenu.RadioItem>
           </DropdownMenu.RadioGroup>
         </DropdownMenu.Content>
@@ -107,7 +107,7 @@ const SelectDemo = () => {
               }}
             >
               EUR
-              <DropdownMenu.SubText>Euro</DropdownMenu.SubText>
+              <DropdownMenu.Hint>Euro</DropdownMenu.Hint>
             </DropdownMenu.CheckboxItem>
             <DropdownMenu.CheckboxItem
               checked={currencies.includes("USD")}
@@ -117,7 +117,7 @@ const SelectDemo = () => {
               }}
             >
               USD
-              <DropdownMenu.SubText>US Dollar</DropdownMenu.SubText>
+              <DropdownMenu.Hint>US Dollar</DropdownMenu.Hint>
             </DropdownMenu.CheckboxItem>
             <DropdownMenu.CheckboxItem
               checked={currencies.includes("DKK")}
@@ -127,7 +127,7 @@ const SelectDemo = () => {
               }}
             >
               DKK
-              <DropdownMenu.SubText>Danish Krone</DropdownMenu.SubText>
+              <DropdownMenu.Hint>Danish Krone</DropdownMenu.Hint>
             </DropdownMenu.CheckboxItem>
           </DropdownMenu.Group>
           <DropdownMenu.Separator />

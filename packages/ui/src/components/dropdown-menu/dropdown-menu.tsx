@@ -2,8 +2,8 @@ import { CheckMini, ChevronRightMini, EllipseMiniSolid } from "@medusajs/icons"
 import * as Primitives from "@radix-ui/react-dropdown-menu"
 import * as React from "react"
 
+import { labelVariants } from "@/components/label"
 import { clx } from "@/utils/clx"
-import { labelVariants } from "../label"
 
 const Root = Primitives.Root
 Root.displayName = "DropdownMenu.Root"
@@ -174,7 +174,7 @@ const Shortcut = ({
   return (
     <span
       className={clx(
-        "text-ui-fg-subtle ml-auto text-xs tracking-widest",
+        "text-ui-fg-subtle ml-auto tracking-widest",
         labelVariants({
           variant: "sm",
         }),
@@ -193,7 +193,7 @@ const Hint = ({
   return (
     <span
       className={clx(
-        "text-ui-fg-subtle ml-auto text-xs tracking-widest",
+        "text-ui-fg-subtle ml-auto tracking-widest",
         labelVariants({
           variant: "sm",
         }),
@@ -219,7 +219,7 @@ const DropdownMenu = Object.assign(Root, {
   Label,
   Separator,
   Shortcut,
-  SubText: Hint,
+  Hint,
 })
 
 export { DropdownMenu }
