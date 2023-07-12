@@ -1,4 +1,5 @@
 {
+  "name": "medusa-ui",
   "private": true,
   "scripts": {
     "test": "turbo run test",
@@ -29,10 +30,8 @@
     "turbo": "latest",
     "typescript": "^5.1.6"
   },
-  "name": "medusa-ui",
   "packageManager": "yarn@3.5.0",
   "workspaces": [
-    "apps/*",
     "packages/*",
     "tools/*",
     "configs/*"
