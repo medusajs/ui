@@ -17,16 +17,17 @@
     "build": "tsup"
   },
   "dependencies": {
+    "@tailwindcss/forms": "^0.5.3",
     "tailwindcss-animate": "^1.0.6"
   },
   "peerDependencies": {
     "tailwindcss": ">=3.0.0"
   },
   "devDependencies": {
-    "tailwindcss": "^3.3.2",
     "@medusajs/eslint-config-ui": "*",
     "@medusajs/tsconfig-ui": "*",
     "eslint": "^7.32.0",
+    "tailwindcss": "^3.3.2",
     "tsup": "^7.1.0",
     "typescript": "^5.1.6"
   },
