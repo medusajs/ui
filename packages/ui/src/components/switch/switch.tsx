@@ -5,7 +5,7 @@ import * as React from "react"
 import { clx } from "@/utils/clx"
 
 const switchVariants = cva(
-  "bg-ui-bg-toggle-off hover:bg-ui-bg-toggle-off-hover data-[state=unchecked]:hover:after:bg-toggle-off-hover-gradient before:shadow-details-switch-background focus:shadow-details-switch-background-focus data-[state=checked]:bg-interactive disabled:!bg-ui-bg-disabled group relative inline-flex items-center rounded-full outline-none transition-all before:absolute before:inset-0 before:rounded-full before:content-[''] after:absolute after:inset-0 after:rounded-full after:content-[''] disabled:cursor-not-allowed",
+  "bg-ui-bg-toggle-off hover:bg-ui-bg-toggle-off-hover data-[state=unchecked]:hover:after:bg-toggle-off-hover-gradient before:shadow-details-switch-background focus:shadow-details-switch-background-focus data-[state=checked]:bg-ui-bg-interactive disabled:!bg-ui-bg-disabled group relative inline-flex items-center rounded-full outline-none transition-all before:absolute before:inset-0 before:rounded-full before:content-[''] after:absolute after:inset-0 after:rounded-full after:content-[''] disabled:cursor-not-allowed",
   {
     variants: {
       size: {
