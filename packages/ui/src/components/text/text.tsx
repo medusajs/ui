@@ -7,9 +7,9 @@ import { clx } from "@/utils/clx"
 const textVariants = cva("", {
   variants: {
     size: {
-      base: "text-[14px]/[24px]",
-      large: "text-[16px]/[28px]",
-      xlarge: "text-[18px]/[32px]",
+      base: "text-sm leading-6",
+      large: "text-base leading-7",
+      xlarge: "text-lg leading-8",
     },
     weight: {
       regular: "font-normal",
