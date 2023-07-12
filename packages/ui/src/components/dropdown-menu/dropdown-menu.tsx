@@ -22,15 +22,15 @@ RadioGroup.displayName = "DropdownMenu.RadioGroup"
 
 const SubMenuTrigger = React.forwardRef<
   React.ElementRef<typeof Primitives.SubTrigger>,
-  React.ComponentPropsWithoutRef<typeof Primitives.SubTrigger> & {
-    inset?: boolean
-  }
->(({ className, inset, children, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof Primitives.SubTrigger>
+>(({ className, children, ...props }, ref) => (
   <Primitives.SubTrigger
     ref={ref}
     className={clx(
-      "focus:bg-accent data-[state=open]:bg-accent flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none",
-      inset && "pl-8",
+      "focus:bg-ui-bg-base-pressed data-[state=open]:bg-ui-bg-base-pressed flex cursor-default select-none items-center rounded-sm px-3 py-2 outline-none",
+      labelVariants({
+        size: "small",
+      }),
       className
     )}
     {...props}
