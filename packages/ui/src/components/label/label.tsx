@@ -7,10 +7,10 @@ import { clx } from "@/utils/clx"
 const labelVariants = cva("font-sans", {
   variants: {
     size: {
-      xsmall: "text-[12px]/[20px]",
-      small: "text-[13px]/[20px]",
-      base: "text-[14px]/[20px]",
-      large: "text-[16px]/[20px]",
+      xsmall: "text-xs leading-5",
+      small: "text-[13px] leading-5",
+      base: "text-sm leading-5",
+      large: "text-base leading-5",
     },
     weight: {
       regular: "font-normal",

@@ -6,9 +6,9 @@ import { clx } from "@/utils/clx"
 const headingVariants = cva("font-sans font-medium", {
   variants: {
     level: {
-      h1: "text-[20px]/[32px]",
-      h2: "text-[16px]/[24px]",
-      h3: "text-[14px]/[20px]",
+      h1: "text-xl leading-8",
+      h2: "text-base leading-6",
+      h3: "text-sm leading-5",
     },
   },
   defaultVariants: {
