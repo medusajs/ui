@@ -1,3 +1,4 @@
+import { fontFamily } from "tailwindcss/defaultTheme"
 import plugin from "tailwindcss/plugin"
 import { theme } from "./theme/extension/theme"
 import { colors } from "./theme/tokens/colors"
@@ -38,6 +39,14 @@ export default plugin(
     }
   },
   {
-    theme: theme,
+    theme: {
+      extend: {
+        ...theme.extend,
+        fontFamily: {
+          sans: ["Inter", ...fontFamily.sans],
+          mono: ["Roboto Mono", ...fontFamily.mono],
+        },
+      },
+    },
   }
 )

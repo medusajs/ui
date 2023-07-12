@@ -2,8 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react"
 import * as React from "react"
 
 import { Button } from "@/components/button"
-import { Toaster } from "../../components/toaster/toaster"
-import { Toast, useToast } from "./use-toast"
+import { Toaster } from "@/components/toaster"
+import { useToast } from "./use-toast"
 
 const Demo = () => {
   const { toast } = useToast()
@@ -20,29 +20,30 @@ const Demo = () => {
   }
 
   const handleSchedule = () => {
-    const onAction = async (
-      id: string,
-      fn: (update: Partial<Toast>) => void
-    ) => {
+    const onAction = async (fn: (update: any) => void) => {
       fn({
-        title: "Sending",
+        title: "Processing",
         description: "Removing post from queue.",
         variant: "loading",
+        disableDismiss: true,
         action: undefined,
       })
 
       const confirmed = await handleUndo().then((confirmed) => {
         if (confirmed) {
           fn({
-            title: "Sent",
-            description: "Your post has been sent.",
+            title: "Success",
+            description: "Your post was successfully removed from the queue.",
             variant: "success",
+            disableDismiss: false,
           })
         } else {
           fn({
             title: "Error",
-            description: "Your post was not sent.",
+            description:
+              "Something went wrong, and your post was not removed from the queue. Try again.",
             variant: "error",
+            disableDismiss: false,
           })
         }
       })
@@ -54,14 +55,15 @@ const Demo = () => {
       variant: "success",
       action: {
         label: "Undo",
-        onClick: () => onAction(t.id, t.update),
-        altText: "Undo scheduling post",
+        onClick: () => onAction(t.update),
+        altText:
+          "Alternatively, you can undo this action by navigating to the scheduled posts page, and clicking the unschedule button.",
       },
     })
   }
 
   return (
-    <div className="min-w-screen flex min-h-screen items-center justify-center">
+    <div className="min-w-screen flex min-h-screen flex-col items-center justify-center">
       <Button onClick={handleSchedule}>Schedule</Button>
       <Toaster />
     </div>

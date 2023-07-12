@@ -31,6 +31,7 @@ export const effects = {
     "--elevation-tooltip": "0px 0px 0px 1px rgba(3, 7, 18, 0.08), 0px 4px 8px 0px rgba(3, 7, 18, 0.08)",
     "--elevation-card-hover": "0px 0px 0px 1px rgba(3, 7, 18, 0.08), 0px 1px 2px -1px rgba(3, 7, 18, 0.08), 0px 2px 8px 0px rgba(3, 7, 18, 0.1)",
     "--elevation-card-rest": "0px 0px 0px 1px rgba(3, 7, 18, 0.08), 0px 1px 2px -1px rgba(3, 7, 18, 0.08), 0px 2px 4px 0px rgba(3, 7, 18, 0.04)",
-    "--details-contrast-on-bg-interactive": "0px 1px 2px 0px rgba(30, 58, 138, 0.6)"
+    "--details-contrast-on-bg-interactive": "0px 1px 2px 0px rgba(30, 58, 138, 0.6)",
+    "--borders-error": "0px 0px 0px 3px rgba(225, 29, 72, 0.15)"
   }
 }

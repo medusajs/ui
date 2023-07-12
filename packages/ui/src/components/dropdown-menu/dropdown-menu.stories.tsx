@@ -1,0 +1,207 @@
+import type { Meta, StoryObj } from "@storybook/react"
+import * as React from "react"
+
+import { EllipsisHorizontal, PencilSquare, Plus, Trash } from "@medusajs/icons"
+import { Button } from "../button"
+import { DropdownMenu } from "./dropdown-menu"
+
+const meta: Meta<typeof DropdownMenu> = {
+  title: "Components/DropdownMenu.",
+  component: DropdownMenu,
+}
+
+export default meta
+
+type Story = StoryObj<typeof DropdownMenu>
+
+type SortingState = "asc" | "desc" | "alpha" | "alpha-reverse" | "none"
+
+const SortingDemo = () => {
+  const [sort, setSort] = React.useState<SortingState>("none")
+
+  return (
+    <div className="flex flex-col gap-y-2">
+      <DropdownMenu>
+        <DropdownMenu.Trigger asChild>
+          <Button variant="secondary" format={"icon"}>
+            <EllipsisHorizontal />
+          </Button>
+        </DropdownMenu.Trigger>
+        <DropdownMenu.Content className="w-[300px]">
+          <DropdownMenu.RadioGroup
+            value={sort}
+            onValueChange={(v) => setSort(v as SortingState)}
+          >
+            <DropdownMenu.RadioItem value="none">
+              No Sorting
+            </DropdownMenu.RadioItem>
+            <DropdownMenu.Separator />
+            <DropdownMenu.RadioItem value="alpha">
+              Alphabetical
+              <DropdownMenu.SubText>A-Z</DropdownMenu.SubText>
+            </DropdownMenu.RadioItem>
+            <DropdownMenu.RadioItem value="alpha-reverse">
+              Reverse Alphabetical
+              <DropdownMenu.SubText>Z-A</DropdownMenu.SubText>
+            </DropdownMenu.RadioItem>
+            <DropdownMenu.RadioItem value="asc">
+              Created At - Ascending
+              <DropdownMenu.SubText>1 - 30</DropdownMenu.SubText>
+            </DropdownMenu.RadioItem>
+            <DropdownMenu.RadioItem value="desc">
+              Created At - Descending
+              <DropdownMenu.SubText>30 - 1</DropdownMenu.SubText>
+            </DropdownMenu.RadioItem>
+          </DropdownMenu.RadioGroup>
+        </DropdownMenu.Content>
+      </DropdownMenu>
+      <div>
+        <pre>Sorting by: {sort}</pre>
+      </div>
+    </div>
+  )
+}
+
+export const SortingMenu: Story = {
+  render: () => {
+    return <SortingDemo />
+  },
+}
+
+const SelectDemo = () => {
+  const [currencies, setCurrencies] = React.useState<string[]>([])
+  const [regions, setRegions] = React.useState<string[]>([])
+
+  const onSelectCurrency = (currency: string) => {
+    if (currencies.includes(currency)) {
+      setCurrencies(currencies.filter((c) => c !== currency))
+    } else {
+      setCurrencies([...currencies, currency])
+    }
+  }
+
+  const onSelectRegion = (region: string) => {
+    if (regions.includes(region)) {
+      setRegions(regions.filter((r) => r !== region))
+    } else {
+      setRegions([...regions, region])
+    }
+  }
+
+  return (
+    <div className="flex flex-col gap-y-2">
+      <DropdownMenu>
+        <DropdownMenu.Trigger asChild>
+          <Button variant="secondary" format={"icon"}>
+            <EllipsisHorizontal />
+          </Button>
+        </DropdownMenu.Trigger>
+        <DropdownMenu.Content className="w-[300px]">
+          <DropdownMenu.Group>
+            <DropdownMenu.Label>Currencies</DropdownMenu.Label>
+            <DropdownMenu.CheckboxItem
+              checked={currencies.includes("EUR")}
+              onSelect={(e) => {
+                e.preventDefault()
+                onSelectCurrency("EUR")
+              }}
+            >
+              EUR
+              <DropdownMenu.SubText>Euro</DropdownMenu.SubText>
+            </DropdownMenu.CheckboxItem>
+            <DropdownMenu.CheckboxItem
+              checked={currencies.includes("USD")}
+              onSelect={(e) => {
+                e.preventDefault()
+                onSelectCurrency("USD")
+              }}
+            >
+              USD
+              <DropdownMenu.SubText>US Dollar</DropdownMenu.SubText>
+            </DropdownMenu.CheckboxItem>
+            <DropdownMenu.CheckboxItem
+              checked={currencies.includes("DKK")}
+              onSelect={(e) => {
+                e.preventDefault()
+                onSelectCurrency("DKK")
+              }}
+            >
+              DKK
+              <DropdownMenu.SubText>Danish Krone</DropdownMenu.SubText>
+            </DropdownMenu.CheckboxItem>
+          </DropdownMenu.Group>
+          <DropdownMenu.Separator />
+          <DropdownMenu.Group>
+            <DropdownMenu.Label>Regions</DropdownMenu.Label>
+            <DropdownMenu.CheckboxItem
+              checked={regions.includes("NA")}
+              onSelect={(e) => {
+                e.preventDefault()
+                onSelectRegion("NA")
+              }}
+            >
+              North America
+            </DropdownMenu.CheckboxItem>
+            <DropdownMenu.CheckboxItem
+              checked={regions.includes("EU")}
+              onSelect={(e) => {
+                e.preventDefault()
+                onSelectRegion("EU")
+              }}
+            >
+              Europe
+            </DropdownMenu.CheckboxItem>
+            <DropdownMenu.CheckboxItem
+              checked={regions.includes("DK")}
+              onSelect={(e) => {
+                e.preventDefault()
+                onSelectRegion("DK")
+              }}
+            >
+              Denmark
+            </DropdownMenu.CheckboxItem>
+          </DropdownMenu.Group>
+        </DropdownMenu.Content>
+      </DropdownMenu>
+      <div>
+        <pre>Currencies: {currencies.join(", ")}</pre>
+        <pre>Regions: {regions.join(", ")}</pre>
+      </div>
+    </div>
+  )
+}
+
+export const SelectMenu: Story = {
+  render: () => {
+    return <SelectDemo />
+  },
+}
+
+export const SimpleMenu: Story = {
+  render: () => {
+    return (
+      <DropdownMenu>
+        <DropdownMenu.Trigger asChild>
+          <Button variant="secondary" format={"icon"}>
+            <EllipsisHorizontal />
+          </Button>
+        </DropdownMenu.Trigger>
+        <DropdownMenu.Content>
+          <DropdownMenu.Item className="gap-x-2">
+            <PencilSquare className="text-ui-fg-subtle" />
+            Edit
+          </DropdownMenu.Item>
+          <DropdownMenu.Item className="gap-x-2">
+            <Plus className="text-ui-fg-subtle" />
+            Add
+          </DropdownMenu.Item>
+          <DropdownMenu.Separator />
+          <DropdownMenu.Item className="gap-x-2">
+            <Trash className="text-ui-fg-subtle" />
+            Delete
+          </DropdownMenu.Item>
+        </DropdownMenu.Content>
+      </DropdownMenu>
+    )
+  },
+}
