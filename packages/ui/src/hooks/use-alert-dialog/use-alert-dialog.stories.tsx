@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react"
 import * as React from "react"
 
 import { Button } from "@/components/button"
+import { Badge } from "../../components/badge"
+import { Text } from "../../components/text"
 import { useAlertDialog } from "./use-alert-dialog"
 
 type DemoProps = {
@@ -9,6 +11,7 @@ type DemoProps = {
 }
 
 const Demo = ({ verificationText }: DemoProps) => {
+  const [status, setStatus] = React.useState(false)
   const dialog = useAlertDialog()
 
   const handleDangerousAction = async () => {
@@ -19,19 +22,18 @@ const Demo = ({ verificationText }: DemoProps) => {
       verificationText,
     })
 
-    if (confirmed) {
-      alert("Product deleted")
-    } else {
-      alert("Product not deleted")
-    }
-
-    return
+    setStatus(confirmed)
   }
 
   return (
-    <Button variant="danger" onClick={handleDangerousAction}>
-      Delete Product
-    </Button>
+    <div className="flex flex-col items-center gap-y-2">
+      <Button variant="danger" onClick={handleDangerousAction}>
+        Delete Product
+      </Button>
+      <Text>
+        Status: <Badge>{status ? "Confirmed" : "Unconfirmed"}</Badge>
+      </Text>
+    </div>
   )
 }
 

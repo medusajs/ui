@@ -1,4 +1,5 @@
 {
+  "name": "medusa-ui",
   "private": true,
   "scripts": {
     "test": "turbo run test",
@@ -23,15 +24,14 @@
     "@medusajs/eslint-config-ui": "*",
     "@medusajs/toolbox": "*",
     "babel-loader": "^9.1.2",
-    "eslint": "^7.32.0",
+    "eslint": "^8.44.0",
     "prettier": "^2.5.1",
     "prettier-plugin-tailwindcss": "^0.3.0",
-    "turbo": "latest"
+    "turbo": "latest",
+    "typescript": "^5.1.6"
   },
-  "name": "medusa-ui",
   "packageManager": "yarn@3.5.0",
   "workspaces": [
-    "apps/*",
     "packages/*",
     "tools/*",
     "configs/*"

@@ -298,7 +298,8 @@ export const theme = {
       "elevation-tooltip": "var(--elevation-tooltip)",
       "elevation-card-hover": "var(--elevation-card-hover)",
       "elevation-card-rest": "var(--elevation-card-rest)",
-      "details-contrast-on-bg-interactive": "var(--details-contrast-on-bg-interactive)"
+      "details-contrast-on-bg-interactive": "var(--details-contrast-on-bg-interactive)",
+      "borders-error": "var(--borders-error)"
     }
   }
 }

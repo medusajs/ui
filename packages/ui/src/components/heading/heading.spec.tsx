@@ -1,21 +1,21 @@
 import { render, screen } from "@testing-library/react"
 import * as React from "react"
 
-import { Header } from "./header"
+import { Heading } from "./heading"
 
-describe("Header", () => {
+describe("Heading", () => {
   it("should render a h1 successfully", async () => {
-    render(<Header>Header</Header>)
+    render(<Heading>Header</Heading>)
     expect(screen.getByRole("heading", { level: 1 })).toBeInTheDocument()
   })
 
   it("should render a h2 successfully", async () => {
-    render(<Header level="h2">Header</Header>)
+    render(<Heading level="h2">Header</Heading>)
     expect(screen.getByRole("heading", { level: 2 })).toBeInTheDocument()
   })
 
   it("should render a h3 successfully", async () => {
-    render(<Header level="h3">Header</Header>)
+    render(<Heading level="h3">Header</Heading>)
     expect(screen.getByRole("heading", { level: 3 })).toBeInTheDocument()
   })
 })

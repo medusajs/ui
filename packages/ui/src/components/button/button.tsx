@@ -6,7 +6,7 @@ import { labelVariants } from "@/components/label"
 import { clx } from "@/utils/clx"
 
 const buttonVariants = cva(
-  "disabled:bg-ui-bg-disabled disabled:border-ui-border-base disabled:text-ui-fg-disabled relative inline-flex items-center overflow-hidden rounded-lg border outline-none transition-all after:absolute after:inset-0 after:content-[''] disabled:!shadow-none",
+  "disabled:bg-ui-bg-disabled disabled:border-ui-border-base disabled:text-ui-fg-disabled relative inline-flex w-fit items-center overflow-hidden rounded-lg border outline-none transition-all after:absolute after:inset-0 after:content-[''] disabled:!shadow-none",
   {
     variants: {
       variant: {

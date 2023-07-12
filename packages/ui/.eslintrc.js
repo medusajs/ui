@@ -2,6 +2,6 @@
 module.exports = {
   extends: ["@medusajs/eslint-config-ui"],
   parserOptions: {
-    project: "./tsconfig.json",
+    project: "tsconfig.json",
   },
 }

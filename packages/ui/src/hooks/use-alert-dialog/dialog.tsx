@@ -40,6 +40,28 @@ const Dialog = ({
     return userInput === verificationText
   }, [userInput, verificationText])
 
+  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    if (validInput) {
+      onConfirm()
+    }
+  }
+
+  React.useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && open) {
+        onCancel()
+      }
+    }
+
+    document.addEventListener("keydown", handleEscape)
+
+    return () => {
+      document.removeEventListener("keydown", handleEscape)
+    }
+  }, [onCancel, open])
+
   return (
     <AlertDialog.Root open={open}>
       <AlertDialog.Content>
@@ -48,32 +70,39 @@ const Dialog = ({
           <AlertDialog.Description>{description}</AlertDialog.Description>
         </AlertDialog.Header>
         {verificationText && (
-          <div className="border-ui-border-base mt-6 flex flex-col gap-y-4 border-y p-6">
-            <Label htmlFor="verificationText" className="text-subtle">
-              Please type{" "}
-              <span
-                className={clx(
-                  labelVariants({ variant: "md", weight: "plus" }),
-                  "text-ui-fg-base"
-                )}
-              >
-                {verificationText}
-              </span>{" "}
-              to confirm.
-            </Label>
-            <Input
-              autoComplete="off"
-              id="verificationText"
-              placeholder={verificationText}
-              onChange={handleUserInput}
-            />
-          </div>
+          <form onSubmit={handleFormSubmit}>
+            <fieldset className="border-ui-border-base mt-6 flex flex-col gap-y-4 border-y p-6">
+              <Label htmlFor="verificationText" className="text-subtle">
+                Please type{" "}
+                <span
+                  className={clx(
+                    labelVariants({ variant: "md", weight: "plus" }),
+                    "text-ui-fg-base"
+                  )}
+                >
+                  {verificationText}
+                </span>{" "}
+                to confirm.
+              </Label>
+              <Input
+                autoFocus
+                autoComplete="off"
+                id="verificationText"
+                placeholder={verificationText}
+                onChange={handleUserInput}
+              />
+            </fieldset>
+          </form>
         )}
         <AlertDialog.Footer>
           <AlertDialog.Cancel onClick={onCancel}>
             {cancelText}
           </AlertDialog.Cancel>
-          <AlertDialog.Action onClick={onConfirm} disabled={!validInput}>
+          <AlertDialog.Action
+            onClick={verificationText ? undefined : onConfirm}
+            disabled={!validInput}
+            type={verificationText ? "submit" : "button"}
+          >
             {confirmText}
           </AlertDialog.Action>
         </AlertDialog.Footer>

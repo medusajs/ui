@@ -2,7 +2,7 @@ import * as Primitives from "@radix-ui/react-alert-dialog"
 import * as React from "react"
 
 import { Button } from "@/components/button"
-import { Header as HeaderComponent } from "@/components/header"
+import { Heading } from "@/components/heading"
 import { labelVariants } from "@/components/label"
 import { clx } from "@/utils/clx"
 
@@ -41,7 +41,7 @@ const Title = React.forwardRef<
 >(({ className, children, ...props }, ref) => {
   return (
     <Primitives.Title ref={ref} className={clx(className)} {...props} asChild>
-      <HeaderComponent level="h2">{children}</HeaderComponent>
+      <Heading level="h2">{children}</Heading>
     </Primitives.Title>
   )
 })
@@ -57,7 +57,7 @@ const Content = React.forwardRef<
       <Primitives.Content
         ref={ref}
         className={clx(
-          "bg-ui-bg-base shadow-elevation-flyout fixed left-[50%] top-[50%] z-50 flex w-full max-w-[400px] translate-x-[-50%] translate-y-[-50%] flex-col rounded-lg border",
+          "bg-ui-bg-base shadow-elevation-flyout fixed left-[50%] top-[50%] z-50 flex w-full max-w-[400px] translate-x-[-50%] translate-y-[-50%] flex-col rounded-lg border focus:outline-none",
           "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] duration-200",
           className
         )}

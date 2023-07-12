@@ -4,21 +4,21 @@ import * as React from "react"
 
 import { Badge } from "@/components/badge"
 import { Button } from "@/components/button"
-import { Header as HeaderComponent } from "@/components/header"
+import { Heading } from "@/components/heading"
 import { clx } from "@/utils/clx"
 import { Text } from "../text"
 
 const Root = Primitives.Root
-Root.displayName = "Modal.Root"
+Root.displayName = "Drawer.Root"
 
 const Trigger = Primitives.Trigger
-Trigger.displayName = "Modal.Trigger"
+Trigger.displayName = "Drawer.Trigger"
 
 const Close = Primitives.Close
-Close.displayName = "Modal.Close"
+Close.displayName = "Drawer.Close"
 
 const Portal = Primitives.Portal
-Portal.displayName = "Modal.Portal"
+Portal.displayName = "Drawer.Portal"
 
 const Overlay = React.forwardRef<
   React.ElementRef<typeof Primitives.Overlay>,
@@ -27,16 +27,12 @@ const Overlay = React.forwardRef<
   return (
     <Primitives.Overlay
       ref={ref}
-      className={clx(
-        "bg-ui-bg-overlay fixed inset-0 z-50 backdrop-blur-sm",
-        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-        className
-      )}
+      className={clx("fixed inset-0 z-50", className)}
       {...props}
     />
   )
 })
-Overlay.displayName = "Modal.Overlay"
+Overlay.displayName = "Drawer.Overlay"
 
 const Content = React.forwardRef<
   React.ElementRef<typeof Primitives.Content>,
@@ -48,8 +44,8 @@ const Content = React.forwardRef<
       <Primitives.Content
         ref={ref}
         className={clx(
-          "bg-ui-bg-base shadow-elevation-modal fixed left-[50%] top-[50%] z-50 flex h-full max-h-[560px] w-full max-w-[560px] translate-x-[-50%] translate-y-[-50%] flex-col rounded-lg border",
-          "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] duration-200",
+          "bg-ui-bg-base shadow-elevation-modal fixed inset-y-2 right-2 z-50 flex w-full max-w-[560px] flex-1 flex-col rounded-lg border focus:outline-none",
+          "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:slide-out-to-right-1/2 data-[state=open]:slide-in-from-right-1/2 duration-200",
           className
         )}
         {...props}
@@ -57,7 +53,7 @@ const Content = React.forwardRef<
     </Portal>
   )
 })
-Content.displayName = "Modal.Content"
+Content.displayName = "Drawer.Content"
 
 const Header = ({
   children,
@@ -83,15 +79,15 @@ const Header = ({
     </div>
   )
 }
-Header.displayName = "Modal.Header"
+Header.displayName = "Drawer.Header"
 
 const Body = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => {
-  return <div className={clx("flex-1", className)} {...props} />
+  return <div className={clx("flex-1 px-8 pb-16 pt-6", className)} {...props} />
 }
-Body.displayName = "Modal.Body"
+Body.displayName = "Drawer.Body"
 
 const Footer = ({
   className,
@@ -107,17 +103,17 @@ const Footer = ({
     />
   )
 }
-Footer.displayName = "Modal.Footer"
+Footer.displayName = "Drawer.Footer"
 
 const Title = React.forwardRef<
   React.ElementRef<typeof Primitives.Title>,
   React.ComponentPropsWithoutRef<typeof Primitives.Title>
 >(({ className, children, ...props }, ref) => (
   <Primitives.Title ref={ref} className={clx(className)} asChild {...props}>
-    <HeaderComponent level="h1">{children}</HeaderComponent>
+    <Heading level="h1">{children}</Heading>
   </Primitives.Title>
 ))
-Title.displayName = "Modal.Title"
+Title.displayName = "Drawer.Title"
 
 const Description = React.forwardRef<
   React.ElementRef<typeof Primitives.Description>,
@@ -132,10 +128,9 @@ const Description = React.forwardRef<
     <Text>{children}</Text>
   </Primitives.Description>
 ))
-Description.displayName = "Modal.Description"
+Description.displayName = "Drawer.Description"
 
-export const Modal = {
-  Root,
+export const Drawer = Object.assign(Root, {
   Body,
   Close,
   Content,
@@ -144,4 +139,4 @@ export const Modal = {
   Header,
   Title,
   Trigger,
-}
+})
