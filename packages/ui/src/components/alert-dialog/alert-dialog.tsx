@@ -2,7 +2,7 @@ import * as Primitives from "@radix-ui/react-alert-dialog"
 import * as React from "react"
 
 import { Button } from "@/components/button"
-import { Header as HeaderComponent } from "@/components/header"
+import { Heading } from "@/components/heading"
 import { labelVariants } from "@/components/label"
 import { clx } from "@/utils/clx"
 
@@ -41,7 +41,7 @@ const Title = React.forwardRef<
 >(({ className, children, ...props }, ref) => {
   return (
     <Primitives.Title ref={ref} className={clx(className)} {...props} asChild>
-      <HeaderComponent level="h2">{children}</HeaderComponent>
+      <Heading level="h2">{children}</Heading>
     </Primitives.Title>
   )
 })
