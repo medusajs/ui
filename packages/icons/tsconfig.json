@@ -4,7 +4,6 @@
     "resolveJsonModule": true,
     "outDir": "dist",
     "esModuleInterop": true,
-    "composite": true,
     "baseUrl": "src",
     "declarationDir": "dist",
     "paths": {
