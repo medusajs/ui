@@ -1,8 +1,5 @@
 {
   "extends": "@medusajs/tsconfig-ui/base.json",
-  "compilerOptions": {
-    "composite": true
-  },
   "include": ["src"],
   "exclude": ["dist", "build", "node_modules"]
 }
