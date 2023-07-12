@@ -85,7 +85,6 @@
     "@radix-ui/react-tooltip": "^1.0.6",
     "class-variance-authority": "^0.6.1",
     "clsx": "^1.2.1",
-    "react-wrap-balancer": "^1.0.0",
     "tailwind-merge": "^1.13.2"
   },
   "peerDependencies": {
