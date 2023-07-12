@@ -4,9 +4,9 @@ import * as React from "react"
 import { Button } from "@/components/button"
 import { AlertDialog } from "./alert-dialog"
 
-const meta: Meta<typeof AlertDialog.Root> = {
+const meta: Meta<typeof AlertDialog> = {
   title: "Components/AlertDialog",
-  component: AlertDialog.Root,
+  component: AlertDialog,
   parameters: {
     layout: "centered",
   },
@@ -14,12 +14,12 @@ const meta: Meta<typeof AlertDialog.Root> = {
 
 export default meta
 
-type Story = StoryObj<typeof AlertDialog.Root>
+type Story = StoryObj<typeof AlertDialog>
 
 export const Default: Story = {
   render: () => {
     return (
-      <AlertDialog.Root>
+      <AlertDialog>
         <AlertDialog.Trigger asChild>
           <Button>Open</Button>
         </AlertDialog.Trigger>
@@ -35,7 +35,7 @@ export const Default: Story = {
             <AlertDialog.Action>Delete</AlertDialog.Action>
           </AlertDialog.Footer>
         </AlertDialog.Content>
-      </AlertDialog.Root>
+      </AlertDialog>
     )
   },
 }

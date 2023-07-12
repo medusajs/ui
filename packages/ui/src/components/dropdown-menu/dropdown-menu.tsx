@@ -85,7 +85,7 @@ const Item = React.forwardRef<
     ref={ref}
     className={clx(
       "bg-ui-bg-base focus:bg-ui-bg-base-pressed text-ui-fg-base data-[disabled]:text-ui-fg-disabled relative flex cursor-default select-none items-center rounded-md px-3 py-2 outline-none transition-colors data-[disabled]:pointer-events-none",
-      labelVariants({ variant: "sm" }),
+      labelVariants({ size: "small" }),
       className
     )}
     {...props}
@@ -124,7 +124,7 @@ const RadioItem = React.forwardRef<
     ref={ref}
     className={clx(
       "focus:bg-ui-bg-base-pressed hover:bg-ui-base-hover bg-ui-bg-base relative flex cursor-default select-none items-center rounded-md py-2 pl-10 pr-3 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[state=checked]:font-medium data-[disabled]:opacity-50",
-      labelVariants({ variant: "sm" }),
+      labelVariants({ size: "small" }),
       className
     )}
     {...props}
@@ -147,7 +147,7 @@ const Label = React.forwardRef<
     ref={ref}
     className={clx(
       "text-ui-fg-subtle px-2 py-1.5",
-      labelVariants({ variant: "xs", weight: "plus" }),
+      labelVariants({ size: "xsmall", weight: "plus" }),
       className
     )}
     {...props}
@@ -176,7 +176,7 @@ const Shortcut = ({
       className={clx(
         "text-ui-fg-subtle ml-auto tracking-widest",
         labelVariants({
-          variant: "sm",
+          size: "small",
         }),
         className
       )}
@@ -195,7 +195,7 @@ const Hint = ({
       className={clx(
         "text-ui-fg-subtle ml-auto tracking-widest",
         labelVariants({
-          variant: "sm",
+          size: "small",
         }),
         className
       )}

@@ -75,11 +75,7 @@ const Description = React.forwardRef<
   return (
     <Primitives.Description
       ref={ref}
-      className={clx(
-        "text-subtle",
-        labelVariants({ variant: "md" }),
-        className
-      )}
+      className={clx("text-subtle", labelVariants({ size: "base" }), className)}
       {...props}
     />
   )
@@ -139,8 +135,7 @@ const Footer = ({
   )
 }
 
-export const AlertDialog = {
-  Root,
+const AlertDialog = Object.assign(Root, {
   Trigger,
   Content,
   Title,
@@ -149,4 +144,6 @@ export const AlertDialog = {
   Cancel,
   Header,
   Footer,
-}
+})
+
+export { AlertDialog }

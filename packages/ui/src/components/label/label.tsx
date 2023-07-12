@@ -6,11 +6,11 @@ import { clx } from "@/utils/clx"
 
 const labelVariants = cva("font-sans", {
   variants: {
-    variant: {
-      xs: "text-[12px]/[20px]",
-      sm: "text-[13px]/[20px]",
-      md: "text-[14px]/[20px]",
-      lg: "text-[16px]/[20px]",
+    size: {
+      xsmall: "text-[12px]/[20px]",
+      small: "text-[13px]/[20px]",
+      base: "text-[14px]/[20px]",
+      large: "text-[16px]/[20px]",
     },
     weight: {
       regular: "font-normal",
@@ -18,7 +18,7 @@ const labelVariants = cva("font-sans", {
     },
   },
   defaultVariants: {
-    variant: "md",
+    size: "base",
     weight: "regular",
   },
 })
@@ -28,11 +28,11 @@ interface LabelProps
     VariantProps<typeof labelVariants> {}
 
 const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
-  ({ className, variant, weight, ...props }, ref) => {
+  ({ className, size = "base", weight = "regular", ...props }, ref) => {
     return (
       <Primitives.Root
         ref={ref}
-        className={clx(labelVariants({ variant, weight }), className)}
+        className={clx(labelVariants({ size, weight }), className)}
         {...props}
       />
     )

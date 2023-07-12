@@ -9,12 +9,12 @@ const switchVariants = cva(
   {
     variants: {
       size: {
-        sm: "h-[16px] w-[28px]",
-        default: "h-[18px] w-[32px]",
+        small: "h-[16px] w-[28px]",
+        base: "h-[18px] w-[32px]",
       },
     },
     defaultVariants: {
-      size: "default",
+      size: "base",
     },
   }
 )
@@ -24,13 +24,13 @@ const thumbVariants = cva(
   {
     variants: {
       size: {
-        sm: "h-[12px] w-[12px] data-[state=checked]:translate-x-3.5 data-[state=unchecked]:translate-x-0.5",
-        default:
-          "h-[14px] w-[14px] data-[state=checked]:translate-x-4 data-[state=unchecked]:translate-x-0.5",
+        small:
+          "h-[12px] w-[12px] data-[state=checked]:translate-x-3.5 data-[state=unchecked]:translate-x-0.5",
+        base: "h-[14px] w-[14px] data-[state=checked]:translate-x-4 data-[state=unchecked]:translate-x-0.5",
       },
     },
     defaultVariants: {
-      size: "default",
+      size: "base",
     },
   }
 )
@@ -42,7 +42,7 @@ interface SwitchProps
 const Switch = React.forwardRef<
   React.ElementRef<typeof Primitives.Root>,
   SwitchProps
->(({ className, size, ...props }, ref) => (
+>(({ className, size = "base", ...props }, ref) => (
   <Primitives.Root
     className={clx(switchVariants({ size }), className)}
     {...props}

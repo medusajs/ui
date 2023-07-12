@@ -22,20 +22,20 @@ const buttonVariants = cva(
       size: {
         sm: clx(
           "gap-x-0.5 px-[7px] py-[1px]",
-          labelVariants({ variant: "xs", weight: "plus" })
+          labelVariants({ size: "xsmall", weight: "plus" })
         ),
         md: clx(
           "gap-x-1.5 px-[11px] py-[5px]",
-          labelVariants({ variant: "sm", weight: "plus" })
+          labelVariants({ size: "small", weight: "plus" })
         ),
         lg: clx(
           "gap-x-2 px-[15px] py-[9px]",
-          labelVariants({ variant: "md", weight: "plus" })
+          labelVariants({ size: "base", weight: "plus" })
         ),
         xl: clx(
           "gap-x-2 px-[19px] py-[13px]",
           labelVariants({
-            variant: "lg",
+            size: "large",
             weight: "plus",
           })
         ),

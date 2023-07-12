@@ -66,7 +66,7 @@ export const WithLabelAndDescription: Story = {
             <Label htmlFor="radio_1" weight="plus">
               Radio 1
             </Label>
-            <Text variant="md" className="text-ui-fg-subtle">
+            <Text className="text-ui-fg-subtle">
               The quick brown fox jumps over a lazy dog.
             </Text>
           </div>
@@ -77,7 +77,7 @@ export const WithLabelAndDescription: Story = {
             <Label htmlFor="radio_2" weight="plus">
               Radio 2
             </Label>
-            <Text variant="md" className="text-ui-fg-subtle">
+            <Text className="text-ui-fg-subtle">
               The quick brown fox jumps over a lazy dog.
             </Text>
           </div>
@@ -88,7 +88,7 @@ export const WithLabelAndDescription: Story = {
             <Label htmlFor="radio_3" weight="plus">
               Radio 3
             </Label>
-            <Text variant="md" className="text-ui-fg-subtle">
+            <Text className="text-ui-fg-subtle">
               The quick brown fox jumps over a lazy dog.
             </Text>
           </div>

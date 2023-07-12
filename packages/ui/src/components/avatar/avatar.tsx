@@ -3,6 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import * as React from "react"
 
 import { clx } from "@/utils/clx"
+import { labelVariants } from "../label"
 
 const avatarVariants = cva(
   "border-ui-border-strong flex shrink-0 items-center justify-center overflow-hidden border",
@@ -13,13 +14,13 @@ const avatarVariants = cva(
         rounded: "rounded-full",
       },
       size: {
-        default: "h-8 w-8",
+        base: "h-8 w-8",
         large: "h-10 w-10",
       },
     },
     defaultVariants: {
       variant: "rounded",
-      size: "default",
+      size: "base",
     },
   }
 )
@@ -31,20 +32,20 @@ const innerVariants = cva("aspect-square object-cover object-center", {
       rounded: "rounded-full",
     },
     size: {
-      default: "h-6 w-6",
-      large: "h-8 w-8",
+      base: clx(labelVariants({ size: "small", weight: "plus" }), "h-6 w-6"),
+      large: clx(labelVariants({ size: "base", weight: "plus" }), "h-8 w-8"),
     },
   },
   defaultVariants: {
     variant: "rounded",
-    size: "default",
+    size: "base",
   },
 })
 
 interface AvatarProps
   extends Omit<
       React.ComponentPropsWithoutRef<typeof Primitives.Root>,
-      "asChild" | "children"
+      "asChild" | "children" | "size"
     >,
     VariantProps<typeof avatarVariants> {
   src?: string
@@ -56,14 +57,7 @@ const Avatar = React.forwardRef<
   AvatarProps
 >(
   (
-    {
-      src,
-      fallback,
-      variant = "rounded",
-      size = "default",
-      className,
-      ...props
-    },
+    { src, fallback, variant = "rounded", size = "base", className, ...props },
     ref
   ) => {
     return (

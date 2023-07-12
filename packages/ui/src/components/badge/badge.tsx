@@ -13,9 +13,9 @@ const badgeVariants = cva("inline-flex items-center gap-x-0.5 border", {
       icon: "rounded-md",
     },
     size: {
-      sm: clx("px-1.5", labelVariants({ variant: "xs", weight: "plus" })),
-      md: clx("px-2 py-0.5", labelVariants({ variant: "sm", weight: "plus" })),
-      lg: clx("px-2.5 py-1", labelVariants({ variant: "md", weight: "plus" })),
+      sm: clx("px-1.5", labelVariants({ size: "xsmall", weight: "plus" })),
+      md: clx("px-2 py-0.5", labelVariants({ size: "small", weight: "plus" })),
+      lg: clx("px-2.5 py-1", labelVariants({ size: "base", weight: "plus" })),
     },
     color: {
       green:

@@ -6,10 +6,10 @@ import { clx } from "@/utils/clx"
 
 const textVariants = cva("", {
   variants: {
-    variant: {
-      md: "text-[14px]/[24px]",
-      lg: "text-[16px]/[28px]",
-      xl: "text-[18px]/[32px]",
+    size: {
+      base: "text-[14px]/[24px]",
+      large: "text-[16px]/[28px]",
+      xlarge: "text-[18px]/[32px]",
     },
     weight: {
       regular: "font-normal",
@@ -22,7 +22,7 @@ const textVariants = cva("", {
   },
   defaultVariants: {
     family: "sans",
-    variant: "md",
+    size: "base",
     weight: "regular",
   },
 })
@@ -35,7 +35,15 @@ interface TextProps
 
 const Text = React.forwardRef<HTMLParagraphElement, TextProps>(
   (
-    { className, asChild = false, variant, weight, family, children, ...props },
+    {
+      className,
+      asChild = false,
+      size = "base",
+      weight = "regular",
+      family = "sans",
+      children,
+      ...props
+    },
     ref
   ) => {
     const Component = asChild ? Slot : "p"
@@ -43,7 +51,7 @@ const Text = React.forwardRef<HTMLParagraphElement, TextProps>(
     return (
       <Component
         ref={ref}
-        className={clx(textVariants({ variant, weight, family }), className)}
+        className={clx(textVariants({ size, weight, family }), className)}
         {...props}
       >
         {children}

@@ -6,11 +6,11 @@ const meta: Meta<typeof Label> = {
   title: "Components/Label",
   component: Label,
   argTypes: {
-    variant: {
+    size: {
       control: {
         type: "select",
       },
-      options: ["xs", "sm", "md", "lg"],
+      options: ["small", "xsmall", "base", "large"],
     },
     weight: {
       control: {
@@ -28,9 +28,57 @@ export default meta
 
 type Story = StoryObj<typeof Label>
 
-export const Default: Story = {
+export const BaseRegular: Story = {
   args: {
-    variant: "md",
+    size: "base",
+    weight: "regular",
+    children: "I am a label",
+  },
+}
+
+export const BasePlus: Story = {
+  args: {
+    size: "base",
+    weight: "plus",
+    children: "I am a label",
+  },
+}
+
+export const LargeRegular: Story = {
+  args: {
+    size: "large",
+    weight: "regular",
+    children: "I am a label",
+  },
+}
+
+export const LargePlus: Story = {
+  args: {
+    size: "large",
+    weight: "plus",
+    children: "I am a label",
+  },
+}
+
+export const SmallRegular: Story = {
+  args: {
+    size: "small",
+    weight: "regular",
+    children: "I am a label",
+  },
+}
+
+export const SmallPlus: Story = {
+  args: {
+    size: "small",
+    weight: "plus",
+    children: "I am a label",
+  },
+}
+
+export const XSmallRegular: Story = {
+  args: {
+    size: "xsmall",
     weight: "regular",
     children: "I am a label",
   },

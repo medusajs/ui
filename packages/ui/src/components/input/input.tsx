@@ -25,7 +25,7 @@ const Input = React.forwardRef<
       ref={ref}
       className={clx(
         inputVariants({ size: "base" }),
-        labelVariants({ variant: "md" }),
+        labelVariants({ size: "base" }),
         className
       )}
       {...props}

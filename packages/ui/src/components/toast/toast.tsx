@@ -106,7 +106,7 @@ const Toast = React.forwardRef<
               <Primitives.Title
                 className={clx(
                   labelVariants({
-                    variant: "sm",
+                    size: "small",
                     weight: "plus",
                   }),
                   "text-ui-fg-base"
@@ -119,7 +119,7 @@ const Toast = React.forwardRef<
               <Primitives.Description
                 className={clx(
                   labelVariants({
-                    variant: "md",
+                    size: "base",
                   }),
                   "text-ui-fg-subtle"
                 )}
@@ -137,7 +137,7 @@ const Toast = React.forwardRef<
                 className={clx(
                   "text-ui-fg-base bg-ui-bg-base hover:bg-ui-bg-base-hover active:bg-ui-bg-base-pressed flex flex-1 items-center justify-center px-6 transition-colors",
                   labelVariants({
-                    variant: "sm",
+                    size: "small",
                     weight: "plus",
                   }),
                   {
@@ -160,7 +160,7 @@ const Toast = React.forwardRef<
               className={clx(
                 "text-ui-fg-subtle bg-ui-bg-base hover:bg-ui-bg-base-hover active:bg-ui-bg-base-pressed flex flex-1 items-center justify-center px-6 transition-colors",
                 labelVariants({
-                  variant: "sm",
+                  size: "small",
                   weight: "plus",
                 }),
                 {

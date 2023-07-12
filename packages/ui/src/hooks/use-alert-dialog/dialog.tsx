@@ -63,7 +63,7 @@ const Dialog = ({
   }, [onCancel, open])
 
   return (
-    <AlertDialog.Root open={open}>
+    <AlertDialog open={open}>
       <AlertDialog.Content>
         <AlertDialog.Header>
           <AlertDialog.Title>{title}</AlertDialog.Title>
@@ -76,7 +76,7 @@ const Dialog = ({
                 Please type{" "}
                 <span
                   className={clx(
-                    labelVariants({ variant: "md", weight: "plus" }),
+                    labelVariants({ size: "base", weight: "plus" }),
                     "text-ui-fg-base"
                   )}
                 >
@@ -107,7 +107,7 @@ const Dialog = ({
           </AlertDialog.Action>
         </AlertDialog.Footer>
       </AlertDialog.Content>
-    </AlertDialog.Root>
+    </AlertDialog>
   )
 }
 
