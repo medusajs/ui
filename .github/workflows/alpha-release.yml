@@ -1,0 +1,49 @@
+name: Alpha release
+
+on:
+  workflow_dispatch:
+    branches:
+      - develop
+      
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  release:
+    name: Alpha Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js 16.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+
+      - name: Creating .npmrc
+        run: |
+          cat << EOF > "$HOME/.npmrc"
+            //registry.npmjs.org/:_authToken=$NPM_TOKEN
+          EOF
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          
+      - name: Configure npm node prepend 
+        run: npm config set scripts-prepend-node-path auto
+
+      - name: Install Dependencies
+        run: yarn
+
+      - name: Build all packages
+        run: yarn build
+
+      - name: Version packages
+        run: yarn version:alpha
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install Dependencies
+        run: yarn install --no-immutable
+        
+      - name: Publish packages under alpha tag
+        run: yarn release:alpha
