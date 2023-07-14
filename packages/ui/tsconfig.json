@@ -1,6 +1,7 @@
 {
   "extends": "@medusajs/tsconfig-ui/react-library.json",
   "compilerOptions": {
+    "jsx": "react",
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "declaration": true,
@@ -12,12 +13,26 @@
     "baseUrl": ".",
     "paths": {
       // We delibaretly don't include the theme path here as tw does not support it
-      "@medusajs/ui": ["src/index.tsc"],
-      "@/components/*": ["./src/components/*"],
-      "@/hooks/*": ["./src/hooks/*"],
-      "@/utils/*": ["./src/utils/*"]
+      "@medusajs/ui": [
+        "src/index.tsc"
+      ],
+      "@/components/*": [
+        "./src/components/*"
+      ],
+      "@/hooks/*": [
+        "./src/hooks/*"
+      ],
+      "@/utils/*": [
+        "./src/utils/*"
+      ]
     }
   },
-  "include": ["src"],
-  "exclude": ["dist", "build", "node_modules"]
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "dist",
+    "build",
+    "node_modules"
+  ]
 }
