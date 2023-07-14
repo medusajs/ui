@@ -13,11 +13,11 @@ describe("Toast", () => {
         render(
             <ToastProvider>
                 <ToastViewport>
-                    <Toast {...props} />
+                    <Toast {...props} data-testid="toast" />
                 </ToastViewport>
             </ToastProvider>
         )
 
-        expect(screen.getByRole("toast")).toBeInTheDocument()
+        expect(screen.getByTestId("toast")).toBeInTheDocument()
     })
 })
