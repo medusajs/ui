@@ -5,8 +5,8 @@ import { Textarea } from "./textarea"
 
 describe("Textarea", () => {
     it("renders a textarea", () => {
-        render(<Textarea />)
+        render(<Textarea data-testid="textarea" />)
 
-        expect(screen.getByRole("textarea")).toBeInTheDocument()
+        expect(screen.getByTestId("textarea")).toBeInTheDocument()
     })
 })

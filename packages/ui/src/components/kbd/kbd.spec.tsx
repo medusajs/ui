@@ -5,8 +5,8 @@ import { Kbd } from "./kbd"
 
 describe("Kbd", () => {
     it("renders a kbd", () => {
-        render(<Kbd>⌘</Kbd>)
+        render(<Kbd data-testid="kbd">⌘</Kbd>)
 
-        expect(screen.getByRole("kbd")).toBeInTheDocument()
+        expect(screen.getByTestId("kbd")).toBeInTheDocument()
     })
 })

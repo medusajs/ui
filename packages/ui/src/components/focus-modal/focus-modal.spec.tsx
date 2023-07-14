@@ -7,7 +7,7 @@ import { Button } from "../button"
 describe("FocusModal", () => {
     it("renders a focus-modal", () => {
         render(
-            <FocusModal.Root>
+            <FocusModal.Root data-testid="focus-modal">
                 <FocusModal.Trigger asChild>
                     <Button>Edit Variant</Button>
                 </FocusModal.Trigger>
@@ -20,6 +20,6 @@ describe("FocusModal", () => {
             </FocusModal.Root>
         )
 
-        expect(screen.getByRole("focus-modal")).toBeInTheDocument()
+        expect(screen.getByTestId("focus-modal")).toBeInTheDocument()
     })
 })

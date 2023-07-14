@@ -7,7 +7,7 @@ import { Button } from "../button"
 describe("DropdownMenu", () => {
     it("renders a dropdown-menu", () => {
         render(
-            <DropdownMenu>
+            <DropdownMenu data-testid="dropdown-menu">
                 <DropdownMenu.Trigger asChild>
                     <Button variant="secondary" format={"icon"}>
                         Button
@@ -40,6 +40,6 @@ describe("DropdownMenu", () => {
             </DropdownMenu>
         )
 
-        expect(screen.getByRole("dropdown-menu")).toBeInTheDocument()
+        expect(screen.getByTestId("dropdown-menu")).toBeInTheDocument()
     })
 })

@@ -5,7 +5,11 @@ import { Avatar } from "./avatar"
 
 describe("Avatar", () => {
     it("should render", async () => {
-        render(<Avatar fallback="J" />)
-        expect(screen.getByText("Avatar")).toBeInTheDocument()
+        const props = {
+            src: "https://avatars.githubusercontent.com/u/10656202?v=4",
+            fallback: "test",
+        };
+        render(<Avatar {...props} />)
+        expect(screen.getByText("test")).toBeInTheDocument()
     })
 })

@@ -7,7 +7,7 @@ import { Button } from "../button"
 describe("Drawer", () => {
     it("renders a drawer", () => {
         render(
-            <Drawer>
+            <Drawer data-testid="drawer">
                 <Drawer.Trigger asChild>
                     <Button>Edit Variant</Button>
                 </Drawer.Trigger>
@@ -26,6 +26,6 @@ describe("Drawer", () => {
             </Drawer>
         )
 
-        expect(screen.getByRole("drawer")).toBeInTheDocument()
+        expect(screen.getByTestId("drawer")).toBeInTheDocument()
     })
 })

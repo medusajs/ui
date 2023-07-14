@@ -5,8 +5,8 @@ import { Container } from "./container"
 
 describe("Container", () => {
     it("renders a container", () => {
-        render(<Container />)
+        render(<Container data-testid="container" />)
 
-        expect(screen.getByRole("container")).toBeInTheDocument()
+        expect(screen.getByTestId("container")).toBeInTheDocument()
     })
 })
