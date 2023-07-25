@@ -190,6 +190,7 @@ export const colors = {
     "--button-neutral-hover-gradient-to": "rgba(3, 7, 18, 1)",
     "--bg-toggle-off-hover": "rgba(229, 231, 235, 1)",
     "--bg-toggle-off-hover-gradient-from": "rgba(3, 7, 18, 0)",
-    "--bg-toggle-off-hover-gradient-to": "rgba(3, 7, 18, 1)"
+    "--bg-toggle-off-hover-gradient-to": "rgba(3, 7, 18, 1)",
+    "--bg-highlight-hover": "rgba(219, 234, 254, 1)"
   }
 }

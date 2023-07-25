@@ -163,7 +163,10 @@ export const theme = {
         },
         "bg": {
           "highlight": {
-            "DEFAULT": "var(--bg-highlight)"
+            "DEFAULT": "var(--bg-highlight)",
+            "hover": {
+              "DEFAULT": "var(--bg-highlight-hover)"
+            }
           },
           "base": {
             "hover": {
