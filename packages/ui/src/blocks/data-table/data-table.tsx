@@ -30,8 +30,8 @@ type RowAction<TData> = {
 interface DataTableProps<TData> extends React.HTMLAttributes<HTMLDivElement> {
   title: string
   columns: ColumnDef<TData>[]
-  isSelectable?: boolean
   data?: TData[]
+  isSelectable?: boolean
   rowActions?: RowAction<TData>[]
 }
 
@@ -39,8 +39,8 @@ const DataTable = <TData,>({
   title,
   columns,
   data,
-  rowActions,
   isSelectable = false,
+  rowActions,
   className,
   ...props
 }: DataTableProps<TData>) => {
