@@ -10,7 +10,8 @@ module.exports = {
     "react/no-children-prop": "off",
     "react-hooks/exhaustive-deps": "warn",
     "react/prop-types": "off",
-    "typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
   },
   settings: {
     react: {
@@ -19,9 +20,4 @@ module.exports = {
   },
   parser: "@typescript-eslint/parser",
   plugins: ["@typescript-eslint"],
-  // parserOptions: {
-  //   babelOptions: {
-  //     presets: [require.resolve("next/babel")],
-  //   },
-  // },
 }
