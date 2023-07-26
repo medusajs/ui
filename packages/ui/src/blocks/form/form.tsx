@@ -66,7 +66,7 @@ const useFormField = () => {
     name: fieldContext.name,
     formItemId: `${id}-form-item`,
     formDescriptionId: `${id}-form-item-description`,
-    formMessageId: `${id}-form-item-message`,
+    formErrorMessageId: `${id}-form-item-message`,
     ...fieldState,
   }
 }
@@ -93,12 +93,12 @@ const Label = React.forwardRef<
   React.ElementRef<typeof LabelPrimitives.Root>,
   React.ComponentPropsWithoutRef<typeof LabelPrimitives.Root>
 >(({ className, ...props }, ref) => {
-  const { error, formItemId } = useFormField()
+  const { formItemId } = useFormField()
 
   return (
     <LabelComponent
       ref={ref}
-      className={clx(error && "text-destructive", className)}
+      className={clx(className)}
       htmlFor={formItemId}
       {...props}
     />
@@ -110,7 +110,8 @@ const Control = React.forwardRef<
   React.ElementRef<typeof Slot>,
   React.ComponentPropsWithoutRef<typeof Slot>
 >(({ ...props }, ref) => {
-  const { error, formItemId, formDescriptionId, formMessageId } = useFormField()
+  const { error, formItemId, formDescriptionId, formErrorMessageId } =
+    useFormField()
 
   return (
     <Slot
@@ -119,7 +120,7 @@ const Control = React.forwardRef<
       aria-describedby={
         !error
           ? `${formDescriptionId}`
-          : `${formDescriptionId} ${formMessageId}`
+          : `${formDescriptionId} ${formErrorMessageId}`
       }
       aria-invalid={!!error}
       {...props}
@@ -149,22 +150,22 @@ const ErrorMessage = React.forwardRef<
   HTMLParagraphElement,
   React.HTMLAttributes<HTMLParagraphElement>
 >(({ className, children, ...props }, ref) => {
-  const { error, formMessageId } = useFormField()
-  const body = error ? String(error?.message) : children
+  const { error, formErrorMessageId } = useFormField()
+  const msg = error ? String(error?.message) : children
 
-  if (!body) {
+  if (!msg) {
     return null
   }
 
   return (
     <HintComponent
       ref={ref}
-      id={formMessageId}
+      id={formErrorMessageId}
       className={className}
       variant={error ? "error" : "info"}
       {...props}
     >
-      {body}
+      {msg}
     </HintComponent>
   )
 })
