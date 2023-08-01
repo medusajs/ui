@@ -2,19 +2,15 @@ import type { Meta, StoryObj } from "@storybook/react"
 import * as React from "react"
 
 import { Select, SelectItem, useSelectContext } from "./select"
-import { Badge } from "../badge"
-import { Input } from "../input"
 import {
-  ChevronDoubleRightMiniSolid,
   ChevronDownMini,
-  MagnifyingGlassMini,
 } from "@medusajs/icons"
 import { Button } from "../button"
 import { clx } from "@/utils/clx"
 import { Label } from "../label"
 
 const meta: Meta<typeof Select> = {
-  title: "Components/SelectDropdown",
+  title: "Components/Select",
   component: Select,
   parameters: {
     layout: "centered",
