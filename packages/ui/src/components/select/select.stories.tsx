@@ -2,9 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react"
 import * as React from "react"
 
 import { Select, SelectItem, useSelectContext } from "./select"
-import {
-  ChevronDownMini,
-} from "@medusajs/icons"
+import { ChevronDownMini } from "@medusajs/icons"
 import { Button } from "../button"
 import { clx } from "@/utils/clx"
 import { Label } from "../label"
@@ -262,6 +260,50 @@ export const MultiSelectAll: Story = {
         </Select.Trigger>
         <Select.Content>
           <Select.SelectAll />
+          <Select.Separator />
+          {currencies.map((item) => (
+            <Select.Item key={item.value} item={item}>
+              {item.label}
+            </Select.Item>
+          ))}
+        </Select.Content>
+      </Select>
+    </div>
+  ),
+}
+
+export const SingleSearchableInMenu: Story = {
+  render: () => (
+    <div className="w-[256px]">
+      <Select items={currencies} onChange={onChange}>
+        <Select.Trigger>
+          <Select.Value placeholder="Select a currency ..." />
+          <Select.TriggerIcon />
+        </Select.Trigger>
+        <Select.Content>
+          <Select.Search onChange={(e) => console.log(e.target.value)} />
+          <Select.Separator />
+          {currencies.map((item) => (
+            <Select.Item key={item.value} item={item}>
+              {item.label}
+            </Select.Item>
+          ))}
+        </Select.Content>
+      </Select>
+    </div>
+  ),
+}
+
+export const MultiSearchableInMenu: Story = {
+  render: () => (
+    <div className="w-[256px]">
+      <Select items={currencies} multi={true} onChange={onChange}>
+        <Select.Trigger>
+          <Select.Value placeholder="Select currencies ..." />
+          <Select.TriggerIcon />
+        </Select.Trigger>
+        <Select.Content>
+          <Select.Search onChange={(e) => console.log(e.target.value)} />
           <Select.Separator />
           {currencies.map((item) => (
             <Select.Item key={item.value} item={item}>

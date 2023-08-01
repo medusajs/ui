@@ -240,7 +240,7 @@ const Value = ({ children, placeholder = "", value }: ValueProps) => {
     isOpen,
   } = useSelectContext()
 
-  if (search && isOpen) return <Search />
+  if (search && isOpen) return <SearchInput />
 
   // If children are a complex element, render them directly
   if (children && typeof children !== "string") return <div>{children}</div>
@@ -397,6 +397,28 @@ const SelectAll = ({
 }
 SelectAll.displayName = "Select.SelectAll"
 
+const SearchInput = React.forwardRef<
+  HTMLInputElement,
+  React.ComponentPropsWithoutRef<"input">
+>(({ className, ...props }, ref) => (
+  <input
+    ref={ref}
+    className={clx(
+      "caret-ui-fg-base text-regular text-ui-fg-base bg-transparent focus:outline-none",
+      className
+    )}
+    placeholder="Find something"
+    // Stop this else downshift focuses first matching element, for a11y
+    onKeyDown={(e) => e.stopPropagation()}
+    // Prevented else Radix closes the menu when this gains focus
+    onFocus={(e) => e.stopPropagation()}
+    autoFocus={true}
+    {...props}
+  />
+))
+
+SearchInput.displayName = "Select.SearchInput"
+
 interface InputProps extends React.ComponentPropsWithoutRef<"input"> {
   icon?: React.ReactNode
 }
@@ -404,18 +426,12 @@ interface InputProps extends React.ComponentPropsWithoutRef<"input"> {
 const Search = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, icon, ...props }, ref) => {
     return (
-      <input
-        ref={ref}
-        className={clx(
-          "caret-ui-fg-base text-regular text-ui-fg-base bg-transparent focus:outline-none",
-          className
-        )}
-        placeholder="Find something"
-        // Prevented else Radix closes the menu when this gains focus
-        onFocus={(e) => e.stopPropagation()}
-        autoFocus={true}
-        {...props}
-      />
+      <div className="text-regular relative flex items-center px-3 py-2 pl-10">
+        <div className="text-ui-fg-muted absolute left-3 flex h-5 w-5 items-center justify-center">
+          {icon ? icon : <MagnifyingGlassMini />}
+        </div>
+        <SearchInput {...props} ref={ref} />
+      </div>
     )
   }
 )
