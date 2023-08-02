@@ -315,3 +315,109 @@ export const MultiSearchableInMenu: Story = {
     </div>
   ),
 }
+
+const PaginatedSelect = () => {
+  const [selected, setSelected] = React.useState<SelectItem[]>([])
+  const [cursor, setCursor] = React.useState(0)
+  const pageSize = 5
+
+  const items = [
+    {
+      value: 1,
+      label: "One",
+    },
+    {
+      value: 2,
+      label: "Two",
+    },
+    {
+      value: 3,
+      label: "Three",
+    },
+    {
+      value: 4,
+      label: "Four",
+    },
+    {
+      value: 5,
+      label: "Five",
+    },
+    {
+      value: 6,
+      label: "Six",
+    },
+    {
+      value: 7,
+      label: "Seven",
+    },
+    {
+      value: 8,
+      label: "Eight",
+    },
+    {
+      value: 9,
+      label: "Nine",
+    },
+    {
+      value: 10,
+      label: "Ten",
+    },
+    {
+      value: 11,
+      label: "Eleven",
+    },
+  ]
+
+  const onSelect = (values: any) => {
+    setSelected(values)
+  }
+
+  return (
+    <div>
+      <div className="mb-5 text-sm">
+        Selected: {selected.map((item) => `${item.value} `)}
+      </div>
+      <div className="w-[256px]">
+        <Select items={items} multi={true} onChange={onSelect}>
+          <Select.Trigger>
+            <Select.Value placeholder="Select some numbers" />
+            <Select.TriggerIcon />
+          </Select.Trigger>
+          <Select.Content>
+            {items.slice(cursor, cursor + pageSize).map((item) => (
+              <Select.Item key={item.value} item={item}>
+                {item.label}
+              </Select.Item>
+            ))}
+            <Select.Separator />
+            <div className="flex justify-between p-2">
+              <Button
+                size="sm"
+                variant="secondary"
+                onClick={() => setCursor((cursor) => cursor - pageSize)}
+                disabled={cursor === 0}
+              >
+                Prev
+              </Button>
+              <Label className="text-ui-fg-muted">
+                {cursor / pageSize + 1} of {Math.ceil(items.length / pageSize)}
+              </Label>
+              <Button
+                size="sm"
+                variant="secondary"
+                onClick={() => setCursor((cursor) => cursor + pageSize)}
+                disabled={items.length - pageSize < cursor}
+              >
+                Next
+              </Button>
+            </div>
+          </Select.Content>
+        </Select>
+      </div>
+    </div>
+  )
+}
+
+export const Pagination: Story = {
+  render: PaginatedSelect,
+}

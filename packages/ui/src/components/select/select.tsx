@@ -36,11 +36,16 @@ export type SelectItem = {
   [k: string]: any
 }
 
+interface OnSelectChange {
+  (value: SelectItem): void
+  (value: SelectItem[]): void
+}
+
 export type SelectProps = {
   items: SelectItem[]
   multi?: boolean
   search?: boolean
-  onChange: (value: SelectItem | SelectItem[]) => void
+  onChange: OnSelectChange
 } & React.ComponentPropsWithoutRef<typeof DropdownMenu>
 
 export const SelectContext = React.createContext<SelectState<SelectItem>>({
@@ -106,7 +111,9 @@ const Root = ({
   }: UseComboboxStateChange<SelectItem>) => {
     if (!selectedItem) return
 
-    const index = selectedItems.indexOf(selectedItem as any)
+    const index = selectedItems.findIndex(
+      (existingItem) => existingItem.value === selectedItem.value
+    )
 
     if (index > 0) {
       setSelectedItems([
@@ -283,13 +290,13 @@ const Content = ({
   return (
     <DropdownMenu.Content
       className={clx(
-        "bg-ui-bg-base shadow-elevation-flyout relative z-50 w-full min-w-[8rem] overflow-hidden rounded-lg",
+        "bg-ui-bg-base shadow-elevation-flyout relative z-50 w-full min-w-[8rem] overflow-auto rounded-lg",
         "data-[state=open]:animate-in data-[state=open]:fade-in-0",
         "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
         {
           "data-[side=bottom]:translate-y-2 data-[side=left]:-translate-x-2 data-[side=right]:translate-x-2 data-[side=top]:-translate-y-2":
             position === "popper",
-          "w-full min-w-[var(--radix-dropdown-menu-trigger-width)]":
+          "max-h-[calc(var(--radix-dropdown-menu-content-available-height)-50px)] w-full min-w-[var(--radix-dropdown-menu-trigger-width)]":
             position === "popper",
         },
         className
@@ -312,7 +319,12 @@ const Item = React.forwardRef<
 >(({ className, children, item, ...props }, ref) => {
   const { getItemProps, selectedItem, selectItem, multi, selectedItems } =
     useSelectContext()
-  const isSelected = selectedItem === item || selectedItems?.includes(item)
+  const isSelected =
+    selectedItem?.value === item.value ||
+    !!selectedItems?.find((selectedItem) => selectedItem.value === item.value)
+
+  if (item.value === 1) console.log({ isSelected })
+
   return (
     <DropdownMenu.Item
       className={clx(
