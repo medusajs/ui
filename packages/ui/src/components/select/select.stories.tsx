@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react"
 import * as React from "react"
 
 import { Select, SelectItem, useSelectContext } from "./select"
-import { ChevronDownMini } from "@medusajs/icons"
+import { ChevronDownMini, Spinner } from "@medusajs/icons"
 import { Button } from "../button"
 import { clx } from "@/utils/clx"
 import { Label } from "../label"
@@ -47,6 +47,97 @@ const currencies = [
 const regions = [
   { value: "na", label: "NA" },
   { value: "eu", label: "EU" },
+]
+
+const manyItems = [
+  {
+    value: 1,
+    label: "One",
+  },
+  {
+    value: 2,
+    label: "Two",
+  },
+  {
+    value: 3,
+    label: "Three",
+  },
+  {
+    value: 4,
+    label: "Four",
+  },
+  {
+    value: 5,
+    label: "Five",
+  },
+  {
+    value: 6,
+    label: "Six",
+  },
+  {
+    value: 7,
+    label: "Seven",
+  },
+  {
+    value: 8,
+    label: "Eight",
+  },
+  {
+    value: 9,
+    label: "Nine",
+  },
+  {
+    value: 10,
+    label: "Ten",
+  },
+  {
+    value: 11,
+    label: "Eleven",
+  },
+  {
+    value: 12,
+    label: "Twelve",
+  },
+  {
+    value: 13,
+    label: "Thirteen",
+  },
+  {
+    value: 14,
+    label: "Fourteen",
+  },
+  {
+    value: 15,
+    label: "Fifteen",
+  },
+  {
+    value: 16,
+    label: "Sixteen",
+  },
+  {
+    value: 17,
+    label: "Seventeen",
+  },
+  {
+    value: 18,
+    label: "Eighteen",
+  },
+  {
+    value: 19,
+    label: "Nineteen",
+  },
+  {
+    value: 20,
+    label: "Twenty",
+  },
+  {
+    value: 21,
+    label: "Twenty One",
+  },
+  {
+    value: 22,
+    label: "Twenty Two",
+  },
 ]
 
 const CustomIcon = () => {
@@ -277,53 +368,6 @@ const PaginatedSelect = () => {
   const [cursor, setCursor] = React.useState(0)
   const pageSize = 5
 
-  const items = [
-    {
-      value: 1,
-      label: "One",
-    },
-    {
-      value: 2,
-      label: "Two",
-    },
-    {
-      value: 3,
-      label: "Three",
-    },
-    {
-      value: 4,
-      label: "Four",
-    },
-    {
-      value: 5,
-      label: "Five",
-    },
-    {
-      value: 6,
-      label: "Six",
-    },
-    {
-      value: 7,
-      label: "Seven",
-    },
-    {
-      value: 8,
-      label: "Eight",
-    },
-    {
-      value: 9,
-      label: "Nine",
-    },
-    {
-      value: 10,
-      label: "Ten",
-    },
-    {
-      value: 11,
-      label: "Eleven",
-    },
-  ]
-
   const onSelect = (values: any) => {
     setSelected(values)
   }
@@ -340,7 +384,7 @@ const PaginatedSelect = () => {
             <Select.TriggerIcon />
           </Select.Trigger>
           <Select.Content>
-            {items.slice(cursor, cursor + pageSize).map((item) => (
+            {manyItems.slice(cursor, cursor + pageSize).map((item) => (
               <Select.Item key={item.value} item={item}>
                 {item.label}
               </Select.Item>
@@ -356,13 +400,14 @@ const PaginatedSelect = () => {
                 Prev
               </Button>
               <Label className="text-ui-fg-muted">
-                {cursor / pageSize + 1} of {Math.ceil(items.length / pageSize)}
+                {cursor / pageSize + 1} of{" "}
+                {Math.ceil(manyItems.length / pageSize)}
               </Label>
               <Button
                 size="sm"
                 variant="secondary"
                 onClick={() => setCursor((cursor) => cursor + pageSize)}
-                disabled={items.length - pageSize < cursor}
+                disabled={manyItems.length - pageSize < cursor}
               >
                 Next
               </Button>
@@ -427,4 +472,38 @@ const SearchAndCreateSelect = () => {
 
 export const SearchAndCreate: Story = {
   render: SearchAndCreateSelect,
+}
+
+const ScrollPaginatedSelect = () => {
+  const [cursor, setCursor] = React.useState(0)
+  const pageSize = 10
+  const loadedItems = manyItems.slice(0, cursor + pageSize)
+
+  const handleScroll = () => {
+    if (loadedItems.length < manyItems.length) {
+      setCursor((cursor) => cursor + 5)
+    }
+  }
+
+  return (
+    <div className="w-[256px]">
+      <Select onChange={onChange} onScrollToBottom={handleScroll}>
+        <Select.Trigger>
+          <Select.Value placeholder="Select a number..." />
+          <Select.TriggerIcon />
+        </Select.Trigger>
+        <Select.Content>
+          {loadedItems.map((item) => (
+            <Select.Item key={item.value} item={item}>
+              {item.label}
+            </Select.Item>
+          ))}
+        </Select.Content>
+      </Select>
+    </div>
+  )
+}
+
+export const PaginationViaScroll: Story = {
+  render: ScrollPaginatedSelect,
 }

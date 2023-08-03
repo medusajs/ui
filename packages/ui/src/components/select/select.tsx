@@ -20,6 +20,9 @@ import { clx } from "@/utils/clx"
 import { Badge } from "../badge"
 import { labelVariants } from "../label"
 
+const ALLOWED_SEARCH_KEYDOWN_CODES = ["Enter", "Escape", "ArrowUp", "ArrowDown"]
+const SCROLL_TOLERANCE = 30
+
 type SelectState<T> =
   | ({
       multi: boolean
@@ -207,9 +210,9 @@ const Trigger = React.forwardRef<
 >(({ className, children, size = "regular", disabled, ...props }, ref) => {
   const { getToggleButtonProps, selectedItem, search } = useSelectContext()
 
-  const { ref: toggleButtonRef, ...toggleButtonProps } = getToggleButtonProps()
-
-  React.useImperativeHandle(ref, () => toggleButtonRef.current)
+  const { ref: toggleButtonRef, ...toggleButtonProps } = getToggleButtonProps({
+    ref,
+  })
 
   return (
     <DropdownMenu.Trigger
@@ -316,15 +319,39 @@ const Content = React.forwardRef<
   React.ElementRef<typeof DropdownMenu.Content>,
   React.ComponentPropsWithoutRef<typeof DropdownMenu.Content>
 >(({ children, className, ...props }, ref) => {
-  const { getMenuProps } = useSelectContext()
+  const innerRef = React.useRef<HTMLDivElement | null>(null)
 
-  const { ref: menuRef, ...menuProps } = getMenuProps()
+  React.useImperativeHandle<HTMLDivElement | null, HTMLDivElement | null>(
+    ref,
+    () => innerRef.current
+  )
 
-  React.useImperativeHandle(ref, () => menuRef.current)
+  const { getMenuProps, onScrollToBottom } = useSelectContext()
+
+  const { ref: menuRef, ...menuProps } = getMenuProps({ ref: innerRef })
+
+  const handleScroll = React.useCallback(() => {
+    if (innerRef.current) {
+      const div = innerRef.current
+      if (
+        div.scrollHeight - div.scrollTop <=
+        div.clientHeight + SCROLL_TOLERANCE
+      ) {
+        onScrollToBottom()
+      }
+    }
+  }, [])
+
+  React.useEffect(() => {
+    if (innerRef.current) {
+      innerRef.current.addEventListener("scroll", handleScroll)
+    }
+    return () => innerRef.current?.removeEventListener("scroll", handleScroll)
+  }, [innerRef.current, handleScroll])
 
   return (
     <DropdownMenu.Content
-      ref={menuRef}
+      ref={innerRef}
       className={clx(
         "bg-ui-bg-base shadow-elevation-flyout relative z-50 w-full min-w-[8rem] overflow-auto rounded-lg",
         "data-[state=open]:animate-in data-[state=open]:fade-in-0",
@@ -359,9 +386,7 @@ const Item = React.forwardRef<
     removeItem,
   } = useSelectContext()
 
-  const { ref: itemRef, ...itemProps } = getItemProps({ item })
-
-  React.useImperativeHandle(ref, () => itemRef.current)
+  const { ref: itemRef, ...itemProps } = getItemProps({ item, ref })
 
   React.useEffect(() => {
     addItem(item)
@@ -460,23 +485,40 @@ SelectAll.displayName = "Select.SelectAll"
 const SearchInput = React.forwardRef<
   HTMLInputElement,
   React.ComponentPropsWithoutRef<"input">
->(({ className, ...props }, ref) => (
-  <input
-    ref={ref}
-    className={clx(
-      "caret-ui-fg-base text-regular text-ui-fg-base bg-transparent focus:outline-none",
-      className
-    )}
-    placeholder="Find something"
-    // Stop this else downshift focuses first matching element, for a11y
-    // TODO Propagate for arrow keys
-    onKeyDown={(e) => e.stopPropagation()}
-    // Prevented else Radix closes the menu when this gains focus
-    onFocus={(e) => e.stopPropagation()}
-    autoFocus={true}
-    {...props}
-  />
-))
+>(({ className, ...props }, ref) => {
+  const innerRef = React.useRef<HTMLInputElement>(null)
+
+  React.useImperativeHandle<HTMLInputElement | null, HTMLInputElement | null>(
+    ref,
+    () => innerRef.current
+  )
+
+  return (
+    <input
+      ref={innerRef}
+      className={clx(
+        "caret-ui-fg-base text-regular text-ui-fg-base bg-transparent focus:outline-none",
+        className
+      )}
+      placeholder="Find something"
+      // Stop this else downshift focuses first matching element, for a11y
+      onKeyDown={(e) => {
+        if (!ALLOWED_SEARCH_KEYDOWN_CODES.includes(e.code)) {
+          e.stopPropagation()
+        }
+        if (
+          (e.code === "ArrowDown" || e.code === "ArrowUp") &&
+          innerRef?.current
+        )
+          innerRef.current.blur()
+      }}
+      // Prevented else Radix closes the menu when this gains focus
+      onFocus={(e) => e.stopPropagation()}
+      autoFocus={true}
+      {...props}
+    />
+  )
+})
 
 SearchInput.displayName = "Select.SearchInput"
 
