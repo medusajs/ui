@@ -1,15 +1,4 @@
 import * as React from "react"
-import { DropdownMenu } from "@/components/dropdown-menu"
-
-import { clx } from "@/utils/clx"
-import {
-  CheckMini,
-  ChevronUpDown,
-  EllipseMiniSolid,
-  MagnifyingGlassMini,
-  XMarkMini,
-} from "@medusajs/icons"
-
 import {
   UseComboboxProps,
   UseComboboxReturnValue,
@@ -18,17 +7,33 @@ import {
   UseComboboxStateChangeOptions,
   useCombobox,
 } from "downshift"
+import { isEqual } from "lodash"
+import {
+  CheckMini,
+  ChevronUpDown,
+  EllipseMiniSolid,
+  MagnifyingGlassMini,
+  XMarkMini,
+} from "@medusajs/icons"
+import { DropdownMenu } from "@/components/dropdown-menu"
+import { clx } from "@/utils/clx"
 import { Badge } from "../badge"
 import { labelVariants } from "../label"
 
-type SelectState<T> = {
-  multi: boolean
-  selectedItems?: SelectItem[]
-  clearSelectedItems: () => void
-  selectAll: () => void
-  allSelected: boolean
-  search: boolean
-} & Partial<UseComboboxReturnValue<T>>
+type SelectState<T> =
+  | ({
+      multi: boolean
+      selectedItems?: SelectItem[]
+      clearSelectedItems: () => void
+      selectAll: () => void
+      allSelected: boolean
+      search: boolean
+      onSearch: (searchTerm: string) => void
+      addItem: (item: SelectItem) => void
+      removeItem: (item: SelectItem) => void
+      onScrollToBottom: () => void
+    } & UseComboboxReturnValue<T>)
+  | null
 
 export type SelectItem = {
   value: any
@@ -42,19 +47,14 @@ interface OnSelectChange {
 }
 
 export type SelectProps = {
-  items: SelectItem[]
   multi?: boolean
   search?: boolean
   onChange: OnSelectChange
+  onSearch?: (searchTerm: string) => void
+  onScrollToBottom?: () => void
 } & React.ComponentPropsWithoutRef<typeof DropdownMenu>
 
-export const SelectContext = React.createContext<SelectState<SelectItem>>({
-  multi: false,
-  clearSelectedItems: () => {},
-  selectAll: () => {},
-  allSelected: false,
-  search: false,
-})
+export const SelectContext = React.createContext<SelectState<SelectItem>>(null)
 
 export const useSelectContext = () => {
   const context = React.useContext(SelectContext)
@@ -86,19 +86,33 @@ const multiStateReducer = (
 
 const Root = ({
   children,
-  items,
   multi = false,
   onChange,
   search = false,
+  onSearch = () => {},
+  onScrollToBottom = () => {},
   ...props
 }: SelectProps) => {
+  // All items. Inferred internally from Item
+  const [items, setItems] = React.useState<SelectItem[]>([])
+  // Selected items, used for multiselects
   const [selectedItems, setSelectedItems] = React.useState<SelectItem[]>([])
+  // Simple inferred state if all items are selected, used for SelectAll display logic
   const allSelected = selectedItems.length === items.length
 
+  // Helpers for inferring all items for select
+  const addItem = (item: SelectItem) => setItems((items) => [...items, item])
+  const removeItem = (item: SelectItem) =>
+    setItems((items) =>
+      items.filter((existingItem) => !isEqual(existingItem, item))
+    )
+
+  // onChange trigger for multiselect contexts
   React.useEffect(() => {
     if (multi) onChange(selectedItems)
   }, [selectedItems, onChange, multi])
 
+  // Simple props for combobox hook
   const selectProps: UseComboboxProps<SelectItem> = {
     items,
     onSelectedItemChange: ({ selectedItem }) => {
@@ -106,6 +120,28 @@ const Root = ({
     },
   }
 
+  // Quick way to clear all multi-selected items. Used in trigger and by SelectAll
+  const clearSelectedItems = () => {
+    setSelectedItems([])
+  }
+
+  // action for SelectALl component or other custom impl.
+  const selectAll = allSelected
+    ? () => {
+        clearSelectedItems()
+      }
+    : () => {
+        setSelectedItems(items)
+      }
+
+  // Listener for when downshift's dropdown open state changes
+  const onOpenChange = (open: boolean) => {
+    // If the menu is closing, trigger a search clear.
+    // The input clears on unmount, but any external filtering logic won't know that it should likely unfilter
+    if (!open) onSearch("")
+  }
+
+  // Custom action when an item is selected in a multiselect context
   const onMultiSelectedItemChange = ({
     selectedItem,
   }: UseComboboxStateChange<SelectItem>) => {
@@ -127,18 +163,7 @@ const Root = ({
     }
   }
 
-  const clearSelectedItems = () => {
-    setSelectedItems([])
-  }
-
-  const selectAll = allSelected
-    ? () => {
-        clearSelectedItems()
-      }
-    : () => {
-        setSelectedItems(items)
-      }
-
+  // Change props for combobox hook if in multi context
   if (multi) {
     selectProps.stateReducer = multiStateReducer
     selectProps.selectedItem = null
@@ -148,7 +173,7 @@ const Root = ({
   const selectReturn = useCombobox(selectProps)
 
   return (
-    <DropdownMenu {...props} modal={false}>
+    <DropdownMenu {...props} modal={false} onOpenChange={onOpenChange}>
       <SelectContext.Provider
         value={{
           multi,
@@ -157,6 +182,10 @@ const Root = ({
           selectAll,
           allSelected,
           search,
+          onSearch,
+          addItem,
+          removeItem,
+          onScrollToBottom,
           ...selectReturn,
         }}
       >
@@ -178,8 +207,13 @@ const Trigger = React.forwardRef<
 >(({ className, children, size = "regular", disabled, ...props }, ref) => {
   const { getToggleButtonProps, selectedItem, search } = useSelectContext()
 
+  const { ref: toggleButtonRef, ...toggleButtonProps } = getToggleButtonProps()
+
+  React.useImperativeHandle(ref, () => toggleButtonRef.current)
+
   return (
     <DropdownMenu.Trigger
+      ref={toggleButtonRef}
       asChild
       className={clx(
         "bg-ui-bg-subtle border-ui-border-loud-muted text-ui-fg-base shadow-buttons-secondary text-regular group/trigger relative z-10 flex h-10 w-full cursor-pointer items-center rounded-md border px-3 py-[9px] transition-all",
@@ -198,7 +232,7 @@ const Trigger = React.forwardRef<
       data-placeholder={!selectedItem}
       disabled={disabled}
       {...props}
-      {...(getToggleButtonProps ? getToggleButtonProps() : {})}
+      {...toggleButtonProps}
     >
       <div>
         {search && (
@@ -245,9 +279,11 @@ const Value = ({ children, placeholder = "", value }: ValueProps) => {
     clearSelectedItems,
     search,
     isOpen,
+    onSearch,
   } = useSelectContext()
 
-  if (search && isOpen) return <SearchInput />
+  if (search && isOpen)
+    return <SearchInput onChange={(e) => onSearch(e.target.value)} />
 
   // If children are a complex element, render them directly
   if (children && typeof children !== "string") return <div>{children}</div>
@@ -276,38 +312,34 @@ const Value = ({ children, placeholder = "", value }: ValueProps) => {
   return <div>{selectedItem!.label}</div>
 }
 
-const Content = ({
-  children,
-  className,
-  position = "popper",
-  ...props
-}: {
-  children: any
-  position?: string
-  className?: string
-}) => {
+const Content = React.forwardRef<
+  React.ElementRef<typeof DropdownMenu.Content>,
+  React.ComponentPropsWithoutRef<typeof DropdownMenu.Content>
+>(({ children, className, ...props }, ref) => {
   const { getMenuProps } = useSelectContext()
+
+  const { ref: menuRef, ...menuProps } = getMenuProps()
+
+  React.useImperativeHandle(ref, () => menuRef.current)
+
   return (
     <DropdownMenu.Content
+      ref={menuRef}
       className={clx(
         "bg-ui-bg-base shadow-elevation-flyout relative z-50 w-full min-w-[8rem] overflow-auto rounded-lg",
         "data-[state=open]:animate-in data-[state=open]:fade-in-0",
         "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
-        {
-          "data-[side=bottom]:translate-y-2 data-[side=left]:-translate-x-2 data-[side=right]:translate-x-2 data-[side=top]:-translate-y-2":
-            position === "popper",
-          "max-h-[calc(var(--radix-dropdown-menu-content-available-height)-50px)] w-full min-w-[var(--radix-dropdown-menu-trigger-width)]":
-            position === "popper",
-        },
+        "data-[side=bottom]:translate-y-2 data-[side=left]:-translate-x-2 data-[side=right]:translate-x-2 data-[side=top]:-translate-y-2",
+        "max-h-[calc(var(--radix-dropdown-menu-content-available-height)-50px)] w-full min-w-[var(--radix-dropdown-menu-trigger-width)]",
         className
       )}
       {...props}
-      {...(getMenuProps ? getMenuProps() : {})}
+      {...menuProps}
     >
       {children}
     </DropdownMenu.Content>
   )
-}
+})
 
 type ItemProps = { item: SelectItem } & React.ComponentPropsWithoutRef<
   typeof DropdownMenu.Item
@@ -317,16 +349,32 @@ const Item = React.forwardRef<
   React.ElementRef<typeof DropdownMenu.Item>,
   ItemProps
 >(({ className, children, item, ...props }, ref) => {
-  const { getItemProps, selectedItem, selectItem, multi, selectedItems } =
-    useSelectContext()
+  const {
+    getItemProps,
+    selectedItem,
+    selectItem,
+    multi,
+    selectedItems,
+    addItem,
+    removeItem,
+  } = useSelectContext()
+
+  const { ref: itemRef, ...itemProps } = getItemProps({ item })
+
+  React.useImperativeHandle(ref, () => itemRef.current)
+
+  React.useEffect(() => {
+    addItem(item)
+    return () => removeItem(item)
+  }, [item])
+
   const isSelected =
     selectedItem?.value === item.value ||
     !!selectedItems?.find((selectedItem) => selectedItem.value === item.value)
 
-  if (item.value === 1) console.log({ isSelected })
-
   return (
     <DropdownMenu.Item
+      ref={itemRef}
       className={clx(
         "relative flex w-full cursor-default select-none items-center rounded-md py-2 pl-10 pr-3 text-sm",
         "hover:bg-ui-bg-base-hover",
@@ -336,11 +384,11 @@ const Item = React.forwardRef<
         className
       )}
       {...props}
-      {...(getItemProps ? getItemProps({ item }) : {})}
+      {...itemProps}
       onClick={(e) => {
         if (multi) e.preventDefault()
         if (selectItem) selectItem(item)
-        getItemProps!({ item }).onClick!(e)
+        if (itemProps.onClick) itemProps.onClick(e)
       }}
       // These need to be prevented else Radix triggers focus on the item, which blurs the search input
       onPointerMove={(e) => e.preventDefault()}
@@ -421,6 +469,7 @@ const SearchInput = React.forwardRef<
     )}
     placeholder="Find something"
     // Stop this else downshift focuses first matching element, for a11y
+    // TODO Propagate for arrow keys
     onKeyDown={(e) => e.stopPropagation()}
     // Prevented else Radix closes the menu when this gains focus
     onFocus={(e) => e.stopPropagation()}
@@ -473,7 +522,6 @@ const Select = Object.assign(Root, {
   Item,
   Separator,
   SelectAll,
-  Search,
   Label,
 })
 

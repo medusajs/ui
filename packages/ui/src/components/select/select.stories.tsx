@@ -62,7 +62,7 @@ const CustomIcon = () => {
 export const Default: Story = {
   render: () => (
     <div className="w-[256px]">
-      <Select items={currencies} onChange={onChange}>
+      <Select onChange={onChange}>
         <Select.Trigger>
           <Select.Value placeholder="Select a currency ..." />
           <Select.TriggerIcon />
@@ -82,7 +82,7 @@ export const Default: Story = {
 export const Small: Story = {
   render: () => (
     <div className="w-[256px]">
-      <Select items={currencies} onChange={onChange}>
+      <Select onChange={onChange}>
         <Select.Trigger size="small">
           <Select.Value placeholder="Select a currency ..." />
           <Select.TriggerIcon />
@@ -102,7 +102,7 @@ export const Small: Story = {
 export const Disabled: Story = {
   render: () => (
     <div className="w-[256px]">
-      <Select items={currencies} onChange={onChange}>
+      <Select onChange={onChange}>
         <Select.Trigger disabled={true}>
           <Select.Value placeholder="Select a currency ..." />
           <Select.TriggerIcon />
@@ -122,7 +122,7 @@ export const Disabled: Story = {
 export const CustomTriggerIconAnimated: Story = {
   render: () => (
     <div className="w-[256px]">
-      <Select items={currencies} onChange={onChange}>
+      <Select onChange={onChange}>
         <Select.Trigger>
           <Select.Value placeholder="Select a currency ..." />
           <Select.TriggerIcon>
@@ -144,7 +144,7 @@ export const CustomTriggerIconAnimated: Story = {
 export const SuffixedItems: Story = {
   render: () => (
     <div className="w-[256px]">
-      <Select items={currencies} onChange={onChange}>
+      <Select onChange={onChange}>
         <Select.Trigger>
           <Select.Value placeholder="Select a currency ..." />
           <Select.TriggerIcon />
@@ -165,7 +165,7 @@ export const SuffixedItems: Story = {
 export const GroupedItems: Story = {
   render: () => (
     <div className="w-[256px]">
-      <Select items={[...currencies, ...regions]} onChange={onChange}>
+      <Select onChange={onChange}>
         <Select.Trigger>
           <Select.Value placeholder="Select a currency ..." />
           <Select.TriggerIcon />
@@ -193,7 +193,7 @@ export const GroupedItems: Story = {
 export const SingleSearchable: Story = {
   render: () => (
     <div className="w-[256px]">
-      <Select items={currencies} onChange={onChange} search>
+      <Select onChange={onChange} search>
         <Select.Trigger>
           <Select.Value placeholder="Select a currency ..." />
           <Select.TriggerIcon />
@@ -213,13 +213,13 @@ export const SingleSearchable: Story = {
 export const Multi: Story = {
   render: () => (
     <div className="w-[256px]">
-      <Select items={currencies} multi={true} onChange={onChange}>
+      <Select multi={true} onChange={onChange}>
         <Select.Trigger>
           <Select.Value placeholder="Select currencies ..." />
           <Select.TriggerIcon />
         </Select.Trigger>
         <Select.Content>
-          {currencies.map((item) => (
+          {currencies.slice(0, 3).map((item) => (
             <Select.Item key={item.value} item={item}>
               {item.label}
             </Select.Item>
@@ -233,7 +233,7 @@ export const Multi: Story = {
 export const MultiSearchable: Story = {
   render: () => (
     <div className="w-[256px]">
-      <Select items={currencies} multi={true} onChange={onChange} search>
+      <Select multi={true} onChange={onChange} search>
         <Select.Trigger>
           <Select.Value placeholder="Select currencies ..." />
           <Select.TriggerIcon />
@@ -253,57 +253,13 @@ export const MultiSearchable: Story = {
 export const MultiSelectAll: Story = {
   render: () => (
     <div className="w-[256px]">
-      <Select items={currencies} multi={true} onChange={onChange}>
+      <Select multi={true} onChange={onChange}>
         <Select.Trigger>
           <Select.Value placeholder="Select currencies ..." />
           <Select.TriggerIcon />
         </Select.Trigger>
         <Select.Content>
           <Select.SelectAll />
-          <Select.Separator />
-          {currencies.map((item) => (
-            <Select.Item key={item.value} item={item}>
-              {item.label}
-            </Select.Item>
-          ))}
-        </Select.Content>
-      </Select>
-    </div>
-  ),
-}
-
-export const SingleSearchableInMenu: Story = {
-  render: () => (
-    <div className="w-[256px]">
-      <Select items={currencies} onChange={onChange}>
-        <Select.Trigger>
-          <Select.Value placeholder="Select a currency ..." />
-          <Select.TriggerIcon />
-        </Select.Trigger>
-        <Select.Content>
-          <Select.Search onChange={(e) => console.log(e.target.value)} />
-          <Select.Separator />
-          {currencies.map((item) => (
-            <Select.Item key={item.value} item={item}>
-              {item.label}
-            </Select.Item>
-          ))}
-        </Select.Content>
-      </Select>
-    </div>
-  ),
-}
-
-export const MultiSearchableInMenu: Story = {
-  render: () => (
-    <div className="w-[256px]">
-      <Select items={currencies} multi={true} onChange={onChange}>
-        <Select.Trigger>
-          <Select.Value placeholder="Select currencies ..." />
-          <Select.TriggerIcon />
-        </Select.Trigger>
-        <Select.Content>
-          <Select.Search onChange={(e) => console.log(e.target.value)} />
           <Select.Separator />
           {currencies.map((item) => (
             <Select.Item key={item.value} item={item}>
@@ -378,7 +334,7 @@ const PaginatedSelect = () => {
         Selected: {selected.map((item) => `${item.value} `)}
       </div>
       <div className="w-[256px]">
-        <Select items={items} multi={true} onChange={onSelect}>
+        <Select multi={true} onChange={onSelect}>
           <Select.Trigger>
             <Select.Value placeholder="Select some numbers" />
             <Select.TriggerIcon />
@@ -420,4 +376,55 @@ const PaginatedSelect = () => {
 
 export const Pagination: Story = {
   render: PaginatedSelect,
+}
+
+const SearchAndCreateSelect = () => {
+  const [items, setItems] = React.useState(currencies)
+  const [showCreate, setShowCreate] = React.useState<boolean | string>(false)
+
+  const doFilter = (term: string) => {
+    if (!term) {
+      setItems(currencies)
+      setShowCreate(false)
+    }
+
+    const filteredItems = currencies.filter(
+      (currency) =>
+        currency.value.includes(term) || currency.label.includes(term)
+    )
+
+    if (!filteredItems.length) setShowCreate(term)
+
+    setItems(filteredItems)
+  }
+
+  return (
+    <div className="w-[256px]">
+      <Select onChange={onChange} search onSearch={doFilter}>
+        <Select.Trigger>
+          <Select.Value placeholder="Select a currency ..." />
+          <Select.TriggerIcon />
+        </Select.Trigger>
+        <Select.Content>
+          {items.map((item) => (
+            <Select.Item key={item.value} item={item}>
+              {item.label}
+            </Select.Item>
+          ))}
+          {showCreate && (
+            <>
+              {/* On click, this could trigger a modal for item creation, etc. */}
+              <div className="text-regular text-ui-fg-base hover:text-ui-fg-subtle cursor-pointer p-2">
+                Create <span className="font-medium">{showCreate}</span>?
+              </div>
+            </>
+          )}
+        </Select.Content>
+      </Select>
+    </div>
+  )
+}
+
+export const SearchAndCreate: Story = {
+  render: SearchAndCreateSelect,
 }
