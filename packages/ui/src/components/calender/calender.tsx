@@ -1,32 +1,59 @@
 import { ChevronLeftMini, ChevronRightMini } from "@medusajs/icons"
 import * as React from "react"
-import { DayPicker, DayProps, useDayRender } from "react-day-picker"
+import {
+  DayPicker,
+  useDayRender,
+  type DayPickerRangeProps,
+  type DayPickerSingleProps,
+  type DayProps,
+} from "react-day-picker"
 
 import { buttonVariants } from "@/components/button"
 import { clx } from "@/utils/clx"
 import { labelVariants } from "../label"
 
-export type CalendarProps = React.ComponentProps<typeof DayPicker>
+type OmitKeys<T, K extends keyof T> = {
+  [P in keyof T as P extends K ? never : P]: T[P]
+}
 
-function Calendar({
+type KeysToOmit = "showWeekNumber" | "captionLayout" | "mode"
+
+type SingleProps = OmitKeys<DayPickerSingleProps, KeysToOmit>
+type RangeProps = OmitKeys<DayPickerRangeProps, KeysToOmit>
+
+type CalendarProps =
+  | ({
+      mode: "single"
+    } & SingleProps)
+  | ({
+      mode?: undefined
+    } & SingleProps)
+  | ({
+      mode: "range"
+    } & RangeProps)
+
+const Calendar = ({
   className,
   classNames,
+  mode = "single",
   showOutsideDays = true,
   ...props
-}: CalendarProps) {
+}: CalendarProps) => {
   return (
     <DayPicker
+      mode={mode}
       showOutsideDays={showOutsideDays}
-      className={clx("p-3", className)}
+      className={clx(className)}
       classNames={{
-        months: "flex flex-col sm:flex-row gap-y-2 sm:gap-x-6 sm:gap-y-0",
-        month: "space-y-2",
-        caption: "flex justify-center relative items-center",
+        months:
+          "flex flex-col sm:flex-row divide-y sm:divide-y-0 sm:divide-x divide-ui-border-base",
+        month: "space-y-2 p-3",
+        caption: "flex justify-center relative items-center h-9",
         caption_label: clx(
           labelVariants({ size: "small", weight: "plus" }),
           "absolute bottom-0 left-0 right-0 top-1 flex items-center justify-center"
         ),
-        nav: "h-9 space-x-1 flex items-center bg-ui-bg-base-pressed rounded-md w-full h-full justify-between p-0.5",
+        nav: "space-x-1 flex items-center bg-ui-bg-base-pressed rounded-md w-full h-full justify-between p-0.5",
         nav_button: clx(
           buttonVariants({ variant: "secondary", format: "icon" }),
           "h-8 w-8"
@@ -64,11 +91,11 @@ function Calendar({
         ...classNames,
       }}
       components={{
-        IconLeft: ({ ...props }) => <ChevronLeftMini />,
-        IconRight: ({ ...props }) => <ChevronRightMini />,
+        IconLeft: () => <ChevronLeftMini />,
+        IconRight: () => <ChevronRightMini />,
         Day: Day,
       }}
-      {...props}
+      {...(props as SingleProps & RangeProps)}
     />
   )
 }
@@ -86,7 +113,12 @@ const Day = ({ date, displayMonth }: DayProps) => {
   }
 
   if (!isButton) {
-    return <div {...divProps} />
+    return (
+      <div
+        {...divProps}
+        className={clx("flex items-center justify-center", divProps.className)}
+      />
+    )
   }
 
   const {

@@ -15,26 +15,10 @@ const Demo = ({ mode, ...args }: Parameters<typeof Calendar>[0]) => {
   return (
     <div className="flex flex-col items-center gap-y-4">
       <Calendar
-        {...args}
-        mode={mode}
-        selected={
-          mode === "single"
-            ? date
-            : mode === "range"
-            ? dateRange
-            : mode === "multiple"
-            ? multiple
-            : undefined
-        }
-        {...(mode !== "default" &&
-          ({
-            onSelect:
-              mode === "single"
-                ? setDate
-                : mode === "range"
-                ? setDateRange
-                : setMultiple,
-          } as any))}
+        {...(args as any)}
+        mode={mode as "single" | "range"}
+        selected={mode === "single" ? date : dateRange}
+        onSelect={mode === "single" ? setDate : setDateRange}
       />
 
       {mode === "single" && (
@@ -47,14 +31,6 @@ const Demo = ({ mode, ...args }: Parameters<typeof Calendar>[0]) => {
             ? `${dateRange.from?.toDateString()} – ${
                 dateRange.to?.toDateString() ?? ""
               }`
-            : "None"}
-        </Text>
-      )}
-      {mode === "multiple" && (
-        <Text>
-          Selected Dates:{" "}
-          {multiple.length
-            ? multiple.map((date) => date.toDateString()).join(", ")
             : "None"}
         </Text>
       )}
@@ -97,19 +73,6 @@ export const Range: Story = {
 export const TwoMonthRange: Story = {
   args: {
     mode: "range",
-    numberOfMonths: 2,
-  },
-}
-
-export const Multiple: Story = {
-  args: {
-    mode: "multiple",
-  },
-}
-
-export const TwoMonthMultiple: Story = {
-  args: {
-    mode: "multiple",
     numberOfMonths: 2,
   },
 }
