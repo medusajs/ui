@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react"
 import { ColumnDef } from "@tanstack/react-table"
 import * as React from "react"
 
-import { DataTable } from "./data-table"
+import { DataTable, DT } from "./data-table"
 
 const columns: ColumnDef<Order>[] = [
   {
@@ -41,7 +41,9 @@ const columns: ColumnDef<Order>[] = [
     accessorKey: "currency",
     header: () => null,
     cell: ({ row }) => (
-      <div className="text-left">{row.getValue("currency")}</div>
+      <div className="text-ui-fg-muted text-left">
+        {row.getValue("currency")}
+      </div>
     ),
   },
 ]
@@ -52,7 +54,13 @@ const Demo = (args: Parameters<typeof DataTable<Order>>[0]) => {
     offset: 0,
   })
 
-  return <DataTable {...args} data={orders} />
+  return (
+    <div className="flex w-[80vw] items-center justify-center overflow-x-scroll p-4">
+      <DT {...args} data={orders}>
+        <DT.View className="w-full" />
+      </DT>
+    </div>
+  )
 }
 
 const meta: Meta<typeof DataTable<Order>> = {
@@ -64,6 +72,9 @@ const meta: Meta<typeof DataTable<Order>> = {
   },
   parameters: {
     layout: "centered",
+  },
+  render: (args) => {
+    return <Demo {...args} />
   },
 }
 
@@ -193,18 +204,24 @@ const useFakeOrders = ({ offset, limit }: UseFakeOrdersProps) => {
   }
 }
 
-export const Default: Story = {
-  render: (args) => {
-    return <Demo {...args} />
-  },
-}
+export const Default: Story = {}
 
 export const Selectable: Story = {
   args: {
     isSelectable: true,
+    isLoading: false,
   },
-  render: (args) => {
-    return <Demo {...args} />
+}
+
+export const Searchable: Story = {
+  args: {
+    isSearchable: true,
+  },
+}
+
+export const IsLoading = {
+  args: {
+    isLoading: true,
   },
 }
 
@@ -233,8 +250,5 @@ export const RowActions: Story = {
         },
       },
     ],
-  },
-  render: (args) => {
-    return <Demo {...args} />
   },
 }

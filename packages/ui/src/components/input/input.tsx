@@ -1,12 +1,12 @@
+import { Eye, EyeSlash, MagnifyingGlassMini } from "@medusajs/icons"
 import { VariantProps, cva } from "class-variance-authority"
 import * as React from "react"
 
 import { labelVariants } from "@/components/label"
 import { clx } from "@/utils/clx"
-import { Eye, EyeSlash } from "@medusajs/icons"
 
 const inputVariants = cva(
-  "bg-ui-bg-subtle hover:bg-ui-bg-subtle-hover border-ui-border-loud-muted disabled:text-ui-fg-disabled disabled:!bg-ui-bg-disabled disabled:!border-ui-border-base focus:border-ui-border-interactive focus:shadow-borders-active placeholder:text-ui-fg-muted text-ui-fg-base aria-[invalid=true]:!border-ui-border-error aria-[invalid=true]:focus:!shadow-borders-error invalid:!border-ui-border-error invalid:focus:!shadow-borders-error relative w-full rounded-md border outline-none transition-all disabled:cursor-not-allowed disabled:!shadow-none",
+  "bg-ui-bg-subtle hover:bg-ui-bg-subtle-hover border-ui-border-loud-muted disabled:text-ui-fg-disabled disabled:!bg-ui-bg-disabled disabled:!border-ui-border-base focus:border-ui-border-interactive focus:shadow-borders-active placeholder:text-ui-fg-muted text-ui-fg-base aria-[invalid=true]:!border-ui-border-error aria-[invalid=true]:focus:!shadow-borders-error invalid:!border-ui-border-error invalid:focus:!shadow-borders-error relative w-full appearance-none rounded-md border outline-none transition-all disabled:cursor-not-allowed disabled:!shadow-none [&::--webkit-search-cancel-button]:hidden [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden",
   {
     variants: {
       size: {
@@ -28,9 +28,24 @@ const Input = React.forwardRef<
   const [typeState, setTypeState] = React.useState(type)
 
   const isPassword = type === "password"
+  const isSearch = type === "search"
 
   return (
     <div className="relative">
+      {isSearch && (
+        <div
+          className={clx(
+            "text-ui-fg-muted absolute bottom-0 left-0 z-10 flex items-center justify-center",
+            {
+              "h-10 w-11": size === "base",
+              "h-8 w-9": size === "small",
+            }
+          )}
+          role="img"
+        >
+          <MagnifyingGlassMini />
+        </div>
+      )}
       <input
         ref={ref}
         type={isPassword ? typeState : type}
@@ -38,7 +53,10 @@ const Input = React.forwardRef<
           inputVariants({ size: size }),
           labelVariants({ size: size }),
           {
-            "pr-11": isPassword,
+            "pr-11": isPassword && size === "base",
+            "pl-11": isSearch && size === "base",
+            "pr-9": isPassword && size === "small",
+            "pl-9": isSearch && size === "small",
           },
           className
         )}
@@ -49,8 +67,8 @@ const Input = React.forwardRef<
           className={clx(
             "absolute bottom-0 right-0 flex w-11 items-center justify-center",
             {
-              "h-10": size === "base",
-              "h-8": size === "small",
+              "h-10 w-11": size === "base",
+              "h-8 w-9": size === "small",
             }
           )}
         >
