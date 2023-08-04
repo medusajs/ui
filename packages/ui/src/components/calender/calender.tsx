@@ -45,8 +45,7 @@ const Calendar = ({
       showOutsideDays={showOutsideDays}
       className={clx(className)}
       classNames={{
-        months:
-          "flex flex-col sm:flex-row divide-y sm:divide-y-0 sm:divide-x divide-ui-border-base",
+        months: "flex flex-col sm:flex-row",
         month: "space-y-2 p-3",
         caption: "flex justify-center relative items-center h-9",
         caption_label: clx(
@@ -79,7 +78,7 @@ const Calendar = ({
             size: "small",
             weight: "plus",
           }),
-          "bg-ui-bg-base hover:bg-ui-bg-base-hover h-8 w-8 rounded-md p-0 text-center transition-colors"
+          "bg-ui-bg-base border-ui-bg-base hover:bg-ui-bg-base-hover focus:!border-ui-border-interactive focus:shadow-borders-focus h-8 w-8 rounded-md border p-0 text-center outline-none transition-all"
         ),
         day_selected:
           "bg-ui-bg-interactive text-ui-fg-on-color hover:bg-ui-bg-interactive focus:bg-ui-bg-interactive",
@@ -126,6 +125,12 @@ const Day = ({ date, displayMonth }: DayProps) => {
     className: buttonClassName,
     ...buttonPropsRest
   } = buttonProps
+
+  React.useEffect(() => {
+    if (selected) {
+      ref.current?.focus()
+    }
+  }, [selected])
 
   return (
     <button

@@ -62,3 +62,10 @@ export const IconOnly: Story = {
     format: "icon",
   },
 }
+
+export const Loading: Story = {
+  args: {
+    children: "Action",
+    isLoading: true,
+  },
+}

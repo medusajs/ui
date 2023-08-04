@@ -1,0 +1,3 @@
+const CodeBlock = () => {}
+
+export { CodeBlock }

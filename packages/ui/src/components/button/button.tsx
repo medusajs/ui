@@ -4,6 +4,7 @@ import * as React from "react"
 
 import { labelVariants } from "@/components/label"
 import { clx } from "@/utils/clx"
+import { Spinner } from "@medusajs/icons"
 
 const buttonVariants = cva(
   "disabled:bg-ui-bg-disabled disabled:border-ui-border-base disabled:text-ui-fg-disabled relative inline-flex w-fit items-center justify-center overflow-hidden rounded-lg border outline-none transition-all after:absolute after:inset-0 after:content-[''] disabled:!shadow-none",
@@ -78,13 +79,23 @@ const buttonVariants = cva(
 interface ButtonProps
   extends React.ComponentPropsWithoutRef<"button">,
     VariantProps<typeof buttonVariants> {
-  loading?: boolean
+  isLoading?: boolean
   asChild?: boolean
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    { size, variant, format, className, asChild = false, children, ...props },
+    {
+      size,
+      variant,
+      format,
+      className,
+      asChild = false,
+      children,
+      isLoading = false,
+      disabled,
+      ...props
+    },
     ref
   ) => {
     const Component = asChild ? Slot : "button"
@@ -94,7 +105,17 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...props}
         className={clx(buttonVariants({ variant, size, format }), className)}
+        disabled={disabled || isLoading}
       >
+        {isLoading && (
+          <div
+            className={clx(
+              "bg-ui-bg-disabled absolute inset-0 z-50 flex items-center justify-center rounded-md"
+            )}
+          >
+            <Spinner className="animate-spin" />
+          </div>
+        )}
         {children}
       </Component>
     )
