@@ -1,43 +1,42 @@
-import { render } from "@testing-library/react"
+import { render, screen } from "@testing-library/react"
 import * as React from "react"
 
 import { DatePicker } from "./date-picker"
 
 describe("DatePicker", () => {
-  describe("Prop validation", () => {
-    it("should throw an error on fromYear earlier than 1800", async () => {
-      expect(() => render(<DatePicker fromYear={1200} />)).toThrowError(
-        /fromYear must be greater than or equal to 1800./
-      )
-    })
-
-    it("should throw an error on toYear later than 9999", async () => {
-      expect(() => render(<DatePicker toYear={10000} />)).toThrowError(
-        /toYear must be less than or equal to 9999./
-      )
-    })
-
-    it("should throw an error on fromYear later than toYear", async () => {
-      expect(() =>
-        render(<DatePicker fromYear={2000} toYear={1999} />)
-      ).toThrowError(/fromYear must be less than or equal to toYear./)
-    })
-
-    it("should throw an error on fromYear later than toYear", async () => {
-      expect(() =>
-        render(<DatePicker fromYear={2000} toYear={1999} />)
-      ).toThrowError(/fromYear must be less than or equal to toYear./)
-    })
-
-    it("should throw an error on fromDay later than toDay", async () => {
+  describe("Preset validation", () => {
+    it("should throw an error if a preset is before the min year", async () => {
       expect(() =>
         render(
           <DatePicker
-            fromDay={new Date(2000, 0, 1)}
-            toDay={new Date(1999, 0, 1)}
+            fromYear={1800}
+            presets={[
+              {
+                label: "Year of the first US census",
+                date: new Date(1790, 0, 1),
+              },
+            ]}
           />
         )
-      ).toThrowError(/fromDate must be before or equal to toDate./)
+      ).toThrowError(
+        /Preset Year of the first US census is before fromYear 1800./
+      )
+    })
+
+    it("should throw an error if a preset is after the max year", async () => {
+      expect(() =>
+        render(
+          <DatePicker
+            toYear={2012}
+            presets={[
+              {
+                label: "End of the Mayan calendar",
+                date: new Date(2025, 0, 1),
+              },
+            ]}
+          />
+        )
+      ).toThrowError(/Preset End of the Mayan calendar is after toYear 2012./)
     })
   })
 
@@ -45,7 +44,15 @@ describe("DatePicker", () => {
     it("should render", async () => {
       render(<DatePicker />)
 
-      expect(true).toBe(true)
+      expect(screen.getByRole("button")).toBeInTheDocument()
+    })
+  })
+
+  describe("Range", () => {
+    it("should render", async () => {
+      render(<DatePicker mode={"range"} />)
+
+      expect(screen.getByRole("button")).toBeInTheDocument()
     })
   })
 })

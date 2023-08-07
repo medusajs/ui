@@ -1,7 +1,7 @@
 import { RenderResult, fireEvent, render } from "@testing-library/react"
 import * as React from "react"
 
-import { useAlertDialog } from "./use-alert-dialog"
+import { usePrompt } from "./use-prompt"
 
 const OPEN_TEXT = "Open dialog"
 const TITLE_TEXT = "Delete something"
@@ -11,7 +11,7 @@ const CONFIRM_TEXT = "Confirm"
 const VERIFICATION_TEXT = "medusa-design-system"
 
 const DialogTest = ({ verificationText }: { verificationText?: string }) => {
-  const dialog = useAlertDialog()
+  const dialog = usePrompt()
 
   const handleAction = async () => {
     await dialog({
@@ -20,6 +20,7 @@ const DialogTest = ({ verificationText }: { verificationText?: string }) => {
       cancelText: CANCEL_TEXT,
       confirmText: CONFIRM_TEXT,
       verificationText,
+      variant: "danger",
     })
   }
 
@@ -30,7 +31,7 @@ const DialogTest = ({ verificationText }: { verificationText?: string }) => {
   )
 }
 
-describe("useAlertDialog", () => {
+describe("usePrompt", () => {
   let rendered: RenderResult
   let trigger: HTMLElement
 

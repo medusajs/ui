@@ -1,233 +1,112 @@
-import { Clock } from "@medusajs/icons"
+import {
+  AriaTimeFieldProps,
+  TimeValue,
+  useDateSegment,
+  useTimeField,
+} from "@react-aria/datepicker"
+import {
+  useTimeFieldState,
+  type DateFieldState,
+  type DateSegment,
+} from "@react-stately/datepicker"
 import * as React from "react"
 
-type AmPm = "am" | "pm"
+import { labelVariants } from "@/components/label"
+import { clx } from "@/utils/clx"
 
-type NumberInputProps = React.ComponentPropsWithoutRef<"input">
-
-function isValidNumber(num: unknown): num is number {
-  return num !== null && num !== false && !Number.isNaN(Number(num))
+type TimeSegmentProps = {
+  segment: DateSegment
+  state: DateFieldState
 }
 
-function safeMin(...args: unknown[]) {
-  return Math.min(...args.filter(isValidNumber))
-}
+const TimeSegment = ({ segment, state }: TimeSegmentProps) => {
+  let ref = React.useRef<HTMLDivElement>(null)
+  let { segmentProps } = useDateSegment(segment, state, ref)
 
-function safeMax(...args: unknown[]) {
-  return Math.max(...args.filter(isValidNumber))
-}
+  const isColon = segment.type === "literal" && segment.text === ":"
+  const isSpace = segment.type === "literal" && segment.text === " "
 
-const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps>(
-  (props, ref) => {
-    return <input ref={ref} className="appearance-none" {...props} />
-  }
-)
-
-type HourInputProps = Omit<
-  React.ComponentPropsWithoutRef<typeof NumberInput>,
-  "min" | "max" | "name" | "nameForClass"
-> & {
-  amPm: AmPm
-  maxTime?: string
-  minTime?: string
-  value?: string | null
-}
-
-const HourInput = React.forwardRef<HTMLInputElement, HourInputProps>(
-  ({ amPm, maxTime, minTime, value, ...props }, ref) => {
-    const maxHour = safeMin(
-      12,
-      maxTime &&
-        (() => {
-          const [maxHourResult, maxAmPm] = convert24to12(getHours(maxTime))
-
-          if (maxAmPm !== amPm) {
-            // pm is always after am, so we should ignore validation
-            return null
-          }
-
-          return maxHourResult
-        })()
-    )
-
-    const minHour = safeMax(
-      1,
-      minTime &&
-        (() => {
-          const [minHourResult, minAmPm] = convert24to12(getHours(minTime))
-
-          if (
-            // pm is always after am, so we should ignore validation
-            minAmPm !== amPm ||
-            // If minHour is 12 am/pm, user should be able to enter 12, 1, ..., 11.
-            minHourResult === 12
-          ) {
-            return null
-          }
-
-          return minHourResult
-        })()
-    )
-
-    const value12 = value ? convert24to12(value)[0].toString() : ""
-
-    return (
-      <NumberInput
-        ref={ref}
-        min={minHour}
-        max={maxHour}
-        name="hour12"
-        value={value12}
-        {...props}
-      />
-    )
-  }
-)
-
-// type MinuteInputProps = {
-//   hour?: string | null
-//   maxTime?: string
-//   minTime?: string
-//   showLeadingZeros?: boolean
-// } & Omit<React.ComponentProps<typeof Input>, "max" | "min" | "name">
-
-// export default function MinuteInput({
-//   hour,
-//   maxTime,
-//   minTime,
-//   showLeadingZeros = true,
-//   ...otherProps
-// }: MinuteInputProps) {
-//   function isSameHour(date: string | Date) {
-//     return hour === getHours(date).toString()
-//   }
-
-//   const maxMinute = safeMin(
-//     59,
-//     maxTime && isSameHour(maxTime) && getMinutes(maxTime)
-//   )
-//   const minMinute = safeMax(
-//     0,
-//     minTime && isSameHour(minTime) && getMinutes(minTime)
-//   )
-
-//   return (
-//     <Input
-//       max={maxMinute}
-//       min={minMinute}
-//       name="minute"
-//       showLeadingZeros={showLeadingZeros}
-//       {...otherProps}
-//     />
-//   )
-// }
-
-const TimeInput = React.forwardRef<HTMLInputElement, any>((props, ref) => {
-  const [time, setTime] = React.useState<Date | undefined>(new Date())
-  const [amPm, setAmPm] = React.useState<AmPm>("am")
-
-  const setHour = (stringHour: string) => {
-    const hour = parseInt(stringHour, 10)
-
-    if (!isNaN(hour)) {
-      const hour24 = convert12to24(hour, amPm)
-
-      setTime((time) => {
-        if (!time) {
-          return undefined
-        }
-
-        const newTime = new Date(time)
-
-        newTime.setHours(hour24)
-
-        return newTime
-      })
-    }
-  }
+  const isDecorator = isColon || isSpace
 
   return (
-    <div className="flex items-center">
-      <div className="flex items-center">
-        <HourInput
-          amPm={amPm}
-          value={time?.getHours().toString()}
-          onChange={(e) => setHour(e.target.value)}
-        />
-        <span>:</span>
-        <input type="text" />
-        <input type="text" />
-      </div>
-      <button>
-        <Clock />
-      </button>
-      <input type="hidden" ref={ref} {...props} />
+    <div
+      {...segmentProps}
+      ref={ref}
+      style={{
+        ...segmentProps.style,
+      }}
+      className={clx(
+        `border-ui-border-loud-muted hover:bg-ui-bg-subtle-hover bg-ui-bg-subtle shadow-buttons-secondary focus:border-ui-border-interactive focus:shadow-borders-active group box-content w-full rounded-md border px-2 py-[5px] text-left uppercase tabular-nums outline-none transition-all ${
+          !segment.isEditable ? "text-ui-fg-disabled" : "text-ui-fg-base"
+        }`,
+        {
+          "text-ui-fg-muted !w-fit border-none bg-transparent px-0 shadow-none":
+            isDecorator,
+          hidden: isSpace,
+        }
+      )}
+    >
+      <span
+        aria-hidden="true"
+        className={clx(
+          "text-ui-fg-muted pointer-events-none block w-full text-left",
+          labelVariants({
+            size: "small",
+          }),
+          {
+            hidden: !segment.isPlaceholder,
+            "h-0": !segment.isPlaceholder,
+          }
+        )}
+      >
+        {segment.placeholder}
+      </span>
+      {segment.isPlaceholder ? "" : segment.text}
     </div>
   )
-})
-TimeInput.displayName = "TimeInput"
-
-function getHours(date: Date | string): number {
-  if (date instanceof Date) {
-    return date.getHours()
-  }
-
-  if (typeof date === "string") {
-    const datePieces = date.split(":")
-
-    if (datePieces.length >= 2) {
-      const hoursString = datePieces[0]
-
-      if (hoursString) {
-        const hours = parseInt(hoursString, 10)
-
-        if (!isNaN(hours)) {
-          return hours
-        }
-      }
-    }
-  }
-
-  throw new Error(`Failed to get hours from date: ${date}.`)
 }
 
-function getMinutes(date: Date | string): number {
-  if (date instanceof Date) {
-    return date.getMinutes()
+type TimeInputProps = Omit<
+  AriaTimeFieldProps<TimeValue>,
+  "label" | "shouldForceLeadingZeros" | "description" | "errorMessage"
+>
+
+const TimeInput = React.forwardRef<HTMLDivElement, TimeInputProps>(
+  ({ hourCycle, ...props }: TimeInputProps, ref) => {
+    const innerRef = React.useRef<HTMLDivElement>(null)
+
+    React.useImperativeHandle<HTMLDivElement | null, HTMLDivElement | null>(
+      ref,
+      () => innerRef?.current
+    )
+
+    let locale = window !== undefined ? window.navigator.language : "en-US"
+
+    const state = useTimeFieldState({
+      hourCycle: hourCycle,
+      locale: locale,
+      shouldForceLeadingZeros: true,
+      ...props,
+    })
+
+    const { fieldProps } = useTimeField(
+      {
+        ...props,
+        hourCycle: hourCycle,
+        shouldForceLeadingZeros: true,
+      },
+      state,
+      innerRef
+    )
+
+    return (
+      <div {...fieldProps} ref={ref} className="flex w-full gap-x-2">
+        {state.segments.map((segment, i) => (
+          <TimeSegment key={i} segment={segment} state={state} />
+        ))}
+      </div>
+    )
   }
-
-  if (typeof date === "string") {
-    const datePieces = date.split(":")
-
-    if (datePieces.length >= 2) {
-      const minutesString = datePieces[1] || "0"
-      const minutes = parseInt(minutesString, 10)
-
-      if (!isNaN(minutes)) {
-        return minutes
-      }
-    }
-  }
-
-  throw new Error(`Failed to get minutes from date: ${date}.`)
-}
-
-function convert24to12(hour24: string | number): [number, AmPm] {
-  const hour12 = Number(hour24) % 12 || 12
-
-  return [hour12, Number(hour24) < 12 ? "am" : "pm"]
-}
-
-function convert12to24(hour12: string | number, amPm: AmPm): number {
-  let hour24 = Number(hour12)
-
-  if (amPm === "am" && hour24 === 12) {
-    hour24 = 0
-  } else if (amPm === "pm" && hour24 < 12) {
-    hour24 += 12
-  }
-
-  return hour24
-}
+)
 
 export { TimeInput }

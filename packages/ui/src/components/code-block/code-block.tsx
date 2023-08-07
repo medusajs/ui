@@ -1,3 +1,0 @@
-const CodeBlock = () => {}
-
-export { CodeBlock }
