@@ -20,4 +20,4 @@ const CommandComponent = ({
 
 const Command = Object.assign(CommandComponent, { Copy })
 
-export default Command
+export { Command }
