@@ -131,20 +131,22 @@ const Body = ({
         >
           {({ style, tokens, getLineProps, getTokenProps }) => (
             <pre
-              className="bg-transparent font-mono text-sm"
+              className="whitespace-pre-wrap bg-transparent font-mono text-sm"
               style={{
                 ...style,
                 background: "transparent",
               }}
             >
               {tokens.map((line, i) => (
-                <div key={i} {...getLineProps({ line })} className="flex gap-4">
+                <div key={i} {...getLineProps({ line })} className="flex">
                   {!hideLineNumbers && (
                     <span className="text-ui-code-text-subtle">{i + 1}</span>
                   )}
-                  {line.map((token, key) => (
-                    <span key={key} {...getTokenProps({ token })} />
-                  ))}
+                  <div className="pl-4">
+                    {line.map((token, key) => (
+                      <span key={key} {...getTokenProps({ token })} />
+                    ))}
+                  </div>
                 </div>
               ))}
             </pre>
