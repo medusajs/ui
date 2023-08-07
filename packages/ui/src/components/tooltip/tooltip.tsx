@@ -37,11 +37,7 @@ const Tooltip = ({
         onOpenChange={onOpenChange}
         delayDuration={delayDuration}
       >
-        <Primitives.Trigger
-          onClick={onClick}
-          onMouseDown={(e) => e.preventDefault()}
-          asChild
-        >
+        <Primitives.Trigger onClick={onClick} asChild>
           {children}
         </Primitives.Trigger>
         <Primitives.Portal>
