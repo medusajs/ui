@@ -23,7 +23,7 @@ const Copy = React.forwardRef<
   }
 
   return (
-    <Tooltip content={"Copy"} onClick={(e) => e.preventDefault()}>
+    <Tooltip content={"Copy"}>
       <button
         ref={ref}
         aria-label="Copy code snippet"
