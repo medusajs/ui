@@ -1,13 +1,12 @@
 import React from "react"
 import type { Meta, StoryObj } from "@storybook/react"
 
-import { CodeBlock, Command, Copy } from "./code-block"
-import { Badge } from "../badge"
+import { CodeBlock } from "./code-block"
 import { Label } from "../label"
 
-const meta: Meta<typeof Command> = {
+const meta: Meta<typeof CodeBlock> = {
   title: "Components/CodeBlock",
-  component: Command,
+  component: CodeBlock,
   parameters: {
     layout: "centered",
   },
@@ -15,7 +14,7 @@ const meta: Meta<typeof Command> = {
 
 export default meta
 
-type Story = StoryObj<typeof Command>
+type Story = StoryObj<typeof CodeBlock>
 
 const snippets = [
   {
@@ -35,21 +34,7 @@ const snippets = [
   },
 ]
 
-export const Simple: Story = {
-  render: () => {
-    return (
-      <div className="w-[500px]">
-        <Command>
-          <Badge color="green">Get</Badge>
-          <code>localhost:9000/store/products</code>
-          <Copy content="localhost:9000/store/products" />
-        </Command>
-      </div>
-    )
-  },
-}
-
-export const Advanced: Story = {
+export const Default: Story = {
   render: () => {
     return (
       <div className="h-[300px] w-[700px]">

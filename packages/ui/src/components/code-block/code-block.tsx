@@ -1,9 +1,7 @@
 import React, { createContext, useContext, useState } from "react"
 import { Highlight, themes } from "prism-react-renderer"
-import copy from "copy-to-clipboard"
-import { CheckCircleSolid, SquareTwoStack } from "@medusajs/icons"
-import { Tooltip } from "@/components/tooltip"
 import { clx } from "@/utils/clx"
+import { Copy } from "@/components/copy"
 
 export type CodeSnippet = {
   label: string
@@ -157,48 +155,6 @@ const Body = ({
   )
 }
 
-const Command = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => {
-  return (
-    <div
-      className={clx(
-        "bg-ui-code-bg-header border-ui-code-border-base flex items-center rounded-lg border px-3 py-2",
-        "[&>code]:text-ui-code-text-base [&>code]:mx-3 [&>code]:font-mono [&>code]:text-sm [&>code]:leading-6",
-        className
-      )}
-      {...props}
-    />
-  )
-}
-
-const Copy = ({
-  className,
-  content,
-}: React.HTMLAttributes<HTMLSpanElement> & { content: string }) => {
-  const [done, setDone] = useState(false)
-
-  const copyToClipboard = () => {
-    setDone(true)
-    copy(content)
-    setTimeout(() => {
-      setDone(false)
-    }, 2500)
-  }
-
-  return (
-    <Tooltip content={"Copy"} onClick={(e) => e.preventDefault()}>
-      <span
-        className={clx("text-ui-code-icon ml-auto cursor-pointer", className)}
-        onClick={copyToClipboard}
-      >
-        {done ? <CheckCircleSolid /> : <SquareTwoStack />}
-      </span>
-    </Tooltip>
-  )
-}
-
 const CodeBlock = Object.assign(Root, { Body, Header, Meta })
 
-export { Command, Copy, CodeBlock }
+export { CodeBlock }
