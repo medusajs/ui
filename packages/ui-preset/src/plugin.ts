@@ -4,6 +4,7 @@ import { theme } from "./theme/extension/theme"
 import { colors } from "./theme/tokens/colors"
 import { components } from "./theme/tokens/components"
 import { effects } from "./theme/tokens/effects"
+import { fontSize } from "./theme/extension/font-size"
 
 export default plugin(
   function medusaUi({ addBase, addComponents, addUtilities, config, theme }) {
@@ -42,6 +43,7 @@ export default plugin(
     theme: {
       extend: {
         ...theme.extend,
+        ...fontSize.extend,
         fontFamily: {
           sans: ["Inter", ...fontFamily.sans],
           mono: ["Roboto Mono", ...fontFamily.mono],

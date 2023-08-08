@@ -228,7 +228,7 @@ const Trigger = React.forwardRef<
         "data-[placeholder=true]:text-ui-fg-muted",
         "data-[state=open]:border-ui-fg-interactive data-[state=open]:shadow-borders-active",
         "data-[disabled]:bg-ui-bg-disabled data-[disabled]:text-ui-fg-disabled data-[placeholder]:data-[disabled]:text-ui-fg-disabled data-[disabled]:cursor-not-allowed",
-        { "h-8 px-2 py-2": size === "small" },
+        { "h-8 px-2 py-2 text-sm": size === "small" },
         { "pl-10": search },
         className
       )}
