@@ -4,7 +4,7 @@ import * as React from "react"
 import { Button } from "@/components/button"
 import { Badge } from "../../components/badge"
 import { Text } from "../../components/text"
-import { useAlertDialog } from "./use-alert-dialog"
+import { usePrompt } from "./use-prompt"
 
 type DemoProps = {
   verificationText?: string
@@ -12,7 +12,7 @@ type DemoProps = {
 
 const Demo = ({ verificationText }: DemoProps) => {
   const [status, setStatus] = React.useState(false)
-  const dialog = useAlertDialog()
+  const dialog = usePrompt()
 
   const handleDangerousAction = async () => {
     const confirmed = await dialog({
@@ -20,6 +20,7 @@ const Demo = ({ verificationText }: DemoProps) => {
       description:
         "Are you sure you want to delete this product? This action cannot be undone.",
       verificationText,
+      variant: "danger",
     })
 
     setStatus(confirmed)
@@ -37,8 +38,8 @@ const Demo = ({ verificationText }: DemoProps) => {
   )
 }
 
-const meta: Meta<typeof useAlertDialog> = {
-  title: "Hooks/useAlertDialog",
+const meta: Meta<typeof usePrompt> = {
+  title: "Hooks/usePrompt",
   component: Demo,
   parameters: {
     layout: "centered",

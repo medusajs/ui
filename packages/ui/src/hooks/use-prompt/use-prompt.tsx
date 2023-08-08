@@ -4,10 +4,10 @@ import { DialogProps } from "./dialog"
 
 import Dialog from "./dialog"
 
-type UseAlertDialogProps = Omit<DialogProps, "onConfirm" | "onCancel" | "open">
+type UsePromptProps = Omit<DialogProps, "onConfirm" | "onCancel" | "open">
 
-const useAlertDialog = () => {
-  const dialog = async (props: UseAlertDialogProps): Promise<boolean> => {
+const usePrompt = () => {
+  const dialog = async (props: UsePromptProps): Promise<boolean> => {
     return new Promise((resolve) => {
       let open = true
 
@@ -43,4 +43,4 @@ const useAlertDialog = () => {
   return dialog
 }
 
-export { useAlertDialog }
+export { usePrompt }
