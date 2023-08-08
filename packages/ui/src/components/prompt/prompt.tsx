@@ -6,16 +6,16 @@ import { Heading } from "@/components/heading"
 import { labelVariants } from "@/components/label"
 import { clx } from "@/utils/clx"
 
-const Root = Primitives.Root
-Root.displayName = "AlertDialog.Root"
+const Root = Primitives.AlertDialog
+Root.displayName = "Prompt.Root"
 
 const Trigger = Primitives.Trigger
-Trigger.displayName = "AlertDialog.Trigger"
+Trigger.displayName = "Prompt.Trigger"
 
 const Portal = ({ className, ...props }: Primitives.AlertDialogPortalProps) => {
   return <Primitives.AlertDialogPortal className={clx(className)} {...props} />
 }
-Portal.displayName = "AlertDialog.Portal"
+Portal.displayName = "Prompt.Portal"
 
 const Overlay = React.forwardRef<
   React.ElementRef<typeof Primitives.Overlay>,
@@ -33,7 +33,7 @@ const Overlay = React.forwardRef<
     />
   )
 })
-Overlay.displayName = "AlertDialog.Overlay"
+Overlay.displayName = "Prompt.Overlay"
 
 const Title = React.forwardRef<
   React.ElementRef<typeof Primitives.Title>,
@@ -45,7 +45,7 @@ const Title = React.forwardRef<
     </Primitives.Title>
   )
 })
-Title.displayName = "AlertDialog.Title"
+Title.displayName = "Prompt.Title"
 
 const Content = React.forwardRef<
   React.ElementRef<typeof Primitives.Content>,
@@ -66,7 +66,7 @@ const Content = React.forwardRef<
     </Portal>
   )
 })
-Content.displayName = "AlertDialog.Content"
+Content.displayName = "Prompt.Content"
 
 const Description = React.forwardRef<
   React.ElementRef<typeof Primitives.Description>,
@@ -80,7 +80,7 @@ const Description = React.forwardRef<
     />
   )
 })
-Description.displayName = "AlertDialog.Description"
+Description.displayName = "Prompt.Description"
 
 const Action = React.forwardRef<
   React.ElementRef<typeof Primitives.Action>,
@@ -93,11 +93,11 @@ const Action = React.forwardRef<
       {...props}
       asChild
     >
-      <Button variant="danger">{children}</Button>
+      <Button>{children}</Button>
     </Primitives.Action>
   )
 })
-Action.displayName = "AlertDialog.Action"
+Action.displayName = "Prompt.Action"
 
 const Cancel = React.forwardRef<
   React.ElementRef<typeof Primitives.Cancel>,
@@ -109,7 +109,7 @@ const Cancel = React.forwardRef<
     </Primitives.Cancel>
   )
 })
-Cancel.displayName = "AlertDialog.Cancel"
+Cancel.displayName = "Prompt.Cancel"
 
 const Header = ({
   className,
@@ -135,7 +135,7 @@ const Footer = ({
   )
 }
 
-const AlertDialog = Object.assign(Root, {
+const Prompt = Object.assign(Root, {
   Trigger,
   Content,
   Title,
@@ -146,4 +146,4 @@ const AlertDialog = Object.assign(Root, {
   Footer,
 })
 
-export { AlertDialog }
+export { Prompt }

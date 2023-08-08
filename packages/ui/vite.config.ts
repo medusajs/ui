@@ -9,6 +9,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@/components": "/src/components",
+      "@/providers": "/src/providers",
       "@/hooks": "/src/hooks",
       "@/utils": "/src/utils",
     },

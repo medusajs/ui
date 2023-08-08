@@ -4,9 +4,10 @@ import * as React from "react"
 
 import { labelVariants } from "@/components/label"
 import { clx } from "@/utils/clx"
+import { Spinner } from "@medusajs/icons"
 
 const buttonVariants = cva(
-  "disabled:bg-ui-bg-disabled disabled:border-ui-border-base disabled:text-ui-fg-disabled relative inline-flex w-fit items-center overflow-hidden rounded-lg border outline-none transition-all after:absolute after:inset-0 after:content-[''] disabled:!shadow-none",
+  "disabled:bg-ui-bg-disabled disabled:border-ui-border-base disabled:text-ui-fg-disabled relative inline-flex w-fit items-center justify-center overflow-hidden rounded-lg border outline-none transition-all after:absolute after:inset-0 after:content-[''] disabled:!shadow-none",
   {
     variants: {
       variant: {
@@ -78,28 +79,63 @@ const buttonVariants = cva(
 interface ButtonProps
   extends React.ComponentPropsWithoutRef<"button">,
     VariantProps<typeof buttonVariants> {
-  loading?: boolean
+  isLoading?: boolean
   asChild?: boolean
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    { size, variant, format, className, asChild = false, children, ...props },
+    {
+      size,
+      variant,
+      format,
+      className,
+      asChild = false,
+      children,
+      isLoading = false,
+      disabled,
+      ...props
+    },
     ref
   ) => {
     const Component = asChild ? Slot : "button"
+
+    /**
+     * In the case of a button where asChild is true, and isLoading is true, we ensure that
+     * only on element is passed as a child to the Slot component. This is because the Slot
+     * component only accepts a single child.
+     */
+    const renderInner = () => {
+      if (isLoading) {
+        return (
+          <span className="pointer-events-none">
+            <div
+              className={clx(
+                "bg-ui-bg-disabled absolute inset-0 z-50 flex items-center justify-center rounded-md"
+              )}
+            >
+              <Spinner className="animate-spin" />
+            </div>
+            {children}
+          </span>
+        )
+      }
+
+      return children
+    }
 
     return (
       <Component
         ref={ref}
         {...props}
         className={clx(buttonVariants({ variant, size, format }), className)}
+        disabled={disabled || isLoading}
       >
-        {children}
+        {renderInner()}
       </Component>
     )
   }
 )
 Button.displayName = "Button"
 
-export { Button }
+export { Button, buttonVariants }
