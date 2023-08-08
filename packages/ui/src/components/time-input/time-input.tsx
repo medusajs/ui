@@ -36,13 +36,17 @@ const TimeSegment = ({ segment, state }: TimeSegmentProps) => {
         ...segmentProps.style,
       }}
       className={clx(
-        `border-ui-border-loud-muted hover:bg-ui-bg-subtle-hover bg-ui-bg-subtle shadow-buttons-secondary focus:border-ui-border-interactive focus:shadow-borders-active group box-content w-full rounded-md border px-2 py-[5px] text-left uppercase tabular-nums outline-none transition-all ${
-          !segment.isEditable ? "text-ui-fg-disabled" : "text-ui-fg-base"
-        }`,
+        "w-full rounded-md border px-2 py-[5px] text-left uppercase tabular-nums",
+        "border-ui-border-loud-muted bg-ui-bg-subtle shadow-buttons-secondary text-ui-fg-base outline-none transition-all",
+        "focus:border-ui-border-interactive focus:shadow-borders-active",
+        "hover:bg-ui-bg-subtle-hover",
         {
           "text-ui-fg-muted !w-fit border-none bg-transparent px-0 shadow-none":
             isDecorator,
           hidden: isSpace,
+          "text-ui-fg-disabled bg-ui-bg-disabled border-ui-border-base shadow-none":
+            state.isDisabled,
+          "!text-ui-fg-muted !bg-transparent": !segment.isEditable,
         }
       )}
     >

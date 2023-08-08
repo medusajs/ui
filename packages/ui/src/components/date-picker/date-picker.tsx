@@ -24,7 +24,12 @@ const Display = React.forwardRef<
       <button
         ref={ref}
         className={clx(
-          "disabled:bg-ui-bg-disabled disabled:text-ui-fg-disabled disabled:border-ui-border-base border-ui-border-loud-muted bg-ui-bg-subtle hover:bg-ui-bg-subtle-hover active:bg-ui-bg-subtle-pressed shadow-buttons-secondary focus:border-ui-border-interactive focus:shadow-borders-active grid w-full grid-cols-[20px_1fr] items-center gap-x-2 rounded-md border px-3 py-[9px] outline-none transition-all disabled:shadow-none",
+          "grid w-full grid-cols-[20px_1fr] items-center gap-x-2 rounded-md border px-3 py-[9px]",
+          "border-ui-border-loud-muted bg-ui-bg-subtle shadow-buttons-secondary outline-none transition-all",
+          "disabled:bg-ui-bg-disabled disabled:text-ui-fg-disabled disabled:border-ui-border-base disabled:shadow-none",
+          "focus:border-ui-border-interactive focus:shadow-borders-active",
+          "hover:bg-ui-bg-subtle-hover",
+          "active:bg-ui-bg-subtle-pressed",
           labelVariants({
             size: "small",
           })
@@ -56,7 +61,8 @@ const Flyout = React.forwardRef<
       align="start"
       className={clx(
         "shadow-elevation-flyout rounded-lg",
-        "animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+        "animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
+        "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
         labelVariants({ size: "small" }),
         className
       )}
@@ -116,7 +122,6 @@ const PresetContainer = <TPreset extends Preset, TValue>({
   }
 
   const compareRanges = (range1: DateRange, range2: DateRange) => {
-    // compare the from dates but ignore time
     const from1 = range1.from
     const from2 = range2.from
 
@@ -129,8 +134,6 @@ const PresetContainer = <TPreset extends Preset, TValue>({
         equalFrom = true
       }
     }
-
-    // compare the to dates but ignore time
 
     const to1 = range1.to
     const to2 = range2.to
@@ -169,7 +172,8 @@ const PresetContainer = <TPreset extends Preset, TValue>({
           <li key={index} className="w-full">
             <button
               className={clx(
-                "text-ui-fg-subtle hover:bg-ui-bg-base-hover w-full overflow-hidden text-ellipsis whitespace-nowrap rounded-md p-2 text-left outline-none transition-all",
+                "w-full overflow-hidden text-ellipsis whitespace-nowrap rounded-md p-2 text-left",
+                "text-ui-fg-subtle hover:bg-ui-bg-base-hover outline-none transition-all",
                 labelVariants({
                   size: "small",
                   weight: "plus",
@@ -525,6 +529,7 @@ const RangeDatePicker = ({
                       value={time.start}
                       onChange={(v) => handleTimeChange(v, "start")}
                       aria-label="Start date time"
+                      isDisabled={!range?.from}
                     />
                   </div>
                   <Minus className="text-ui-fg-muted" />
@@ -534,6 +539,7 @@ const RangeDatePicker = ({
                       value={time.end}
                       onChange={(v) => handleTimeChange(v, "end")}
                       aria-label="End date time"
+                      isDisabled={!range?.to}
                     />
                   </div>
                 </div>
