@@ -476,12 +476,14 @@ export const SearchAndCreate: Story = {
 
 const ScrollPaginatedSelect = () => {
   const [cursor, setCursor] = React.useState(0)
-  const pageSize = 10
+  const pageSize = 5
   const loadedItems = manyItems.slice(0, cursor + pageSize)
 
   const handleScroll = () => {
     if (loadedItems.length < manyItems.length) {
-      setCursor((cursor) => cursor + 5)
+      setTimeout(() => {
+        setCursor((cursor) => cursor + 5)
+      }, 500)
     }
   }
 

@@ -1,13 +1,13 @@
 import * as React from "react"
 import {
-  UseComboboxProps,
-  UseComboboxReturnValue,
-  UseComboboxState,
-  UseComboboxStateChange,
-  UseComboboxStateChangeOptions,
-  useCombobox,
+  UseSelectProps,
+  UseSelectReturnValue,
+  UseSelectState,
+  UseSelectStateChange,
+  UseSelectStateChangeOptions,
+  useSelect,
 } from "downshift"
-import { isEqual } from "lodash"
+import { isEqual, throttle } from "lodash"
 import {
   CheckMini,
   ChevronUpDown,
@@ -15,7 +15,7 @@ import {
   MagnifyingGlassMini,
   XMarkMini,
 } from "@medusajs/icons"
-import { DropdownMenu } from "@/components/dropdown-menu"
+import * as DropdownPrimitive from "@radix-ui/react-dropdown-menu"
 import { clx } from "@/utils/clx"
 import { Badge } from "../badge"
 import { labelVariants } from "../label"
@@ -23,20 +23,18 @@ import { labelVariants } from "../label"
 const ALLOWED_SEARCH_KEYDOWN_CODES = ["Enter", "Escape", "ArrowUp", "ArrowDown"]
 const SCROLL_TOLERANCE = 30
 
-type SelectState<T> =
-  | ({
-      multi: boolean
-      selectedItems?: SelectItem[]
-      clearSelectedItems: () => void
-      selectAll: () => void
-      allSelected: boolean
-      search: boolean
-      onSearch: (searchTerm: string) => void
-      addItem: (item: SelectItem) => void
-      removeItem: (item: SelectItem) => void
-      onScrollToBottom: () => void
-    } & UseComboboxReturnValue<T>)
-  | null
+type SelectState<T> = {
+  multi: boolean
+  selectedItems?: T[]
+  clearSelectedItems: () => void
+  selectAll: () => void
+  allSelected: boolean
+  search: boolean
+  onSearch: (searchTerm: string) => void
+  addItem: (item: T) => void
+  removeItem: (item: T) => void
+  onScrollToBottom: () => void
+} & UseSelectReturnValue<T>
 
 export type SelectItem = {
   value: any
@@ -55,9 +53,10 @@ export type SelectProps = {
   onChange: OnSelectChange
   onSearch?: (searchTerm: string) => void
   onScrollToBottom?: () => void
-} & React.ComponentPropsWithoutRef<typeof DropdownMenu>
+} & React.ComponentPropsWithoutRef<typeof DropdownPrimitive.Root>
 
-export const SelectContext = React.createContext<SelectState<SelectItem>>(null)
+export const SelectContext =
+  React.createContext<SelectState<SelectItem> | null>(null)
 
 export const useSelectContext = () => {
   const context = React.useContext(SelectContext)
@@ -70,13 +69,13 @@ export const useSelectContext = () => {
 }
 
 const multiStateReducer = (
-  state: UseComboboxState<SelectItem>,
-  actionAndChanges: UseComboboxStateChangeOptions<SelectItem>
+  state: UseSelectState<SelectItem>,
+  actionAndChanges: UseSelectStateChangeOptions<SelectItem>
 ) => {
   const { changes, type } = actionAndChanges
 
   switch (type) {
-    case useCombobox.stateChangeTypes.ItemClick:
+    case useSelect.stateChangeTypes.ItemClick:
       return {
         ...changes,
         isOpen: true,
@@ -116,7 +115,7 @@ const Root = ({
   }, [selectedItems, onChange, multi])
 
   // Simple props for combobox hook
-  const selectProps: UseComboboxProps<SelectItem> = {
+  const selectProps: UseSelectProps<SelectItem> = {
     items,
     onSelectedItemChange: ({ selectedItem }) => {
       if (selectedItem) onChange(selectedItem)
@@ -147,7 +146,7 @@ const Root = ({
   // Custom action when an item is selected in a multiselect context
   const onMultiSelectedItemChange = ({
     selectedItem,
-  }: UseComboboxStateChange<SelectItem>) => {
+  }: UseSelectStateChange<SelectItem>) => {
     if (!selectedItem) return
 
     const index = selectedItems.findIndex(
@@ -173,10 +172,14 @@ const Root = ({
     selectProps.onSelectedItemChange = onMultiSelectedItemChange
   }
 
-  const selectReturn = useCombobox(selectProps)
+  const selectReturn = useSelect(selectProps)
 
   return (
-    <DropdownMenu {...props} modal={false} onOpenChange={onOpenChange}>
+    <DropdownPrimitive.Root
+      {...props}
+      modal={false}
+      onOpenChange={onOpenChange}
+    >
       <SelectContext.Provider
         value={{
           multi,
@@ -188,13 +191,13 @@ const Root = ({
           onSearch,
           addItem,
           removeItem,
-          onScrollToBottom,
+          onScrollToBottom: throttle(onScrollToBottom, 500),
           ...selectReturn,
         }}
       >
         {children}
       </SelectContext.Provider>
-    </DropdownMenu>
+    </DropdownPrimitive.Root>
   )
 }
 
@@ -205,8 +208,9 @@ type TriggerProps = {
 }
 
 const Trigger = React.forwardRef<
-  React.ElementRef<typeof DropdownMenu.Trigger>,
-  React.ComponentPropsWithoutRef<typeof DropdownMenu.Trigger> & TriggerProps
+  React.ElementRef<typeof DropdownPrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof DropdownPrimitive.Trigger> &
+    TriggerProps
 >(({ className, children, size = "regular", disabled, ...props }, ref) => {
   const { getToggleButtonProps, selectedItem, search } = useSelectContext()
 
@@ -215,7 +219,7 @@ const Trigger = React.forwardRef<
   })
 
   return (
-    <DropdownMenu.Trigger
+    <DropdownPrimitive.Trigger
       ref={toggleButtonRef}
       asChild
       className={clx(
@@ -245,7 +249,7 @@ const Trigger = React.forwardRef<
         )}
         {children}
       </div>
-    </DropdownMenu.Trigger>
+    </DropdownPrimitive.Trigger>
   )
 })
 
@@ -316,23 +320,25 @@ const Value = ({ children, placeholder = "", value }: ValueProps) => {
 }
 
 const Content = React.forwardRef<
-  React.ElementRef<typeof DropdownMenu.Content>,
-  React.ComponentPropsWithoutRef<typeof DropdownMenu.Content>
+  React.ElementRef<typeof DropdownPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof DropdownPrimitive.Content>
 >(({ children, className, ...props }, ref) => {
   const innerRef = React.useRef<HTMLDivElement | null>(null)
+  const firstMount = React.useRef(true)
 
   React.useImperativeHandle<HTMLDivElement | null, HTMLDivElement | null>(
     ref,
     () => innerRef.current
   )
 
-  const { getMenuProps, onScrollToBottom } = useSelectContext()
+  const { getMenuProps, onScrollToBottom, isOpen } = useSelectContext()
 
   const { ref: menuRef, ...menuProps } = getMenuProps({ ref: innerRef })
 
   const handleScroll = React.useCallback(() => {
     if (innerRef.current) {
       const div = innerRef.current
+
       if (
         div.scrollHeight - div.scrollTop <=
         div.clientHeight + SCROLL_TOLERANCE
@@ -345,35 +351,45 @@ const Content = React.forwardRef<
   React.useEffect(() => {
     if (innerRef.current) {
       innerRef.current.addEventListener("scroll", handleScroll)
+
+      const isScrollable =
+        innerRef.current.scrollHeight > innerRef.current.clientHeight
+      if (!isScrollable && firstMount.current) {
+        firstMount.current = false
+        onScrollToBottom()
+      }
     }
     return () => innerRef.current?.removeEventListener("scroll", handleScroll)
   }, [innerRef.current, handleScroll])
 
   return (
-    <DropdownMenu.Content
-      ref={innerRef}
+    <DropdownPrimitive.Content
+      ref={menuRef}
       className={clx(
         "bg-ui-bg-base shadow-elevation-flyout relative z-50 w-full min-w-[8rem] overflow-auto rounded-lg",
         "data-[state=open]:animate-in data-[state=open]:fade-in-0",
         "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
         "data-[side=bottom]:translate-y-2 data-[side=left]:-translate-x-2 data-[side=right]:translate-x-2 data-[side=top]:-translate-y-2",
-        "max-h-[calc(var(--radix-dropdown-menu-content-available-height)-50px)] w-full min-w-[var(--radix-dropdown-menu-trigger-width)]",
+        "max-h-[200px] w-full min-w-[var(--radix-dropdown-menu-trigger-width)]",
+        { hidden: !isOpen },
         className
       )}
       {...props}
       {...menuProps}
+      forceMount={true}
+      data-state={isOpen ? "open" : "closed"}
     >
       {children}
-    </DropdownMenu.Content>
+    </DropdownPrimitive.Content>
   )
 })
 
 type ItemProps = { item: SelectItem } & React.ComponentPropsWithoutRef<
-  typeof DropdownMenu.Item
+  typeof DropdownPrimitive.Item
 >
 
 const Item = React.forwardRef<
-  React.ElementRef<typeof DropdownMenu.Item>,
+  React.ElementRef<typeof DropdownPrimitive.Item>,
   ItemProps
 >(({ className, children, item, ...props }, ref) => {
   const {
@@ -398,7 +414,7 @@ const Item = React.forwardRef<
     !!selectedItems?.find((selectedItem) => selectedItem.value === item.value)
 
   return (
-    <DropdownMenu.Item
+    <DropdownPrimitive.Item
       ref={itemRef}
       className={clx(
         "relative flex w-full cursor-default select-none items-center rounded-md py-2 pl-10 pr-3 text-sm",
@@ -425,17 +441,17 @@ const Item = React.forwardRef<
         </div>
       )}
       {children}
-    </DropdownMenu.Item>
+    </DropdownPrimitive.Item>
   )
 })
 
 Item.displayName = "Select.Item"
 
 const Separator = React.forwardRef<
-  React.ElementRef<typeof DropdownMenu.Separator>,
-  React.ComponentPropsWithoutRef<typeof DropdownMenu.Separator>
+  React.ElementRef<typeof DropdownPrimitive.Separator>,
+  React.ComponentPropsWithoutRef<typeof DropdownPrimitive.Separator>
 >(({ className, ...props }, ref) => (
-  <DropdownMenu.Separator
+  <DropdownPrimitive.Separator
     ref={ref}
     className={clx("bg-ui-border-base -mx-1 my-1 h-px", className)}
     {...props}
@@ -541,10 +557,10 @@ const Search = React.forwardRef<HTMLInputElement, InputProps>(
 Search.displayName = "Select.Search"
 
 const Label = React.forwardRef<
-  React.ElementRef<typeof DropdownMenu.Label>,
-  React.ComponentPropsWithoutRef<typeof DropdownMenu.Label>
+  React.ElementRef<typeof DropdownPrimitive.Label>,
+  React.ComponentPropsWithoutRef<typeof DropdownPrimitive.Label>
 >(({ className, ...props }, ref) => (
-  <DropdownMenu.Label
+  <DropdownPrimitive.Label
     ref={ref}
     className={clx(
       "text-ui-fg-subtle px-2 py-1.5",
