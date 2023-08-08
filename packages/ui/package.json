@@ -88,13 +88,13 @@
     "@react-stately/datepicker": "^3.5.0",
     "class-variance-authority": "^0.6.1",
     "clsx": "^1.2.1",
-    "react-hook-form": "^7.45.2",
-    "zod": "^3.21.4",
     "copy-to-clipboard": "^3.3.3",
     "date-fns": "^2.30.0",
     "prism-react-renderer": "^2.0.6",
     "react-day-picker": "^8.8.0",
-    "tailwind-merge": "^1.13.2"
+    "react-hook-form": "^7.45.2",
+    "tailwind-merge": "^1.13.2",
+    "zod": "^3.21.4"
   },
   "peerDependencies": {
     "react": "^18.0.0",
