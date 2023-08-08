@@ -177,7 +177,7 @@ const Form = Object.assign(Provider, {
   Control,
   Hint,
   ErrorMessage,
-  Field: Field,
+  Field,
 })
 
 export { Form }
