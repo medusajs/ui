@@ -3,13 +3,13 @@
 
 import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
-import dts from "vite-plugin-dts"
 
 export default defineConfig({
-  plugins: [dts(), react()],
+  plugins: [react()],
   resolve: {
     alias: {
       "@/components": "/src/components",
+      "@/providers": "/src/providers",
       "@/hooks": "/src/hooks",
       "@/utils": "/src/utils",
     },

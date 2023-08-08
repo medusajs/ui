@@ -6,7 +6,7 @@ import {
 } from "@testing-library/react"
 import * as React from "react"
 
-import { AlertDialog } from "./alert-dialog"
+import { Prompt } from "./prompt"
 
 import { Button } from "@/components/button"
 
@@ -16,29 +16,27 @@ const DESCRIPTION_TEXT = "Are you sure? This cannot be undone."
 const CANCEL_TEXT = "Cancel"
 const CONFIRM_TEXT = "Confirm"
 
-describe("AlertDialog", () => {
+describe("Prompt", () => {
   let rendered: RenderResult
   let trigger: HTMLElement
 
   beforeEach(() => {
     rendered = render(
-      <AlertDialog>
-        <AlertDialog.Trigger asChild>
+      <Prompt>
+        <Prompt.Trigger asChild>
           <Button>{TRIGGER_TEXT}</Button>
-        </AlertDialog.Trigger>
-        <AlertDialog.Content>
-          <AlertDialog.Header>
-            <AlertDialog.Title>{TITLE_TEXT}</AlertDialog.Title>
-            <AlertDialog.Description>
-              {DESCRIPTION_TEXT}
-            </AlertDialog.Description>
-          </AlertDialog.Header>
-          <AlertDialog.Footer>
-            <AlertDialog.Cancel>{CANCEL_TEXT}</AlertDialog.Cancel>
-            <AlertDialog.Action>{CONFIRM_TEXT}</AlertDialog.Action>
-          </AlertDialog.Footer>
-        </AlertDialog.Content>
-      </AlertDialog>
+        </Prompt.Trigger>
+        <Prompt.Content>
+          <Prompt.Header>
+            <Prompt.Title>{TITLE_TEXT}</Prompt.Title>
+            <Prompt.Description>{DESCRIPTION_TEXT}</Prompt.Description>
+          </Prompt.Header>
+          <Prompt.Footer>
+            <Prompt.Cancel>{CANCEL_TEXT}</Prompt.Cancel>
+            <Prompt.Action>{CONFIRM_TEXT}</Prompt.Action>
+          </Prompt.Footer>
+        </Prompt.Content>
+      </Prompt>
     )
 
     trigger = rendered.getByText(TRIGGER_TEXT)

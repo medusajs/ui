@@ -1,8 +1,8 @@
 import * as React from "react"
 
-import { AlertDialog } from "@/components/alert-dialog"
 import { Input } from "@/components/input"
 import { Label, labelVariants } from "@/components/label"
+import { Prompt } from "@/components/prompt"
 import { clx } from "../../utils/clx"
 
 export type DialogProps = {
@@ -63,12 +63,12 @@ const Dialog = ({
   }, [onCancel, open])
 
   return (
-    <AlertDialog open={open}>
-      <AlertDialog.Content>
-        <AlertDialog.Header>
-          <AlertDialog.Title>{title}</AlertDialog.Title>
-          <AlertDialog.Description>{description}</AlertDialog.Description>
-        </AlertDialog.Header>
+    <Prompt open={open}>
+      <Prompt.Content>
+        <Prompt.Header>
+          <Prompt.Title>{title}</Prompt.Title>
+          <Prompt.Description>{description}</Prompt.Description>
+        </Prompt.Header>
         {verificationText && (
           <form onSubmit={handleFormSubmit}>
             <fieldset className="border-ui-border-base mt-6 flex flex-col gap-y-4 border-y p-6">
@@ -94,20 +94,18 @@ const Dialog = ({
             </fieldset>
           </form>
         )}
-        <AlertDialog.Footer>
-          <AlertDialog.Cancel onClick={onCancel}>
-            {cancelText}
-          </AlertDialog.Cancel>
-          <AlertDialog.Action
+        <Prompt.Footer>
+          <Prompt.Cancel onClick={onCancel}>{cancelText}</Prompt.Cancel>
+          <Prompt.Action
             onClick={verificationText ? undefined : onConfirm}
             disabled={!validInput}
             type={verificationText ? "submit" : "button"}
           >
             {confirmText}
-          </AlertDialog.Action>
-        </AlertDialog.Footer>
-      </AlertDialog.Content>
-    </AlertDialog>
+          </Prompt.Action>
+        </Prompt.Footer>
+      </Prompt.Content>
+    </Prompt>
   )
 }
 
