@@ -11,6 +11,7 @@
   "dependencies": {
     "@medusajs/ui": "*",
     "@medusajs/ui-preset": "*",
+    "@radix-ui/react-tabs": "^1.0.4",
     "@types/node": "20.4.9",
     "@types/react": "18.2.19",
     "@types/react-dom": "18.2.7",
