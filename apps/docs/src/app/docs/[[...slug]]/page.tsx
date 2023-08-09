@@ -1,4 +1,4 @@
-import { Heading, RadioGroup, Text } from "@medusajs/ui"
+import { Heading, Text } from "@medusajs/ui"
 import { allDocs } from "contentlayer/generated"
 import { notFound } from "next/navigation"
 
@@ -43,11 +43,6 @@ export default async function DocPage({ params }: DocPageProps) {
       <Text>{doc.description}</Text>
       <div>
         <Mdx code={doc.body.code} />
-      </div>
-      <div>
-        <RadioGroup.Root>
-          <RadioGroup.Item value={"1"}>1</RadioGroup.Item>
-        </RadioGroup.Root>
       </div>
     </div>
   )
