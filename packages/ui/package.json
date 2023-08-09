@@ -13,8 +13,8 @@
   ],
   "sideEffects": false,
   "scripts": {
-    "build:tsup": "tsup src/index.ts --format esm,cjs --dts --external react",
-    "build": "rimraf build && yarn build:types && yarn build:js",
+    "build": "tsup src/index.ts --format esm,cjs --dts --external react",
+    "build:deprecated": "rimraf build && yarn build:types && yarn build:js",
     "build:js": "rollup -c",
     "build:types": "tsc --project ./tsconfig.build.json",
     "test": "vitest --run",

@@ -26,7 +26,7 @@ export async function generateStaticParams(): Promise<
   DocPageProps["params"][]
 > {
   return allDocs.map((doc) => ({
-    slug: doc.slug.split("/"),
+    slug: doc.slugAsParams.split("/"),
   }))
 }
 
