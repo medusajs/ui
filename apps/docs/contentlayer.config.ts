@@ -1,3 +1,4 @@
+import { rehypeComponent } from "./src/lib/rehype-component"
 import { defineDocumentType, makeSource } from "contentlayer/source-files"
 
 export const Doc = defineDocumentType(() => ({
@@ -9,16 +10,22 @@ export const Doc = defineDocumentType(() => ({
     description: { type: "string", required: true },
     component: { type: "boolean", required: false, default: false },
   },
-  computedFields:{
+  computedFields: {
     slug: {
-        type: "string",
-        resolve: (doc) => `/${doc._raw.flattenedPath}`,
+      type: "string",
+      resolve: (doc) => `/${doc._raw.flattenedPath}`,
     },
-     slugAsParams: {
-        type: "string",
-        resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
+    slugAsParams: {
+      type: "string",
+      resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
     },
   },
 }))
 
-export default makeSource({ contentDirPath: "./src/content", documentTypes: [Doc] })
+export default makeSource({
+  contentDirPath: "./src/content",
+  documentTypes: [Doc],
+  mdx: {
+    rehypePlugins: [rehypeComponent],
+  },
+})
