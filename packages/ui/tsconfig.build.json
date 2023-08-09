@@ -1,16 +1,13 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["."],
+  "include": ["src"],
   "exclude": [
-    "src/**/*.spec.ts",
-    "src/**/*.spec.tsx",
-    "src/**/*.test.ts",
-    "src/**/*.test.tsx",
-    "src/**/*.stories.tsx",
-    "src/**/*.stories.ts",
-    "src/**/*.stories.mdx",
-    "node_modules",
-    "dist",
-    "build"
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.stories.tsx",
+    "**/*.stories.ts",
+    "**/*.stories.mdx"
   ]
 }

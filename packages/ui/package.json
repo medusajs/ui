@@ -3,18 +3,17 @@
   "version": "0.0.0",
   "author": "Kasper Kristensen <kasper@medusajs.com>",
   "license": "MIT",
-  "main": "build/index.js",
-  "module": "build/index.mjs",
-  "types": "build/index.d.ts",
+  "main": "build/cjs/index.js",
+  "module": "build/esm/index.js",
+  "types": "build/types/src/index.d.ts",
   "files": [
-    "build/**",
+    "build/",
     "!build/types/**/*.tsbuildinfo",
     "package.json"
   ],
   "sideEffects": false,
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts --external react",
-    "build:deprecated": "rimraf build && yarn build:types && yarn build:js",
+    "build": "rimraf build && yarn build:types && yarn build:js",
     "build:js": "rollup -c",
     "build:types": "tsc --project ./tsconfig.build.json",
     "test": "vitest --run",
@@ -65,7 +64,6 @@
     "rollup-plugin-typescript-paths": "^1.4.0",
     "storybook": "^7.0.23",
     "tailwindcss": "^3.3.2",
-    "tsup": "^7.2.0",
     "typescript": "^5.1.6",
     "vite": "^4.3.9",
     "vitest": "^0.32.2"
