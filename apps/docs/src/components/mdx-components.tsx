@@ -4,6 +4,7 @@ import { useMDXComponent } from "next-contentlayer/hooks"
 import * as React from "react"
 
 import { Heading, Text } from "@medusajs/ui"
+import { ComponentExample } from "@/components/component-example"
 
 interface MdxProps {
   code: string
@@ -22,6 +23,7 @@ const components = {
   p: (props: React.HTMLAttributes<HTMLParagraphElement>) => {
     return <Text {...props} />
   },
+  ComponentExample,
 }
 
 const Mdx = ({ code }: MdxProps) => {
