@@ -2823,7 +2823,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@medusajs/ui-preset@*, @medusajs/ui-preset@workspace:*, @medusajs/ui-preset@workspace:packages/ui-preset":
+"@medusajs/ui-preset@*, @medusajs/ui-preset@workspace:packages/ui-preset":
   version: 0.0.0-use.local
   resolution: "@medusajs/ui-preset@workspace:packages/ui-preset"
   dependencies:
@@ -2840,7 +2840,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@medusajs/ui@workspace:*, @medusajs/ui@workspace:packages/ui":
+"@medusajs/ui@*, @medusajs/ui@workspace:packages/ui":
   version: 0.0.0-use.local
   resolution: "@medusajs/ui@workspace:packages/ui"
   dependencies:
@@ -8789,8 +8789,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "docs@workspace:apps/docs"
   dependencies:
-    "@medusajs/ui": "workspace:*"
-    "@medusajs/ui-preset": "workspace:*"
+    "@medusajs/ui": "*"
+    "@medusajs/ui-preset": "*"
     "@types/node": 20.4.9
     "@types/react": 18.2.19
     "@types/react-dom": 18.2.7
