@@ -5,12 +5,13 @@
     "esModuleInterop": true,
     "declaration": true,
     "skipLibCheck": true,
-    "composite": false,
+    "composite": true,
     "emitDeclarationOnly": true,
     "outDir": "build/types",
     "rootDir": "./",
     "baseUrl": ".",
     "paths": {
+      // We delibaretly don't include the theme path here as tw does not support it
       "@medusajs/ui": ["src/index.tsc"],
       "@/components/*": ["./src/components/*"],
       "@/providers/*": ["./src/providers/*"],
