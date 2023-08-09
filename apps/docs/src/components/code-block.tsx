@@ -2,9 +2,9 @@
 
 import { CodeBlock as Primitive } from "@medusajs/ui"
 
-const CodeBlock = ({ snippets }: { snippets: any[] }) => {
+const CodeBlock = ({ code }: { code: string }) => {
   return (
-    <Primitive snippets={snippets}>
+    <Primitive snippets={[{ language: "tsx", label: "TSX", code }]}>
       <Primitive.Body hideLineNumbers className="pb-4" />
     </Primitive>
   )
