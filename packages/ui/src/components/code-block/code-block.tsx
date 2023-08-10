@@ -113,7 +113,7 @@ const Body = ({
 }: React.HTMLAttributes<HTMLDivElement> & BodyProps) => {
   const { active } = useCodeBlockContext()
   return (
-    <div className={clx("bg-ui-code-bg-base relative p-4 pb-6", className)}>
+    <div className={clx("bg-ui-code-bg-base relative p-4", className)}>
       <Copy content={active.code} className="absolute right-4 top-4" />
       <div className="max-w-[90%]">
         <Highlight

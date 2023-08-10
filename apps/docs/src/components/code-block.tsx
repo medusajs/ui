@@ -2,10 +2,19 @@
 
 import { CodeBlock as Primitive } from "@medusajs/ui"
 
-const CodeBlock = ({ code }: { code: string }) => {
+const CodeBlock = ({
+  className = "",
+  code,
+}: {
+  className?: string
+  code: string
+}) => {
   return (
-    <Primitive snippets={[{ language: "tsx", label: "TSX", code }]}>
-      <Primitive.Body hideLineNumbers className="pb-4" />
+    <Primitive
+      snippets={[{ language: "tsx", label: "TSX", code }]}
+      className={className}
+    >
+      <Primitive.Body hideLineNumbers />
     </Primitive>
   )
 }

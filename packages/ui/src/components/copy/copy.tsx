@@ -28,7 +28,7 @@ const Copy = React.forwardRef<
         ref={ref}
         aria-label="Copy code snippet"
         type="button"
-        className={clx("text-ui-code-icon ml-auto cursor-pointer", className)}
+        className={clx("text-ui-code-icon", className)}
         onClick={copyToClipboard}
         {...props}
       >
