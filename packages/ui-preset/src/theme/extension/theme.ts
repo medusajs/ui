@@ -1,6 +1,4 @@
-import { ThemeConfig } from "tailwindcss/types/config"
-
-export const theme: Partial<ThemeConfig> = {
+export const theme = {
   extend: {
     colors: {
       ui: {
@@ -22,12 +20,7 @@ export const theme: Partial<ThemeConfig> = {
             },
           },
           border: {
-            base: {
-              DEFAULT: "var(--code-border-base)",
-            },
-            strong: {
-              DEFAULT: "var(--code-border-strong)",
-            },
+            DEFAULT: "var(--code-border)",
           },
           icon: {
             DEFAULT: "var(--code-icon)",
@@ -166,6 +159,9 @@ export const theme: Partial<ThemeConfig> = {
         bg: {
           highlight: {
             DEFAULT: "var(--bg-highlight)",
+            hover: {
+              DEFAULT: "var(--bg-highlight-hover)",
+            },
           },
           base: {
             hover: {

@@ -1,8 +1,8 @@
-import React, { useState } from "react"
-import copy from "copy-to-clipboard"
-import { CheckCircleSolid, SquareTwoStack } from "@medusajs/icons"
 import { Tooltip } from "@/components/tooltip"
 import { clx } from "@/utils/clx"
+import { CheckCircleSolid, SquareTwoStack } from "@medusajs/icons"
+import copy from "copy-to-clipboard"
+import React, { useState } from "react"
 
 type CopyProps = {
   content: string
@@ -28,7 +28,7 @@ const Copy = React.forwardRef<
         ref={ref}
         aria-label="Copy code snippet"
         type="button"
-        className={clx("text-ui-code-icon ml-auto cursor-pointer", className)}
+        className={clx("text-ui-code-icon", className)}
         onClick={copyToClipboard}
         {...props}
       >
@@ -37,5 +37,6 @@ const Copy = React.forwardRef<
     </Tooltip>
   )
 })
+Copy.displayName = "Copy"
 
 export { Copy }

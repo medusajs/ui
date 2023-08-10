@@ -1,7 +1,6 @@
-import { cva } from "class-variance-authority"
+import { VariantProps, cva } from "class-variance-authority"
 import * as React from "react"
 
-import { labelVariants } from "@/components/label"
 import { clx } from "@/utils/clx"
 
 const inputVariants = cva(
@@ -9,8 +8,8 @@ const inputVariants = cva(
   {
     variants: {
       size: {
-        base: "h-10 px-3 py-[9px]",
-        small: "h-8",
+        base: "txt-compact-medium h-10 px-3 py-[9px]",
+        small: "txt-compact-small h-8",
       },
     },
   }
@@ -18,16 +17,13 @@ const inputVariants = cva(
 
 const Input = React.forwardRef<
   HTMLInputElement,
-  React.InputHTMLAttributes<HTMLInputElement>
+  Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> &
+    VariantProps<typeof inputVariants>
 >(({ className, size, ...props }, ref) => {
   return (
     <input
       ref={ref}
-      className={clx(
-        inputVariants({ size: "base" }),
-        labelVariants({ size: "base" }),
-        className
-      )}
+      className={clx(inputVariants({ size: size }), className)}
       {...props}
     />
   )

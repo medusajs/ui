@@ -1,4 +1,12 @@
-import * as React from "react"
+import { clx } from "@/utils/clx"
+import {
+  CheckMini,
+  ChevronUpDown,
+  EllipseMiniSolid,
+  MagnifyingGlassMini,
+  XMarkMini,
+} from "@medusajs/icons"
+import * as DropdownPrimitive from "@radix-ui/react-dropdown-menu"
 import {
   UseSelectProps,
   UseSelectReturnValue,
@@ -8,17 +16,8 @@ import {
   useSelect,
 } from "downshift"
 import { isEqual, throttle } from "lodash"
-import {
-  CheckMini,
-  ChevronUpDown,
-  EllipseMiniSolid,
-  MagnifyingGlassMini,
-  XMarkMini,
-} from "@medusajs/icons"
-import * as DropdownPrimitive from "@radix-ui/react-dropdown-menu"
-import { clx } from "@/utils/clx"
+import * as React from "react"
 import { Badge } from "../badge"
-import { labelVariants } from "../label"
 
 const ALLOWED_SEARCH_KEYDOWN_CODES = ["Enter", "Escape", "ArrowUp", "ArrowDown"]
 const SCROLL_TOLERANCE = 30
@@ -383,6 +382,7 @@ const Content = React.forwardRef<
     </DropdownPrimitive.Content>
   )
 })
+Content.displayName = "Select.Content"
 
 type ItemProps = { item: SelectItem } & React.ComponentPropsWithoutRef<
   typeof DropdownPrimitive.Item
@@ -563,8 +563,7 @@ const Label = React.forwardRef<
   <DropdownPrimitive.Label
     ref={ref}
     className={clx(
-      "text-ui-fg-subtle px-2 py-1.5",
-      labelVariants({ size: "xsmall", weight: "plus" }),
+      "text-ui-fg-subtle txt-compact-xsmall-plus px-2 py-1.5",
       className
     )}
     {...props}
