@@ -8,7 +8,6 @@ import type { DateRange } from "react-day-picker"
 
 import { Button } from "@/components/button"
 import { Calendar } from "@/components/calendar"
-import { labelVariants } from "@/components/label"
 import { TimeInput } from "@/components/time-input"
 import { clx } from "@/utils/clx"
 import { isBrowserLocaleClockType24h } from "@/utils/is-browser-locale-hour-cycle-24h"
@@ -24,15 +23,12 @@ const Display = React.forwardRef<
       <button
         ref={ref}
         className={clx(
-          "grid w-full grid-cols-[20px_1fr] items-center gap-x-2 rounded-md border px-3 py-[9px]",
+          "txt-compact-small grid w-full grid-cols-[20px_1fr] items-center gap-x-2 rounded-md border px-3 py-[9px]",
           "border-ui-border-loud-muted bg-ui-bg-subtle shadow-buttons-secondary outline-none transition-all",
           "disabled:bg-ui-bg-disabled disabled:text-ui-fg-disabled disabled:border-ui-border-base disabled:shadow-none",
           "focus:border-ui-border-interactive focus:shadow-borders-active",
           "hover:bg-ui-bg-subtle-hover",
-          "active:bg-ui-bg-subtle-pressed",
-          labelVariants({
-            size: "small",
-          })
+          "active:bg-ui-bg-subtle-pressed"
         )}
         {...props}
       >
@@ -60,10 +56,9 @@ const Flyout = React.forwardRef<
       sideOffset={4}
       align="start"
       className={clx(
-        "shadow-elevation-flyout bg-ui-bg-base rounded-lg",
+        "txt-compact-small shadow-elevation-flyout bg-ui-bg-base rounded-lg",
         "animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
         "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
-        labelVariants({ size: "small" }),
         className
       )}
       {...props}
@@ -172,12 +167,8 @@ const PresetContainer = <TPreset extends Preset, TValue>({
           <li key={index} className="w-full">
             <button
               className={clx(
-                "w-full overflow-hidden text-ellipsis whitespace-nowrap rounded-md p-2 text-left",
+                "txt-compact-small-plus w-full overflow-hidden text-ellipsis whitespace-nowrap rounded-md p-2 text-left",
                 "text-ui-fg-subtle hover:bg-ui-bg-base-hover outline-none transition-all",
-                labelVariants({
-                  size: "small",
-                  weight: "plus",
-                }),
                 {
                   "!bg-ui-bg-base-pressed": matchesCurrent(preset),
                 }
@@ -270,6 +261,7 @@ const SingleDatePicker = ({
     if (!open) {
       setMonth(date)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
 
   const handleCancel = () => {
@@ -423,6 +415,7 @@ const RangeDatePicker = ({
     if (!open) {
       setMonth(range?.from)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
 
   const handleRangeChange = (range: DateRange | undefined) => {
@@ -545,15 +538,7 @@ const RangeDatePicker = ({
                 </div>
               )}
               <div className="flex items-center justify-between border-t p-3">
-                <p
-                  className={clx(
-                    "text-ui-fg-subtle",
-                    labelVariants({
-                      size: "small",
-                      weight: "plus",
-                    })
-                  )}
-                >
+                <p className={clx("text-ui-fg-subtle txt-compact-small-plus")}>
                   <span className="text-ui-fg-muted">Range:</span>{" "}
                   {displayRange}
                 </p>

@@ -1,9 +1,13 @@
-import { PaintGradient, PaintType } from "@medusajs/figma-api"
+import { Node, PaintGradient, PaintType } from "@medusajs/figma-api"
 import fse from "fs-extra"
 import path from "path"
 import type { CSSProperties } from "react"
 
-import { FIGMA_FILE_ID } from "../../constants"
+import {
+  FIGMA_FILE_ID,
+  FONT_FAMILY_MONO,
+  FONT_FAMILY_SANS,
+} from "../../constants"
 import { client } from "../../figma-client"
 import { logger } from "../../logger"
 import {
@@ -90,6 +94,97 @@ export async function generateTokens({ output }: GenerateTokensArgs) {
     },
     components: {},
   }
+
+  const typo = Object.values(textStyles.nodes).reduce((acc, curr) => {
+    if (!curr) {
+      return acc
+    }
+
+    const node = curr.document as unknown as Node<"TEXT">
+
+    const isText = node.name.startsWith("Text")
+
+    if (isText) {
+      const [_parent, identifier] = node.name.split("/")
+      const { lineHeightPx, fontWeight, fontSize } = node.style
+
+      const name = "." + identifier.toLowerCase().replace("text", "txt")
+
+      const style: CSSProperties = {
+        fontSize: `${fontSize / 16}rem`,
+        lineHeight: `${lineHeightPx / 16}rem`,
+        fontWeight: `${fontWeight}`,
+        fontFamily: FONT_FAMILY_SANS.join(", "),
+      }
+
+      acc[name] = style
+
+      return acc
+    }
+
+    const isHeader = node.name.startsWith("Headers")
+
+    if (isHeader) {
+      const [theme, identifier] = node.name.split("/")
+
+      const formattedTheme = theme.toLowerCase().replace("headers ", "")
+      const formattedIdentifier = identifier.toLowerCase()
+
+      const name = "." + `${formattedIdentifier}-${formattedTheme}`
+
+      const { lineHeightPx, fontSize, fontWeight } = node.style
+
+      const style: CSSProperties = {
+        fontSize: `${fontSize / 16}rem`,
+        lineHeight: `${lineHeightPx / 16}rem`,
+        fontWeight: `${fontWeight}`,
+        fontFamily: FONT_FAMILY_SANS.join(", "),
+      }
+
+      acc[name] = style
+
+      return acc
+    }
+
+    const isCodeBlock = node.name.startsWith("Code Block")
+
+    if (isCodeBlock) {
+      const [_parent, identifier] = node.name.split("/")
+
+      const formattedIdentifier = "." + "code-" + identifier.toLowerCase()
+
+      const { lineHeightPx, fontSize, fontWeight } = node.style
+
+      const style: CSSProperties = {
+        fontSize: `${fontSize / 16}rem`,
+        lineHeight: `${lineHeightPx / 16}rem`,
+        fontWeight: `${fontWeight}`,
+        fontFamily: FONT_FAMILY_MONO.join(", "),
+      }
+
+      acc[formattedIdentifier] = style
+
+      return acc
+    }
+
+    return acc
+  }, {} as Record<string, CSSProperties>)
+
+  const typoPath = path.join(output, "tokens", "typography.ts")
+
+  logger.info(`Writing typography tokens to file`)
+  await fse
+    .outputFile(
+      typoPath,
+      `export const typography = ${JSON.stringify(typo, null, 2)}`
+    )
+    .then(() => {
+      logger.success(`Typography tokens written to file successfully`)
+    })
+    .catch((err) => {
+      logger.error(`Failed to write typography tokens to file: ${err.message}`)
+      process.exit(1)
+    })
 
   Object.values(colorStyles.nodes).reduce((acc, curr) => {
     if (!curr) {

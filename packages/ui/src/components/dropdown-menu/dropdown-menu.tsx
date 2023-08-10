@@ -2,7 +2,6 @@ import { CheckMini, ChevronRightMini, EllipseMiniSolid } from "@medusajs/icons"
 import * as Primitives from "@radix-ui/react-dropdown-menu"
 import * as React from "react"
 
-import { labelVariants } from "@/components/label"
 import { clx } from "@/utils/clx"
 
 const Root = Primitives.Root
@@ -27,10 +26,7 @@ const SubMenuTrigger = React.forwardRef<
   <Primitives.SubTrigger
     ref={ref}
     className={clx(
-      "focus:bg-ui-bg-base-pressed data-[state=open]:bg-ui-bg-base-pressed flex cursor-default select-none items-center rounded-sm px-3 py-2 outline-none",
-      labelVariants({
-        size: "small",
-      }),
+      "focus:bg-ui-bg-base-pressed data-[state=open]:bg-ui-bg-base-pressed txt-compact-small flex cursor-default select-none items-center rounded-sm px-3 py-2 outline-none",
       className
     )}
     {...props}
@@ -84,8 +80,7 @@ const Item = React.forwardRef<
   <Primitives.Item
     ref={ref}
     className={clx(
-      "bg-ui-bg-base focus:bg-ui-bg-base-pressed text-ui-fg-base data-[disabled]:text-ui-fg-disabled relative flex cursor-default select-none items-center rounded-md px-3 py-2 outline-none transition-colors data-[disabled]:pointer-events-none",
-      labelVariants({ size: "small" }),
+      "bg-ui-bg-base focus:bg-ui-bg-base-pressed text-ui-fg-base data-[disabled]:text-ui-fg-disabled txt-compact-small relative flex cursor-default select-none items-center rounded-md px-3 py-2 outline-none transition-colors data-[disabled]:pointer-events-none",
       className
     )}
     {...props}
@@ -123,8 +118,7 @@ const RadioItem = React.forwardRef<
   <Primitives.RadioItem
     ref={ref}
     className={clx(
-      "focus:bg-ui-bg-base-pressed hover:bg-ui-base-hover bg-ui-bg-base relative flex cursor-default select-none items-center rounded-md py-2 pl-10 pr-3 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[state=checked]:font-medium data-[disabled]:opacity-50",
-      labelVariants({ size: "small" }),
+      "focus:bg-ui-bg-base-pressed hover:bg-ui-base-hover bg-ui-bg-base txt-compact-small relative flex cursor-default select-none items-center rounded-md py-2 pl-10 pr-3 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[state=checked]:font-medium data-[disabled]:opacity-50",
       className
     )}
     {...props}
@@ -146,8 +140,7 @@ const Label = React.forwardRef<
   <Primitives.Label
     ref={ref}
     className={clx(
-      "text-ui-fg-subtle px-2 py-1.5",
-      labelVariants({ size: "xsmall", weight: "plus" }),
+      "text-ui-fg-subtle txt-compact-xsmall-plus px-2 py-1.5",
       className
     )}
     {...props}
@@ -174,10 +167,7 @@ const Shortcut = ({
   return (
     <span
       className={clx(
-        "text-ui-fg-subtle ml-auto tracking-widest",
-        labelVariants({
-          size: "small",
-        }),
+        "text-ui-fg-subtle txt-compact-small ml-auto tracking-widest",
         className
       )}
       {...props}
@@ -193,10 +183,7 @@ const Hint = ({
   return (
     <span
       className={clx(
-        "text-ui-fg-subtle ml-auto tracking-widest",
-        labelVariants({
-          size: "small",
-        }),
+        "text-ui-fg-subtle txt-compact-small ml-auto tracking-widest",
         className
       )}
       {...props}

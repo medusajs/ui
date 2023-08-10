@@ -7,10 +7,10 @@ import { clx } from "@/utils/clx"
 const labelVariants = cva("font-sans", {
   variants: {
     size: {
-      xsmall: "text-xs leading-5",
-      small: "text-[13px] leading-5",
-      base: "text-sm leading-5",
-      large: "text-base leading-5",
+      xsmall: "txt-compact-xsmall",
+      small: "txt-compact-small",
+      base: "txt-compact-medium",
+      large: "txt-compact-large",
     },
     weight: {
       regular: "font-normal",
@@ -40,4 +40,4 @@ const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
 )
 Label.displayName = "Label"
 
-export { Label, labelVariants }
+export { Label }

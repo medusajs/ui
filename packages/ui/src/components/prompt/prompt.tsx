@@ -3,7 +3,6 @@ import * as React from "react"
 
 import { Button } from "@/components/button"
 import { Heading } from "@/components/heading"
-import { labelVariants } from "@/components/label"
 import { clx } from "@/utils/clx"
 
 const Root = Primitives.AlertDialog
@@ -75,7 +74,7 @@ const Description = React.forwardRef<
   return (
     <Primitives.Description
       ref={ref}
-      className={clx("text-subtle", labelVariants({ size: "base" }), className)}
+      className={clx("text-subtle txt-compact-medium", className)}
       {...props}
     />
   )
@@ -87,12 +86,7 @@ const Action = React.forwardRef<
   Omit<React.ComponentPropsWithoutRef<typeof Primitives.Action>, "asChild">
 >(({ className, children, ...props }, ref) => {
   return (
-    <Primitives.Action
-      ref={ref}
-      className={clx("", className)}
-      {...props}
-      asChild
-    >
+    <Primitives.Action ref={ref} className={className} {...props} asChild>
       <Button>{children}</Button>
     </Primitives.Action>
   )
