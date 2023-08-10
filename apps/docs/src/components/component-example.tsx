@@ -37,7 +37,10 @@ export function ComponentExample({
             <TabsTrigger value="preview">Preview</TabsTrigger>
             <TabsTrigger value="code">Code</TabsTrigger>
           </TabsList>
-          <TabsContent value="preview" className="relative">
+          <TabsContent
+            value="preview"
+            className="relative flex items-center justify-center data-[state=active]:min-h-[350px] data-[state=active]:border"
+          >
             <div className="flex w-full items-center justify-center px-10 py-5">
               <React.Suspense
                 fallback={
