@@ -46,11 +46,14 @@ export function DocsSidebarNavItems({
             key={index}
             href={item.href}
             className={clx(
-              "group flex w-full items-center rounded-md border border-transparent px-2 py-1 hover:underline",
-              item.disabled && "cursor-not-allowed opacity-60",
-              pathname === item.href
-                ? "text-foreground font-medium"
-                : "text-muted-foreground"
+              "bg-ui-bg-base text-ui-fg-muted group flex w-full items-center rounded-md border border-transparent px-3 py-1.5 transition-all",
+              "hover:bg-ui-bg-base-hover text-ui-fg-subtle",
+              item.disabled &&
+                "bg-ui-bg-base-disabled text-ui-fg-disabled cursor-not-allowed",
+              {
+                "bg-ui-bg-base-pressed text-ui-fg-base border-ui-border-base":
+                  pathname === item.href,
+              }
             )}
             target={item.external ? "_blank" : ""}
             rel={item.external ? "noreferrer" : ""}
