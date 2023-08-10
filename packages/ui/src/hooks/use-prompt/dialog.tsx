@@ -1,9 +1,8 @@
 import * as React from "react"
 
 import { Input } from "@/components/input"
-import { Label, labelVariants } from "@/components/label"
+import { Label } from "@/components/label"
 import { Prompt } from "@/components/prompt"
-import { clx } from "../../utils/clx"
 
 export type DialogProps = {
   open: boolean
@@ -74,12 +73,7 @@ const Dialog = ({
             <fieldset className="border-ui-border-base mt-6 flex flex-col gap-y-4 border-y p-6">
               <Label htmlFor="verificationText" className="text-subtle">
                 Please type{" "}
-                <span
-                  className={clx(
-                    labelVariants({ size: "base", weight: "plus" }),
-                    "text-ui-fg-base"
-                  )}
-                >
+                <span className="text-ui-fg-base txt-compact-medium-plus">
                   {verificationText}
                 </span>{" "}
                 to confirm.

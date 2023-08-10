@@ -12,7 +12,7 @@ interface MdxProps {
 
 const components = {
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => {
-    return <h1 className={clx("docs-h1", className)} {...props} />
+    return <h1 className={clx("h1-docs", className)} {...props} />
   },
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => {
     return <Heading level={"h2"} {...props} />
