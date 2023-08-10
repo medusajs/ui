@@ -40,6 +40,7 @@
     "apps/*"
   ],
   "dependencies": {
-    "@changesets/cli": "^2.26.1"
+    "@changesets/cli": "^2.26.1",
+    "eslint-plugin-react-hooks": "^4.6.0"
   }
 }
