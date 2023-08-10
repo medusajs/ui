@@ -16,8 +16,8 @@ const headingVariants = cva("font-sans font-medium", {
   },
 })
 
-type HeadingProps = React.HTMLAttributes<HTMLHeadingElement> &
-  VariantProps<typeof headingVariants>
+type HeadingProps = VariantProps<typeof headingVariants> &
+  React.HTMLAttributes<HTMLHeadingElement>
 
 const Heading = ({ level, className, ...props }: HeadingProps) => {
   const Component = level ? level : "h1"
