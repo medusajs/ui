@@ -26,9 +26,6 @@ export { Toast } from "./components/toast"
 export { Toaster } from "./components/toaster"
 export { Tooltip } from "./components/tooltip"
 
-// Blocks
-export { Form } from "./blocks/form"
-
 // Hooks
 export { usePrompt } from "./hooks/use-prompt"
 export { useToast } from "./hooks/use-toast"
