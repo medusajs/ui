@@ -19,7 +19,7 @@ const inputVariants = cva(
 const Input = React.forwardRef<
   HTMLInputElement,
   React.InputHTMLAttributes<HTMLInputElement>
->(({ className, ...props }, ref) => {
+>(({ className, size, ...props }, ref) => {
   return (
     <input
       ref={ref}
