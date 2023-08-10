@@ -7,9 +7,9 @@ import { clx } from "@/utils/clx"
 const textVariants = cva("", {
   variants: {
     size: {
-      base: "text-sm leading-6",
-      large: "text-base leading-7",
-      xlarge: "text-lg leading-8",
+      base: "txt-medium",
+      large: "txt-large",
+      xlarge: "txt-xlarge",
     },
     weight: {
       regular: "font-normal",
@@ -61,4 +61,4 @@ const Text = React.forwardRef<HTMLParagraphElement, TextProps>(
 )
 Text.displayName = "Text"
 
-export { Text, textVariants }
+export { Text }

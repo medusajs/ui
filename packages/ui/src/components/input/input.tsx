@@ -2,7 +2,6 @@ import { Eye, EyeSlash, MagnifyingGlassMini } from "@medusajs/icons"
 import { VariantProps, cva } from "class-variance-authority"
 import * as React from "react"
 
-import { labelVariants } from "@/components/label"
 import { clx } from "@/utils/clx"
 
 const inputVariants = cva(
@@ -10,8 +9,8 @@ const inputVariants = cva(
   {
     variants: {
       size: {
-        base: "h-10 px-3 py-[9px]",
-        small: "h-8",
+        base: "txt-compact-medium h-10 px-3 py-[9px]",
+        small: "txt-compact-small h-8",
       },
     },
     defaultVariants: {
@@ -51,7 +50,6 @@ const Input = React.forwardRef<
         type={isPassword ? typeState : type}
         className={clx(
           inputVariants({ size: size }),
-          labelVariants({ size: size }),
           {
             "pr-11": isPassword && size === "base",
             "pl-11": isSearch && size === "base",

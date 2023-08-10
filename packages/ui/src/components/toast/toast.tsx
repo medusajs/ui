@@ -8,7 +8,6 @@ import {
 import * as Primitives from "@radix-ui/react-toast"
 import * as React from "react"
 
-import { labelVariants } from "@/components/label"
 import { clx } from "@/utils/clx"
 
 const ToastProvider = Primitives.Provider
@@ -103,27 +102,12 @@ const Toast = React.forwardRef<
           <span aria-hidden>{Icon}</span>
           <div>
             {title && (
-              <Primitives.Title
-                className={clx(
-                  labelVariants({
-                    size: "small",
-                    weight: "plus",
-                  }),
-                  "text-ui-fg-base"
-                )}
-              >
+              <Primitives.Title className="text-ui-fg-base txt-compact-small-plus">
                 {title}
               </Primitives.Title>
             )}
             {description && (
-              <Primitives.Description
-                className={clx(
-                  labelVariants({
-                    size: "base",
-                  }),
-                  "text-ui-fg-subtle"
-                )}
-              >
+              <Primitives.Description className="text-ui-fg-subtle txt-compact-medium">
                 {description}
               </Primitives.Description>
             )}
@@ -135,11 +119,7 @@ const Toast = React.forwardRef<
               <Primitives.Action
                 altText={action.altText}
                 className={clx(
-                  "text-ui-fg-base bg-ui-bg-base hover:bg-ui-bg-base-hover active:bg-ui-bg-base-pressed flex flex-1 items-center justify-center px-6 transition-colors",
-                  labelVariants({
-                    size: "small",
-                    weight: "plus",
-                  }),
+                  "txt-compact-small-plus text-ui-fg-base bg-ui-bg-base hover:bg-ui-bg-base-hover active:bg-ui-bg-base-pressed flex flex-1 items-center justify-center px-6 transition-colors",
                   {
                     "text-ui-fg-error": variant === "error",
                   }
@@ -158,11 +138,7 @@ const Toast = React.forwardRef<
           {!disableDismiss && (
             <Primitives.Close
               className={clx(
-                "text-ui-fg-subtle bg-ui-bg-base hover:bg-ui-bg-base-hover active:bg-ui-bg-base-pressed flex flex-1 items-center justify-center px-6 transition-colors",
-                labelVariants({
-                  size: "small",
-                  weight: "plus",
-                }),
+                "txt-compact-small-plus text-ui-fg-subtle bg-ui-bg-base hover:bg-ui-bg-base-hover active:bg-ui-bg-base-pressed flex flex-1 items-center justify-center px-6 transition-colors",
                 {
                   "h-1/2": action,
                   "h-full": !action,

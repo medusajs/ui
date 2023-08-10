@@ -1,5 +1,5 @@
-import { clx } from "@/utils/clx"
 import { Copy } from "@/components/copy"
+import { clx } from "@/utils/clx"
 import React from "react"
 
 const CommandComponent = ({
@@ -9,7 +9,7 @@ const CommandComponent = ({
   return (
     <div
       className={clx(
-        "bg-ui-code-bg-header border-ui-code-border-base flex items-center rounded-lg border px-3 py-2",
+        "bg-ui-code-bg-header border-ui-code-border flex items-center rounded-lg border px-3 py-2",
         "[&>code]:text-ui-code-text-base [&>code]:mx-3 [&>code]:font-mono [&>code]:text-sm [&>code]:leading-6",
         className
       )}

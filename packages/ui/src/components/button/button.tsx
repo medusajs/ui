@@ -2,7 +2,6 @@ import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
 import * as React from "react"
 
-import { labelVariants } from "@/components/label"
 import { clx } from "@/utils/clx"
 import { Spinner } from "@medusajs/icons"
 
@@ -21,25 +20,10 @@ const buttonVariants = cva(
           "shadow-buttons-danger text-ui-fg-on-inverted border-ui-border-danger bg-ui-button-danger after:button-danger-gradient hover:bg-ui-button-danger-hover hover:after:button-danger-hover-gradient active:bg-ui-button-danger-pressed active:after:button-danger-pressed-gradient focus:shadow-buttons-danger-focus",
       },
       size: {
-        sm: clx(
-          "gap-x-0.5 px-[7px] py-[1px]",
-          labelVariants({ size: "xsmall", weight: "plus" })
-        ),
-        md: clx(
-          "gap-x-1.5 px-[11px] py-[5px]",
-          labelVariants({ size: "small", weight: "plus" })
-        ),
-        lg: clx(
-          "gap-x-2 px-[15px] py-[9px]",
-          labelVariants({ size: "base", weight: "plus" })
-        ),
-        xl: clx(
-          "gap-x-2 px-[19px] py-[13px]",
-          labelVariants({
-            size: "large",
-            weight: "plus",
-          })
-        ),
+        sm: "txt-compact-xsmall-plus gap-x-0.5 px-[7px] py-[1px]",
+        md: "txt-compact-small-plus gap-x-1.5 px-[11px] py-[5px]",
+        lg: "txt-compact-medium-plus gap-x-2 px-[15px] py-[9px]",
+        xl: "txt-compact-large-plus gap-x-2 px-[19px] py-[13px]",
       },
       format: {
         default: "",

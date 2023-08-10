@@ -11,7 +11,6 @@ import {
 } from "@react-stately/datepicker"
 import * as React from "react"
 
-import { labelVariants } from "@/components/label"
 import { clx } from "@/utils/clx"
 
 type TimeSegmentProps = {
@@ -53,10 +52,7 @@ const TimeSegment = ({ segment, state }: TimeSegmentProps) => {
       <span
         aria-hidden="true"
         className={clx(
-          "text-ui-fg-muted pointer-events-none block w-full text-left",
-          labelVariants({
-            size: "small",
-          }),
+          "txt-compact-small text-ui-fg-muted pointer-events-none block w-full text-left",
           {
             hidden: !segment.isPlaceholder,
             "h-0": !segment.isPlaceholder,
@@ -112,5 +108,6 @@ const TimeInput = React.forwardRef<HTMLDivElement, TimeInputProps>(
     )
   }
 )
+TimeInput.displayName = "TimeInput"
 
 export { TimeInput }

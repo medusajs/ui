@@ -1,7 +1,7 @@
 export { Avatar } from "./components/avatar"
 export { Badge } from "./components/badge"
 export { Button } from "./components/button"
-export { Calendar } from "./components/calender"
+export { Calendar } from "./components/calendar"
 export { Checkbox } from "./components/checkbox"
 export { CodeBlock } from "./components/code-block"
 export { Command } from "./components/command"

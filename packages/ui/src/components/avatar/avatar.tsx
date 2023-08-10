@@ -3,7 +3,6 @@ import { cva, type VariantProps } from "class-variance-authority"
 import * as React from "react"
 
 import { clx } from "@/utils/clx"
-import { labelVariants } from "../label"
 
 const avatarVariants = cva(
   "border-ui-border-strong flex shrink-0 items-center justify-center overflow-hidden border",
@@ -32,8 +31,8 @@ const innerVariants = cva("aspect-square object-cover object-center", {
       rounded: "rounded-full",
     },
     size: {
-      base: clx(labelVariants({ size: "small", weight: "plus" }), "h-6 w-6"),
-      large: clx(labelVariants({ size: "base", weight: "plus" }), "h-8 w-8"),
+      base: "txt-compact-small-plus h-6 w-6",
+      large: "txt-compact-medium-plus h-8 w-8",
     },
   },
   defaultVariants: {

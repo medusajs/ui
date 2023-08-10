@@ -1,26 +1,25 @@
-import { fontFamily } from "tailwindcss/defaultTheme"
 import plugin from "tailwindcss/plugin"
+import { FONT_FAMILY_MONO, FONT_FAMILY_SANS } from "./constants"
 import { theme } from "./theme/extension/theme"
 import { colors } from "./theme/tokens/colors"
 import { components } from "./theme/tokens/components"
 import { effects } from "./theme/tokens/effects"
+import { typography } from "./theme/tokens/typography"
 
 export default plugin(
-  function medusaUi({ addBase, addComponents, addUtilities, config, theme }) {
+  function medusaUi({ addBase, addComponents, config, theme }) {
     const [darkMode, className = ".dark"] = ([] as string[]).concat(
       config("darkMode", "media")
     )
 
     addBase({
-      body: {
-        color: config("theme.colors.ui.fg.base"),
-      },
       "*": {
-        borderColor: theme("colors.ui.border.base"),
+        borderColor: "var(--border-base)",
       },
     })
 
     addComponents(components)
+    addComponents(typography)
 
     addBase({
       ":root": { ...colors.light, ...effects.light },
@@ -43,8 +42,8 @@ export default plugin(
       extend: {
         ...theme.extend,
         fontFamily: {
-          sans: ["Inter", ...fontFamily.sans],
-          mono: ["Roboto Mono", ...fontFamily.mono],
+          sans: FONT_FAMILY_SANS,
+          mono: FONT_FAMILY_MONO,
         },
       },
     },
