@@ -107,6 +107,12 @@ const Day = ({ date, displayMonth }: DayProps) => {
 
   const { selected, today, disabled, range_middle } = activeModifiers
 
+  React.useEffect(() => {
+    if (selected) {
+      ref.current?.focus()
+    }
+  }, [selected])
+
   if (isHidden) {
     return <></>
   }
@@ -125,12 +131,6 @@ const Day = ({ date, displayMonth }: DayProps) => {
     className: buttonClassName,
     ...buttonPropsRest
   } = buttonProps
-
-  React.useEffect(() => {
-    if (selected) {
-      ref.current?.focus()
-    }
-  }, [selected])
 
   return (
     <button

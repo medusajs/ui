@@ -1,5 +1,29 @@
 ---
-title: "CodeBlock"
-description: "TBA"
+title: "Code Block"
+description: "Allows you to render highlighted code snippets"
 component: true
 ---
+
+<ComponentExample name="code-block-demo" />
+
+## Usage
+
+<Snippet>```import {CodeBlock} from "@medusajs/ui"```</Snippet>
+
+<Snippet>
+  ```
+  <CodeBlock 
+    snippets={[
+      { 
+        language: "tsx", 
+        label: "Label", 
+        code: 'import { useProduct } from "medusa-react"'
+      },
+    ]}
+  >
+    <Codeblock.Header />
+    <CodeBlock.Body />
+  </CodeBlock.Body>
+  
+  ```
+</Snippet>

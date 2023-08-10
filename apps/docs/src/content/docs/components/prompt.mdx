@@ -1,5 +1,29 @@
 ---
 title: "Prompt"
-description: "TBA"
+description: "Displays a dialog triggered by a button"
 component: true
 ---
+
+<ComponentExample name="prompt-demo" />
+
+## Usage
+
+<Snippet>```import {Prompt} from "@medusajs/ui"```</Snippet>
+
+<Snippet>
+  ```
+  <Prompt>
+    <Prompt.Trigger>Trigger</Prompt.Trigger>
+    <Prompt.Content>
+      <Prompt.Header>
+        <Prompt.Title>Title</Prompt.Title>
+        <Prompt.Description>Description</Prompt.Description>
+      </Prompt.Header>
+      <Prompt.Footer>
+        <Prompt.Cancel>Cancel</Prompt.Cancel>
+        <Prompt.Action>Delete</Prompt.Action>
+      </Prompt.Footer>
+    </Prompt.Content>
+  </Prompt>
+  ```
+</Snippet>

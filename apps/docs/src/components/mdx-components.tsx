@@ -5,6 +5,9 @@ import * as React from "react"
 
 import { Heading, Text } from "@medusajs/ui"
 import { ComponentExample } from "@/components/component-example"
+import { Command } from "@/components/command"
+import { CodeBlock } from "@/components/code-block"
+import { Snippet } from "@/components/snippet"
 
 interface MdxProps {
   code: string
@@ -23,7 +26,10 @@ const components = {
   p: (props: React.HTMLAttributes<HTMLParagraphElement>) => {
     return <Text {...props} />
   },
+  CodeBlock,
+  Command,
   ComponentExample,
+  Snippet,
 }
 
 const Mdx = ({ code }: MdxProps) => {

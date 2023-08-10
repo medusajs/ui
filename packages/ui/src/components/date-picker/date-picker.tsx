@@ -7,7 +7,7 @@ import * as React from "react"
 import type { DateRange } from "react-day-picker"
 
 import { Button } from "@/components/button"
-import { Calendar } from "@/components/calender"
+import { Calendar } from "@/components/calendar"
 import { labelVariants } from "@/components/label"
 import { TimeInput } from "@/components/time-input"
 import { clx } from "@/utils/clx"

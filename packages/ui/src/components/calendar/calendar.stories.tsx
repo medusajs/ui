@@ -3,7 +3,7 @@ import * as React from "react"
 
 import { Text } from "@/components/text"
 import { DateRange } from "react-day-picker"
-import { Calendar } from "./calender"
+import { Calendar } from "./calendar"
 
 const Demo = ({ mode, ...args }: Parameters<typeof Calendar>[0]) => {
   const [date, setDate] = React.useState<Date | undefined>(new Date())

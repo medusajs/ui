@@ -1,5 +1,43 @@
 ---
 title: "Toast"
-description: "TBA"
+description: "A succinct message that is displayed temporarily."
 component: true
 ---
+
+<ComponentExample name="toaster-demo" />
+
+## Usage
+
+Add the Toaster component somewhere in your tree
+
+<Snippet>```import {Toaster} from "@medusajs/ui"```</Snippet>
+
+<Snippet>
+  ```
+  <Toaster />
+  ```
+</Snippet>
+
+The `useToast` hook returns a `toast` function that you can use to display a toast.
+
+<Snippet>```import {useToast} from "@medusajs/ui"```</Snippet>
+
+<Snippet>
+```
+const { toast } = useToast()
+
+return (
+
+  <Button 
+    onClick={() => 
+      toast({ 
+        title: "Toast title",
+        description: "Toast body",
+      })
+    }
+  >
+    Trigger
+  </Button>
+)
+```
+</Snippet>

@@ -165,11 +165,6 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Toaster",
-          href: "/docs/components/toaster",
-          items: [],
-        },
-        {
           title: "Tooltip",
           href: "/docs/components/tooltip",
           items: [],
