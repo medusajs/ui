@@ -91,6 +91,7 @@
     "clsx": "^1.2.1",
     "copy-to-clipboard": "^3.3.3",
     "date-fns": "^2.30.0",
+    "downshift": "^8.1.0",
     "prism-react-renderer": "^2.0.6",
     "react-day-picker": "^8.8.0",
     "tailwind-merge": "^1.13.2"

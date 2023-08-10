@@ -1,8 +1,8 @@
-import React, { useState } from "react"
-import copy from "copy-to-clipboard"
-import { CheckCircleSolid, SquareTwoStack } from "@medusajs/icons"
 import { Tooltip } from "@/components/tooltip"
 import { clx } from "@/utils/clx"
+import { CheckCircleSolid, SquareTwoStack } from "@medusajs/icons"
+import copy from "copy-to-clipboard"
+import React, { useState } from "react"
 
 type CopyProps = {
   content: string
@@ -37,5 +37,6 @@ const Copy = React.forwardRef<
     </Tooltip>
   )
 })
+Copy.displayName = "Copy"
 
 export { Copy }

@@ -1556,7 +1556,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.13.10, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.20.1, @babel/runtime@npm:^7.20.7, @babel/runtime@npm:^7.21.0, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.13.10, @babel/runtime@npm:^7.14.8, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.20.1, @babel/runtime@npm:^7.20.7, @babel/runtime@npm:^7.21.0, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
   version: 7.22.10
   resolution: "@babel/runtime@npm:7.22.10"
   dependencies:
@@ -2889,6 +2889,7 @@ __metadata:
     clsx: ^1.2.1
     copy-to-clipboard: ^3.3.3
     date-fns: ^2.30.0
+    downshift: ^8.1.0
     eslint: ^7.32.0
     eslint-plugin-storybook: ^0.6.12
     jsdom: ^22.1.0
@@ -8204,6 +8205,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"compute-scroll-into-view@npm:^2.0.4":
+  version: 2.0.4
+  resolution: "compute-scroll-into-view@npm:2.0.4"
+  checksum: f3d1db9276c16af42155b572750514939cd0ab0a0f46498906f6811c5b654c5ff2b3f9bfd65958e57439e000a5e1ae092eb96b9e153d194a73e52ffd2380550c
+  languageName: node
+  linkType: hard
+
 "concat-map@npm:0.0.1":
   version: 0.0.1
   resolution: "concat-map@npm:0.0.1"
@@ -8931,6 +8939,21 @@ __metadata:
   version: 16.3.1
   resolution: "dotenv@npm:16.3.1"
   checksum: 15d75e7279018f4bafd0ee9706593dd14455ddb71b3bcba9c52574460b7ccaf67d5cf8b2c08a5af1a9da6db36c956a04a1192b101ee102a3e0cf8817bbcf3dfd
+  languageName: node
+  linkType: hard
+
+"downshift@npm:^8.1.0":
+  version: 8.1.0
+  resolution: "downshift@npm:8.1.0"
+  dependencies:
+    "@babel/runtime": ^7.14.8
+    compute-scroll-into-view: ^2.0.4
+    prop-types: ^15.7.2
+    react-is: ^17.0.2
+    tslib: ^2.3.0
+  peerDependencies:
+    react: ">=16.12.0"
+  checksum: 5ede6190dc85ad295f623b30d3ad035a83b9ef5753084096e71e6fad5276a9abd3b1c1a26583958368e4e7fe14a40ef8b5a246f9f6eec058c4eba30a5104539d
   languageName: node
   linkType: hard
 
@@ -12947,11 +12970,11 @@ __metadata:
   linkType: soft
 
 "memfs@npm:^3.5.1":
-  version: 3.6.0
-  resolution: "memfs@npm:3.6.0"
+  version: 3.5.3
+  resolution: "memfs@npm:3.5.3"
   dependencies:
     fs-monkey: ^1.0.4
-  checksum: 934e79f32aabb10869056815bf369ed63aacb61d13183a3a3826847bbb359d7023fd5b365984ddd73faed463bbb5370ed5cd1e87ecf50ac010c5cac81929ed78
+  checksum: 18dfdeacad7c8047b976a6ccd58bc98ba76e122ad3ca0e50a21837fe2075fc0d9aafc58ab9cf2576c2b6889da1dd2503083f2364191b695273f40969db2ecc44
   languageName: node
   linkType: hard
 
@@ -15104,7 +15127,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-is@npm:^17.0.1":
+"react-is@npm:^17.0.1, react-is@npm:^17.0.2":
   version: 17.0.2
   resolution: "react-is@npm:17.0.2"
   checksum: 9d6d111d8990dc98bc5402c1266a808b0459b5d54830bbea24c12d908b536df7883f268a7868cfaedde3dd9d4e0d574db456f84d2e6df9c4526f99bb4b5344d8
@@ -17113,7 +17136,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.0.0, tslib@npm:^2.0.1, tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.4.0, tslib@npm:^2.4.1, tslib@npm:^2.6.1":
+"tslib@npm:^2.0.0, tslib@npm:^2.0.1, tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.3.0, tslib@npm:^2.4.0, tslib@npm:^2.4.1, tslib@npm:^2.6.1":
   version: 2.6.1
   resolution: "tslib@npm:2.6.1"
   checksum: b0d176d176487905b66ae4d5856647df50e37beea7571c53b8d10ba9222c074b81f1410fb91da13debaf2cbc970663609068bdebafa844ea9d69b146527c38fe
