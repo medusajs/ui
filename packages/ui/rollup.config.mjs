@@ -8,8 +8,6 @@ import { typescriptPaths } from "rollup-plugin-typescript-paths"
 
 import pkg from "./package.json" assert { type: "json" }
 
-console.log(path.dirname(pkg.main), path.dirname(pkg.module))
-
 const extensions = [".js", ".jsx", ".ts", ".tsx"]
 
 /** @type {import('rollup').RollupOptions} */
@@ -47,7 +45,6 @@ const config = {
       dir: path.dirname(pkg.module),
       preserveModules: true,
       entryFileNames: "[name].js",
-      exports: "named",
     },
   ],
 }
