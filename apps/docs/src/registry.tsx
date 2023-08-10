@@ -121,4 +121,44 @@ export const Registry: Record<string, any> = {
     component: React.lazy(() => import("@/examples/tooltip-demo")),
     file: "src/examples/tooltip-demo.tsx",
   },
+  "button-primary": {
+    name: "button-primary",
+    component: React.lazy(() => import("@/examples/button-primary")),
+    file: "src/examples/button-primary.tsx",
+  },
+  "button-secondary": {
+    name: "button-secondary",
+    component: React.lazy(() => import("@/examples/button-secondary")),
+    file: "src/examples/button-secondary.tsx",
+  },
+  "button-transparent": {
+    name: "button-transparent",
+    component: React.lazy(() => import("@/examples/button-transparent")),
+    file: "src/examples/button-transparent.tsx",
+  },
+  "button-danger": {
+    name: "button-danger",
+    component: React.lazy(() => import("@/examples/button-danger")),
+    file: "src/examples/button-danger.tsx",
+  },
+  "button-disabled": {
+    name: "button-disabled",
+    component: React.lazy(() => import("@/examples/button-disabled")),
+    file: "src/examples/button-disabled.tsx",
+  },
+  "button-with-icon": {
+    name: "button-with-icon",
+    component: React.lazy(() => import("@/examples/button-with-icon")),
+    file: "src/examples/button-with-icon.tsx",
+  },
+  "button-icon-only": {
+    name: "button-icon-only",
+    component: React.lazy(() => import("@/examples/button-icon-only")),
+    file: "src/examples/button-icon-only.tsx",
+  },
+  "button-loading": {
+    name: "button-loading",
+    component: React.lazy(() => import("@/examples/button-loading")),
+    file: "src/examples/button-loading.tsx",
+  },
 }
