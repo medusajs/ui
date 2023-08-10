@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .docs-h1 {
+    @apply font-sans text-[32px] font-medium leading-[44px];
+  }
+}

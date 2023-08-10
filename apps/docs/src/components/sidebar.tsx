@@ -10,36 +10,39 @@ export interface DocsSidebarNavProps {
   items: SidebarNavItem[]
 }
 
-export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
+export function Sidebar({ items }: DocsSidebarNavProps) {
   const pathname = usePathname()
 
-  return items.length ? (
-    <div className="w-full">
-      {items.map((item, index) => (
-        <div key={index} className={clx("pb-4")}>
-          <h4 className="mb-1 rounded-md px-2 py-1 text-[13px] font-medium leading-5">
-            {item.title}
-          </h4>
-          {item?.items?.length && (
-            <DocsSidebarNavItems items={item.items} pathname={pathname} />
-          )}
+  return (
+    <aside className="border-ui-border-base w-sidebar relative block h-full border-r">
+      {items.length ? (
+        <div className="sticky inset-0 h-screen max-h-[calc(100vh-58px)] w-full overflow-auto p-6">
+          {items.map((item, index) => (
+            <div key={index} className={clx("pb-6")}>
+              <h4 className="text-ui-fg-muted mb-0.5 rounded-md px-3 py-1.5 text-xs font-medium uppercase leading-5">
+                {item.title}
+              </h4>
+              <ul>
+                {item?.items?.length && (
+                  <SidebarNavItems items={item.items} pathname={pathname} />
+                )}
+              </ul>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
-  ) : null
+      ) : null}
+    </aside>
+  )
 }
 
-interface DocsSidebarNavItemsProps {
+interface SidebarItemsProps {
   items: SidebarNavItem[]
   pathname: string | null
 }
 
-export function DocsSidebarNavItems({
-  items,
-  pathname,
-}: DocsSidebarNavItemsProps) {
+export function SidebarNavItems({ items, pathname }: SidebarItemsProps) {
   return items?.length ? (
-    <div className="grid grid-flow-row auto-rows-max text-sm">
+    <li className="grid grid-flow-row auto-rows-max gap-0.5">
       {items.map((item, index) =>
         item.href && !item.disabled ? (
           <Link
@@ -82,6 +85,6 @@ export function DocsSidebarNavItems({
           </span>
         )
       )}
-    </div>
+    </li>
   ) : null
 }

@@ -1,10 +1,37 @@
-import { SidebarNavItem } from "../types/nav"
+import { NavItem, SidebarNavItem } from "../types/nav"
 
 type DocsConfig = {
+  mainNav: NavItem[]
   sidebarNav: SidebarNavItem[]
 }
 
 export const docsConfig: DocsConfig = {
+  mainNav: [
+    {
+      title: "Docs",
+      external: true,
+      href: "https://docs.medusajs.com",
+    },
+    {
+      title: "User Guide",
+      external: true,
+      href: "https://docs.medusajs.com/user-guide",
+    },
+    {
+      title: "Store API",
+      external: true,
+      href: "https://docs.medusajs.com/api/store",
+    },
+    {
+      title: "Admin API",
+      external: true,
+      href: "https://docs.medusajs.com/api/admin",
+    },
+    {
+      title: "UI",
+      href: "/",
+    },
+  ],
   sidebarNav: [
     {
       title: "Getting Started",
@@ -181,17 +208,17 @@ export const docsConfig: DocsConfig = {
       items: [
         {
           title: "usePrompt",
-          href: "/docs/components/use-prompt",
+          href: "/docs/hooks/use-prompt",
           items: [],
         },
         {
           title: "useToast",
-          href: "/docs/components/use-toast",
+          href: "/docs/hooks/use-toast",
           items: [],
         },
         {
           title: "useToggleState",
-          href: "/docs/components/use-toggle-state",
+          href: "/docs/hooks/use-toggle-state",
           items: [],
         },
       ],
@@ -201,7 +228,7 @@ export const docsConfig: DocsConfig = {
       items: [
         {
           title: "clx",
-          href: "/docs/components/clx",
+          href: "/docs/utils/clx",
           items: [],
         },
       ],

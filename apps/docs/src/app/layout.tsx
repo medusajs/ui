@@ -1,7 +1,9 @@
+import { Navbar } from "@/components/navbar"
 import { ThemeProvider } from "@/components/providers"
-import { SiteHeader } from "@/components/site-header"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
+import { Sidebar } from "../components/sidebar"
+import { docsConfig } from "../config/docs"
 import "../styles/globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -17,17 +19,26 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="h-full w-full">
       <head />
-      <body className={`bg-ui-bg-base min-h-screen ${inter.className}`}>
+      <body
+        className={`bg-ui-bg-base h-full max-h-screen w-full ${inter.className}`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
           disableTransitionOnChange
         >
-          <div className="relative flex min-h-screen flex-col">
-            <SiteHeader />
-            <div className="flex-1">{children}</div>
+          <div className="w-full">
+            <Navbar />
+            <div className="max-w-xxl mx-auto grid w-full grid-cols-[280px_1fr] px-1.5">
+              <Sidebar items={docsConfig.sidebarNav} />
+              <div className="relative flex w-full flex-1 items-start justify-center px-16 py-[112px]">
+                <main className="h-full w-full max-w-[720px] overflow-y-scroll">
+                  {children}
+                </main>
+              </div>
+            </div>
           </div>
         </ThemeProvider>
       </body>
