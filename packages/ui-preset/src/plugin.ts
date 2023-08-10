@@ -13,11 +13,8 @@ export default plugin(
     )
 
     addBase({
-      body: {
-        color: config("theme.colors.ui.fg.base"),
-      },
       "*": {
-        borderColor: theme("colors.ui.border.base"),
+        borderColor: "var(--border-base)",
       },
     })
 
@@ -26,7 +23,6 @@ export default plugin(
 
     addBase({
       ":root": { ...colors.light, ...effects.light },
-      html: FONT_FAMILY_SANS,
     })
 
     if (darkMode === "class") {

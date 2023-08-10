@@ -28,7 +28,7 @@ const TabsTrigger = React.forwardRef<
   <Primitives.Trigger
     ref={ref}
     className={clx(
-      "text-ui-fg-subtle rounded-full px-3 py-1.5 transition-all",
+      "text-ui-fg-subtle txt-compact-small-plus rounded-full px-3 py-1.5 transition-all",
       "data-[state=active]:shadow-elevation-card-rest data-[state=active]:text-ui-fg-base",
       className
     )}

@@ -3,11 +3,11 @@
 import { useMDXComponent } from "next-contentlayer/hooks"
 import * as React from "react"
 
-import { ComponentExample } from "@/components/component-example"
-import { Command } from "@/components/command"
 import { CodeBlock } from "@/components/code-block"
+import { Command } from "@/components/command"
+import { ComponentExample } from "@/components/component-example"
 import { Snippet } from "@/components/snippet"
-import { Heading, Text, clx } from "@medusajs/ui"
+import { Text, clx } from "@medusajs/ui"
 
 interface MdxProps {
   code: string
@@ -15,16 +15,18 @@ interface MdxProps {
 
 const components = {
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => {
-    return <h1 className={clx("h1-docs", className)} {...props} />
+    return (
+      <h1 className={clx("h1-docs text-ui-fg-base", className)} {...props} />
+    )
   },
-  h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => {
-    return <Heading level={"h2"} {...props} />
+  h2: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => {
+    return <h2 className={clx("h2-docs", className)} {...props} />
   },
-  h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => {
-    return <Heading level={"h3"} {...props} />
+  h3: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => {
+    return <h3 className={clx("h3-docs", className)} {...props} />
   },
-  p: (props: React.HTMLAttributes<HTMLParagraphElement>) => {
-    return <Text {...props} />
+  p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => {
+    return <Text className={clx("text-ui-fg-subtle", className)} {...props} />
   },
   CodeBlock,
   Command,

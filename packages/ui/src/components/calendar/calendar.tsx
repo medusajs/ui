@@ -47,9 +47,8 @@ const Calendar = ({
         months: "flex flex-col sm:flex-row",
         month: "space-y-2 p-3",
         caption: "flex justify-center relative items-center h-9",
-        caption_label: clx(
-          "txt-compact-small-plus absolute bottom-0 left-0 right-0 top-1 flex items-center justify-center"
-        ),
+        caption_label:
+          "txt-compact-small-plus absolute bottom-0 left-0 right-0 top-1 flex items-center justify-center text-ui-fg-base",
         nav: "space-x-1 flex items-center bg-ui-bg-base-pressed rounded-md w-full h-full justify-between p-0.5",
         nav_button: clx(
           buttonVariants({ variant: "secondary", format: "icon" }),
@@ -64,7 +63,7 @@ const Calendar = ({
         ),
         row: "flex w-full mt-2 gap-x-2",
         cell: "txt-compact-small-plus relative rounded-md p-0 text-center focus-within:relative focus-within:z-20",
-        day: "txt-compact-small-plus bg-ui-bg-base border-ui-bg-base hover:bg-ui-bg-base-hover focus:!border-ui-border-interactive focus:shadow-borders-focus h-8 w-8 rounded-md border p-0 text-center outline-none transition-all",
+        day: "txt-compact-small-plus text-ui-fg-base bg-ui-bg-base border-ui-bg-base hover:bg-ui-bg-base-hover focus:!border-ui-border-interactive focus:shadow-borders-focus h-8 w-8 rounded-md border p-0 text-center outline-none transition-all",
         day_selected:
           "bg-ui-bg-interactive text-ui-fg-on-color hover:bg-ui-bg-interactive focus:bg-ui-bg-interactive",
         day_outside: "text-ui-fg-disabled aria-selected:text-ui-fg-on-color",

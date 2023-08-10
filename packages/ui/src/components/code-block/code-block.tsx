@@ -1,7 +1,7 @@
-import React, { createContext, useContext, useState } from "react"
-import { Highlight, themes } from "prism-react-renderer"
-import { clx } from "@/utils/clx"
 import { Copy } from "@/components/copy"
+import { clx } from "@/utils/clx"
+import { Highlight, themes } from "prism-react-renderer"
+import React, { createContext, useContext, useState } from "react"
 
 export type CodeSnippet = {
   label: string
@@ -44,7 +44,7 @@ const Root = ({
     <CodeBlockContext.Provider value={{ snippets, active, setActive }}>
       <div
         className={clx(
-          "border-ui-code-border-base min-w-[512px] overflow-hidden rounded-lg border",
+          "border-ui-code-border min-w-[512px] overflow-hidden rounded-lg border",
           className
         )}
         {...props}
@@ -64,7 +64,7 @@ const HeaderComponent = ({
   return (
     <div
       className={clx(
-        "border-b-ui-code-border-base bg-ui-code-bg-header flex items-center gap-2 border-b px-4 py-3",
+        "border-b-ui-code-border bg-ui-code-bg-header flex items-center gap-2 border-b px-4 py-3",
         className
       )}
       {...props}
@@ -72,9 +72,9 @@ const HeaderComponent = ({
       {snippets.map((snippet) => (
         <div
           className={clx(
-            "text-ui-code-text-subtle cursor-pointer rounded-full border border-transparent px-3 py-2 text-sm font-medium",
+            "text-ui-code-text-subtle txt-compact-small-plus cursor-pointer rounded-full border border-transparent px-3 py-2 transition-all",
             {
-              "text-ui-code-text-base border-ui-code-border-base bg-ui-code-bg-base cursor-default":
+              "text-ui-code-text-base border-ui-code-border bg-ui-code-bg-base cursor-default":
                 active.label === snippet.label,
             }
           )}
@@ -114,7 +114,10 @@ const Body = ({
   const { active } = useCodeBlockContext()
   return (
     <div className={clx("bg-ui-code-bg-base relative p-4", className)}>
-      <Copy content={active.code} className="absolute right-4 top-4" />
+      <Copy
+        content={active.code}
+        className="text-ui-code-icon absolute right-4 top-4"
+      />
       <div className="max-w-[90%]">
         <Highlight
           theme={{
@@ -123,6 +126,21 @@ const Body = ({
               color: "rgba(249, 250, 251, 1)",
               backgroundColor: "#111827",
             },
+            styles: [
+              {
+                types: ["keyword"],
+                style: {
+                  color: "var(--fg-on-color)",
+                },
+              },
+              {
+                types: ["maybe-class-name"],
+                style: {
+                  color: "rgb(255, 203, 107)",
+                },
+              },
+              ...themes.palenight.styles,
+            ],
           }}
           code={active.code}
           language={active.language}
