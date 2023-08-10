@@ -2396,15 +2396,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hookform/resolvers@npm:^3.1.1":
-  version: 3.2.0
-  resolution: "@hookform/resolvers@npm:3.2.0"
-  peerDependencies:
-    react-hook-form: ^7.0.0
-  checksum: 041692117f1915ea23ab48f0eeaa4841ffb45f849b9743315ac4b05ae860a4ceb41adc55cf3c213aefe705b6b63b725d9a128c0ae7d15f5faca162e2a94a63d1
-  languageName: node
-  linkType: hard
-
 "@humanwhocodes/config-array@npm:^0.11.10":
   version: 0.11.10
   resolution: "@humanwhocodes/config-array@npm:0.11.10"
@@ -2855,7 +2846,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@medusajs/ui@workspace:packages/ui"
   dependencies:
-    "@hookform/resolvers": ^3.1.1
     "@medusajs/eslint-config-ui": "*"
     "@medusajs/icons": "*"
     "@medusajs/tsconfig-ui": "*"
@@ -2911,7 +2901,6 @@ __metadata:
     react: 18.2.0
     react-day-picker: ^8.8.0
     react-dom: 18.2.0
-    react-hook-form: ^7.45.2
     resize-observer-polyfill: ^1.5.1
     rimraf: ^5.0.1
     rollup: ^3.12.0
@@ -2924,7 +2913,6 @@ __metadata:
     typescript: ^5.1.6
     vite: ^4.3.9
     vitest: ^0.32.2
-    zod: ^3.21.4
   peerDependencies:
     react: ^18.0.0
     react-dom: ^18.0.0
@@ -15168,15 +15156,6 @@ __metadata:
     react: ^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1 || ^18.0.0
     react-dom: ^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1 || ^18.0.0
   checksum: c3907cc4c1d3e9ecc8ca7727058ebcba6ec89848d9e07bfd2c77ee8f28f1ad99bf55e38359dec8a1125de83d41ac09a2874f53c41415edc86ffa9840fa1b7856
-  languageName: node
-  linkType: hard
-
-"react-hook-form@npm:^7.45.2":
-  version: 7.45.4
-  resolution: "react-hook-form@npm:7.45.4"
-  peerDependencies:
-    react: ^16.8.0 || ^17 || ^18
-  checksum: 1d84c78dadf561bc9e360272c5c856c724426162e13a74929c0517c3eb8004a7f057561fff3bfd4c1121b36d6cf1437399df1dbfd01d0817b9f922503f407d8f
   languageName: node
   linkType: hard
 

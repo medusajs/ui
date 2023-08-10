@@ -139,6 +139,13 @@ const useFakeOrders = ({ offset, limit }: UseFakeOrdersProps) => {
 
 const fakeData = makeDate(10)
 
+const formatCurrency = (amount: number, currency: string) => {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency,
+  }).format(amount)
+}
+
 export const Default: Story = {
   render: () => {
     return (
@@ -163,7 +170,9 @@ export const Default: Story = {
                   <Table.Cell>{order.displayId}</Table.Cell>
                   <Table.Cell>{order.customer}</Table.Cell>
                   <Table.Cell>{order.email}</Table.Cell>
-                  <Table.Cell className="text-right">{order.amount}</Table.Cell>
+                  <Table.Cell className="text-right">
+                    {formatCurrency(order.amount, order.currency)}
+                  </Table.Cell>
                   <Table.Cell className="text-ui-fg-muted">
                     {order.currency}
                   </Table.Cell>

@@ -1,7 +1,6 @@
 import * as React from "react"
 
 import { Button } from "@/components/button"
-import { labelVariants } from "@/components/label"
 import { clx } from "@/utils/clx"
 import { Minus } from "@medusajs/icons"
 
@@ -12,13 +11,7 @@ const Root = React.forwardRef<
   <div className="w-full overflow-auto">
     <table
       ref={ref}
-      className={clx(
-        "text-ui-fg-subtle w-full",
-        labelVariants({
-          size: "small",
-        }),
-        className
-      )}
+      className={clx("text-ui-fg-subtle txt-compact-small w-full", className)}
       {...props}
     />
   </div>
@@ -57,11 +50,7 @@ const Header = React.forwardRef<
   <thead
     ref={ref}
     className={clx(
-      "border-ui-border-base border-y",
-      labelVariants({
-        size: "small",
-        weight: "plus",
-      }),
+      "border-ui-border-base txt-compact-small-plus border-y",
       className
     )}
     {...props}
@@ -127,11 +116,7 @@ const Pagination = React.forwardRef<HTMLDivElement, TablePaginationProps>(
       <div
         ref={ref}
         className={clx(
-          "text-ui-fg-subtle flex w-full items-center justify-between px-5 pb-6 pt-4",
-          labelVariants({
-            size: "small",
-            weight: "plus",
-          }),
+          "text-ui-fg-subtle txt-compact-small-plus flex w-full items-center justify-between px-5 pb-6 pt-4",
           className
         )}
         {...props}
