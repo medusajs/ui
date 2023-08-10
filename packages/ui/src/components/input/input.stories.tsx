@@ -33,3 +33,23 @@ export const Invalid: Story = {
     required: true,
   },
 }
+
+export const Password: Story = {
+  args: {
+    type: "password",
+  },
+}
+
+export const Search: Story = {
+  args: {
+    type: "search",
+    placeholder: "Search",
+  },
+}
+
+export const Small: Story = {
+  args: {
+    size: "small",
+    placeholder: "Placeholder",
+  },
+}
