@@ -2,7 +2,6 @@ import { Slot } from "@radix-ui/react-slot"
 import { VariantProps, cva } from "class-variance-authority"
 import * as React from "react"
 
-import { labelVariants } from "@/components/label"
 import { clx } from "@/utils/clx"
 
 const badgeVariants = cva("inline-flex items-center gap-x-0.5 border", {
@@ -13,9 +12,9 @@ const badgeVariants = cva("inline-flex items-center gap-x-0.5 border", {
       icon: "rounded-md",
     },
     size: {
-      sm: clx("px-1.5", labelVariants({ size: "xsmall", weight: "plus" })),
-      md: clx("px-2 py-0.5", labelVariants({ size: "small", weight: "plus" })),
-      lg: clx("px-2.5 py-1", labelVariants({ size: "base", weight: "plus" })),
+      sm: "txt-compact-xsmall-plus px-1.5",
+      md: "txt-compact-small-plus px-2 py-0.5",
+      lg: "txt-compact-medium-plus px-2.5 py-1",
     },
     color: {
       green:

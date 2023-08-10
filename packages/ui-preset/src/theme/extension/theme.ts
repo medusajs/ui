@@ -20,12 +20,7 @@ export const theme = {
             }
           },
           "border": {
-            "base": {
-              "DEFAULT": "var(--code-border-base)"
-            },
-            "strong": {
-              "DEFAULT": "var(--code-border-strong)"
-            }
+            "DEFAULT": "var(--code-border)"
           },
           "icon": {
             "DEFAULT": "var(--code-icon)"
@@ -163,7 +158,10 @@ export const theme = {
         },
         "bg": {
           "highlight": {
-            "DEFAULT": "var(--bg-highlight)"
+            "DEFAULT": "var(--bg-highlight)",
+            "hover": {
+              "DEFAULT": "var(--bg-highlight-hover)"
+            }
           },
           "base": {
             "hover": {

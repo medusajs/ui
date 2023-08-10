@@ -34,7 +34,7 @@ export default function RootLayout({
             <div className="max-w-xxl mx-auto grid w-full grid-cols-[280px_1fr] px-1.5">
               <Sidebar items={docsConfig.sidebarNav} />
               <div className="relative flex w-full flex-1 items-start justify-center px-16 py-[112px]">
-                <main className="h-full w-full max-w-[720px] overflow-y-scroll">
+                <main className="h-full w-full max-w-[720px] px-px">
                   {children}
                 </main>
               </div>
