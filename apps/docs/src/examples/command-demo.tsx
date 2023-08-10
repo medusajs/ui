@@ -6,7 +6,10 @@ export default function CommandDemo() {
       <Command>
         <Badge color="green">Get</Badge>
         <code>localhost:9000/store/products</code>
-        <Command.Copy content="localhost:9000/store/products" />
+        <Command.Copy
+          content="localhost:9000/store/products"
+          className="ml-auto"
+        />
       </Command>
     </div>
   )

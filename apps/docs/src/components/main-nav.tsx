@@ -18,7 +18,7 @@ const MainNav = () => {
 
   return (
     <div className={`flex w-full items-center justify-between`}>
-      <div className="flex items-center gap-x-6">
+      <div className="text-ui-fg-base flex items-center gap-x-6">
         <Link href="https://docs.medusajs.com" rel="noreferrer">
           <Logo />
         </Link>
@@ -53,14 +53,14 @@ type DocsMainNavItemsProps = {
 
 const DocsMainNavItems = ({ items, pathname }: DocsMainNavItemsProps) => {
   return items?.length ? (
-    <div className="auto-col-max grid grid-flow-col gap-6">
+    <div className="auto-col-max txt-compact-small-plus grid grid-flow-col gap-6">
       {items.map((item, index) =>
         item.href && !item.disabled ? (
           <Link
             key={index}
             href={item.href}
             className={clx(
-              "text-ui-fg-subtle text-[13px] font-medium leading-5 transition-all",
+              "text-ui-fg-subtle transition-all",
               "hover:text-ui-fg-base",
               item.disabled &&
                 "bg-ui-bg-base-disabled text-ui-fg-disabled cursor-not-allowed",

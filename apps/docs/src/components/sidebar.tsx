@@ -42,7 +42,7 @@ interface SidebarItemsProps {
 
 export function SidebarNavItems({ items, pathname }: SidebarItemsProps) {
   return items?.length ? (
-    <li className="grid grid-flow-row auto-rows-max gap-0.5">
+    <li className="txt-compact-small-plus grid grid-flow-row auto-rows-max gap-0.5">
       {items.map((item, index) =>
         item.href && !item.disabled ? (
           <Link
