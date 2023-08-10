@@ -3,10 +3,9 @@ import * as React from "react"
 
 import { ExclamationCircleSolid } from "@medusajs/icons"
 import { clx } from "../../utils/clx"
-import { labelVariants } from "../label"
 
 const hintVariants = cva(
-  clx(labelVariants({ size: "xsmall" }), "inline-flex items-center gap-x-2"),
+  "txt-compact-xsmall inline-flex items-center gap-x-2",
   {
     variants: {
       variant: {
