@@ -20,13 +20,13 @@ const switchVariants = cva(
 )
 
 const thumbVariants = cva(
-  "bg-ui-bg-base shadow-details-switch-thumb group-disabled:bg-ui-bg-disabled pointer-events-none z-10 h-[14px] w-[14px] rounded-full transition-all",
+  "bg-ui-bg-base shadow-details-switch-handle group-disabled:bg-ui-bg-disabled pointer-events-none z-10 h-[14px] w-[14px] rounded-full transition-all",
   {
     variants: {
       size: {
         small:
           "h-[12px] w-[12px] data-[state=checked]:translate-x-3.5 data-[state=unchecked]:translate-x-0.5",
-        base: "h-[14px] w-[14px] data-[state=checked]:translate-x-4 data-[state=unchecked]:translate-x-0.5",
+        base: "h-[14px] w-[14px] transition-transform data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0",
       },
     },
     defaultVariants: {
@@ -36,7 +36,10 @@ const thumbVariants = cva(
 )
 
 interface SwitchProps
-  extends React.ComponentPropsWithoutRef<typeof Primitives.Root>,
+  extends Omit<
+      React.ComponentPropsWithoutRef<typeof Primitives.Root>,
+      "asChild"
+    >,
     VariantProps<typeof switchVariants> {}
 
 const Switch = React.forwardRef<
