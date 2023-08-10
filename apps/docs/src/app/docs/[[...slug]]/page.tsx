@@ -1,4 +1,4 @@
-import { Heading, Text } from "@medusajs/ui"
+import { Text } from "@medusajs/ui"
 import { allDocs } from "contentlayer/generated"
 import { notFound } from "next/navigation"
 
@@ -16,7 +16,7 @@ async function getDocFromParams({ params }: DocPageProps) {
   const doc = allDocs.find((doc) => doc.slugAsParams === slug)
 
   if (!doc) {
-    return null
+    null
   }
 
   return doc
@@ -39,8 +39,8 @@ export default async function DocPage({ params }: DocPageProps) {
 
   return (
     <div className="flex flex-col">
-      <Heading level={"h1"}>{doc.title}</Heading>
-      <Text>{doc.description}</Text>
+      <h1 className="docs-h1 mb-2">{doc.title}</h1>
+      <Text className="text-ui-fg-subtle">{doc.description}</Text>
       <div>
         <Mdx code={doc.body.code} />
       </div>
