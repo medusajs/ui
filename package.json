@@ -42,5 +42,8 @@
   "dependencies": {
     "@changesets/cli": "^2.26.1",
     "eslint-plugin-react-hooks": "^4.6.0"
+  },
+  "resolutions": {
+    "class-variance-authority@^0.6.1": "patch:class-variance-authority@npm%3A0.6.1#./.yarn/patches/class-variance-authority-npm-0.6.1-22a468e86e.patch"
   }
 }
