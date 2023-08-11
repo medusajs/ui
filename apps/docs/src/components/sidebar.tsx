@@ -49,7 +49,7 @@ export function SidebarNavItems({ items, pathname }: SidebarItemsProps) {
             key={index}
             href={item.href}
             className={clx(
-              "bg-ui-bg-base text-ui-fg-muted group flex w-full items-center rounded-md border border-transparent px-3 py-1.5 transition-all",
+              "bg-ui-bg-base text-ui-fg-muted group flex w-full items-center justify-between rounded-md border border-transparent px-3 py-1.5 transition-all",
               "hover:bg-ui-bg-base-hover text-ui-fg-subtle",
               item.disabled &&
                 "bg-ui-bg-base-disabled text-ui-fg-disabled cursor-not-allowed",
@@ -63,7 +63,7 @@ export function SidebarNavItems({ items, pathname }: SidebarItemsProps) {
           >
             {item.title}
             {item.label && (
-              <Badge color={"purple"} className="ml-2">
+              <Badge className="txt-compact-xsmall-plus ml-auto px-1">
                 {item.label}
               </Badge>
             )}
@@ -72,13 +72,13 @@ export function SidebarNavItems({ items, pathname }: SidebarItemsProps) {
           <span
             key={index}
             className={clx(
-              "text-muted-foreground flex w-full cursor-not-allowed items-center rounded-md p-2 hover:underline",
-              item.disabled && "cursor-not-allowed opacity-60"
+              "text-ui-fg-muted flex w-full items-center justify-between rounded-md px-3 py-1.5",
+              item.disabled && "text-ui-fg-disabled"
             )}
           >
             {item.title}
             {item.label && (
-              <Badge color="purple" className="ml-2">
+              <Badge size="small" className="txt-compact-xsmall-plus px-1">
                 {item.label}
               </Badge>
             )}

@@ -44,16 +44,22 @@ export const docsConfig: DocsConfig = {
         {
           title: "Installation",
           href: "/docs/installation",
+          label: "WIP",
+          disabled: true,
           items: [],
         },
         {
           title: "Colors",
           href: "/docs/colors",
+          disabled: true,
+          label: "WIP",
           items: [],
         },
         {
           title: "Typography",
           href: "/docs/typography",
+          disabled: true,
+          label: "WIP",
           items: [],
         },
       ],
@@ -64,6 +70,8 @@ export const docsConfig: DocsConfig = {
         {
           title: "Medusa Admin Extension",
           href: "/docs/installation/medusa-admin-extension",
+          label: "WIP",
+          disabled: true,
           items: [],
         },
         {
@@ -214,16 +222,22 @@ export const docsConfig: DocsConfig = {
         {
           title: "usePrompt",
           href: "/docs/hooks/use-prompt",
+          label: "WIP",
+          disabled: true,
           items: [],
         },
         {
           title: "useToast",
           href: "/docs/hooks/use-toast",
+          label: "WIP",
+          disabled: true,
           items: [],
         },
         {
           title: "useToggleState",
           href: "/docs/hooks/use-toggle-state",
+          label: "WIP",
+          disabled: true,
           items: [],
         },
       ],
