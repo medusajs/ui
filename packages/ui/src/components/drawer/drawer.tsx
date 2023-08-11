@@ -4,10 +4,10 @@ import { XMark } from "@medusajs/icons"
 import * as Primitives from "@radix-ui/react-dialog"
 import * as React from "react"
 
-import { Badge } from "@/components/badge"
 import { Button } from "@/components/button"
 import { Heading } from "@/components/heading"
 import { clx } from "@/utils/clx"
+import { Kbd } from "../kbd"
 import { Text } from "../text"
 
 const Root = Primitives.Root
@@ -69,9 +69,7 @@ const Header = ({
     >
       <div className={clx("flex flex-col gap-y-1", className)}>{children}</div>
       <div className="flex items-center gap-x-2">
-        <Badge size={"sm"} color={"grey"}>
-          esc
-        </Badge>
+        <Kbd>esc</Kbd>
         <Close asChild>
           <Button variant="transparent" size={"sm"} format={"icon"}>
             <XMark />
