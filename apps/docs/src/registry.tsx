@@ -223,4 +223,44 @@ export const Registry: Record<string, any> = {
     component: React.lazy(() => import("@/examples/select-scroll-pagination")),
     file: "src/examples/select-scroll-pagination.tsx",
   },
+  "label-base-regular": {
+    name: "label-base-regular",
+    component: React.lazy(() => import("@/examples/label-base-regular")),
+    file: "src/examples/label-base-regular.tsx",
+  },
+  "label-base-plus": {
+    name: "label-base-plus",
+    component: React.lazy(() => import("@/examples/label-base-plus")),
+    file: "src/examples/label-base-plus.tsx",
+  },
+  "label-large-regular": {
+    name: "label-large-regular",
+    component: React.lazy(() => import("@/examples/label-large-regular")),
+    file: "src/examples/label-large-regular.tsx",
+  },
+  "label-large-plus": {
+    name: "label-large-plus",
+    component: React.lazy(() => import("@/examples/label-large-plus")),
+    file: "src/examples/label-large-plus.tsx",
+  },
+  "label-small-regular": {
+    name: "label-small-regular",
+    component: React.lazy(() => import("@/examples/label-small-regular")),
+    file: "src/examples/label-small-regular.tsx",
+  },
+  "label-small-plus": {
+    name: "label-small-plus",
+    component: React.lazy(() => import("@/examples/label-small-plus")),
+    file: "src/examples/label-small-plus.tsx",
+  },
+  "label-xsmall-regular": {
+    name: "label-xsmall-regular",
+    component: React.lazy(() => import("@/examples/label-xsmall-regular")),
+    file: "src/examples/label-xsmall-regular.tsx",
+  },
+  "label-xsmall-plus": {
+    name: "label-xsmall-regular",
+    component: React.lazy(() => import("@/examples/label-xsmall-plus")),
+    file: "src/examples/label-xsmall-plus.tsx",
+  },
 }
