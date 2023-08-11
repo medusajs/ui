@@ -217,6 +217,7 @@ const Trigger = React.forwardRef<
   const { getToggleButtonProps, selectedItem, search } = useSelectContext()
 
   const { ref: toggleButtonRef, ...toggleButtonProps } = getToggleButtonProps({
+    disabled,
     ref,
   })
 
@@ -239,7 +240,6 @@ const Trigger = React.forwardRef<
         className
       )}
       data-placeholder={!selectedItem}
-      disabled={disabled}
       {...props}
       {...toggleButtonProps}
     >
