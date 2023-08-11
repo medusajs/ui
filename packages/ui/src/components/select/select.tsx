@@ -226,7 +226,7 @@ const Trigger = React.forwardRef<
       ref={toggleButtonRef}
       asChild
       className={clx(
-        "bg-ui-bg-subtle border-ui-border-loud-muted text-ui-fg-base shadow-buttons-secondary text-regular group/trigger relative z-10 flex h-10 w-full cursor-pointer items-center rounded-md border px-3 py-[9px] transition-all",
+        "bg-ui-bg-subtle border-ui-border-loud-muted text-ui-fg-base shadow-buttons-secondary txt-compact-medium group/trigger relative z-10 flex h-10 w-full cursor-pointer items-center rounded-md border px-3 py-[9px] transition-all",
         "hover:bg-ui-bg-subtle-hover",
         {
           "focus:border-ui-fg-interactive focus:shadow-borders-active focus:outline-none":
@@ -516,7 +516,7 @@ const SearchInput = React.forwardRef<
     <input
       ref={innerRef}
       className={clx(
-        "caret-ui-fg-base text-regular text-ui-fg-base max-w-[90%] bg-transparent focus:outline-none",
+        "caret-ui-fg-base txt-compact-medium text-ui-fg-base max-w-[90%] bg-transparent focus:outline-none",
         className
       )}
       placeholder="Find something"
@@ -548,7 +548,7 @@ interface InputProps extends React.ComponentPropsWithoutRef<"input"> {
 const Search = React.forwardRef<HTMLInputElement, InputProps>(
   ({ icon, ...props }, ref) => {
     return (
-      <div className="text-regular relative flex items-center px-3 py-2 pl-10">
+      <div className="txt-compact-medium relative flex items-center px-3 py-2 pl-10">
         <div className="text-ui-fg-muted absolute left-3 flex h-5 w-5 items-center justify-center">
           {icon ? icon : <MagnifyingGlassMini />}
         </div>
