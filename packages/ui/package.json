@@ -3,21 +3,31 @@
   "version": "0.0.0",
   "author": "Kasper Kristensen <kasper@medusajs.com>",
   "license": "MIT",
-  "main": "build/index.js",
-  "module": "build/index.mjs",
-  "types": "build/index.d.ts",
-  "files": [
-    "build/**",
-    "!build/types/**/*.tsbuildinfo",
-    "package.json"
-  ],
+  "main": "./dist/cjs/index.js",
+  "types": "./dist/cjs/index.d.ts",
+  "module": "./dist/esm/index.js",
+  "exports": {
+    ".": {
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      },
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      }
+    }
+  },
   "sideEffects": false,
+  "files": [
+    "dist/**",
+    "styles.css"
+  ],
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts --external react",
-    "watch": "tsup src/index.ts --format esm,cjs --dts --external react --watch",
-    "build:deprecated": "rimraf build && yarn build:types && yarn build:js",
-    "build:js": "rollup -c",
-    "build:types": "tsc --project ./tsconfig.build.json",
+    "build": "yarn clean && yarn build:js:cjs && yarn build:js:esm",
+    "build:js:cjs": "tsc --project tsconfig.cjs.json && tsc-alias -p tsconfig.cjs.json",
+    "build:js:esm": "tsc --project tsconfig.esm.json && tsc-alias -p tsconfig.esm.json",
+    "clean": "rimraf dist",
     "test": "vitest --run",
     "test:watch": "vitest",
     "test:coverage": "vitest --run --coverage",
@@ -30,10 +40,6 @@
     "@medusajs/eslint-config-ui": "*",
     "@medusajs/tsconfig-ui": "*",
     "@medusajs/ui-preset": "*",
-    "@rollup/plugin-babel": "^6.0.3",
-    "@rollup/plugin-commonjs": "^24.0.1",
-    "@rollup/plugin-json": "^6.0.0",
-    "@rollup/plugin-node-resolve": "^15.0.1",
     "@storybook/addon-essentials": "^7.0.23",
     "@storybook/addon-interactions": "^7.0.23",
     "@storybook/addon-links": "^7.0.23",
@@ -61,11 +67,9 @@
     "react-dom": "18.2.0",
     "resize-observer-polyfill": "^1.5.1",
     "rimraf": "^5.0.1",
-    "rollup": "^3.12.0",
-    "rollup-plugin-node-externals": "^6.1.1",
-    "rollup-plugin-typescript-paths": "^1.4.0",
     "storybook": "^7.0.23",
     "tailwindcss": "^3.3.2",
+    "tsc-alias": "^1.8.7",
     "tsup": "^7.2.0",
     "typescript": "^5.1.6",
     "vite": "^4.3.9",

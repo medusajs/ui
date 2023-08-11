@@ -1,3 +1,5 @@
+"use client"
+
 import { ChevronLeftMini, ChevronRightMini } from "@medusajs/icons"
 import * as React from "react"
 import {

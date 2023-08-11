@@ -1,4 +1,5 @@
-import { clx } from "@/utils/clx"
+"use client"
+
 import {
   CheckMini,
   ChevronUpDown,
@@ -17,7 +18,9 @@ import {
 } from "downshift"
 import { isEqual, throttle } from "lodash"
 import * as React from "react"
-import { Badge } from "../badge"
+
+import { Badge } from "@/components/badge"
+import { clx } from "@/utils/clx"
 
 const ALLOWED_SEARCH_KEYDOWN_CODES = ["Enter", "Escape", "ArrowUp", "ArrowDown"]
 const SCROLL_TOLERANCE = 30

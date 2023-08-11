@@ -1,3 +1,5 @@
+"use client"
+
 import * as Primitives from "@radix-ui/react-radio-group"
 import * as React from "react"
 

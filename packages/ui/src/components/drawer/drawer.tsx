@@ -1,3 +1,5 @@
+"use client"
+
 import { XMark } from "@medusajs/icons"
 import * as Primitives from "@radix-ui/react-dialog"
 import * as React from "react"

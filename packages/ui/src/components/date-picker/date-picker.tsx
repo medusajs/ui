@@ -1,3 +1,5 @@
+"use client"
+
 import { Time } from "@internationalized/date"
 import { Calendar as CalendarIcon, Minus } from "@medusajs/icons"
 import * as Primitives from "@radix-ui/react-popover"

@@ -37,11 +37,8 @@ export function ComponentExample({
             <TabsTrigger value="preview">Preview</TabsTrigger>
             <TabsTrigger value="code">Code</TabsTrigger>
           </TabsList>
-          <TabsContent
-            value="preview"
-            className="border-ui-border-base bg-ui-bg-base relative flex items-center justify-center data-[state=active]:min-h-[400px] data-[state=active]:border"
-          >
-            <div className="flex w-full items-center justify-center px-10 py-5">
+          <TabsContent value="preview" className="relative">
+            <div className="bg-ui-bg-base border-ui-border-base flex max-h-[400px] min-h-[400px] w-full items-center justify-center overflow-auto rounded-md border px-10 py-5">
               <React.Suspense
                 fallback={
                   <div className="text-ui-fg-muted flex items-center text-sm">
@@ -53,7 +50,7 @@ export function ComponentExample({
               </React.Suspense>
             </div>
           </TabsContent>
-          <TabsContent value="code" className="relative">
+          <TabsContent value="code" className="relative ">
             <CodeBlock code={Code} />
           </TabsContent>
         </div>
