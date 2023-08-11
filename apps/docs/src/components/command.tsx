@@ -2,12 +2,13 @@
 
 import { Command as Primitive } from "@medusajs/ui"
 
-const Command = ({ children, code }: { children: any; code: string }) => {
+type CommandProps = React.ComponentProps<"div">
+
+const Command = ({ children, className, ...props }: CommandProps) => {
   return (
-    <Primitive>
-      {children}
-      <code>{code}</code>
-      <Primitive.Copy content="code" />
+    <Primitive className={className} {...props}>
+      <code className="code-body !text-ui-fg-on-color">{children}</code>
+      <Primitive.Copy content="code" className="ml-auto" />
     </Primitive>
   )
 }
