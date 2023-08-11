@@ -1,11 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import * as React from "react"
 
-import { Select, SelectItem, useSelectContext } from "./select"
-import { ChevronDownMini } from "@medusajs/icons"
-import { Button } from "../button"
+import { Button } from "@/components/button"
+import { Label } from "@/components/label"
 import { clx } from "@/utils/clx"
-import { Label } from "../label"
+import { ChevronDownMini } from "@medusajs/icons"
+
+import { Select, SelectItem, useSelectContext } from "./select"
 
 const meta: Meta<typeof Select> = {
   title: "Components/Select",
