@@ -139,6 +139,8 @@ const useFakeOrders = ({ offset, limit }: UseFakeOrdersProps) => {
 
 const fakeData = makeDate(10)
 
+console.log(JSON.stringify(fakeData, null, 2))
+
 const formatCurrency = (amount: number, currency: string) => {
   return new Intl.NumberFormat("en-US", {
     style: "currency",

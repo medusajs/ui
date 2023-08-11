@@ -1,3 +1,5 @@
+"use client"
+
 import { Tooltip } from "@/components/tooltip"
 import { clx } from "@/utils/clx"
 import { CheckCircleSolid, SquareTwoStack } from "@medusajs/icons"

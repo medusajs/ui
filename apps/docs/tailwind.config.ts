@@ -1,5 +1,10 @@
 import preset from "@medusajs/ui-preset"
+import path from "path"
 import type { Config } from "tailwindcss"
+
+// Get two levels up from require.resolve("@medusajs/ui")
+const root = path.join(require.resolve("@medusajs/ui"), "../..")
+const uiPath = path.join(root, "**/*.{js,ts,jsx,tsx,mdx}")
 
 const config: Config = {
   presets: [preset as Config],
@@ -8,7 +13,7 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/examples/**/*.{js,ts,jsx,tsx,mdx}",
-    require.resolve("@medusajs/ui"),
+    uiPath,
   ],
   theme: {
     extend: {

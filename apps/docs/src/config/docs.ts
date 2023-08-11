@@ -182,6 +182,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Table",
+          href: "/docs/components/table",
+          items: [],
+        },
+        {
           title: "Text",
           href: "/docs/components/text",
           items: [],
