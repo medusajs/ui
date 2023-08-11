@@ -2277,6 +2277,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@faker-js/faker@npm:^8.0.2":
+  version: 8.0.2
+  resolution: "@faker-js/faker@npm:8.0.2"
+  checksum: cf73daf9a50397eb0b3f04a7ef3fbb6f54acc026b167707136a7e58a517fd805a46c9e8c5f017f3022f104a4ff984765daaeee2cb98b3c34646db05c2acad441
+  languageName: node
+  linkType: hard
+
 "@fal-works/esbuild-plugin-global-externals@npm:^2.1.2":
   version: 2.1.2
   resolution: "@fal-works/esbuild-plugin-global-externals@npm:2.1.2"
@@ -8822,6 +8829,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "docs@workspace:apps/docs"
   dependencies:
+    "@faker-js/faker": ^8.0.2
     "@medusajs/icons": "*"
     "@medusajs/ui": "*"
     "@medusajs/ui-preset": "*"
@@ -12551,9 +12559,9 @@ __metadata:
   linkType: hard
 
 "lru-cache@npm:^9.1.1 || ^10.0.0":
-  version: 10.0.0
-  resolution: "lru-cache@npm:10.0.0"
-  checksum: 18f101675fe283bc09cda0ef1e3cc83781aeb8373b439f086f758d1d91b28730950db785999cd060d3c825a8571c03073e8c14512b6655af2188d623031baf50
+  version: 10.0.1
+  resolution: "lru-cache@npm:10.0.1"
+  checksum: 06f8d0e1ceabd76bb6f644a26dbb0b4c471b79c7b514c13c6856113879b3bf369eb7b497dad4ff2b7e2636db202412394865b33c332100876d838ad1372f0181
   languageName: node
   linkType: hard
 
@@ -15306,15 +15314,15 @@ __metadata:
   linkType: hard
 
 "recast@npm:^0.23.1":
-  version: 0.23.3
-  resolution: "recast@npm:0.23.3"
+  version: 0.23.4
+  resolution: "recast@npm:0.23.4"
   dependencies:
     assert: ^2.0.0
     ast-types: ^0.16.1
     esprima: ~4.0.0
     source-map: ~0.6.1
     tslib: ^2.0.1
-  checksum: b1340ab0a3a8e4bf206c6c7d54168f7019ed4138a53bc746df230c01f1b6672ce9d25dceb34896b6683622d3eede4e1f18b7d0b672f5aab54ba7762de949e317
+  checksum: edb63bbe0457e68c0f4892f55413000e92aa7c5c53f9e109ab975d1c801cd299a62511ea72734435791f4aea6f0edf560f6a275761f66b2b6069ff6d72686029
   languageName: node
   linkType: hard
 
@@ -17465,7 +17473,7 @@ __metadata:
 
 "typescript@patch:typescript@5.1.6#~builtin<compat/typescript>, typescript@patch:typescript@^5.1.6#~builtin<compat/typescript>":
   version: 5.1.6
-  resolution: "typescript@patch:typescript@npm%3A5.1.6#~builtin<compat/typescript>::version=5.1.6&hash=85af82"
+  resolution: "typescript@patch:typescript@npm%3A5.1.6#~builtin<compat/typescript>::version=5.1.6&hash=77c9e2"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver

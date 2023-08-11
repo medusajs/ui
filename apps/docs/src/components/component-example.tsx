@@ -30,7 +30,7 @@ export function ComponentExample({
   const Code = CodeElement.props.code
 
   return (
-    <div className="relative my-8 flex flex-col space-y-2" {...props}>
+    <div className="relative my-4 flex flex-col space-y-2" {...props}>
       <Tabs defaultValue="preview" className="relative mr-auto w-full">
         <div className="flex flex-col items-center justify-between pb-3">
           <TabsList className="">

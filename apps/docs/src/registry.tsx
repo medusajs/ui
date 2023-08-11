@@ -96,6 +96,11 @@ export const Registry: Record<string, any> = {
     component: React.lazy(() => import("@/examples/radio-group-demo")),
     file: "src/examples/radio-group-demo.tsx",
   },
+  "select-demo": {
+    name: "select-demo",
+    component: React.lazy(() => import("@/examples/select-demo")),
+    file: "src/examples/select-demo.tsx",
+  },
   "switch-demo": {
     name: "switch-demo",
     component: React.lazy(() => import("@/examples/switch-demo")),
@@ -165,5 +170,57 @@ export const Registry: Record<string, any> = {
     name: "button-loading",
     component: React.lazy(() => import("@/examples/button-loading")),
     file: "src/examples/button-loading.tsx",
+  },
+  "select-small": {
+    name: "select-small",
+    component: React.lazy(() => import("@/examples/select-small")),
+    file: "src/examples/select-small.tsx",
+  },
+  "select-disabled": {
+    name: "select-disabled",
+    component: React.lazy(() => import("@/examples/select-disabled")),
+    file: "src/examples/select-disabled.tsx",
+  },
+  "select-custom-trigger-icon": {
+    name: "select-custom-trigger-icon",
+    component: React.lazy(
+      () => import("@/examples/select-custom-trigger-icon")
+    ),
+    file: "src/examples/select-custom-trigger-icon.tsx",
+  },
+  "select-described-items": {
+    name: "select-described-items",
+    component: React.lazy(() => import("@/examples/select-described-items")),
+    file: "src/examples/select-described-items.tsx",
+  },
+  "select-grouped-items": {
+    name: "select-grouped-items",
+    component: React.lazy(() => import("@/examples/select-grouped-items")),
+    file: "src/examples/select-grouped-items.tsx",
+  },
+  "select-searchable": {
+    name: "select-searchable",
+    component: React.lazy(() => import("@/examples/select-searchable")),
+    file: "src/examples/select-searchable.tsx",
+  },
+  "select-multi": {
+    name: "select-multi",
+    component: React.lazy(() => import("@/examples/select-multi")),
+    file: "src/examples/select-multi.tsx",
+  },
+  "select-multi-selectall": {
+    name: "select-multi-selectall",
+    component: React.lazy(() => import("@/examples/select-multi-selectall")),
+    file: "src/examples/select-multi-selectall.tsx",
+  },
+  "select-search-and-create": {
+    name: "select-search-and-create",
+    component: React.lazy(() => import("@/examples/select-search-and-create")),
+    file: "src/examples/select-search-and-create.tsx",
+  },
+  "select-scroll-pagination": {
+    name: "select-scroll-pagination",
+    component: React.lazy(() => import("@/examples/select-scroll-pagination")),
+    file: "src/examples/select-scroll-pagination.tsx",
   },
 }

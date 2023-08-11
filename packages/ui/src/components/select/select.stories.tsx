@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react"
 import * as React from "react"
 
 import { Select, SelectItem, useSelectContext } from "./select"
-import { ChevronDownMini, Spinner } from "@medusajs/icons"
+import { ChevronDownMini } from "@medusajs/icons"
 import { Button } from "../button"
 import { clx } from "@/utils/clx"
 import { Label } from "../label"

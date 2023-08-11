@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@faker-js/faker": "^8.0.2",
     "@medusajs/icons": "*",
     "@medusajs/ui": "*",
     "@medusajs/ui-preset": "*",

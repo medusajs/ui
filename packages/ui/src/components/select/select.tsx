@@ -516,7 +516,7 @@ const SearchInput = React.forwardRef<
     <input
       ref={innerRef}
       className={clx(
-        "caret-ui-fg-base text-regular text-ui-fg-base bg-transparent focus:outline-none",
+        "caret-ui-fg-base text-regular text-ui-fg-base max-w-[90%] bg-transparent focus:outline-none",
         className
       )}
       placeholder="Find something"
@@ -546,7 +546,7 @@ interface InputProps extends React.ComponentPropsWithoutRef<"input"> {
 }
 
 const Search = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, icon, ...props }, ref) => {
+  ({ icon, ...props }, ref) => {
     return (
       <div className="text-regular relative flex items-center px-3 py-2 pl-10">
         <div className="text-ui-fg-muted absolute left-3 flex h-5 w-5 items-center justify-center">

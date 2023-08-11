@@ -47,7 +47,7 @@ const Snippet = ({ children }: { children: ReactElement }) => {
   // Linting sometimes strips spaces around curly-brackets in import statements,
   // in single-line blocks. Let's put them back.
   code = code.replaceAll(
-    /(.+?\{)([^\s].*[^\s])(\})/gi,
+    /(import \{)(.*)(\})/gi,
     (_, g1, g2, g3) => `${g1} ${g2} ${g3}`
   )
 

@@ -3,3 +3,82 @@ title: "Select"
 description: "Displays a list of options for the user to pick from—triggered by a button."
 component: true
 ---
+
+<ComponentExample name="select-demo" />
+
+## Usage
+
+---
+
+<Snippet>```import {Select} from "@medusajs/ui"```</Snippet>
+
+<Snippet>
+  ```
+  <Select onChange={(selectedItem) => doSomething(selectedItem)}>
+    <Select.Trigger>
+      <Select.Value placeholder="Placeholder" />
+      <Select.TriggerIcon />
+    </Select.Trigger>
+    <Select.Content>
+      {items.map((item) => (
+        <Select.Item key={item.value} item={item}>
+          {item.label}
+        </Select.Item>
+      ))}
+    </Select.Content>
+  </Select>
+  ```
+</Snippet>
+
+## Examples
+
+---
+
+### Small
+
+<ComponentExample name="select-small" />
+
+### Disabled
+
+<ComponentExample name="select-disabled" />
+
+### With Custom Trigger Icon
+
+<ComponentExample name="select-custom-trigger-icon" />
+
+### With Described Items
+
+<ComponentExample name="select-described-items" />
+
+### With Grouped Items
+
+<ComponentExample name="select-grouped-items" />
+
+### Searchable
+
+The trigger can be turned into an input, to allow for searching or item creation.
+These actions need to be performed at implementation level.
+See the "Search and Create" example below for a basic idea.
+
+<ComponentExample name="select-searchable" />
+
+### Multi
+
+<ComponentExample name="select-multi" />
+
+### Multi with Select All
+
+<ComponentExample name="select-multi-selectall" />
+
+### Search and Create
+
+By hooking into the `onSearch` prop, you can read the input's value and perform actions such as searching
+within your items or triggering an item creation flow, where appropriate.
+
+<ComponentExample name="select-search-and-create" />
+
+### Scroll Pagination
+
+You can attach a handler to the root's `onScrollToBottom` listener and perform actions such as pagination.
+
+<ComponentExample name="select-scroll-pagination" />
