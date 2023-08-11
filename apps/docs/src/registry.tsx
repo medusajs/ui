@@ -258,4 +258,9 @@ export const Registry: Record<string, any> = {
     component: React.lazy(() => import("@/examples/label-xsmall-regular")),
     file: "src/examples/label-xsmall-regular.tsx",
   },
+  "label-xsmall-plus": {
+    name: "label-xsmall-regular",
+    component: React.lazy(() => import("@/examples/label-xsmall-plus")),
+    file: "src/examples/label-xsmall-plus.tsx",
+  },
 }
