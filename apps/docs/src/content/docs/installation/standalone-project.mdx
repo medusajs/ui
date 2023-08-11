@@ -58,7 +58,7 @@ If you are working within a monorepo, you may need to add the path to the `@medu
 ```
 const path = require("path")
 
-const uiPath = path.resolve(require.resolve("@medusajs/ui"), "../..", "\*_/_.{js,jsx,ts,tsx}")
+const uiPath = path.resolve(require.resolve("@medusajs/ui"), "../..", "**/*.{js,jsx,ts,tsx}")
 
 module.exports = {
   content: [
