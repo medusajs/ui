@@ -40,7 +40,9 @@ export default async function DocPage({ params }: DocPageProps) {
   return (
     <div className="flex flex-col">
       <h1 className="h1-docs text-ui-fg-base mb-2">{doc.title}</h1>
-      <Text className="text-ui-fg-subtle">{doc.description}</Text>
+      <Text className="text-ui-fg-subtle" size="large">
+        {doc.description}
+      </Text>
       <div>
         <Mdx code={doc.body.code} />
       </div>
