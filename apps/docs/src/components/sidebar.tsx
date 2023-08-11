@@ -16,7 +16,7 @@ export function Sidebar({ items }: DocsSidebarNavProps) {
   return (
     <aside className="border-ui-border-base w-sidebar relative block h-full border-r">
       {items.length ? (
-        <div className="sticky inset-0 h-screen max-h-[calc(100vh-58px)] w-full overflow-auto p-6">
+        <div className="sticky inset-x-0 bottom-0 top-[56px] h-screen max-h-[calc(100vh-58px)] w-full overflow-auto p-6">
           {items.map((item, index) => (
             <div key={index} className={clx("pb-6")}>
               <h4 className="text-ui-fg-muted mb-0.5 rounded-md px-3 py-1.5 text-xs font-medium uppercase leading-5">

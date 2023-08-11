@@ -1,3 +1,5 @@
+"use client"
+
 import { Eye, EyeSlash, MagnifyingGlassMini } from "@medusajs/icons"
 import { VariantProps, cva } from "class-variance-authority"
 import * as React from "react"

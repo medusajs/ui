@@ -1,23 +1,41 @@
 {
-  "extends": "@medusajs/tsconfig-ui/react-library.json",
   "compilerOptions": {
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
+    "target": "ES2018",
+    "lib": ["DOM", "ESNext", "DOM.Iterable"],
+    "jsx": "react",
+    "module": "ES2020",
+    "moduleResolution": "Node",
+    "sourceMap": true,
     "declaration": true,
+    "outDir": "./dist",
+    "baseUrl": "./src",
+    "rootDir": "./src",
+    "importHelpers": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "alwaysStrict": true,
     "skipLibCheck": true,
-    "composite": false,
-    "emitDeclarationOnly": true,
-    "outDir": "build/types",
-    "rootDir": "./",
-    "baseUrl": ".",
     "paths": {
-      "@medusajs/ui": ["src/index.tsc"],
-      "@/components/*": ["./src/components/*"],
-      "@/providers/*": ["./src/providers/*"],
-      "@/hooks/*": ["./src/hooks/*"],
-      "@/utils/*": ["./src/utils/*"]
+      "@medusajs/ui": ["./index.tsx"],
+      "@/components/*": ["./components/*"],
+      "@/providers/*": ["./providers/*"],
+      "@/hooks/*": ["./hooks/*"],
+      "@/utils/*": ["./utils/*"]
     }
   },
   "include": ["src"],
-  "exclude": ["dist", "build", "node_modules"]
+  "exclude": [
+    "storybook-static",
+    "node_modules",
+    "dist",
+    "build",
+    "src/**/*.spec.ts",
+    "src/**/*.spec.tsx",
+    "src/**/*.test.ts",
+    "src/**/*.test.tsx",
+    "src/**/*.stories.tsx",
+    "src/**/*.stories.ts",
+    "src/**/*.stories.mdx"
+  ]
 }

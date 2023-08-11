@@ -101,6 +101,11 @@ export const Registry: Record<string, any> = {
     component: React.lazy(() => import("@/examples/switch-demo")),
     file: "src/examples/switch-demo.tsx",
   },
+  "table-demo": {
+    name: "table-demo",
+    component: React.lazy(() => import("@/examples/table-demo")),
+    file: "src/examples/table-demo.tsx",
+  },
   "text-demo": {
     name: "text-demo",
     component: React.lazy(() => import("@/examples/text-demo")),

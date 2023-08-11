@@ -1,3 +1,5 @@
+"use client"
+
 import * as Primitives from "@radix-ui/react-tooltip"
 import * as React from "react"
 
