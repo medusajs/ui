@@ -12,9 +12,9 @@ const badgeVariants = cva("inline-flex items-center gap-x-0.5 border", {
       icon: "rounded-md",
     },
     size: {
-      sm: "txt-compact-xsmall-plus px-1.5",
-      md: "txt-compact-small-plus px-2 py-0.5",
-      lg: "txt-compact-medium-plus px-2.5 py-1",
+      small: "txt-compact-xsmall-plus px-1.5",
+      base: "txt-compact-small-plus px-2 py-0.5",
+      large: "txt-compact-medium-plus px-2.5 py-1",
     },
     color: {
       green:
@@ -31,22 +31,22 @@ const badgeVariants = cva("inline-flex items-center gap-x-0.5 border", {
   compoundVariants: [
     {
       type: "icon",
-      size: "lg",
+      size: "large",
       className: "p-1",
     },
     {
       type: "icon",
-      size: "md",
+      size: "base",
       className: "p-0.5",
     },
     {
       type: "icon",
-      size: "sm",
+      size: "small",
       className: "p-0.5", // Icon does not get any smaller than `md`
     },
   ],
   defaultVariants: {
-    size: "md",
+    size: "base",
     type: "default",
     color: "grey",
   },

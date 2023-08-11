@@ -90,18 +90,18 @@ export const IconDefault: Story = {
 
 export const Small: Story = {
   args: {
-    size: "sm",
+    size: "small",
   },
 }
 
-export const Medium: Story = {
+export const Base: Story = {
   args: {
-    size: "md",
+    size: "base",
   },
 }
 
 export const Large: Story = {
   args: {
-    size: "lg",
+    size: "large",
   },
 }
