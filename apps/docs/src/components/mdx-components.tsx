@@ -28,6 +28,15 @@ const components = {
   p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => {
     return <Text className={clx("text-ui-fg-subtle", className)} {...props} />
   },
+  a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
+    <a
+      className={clx(
+        "txt-medium text-ui-fg-interactive hover:text-ui-fg-interactive-hover",
+        className
+      )}
+      {...props}
+    />
+  ),
   CodeBlock,
   Command,
   ComponentExample,

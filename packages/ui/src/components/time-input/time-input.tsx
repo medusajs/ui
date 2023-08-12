@@ -21,8 +21,8 @@ type TimeSegmentProps = {
 }
 
 const TimeSegment = ({ segment, state }: TimeSegmentProps) => {
-  let ref = React.useRef<HTMLDivElement>(null)
-  let { segmentProps } = useDateSegment(segment, state, ref)
+  const ref = React.useRef<HTMLDivElement>(null)
+  const { segmentProps } = useDateSegment(segment, state, ref)
 
   const isColon = segment.type === "literal" && segment.text === ":"
   const isSpace = segment.type === "literal" && segment.text === " "
@@ -82,7 +82,7 @@ const TimeInput = React.forwardRef<HTMLDivElement, TimeInputProps>(
       () => innerRef?.current
     )
 
-    let locale = window !== undefined ? window.navigator.language : "en-US"
+    const locale = window !== undefined ? window.navigator.language : "en-US"
 
     const state = useTimeFieldState({
       hourCycle: hourCycle,

@@ -1,9 +1,8 @@
-import { Input, Label } from "@medusajs/ui"
+import { Input } from "@medusajs/ui"
 
 export default function InputDemo() {
   return (
-    <div className="flex w-full flex-col gap-y-2">
-      <Label htmlFor="sales-channel-name">Name</Label>
+    <div className="w-[250px]">
       <Input placeholder="Sales Channel Name" id="sales-channel-name" />
     </div>
   )

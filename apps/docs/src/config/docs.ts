@@ -82,6 +82,18 @@ export const docsConfig: DocsConfig = {
       ],
     },
     {
+      title: "Icons",
+      items: [
+        {
+          title: "Overview",
+          href: "/docs/icons/overview",
+          disabled: true,
+          label: "WIP",
+          items: [],
+        },
+      ],
+    },
+    {
       title: "Components",
       items: [
         {

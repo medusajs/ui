@@ -77,11 +77,7 @@ export function SidebarNavItems({ items, pathname }: SidebarItemsProps) {
             )}
           >
             {item.title}
-            {item.label && (
-              <Badge size="small" className="txt-compact-xsmall-plus px-1">
-                {item.label}
-              </Badge>
-            )}
+            {item.label && <Badge size="small">{item.label}</Badge>}
           </span>
         )
       )}
