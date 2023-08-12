@@ -3,7 +3,7 @@ import { Button, Drawer } from "@medusajs/ui"
 export default function DrawerDemo() {
   return (
     <Drawer>
-      <Drawer.Trigger>
+      <Drawer.Trigger asChild>
         <Button>Edit Variant</Button>
       </Drawer.Trigger>
       <Drawer.Content>

@@ -30,7 +30,8 @@ const Display = React.forwardRef<
           "disabled:bg-ui-bg-disabled disabled:text-ui-fg-disabled disabled:border-ui-border-base disabled:shadow-none",
           "focus:border-ui-border-interactive focus:shadow-borders-active",
           "hover:bg-ui-bg-subtle-hover",
-          "active:bg-ui-bg-subtle-pressed"
+          "active:bg-ui-bg-subtle-pressed",
+          className
         )}
         {...props}
       >
@@ -335,7 +336,7 @@ const SingleDatePicker = ({
                   <TimeInput
                     aria-label="Time"
                     onChange={handleTimeChange}
-                    isDisabled={disabled}
+                    isDisabled={!date}
                     value={time}
                   />
                 </div>

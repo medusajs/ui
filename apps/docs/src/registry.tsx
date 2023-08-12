@@ -11,6 +11,56 @@ export const Registry: Record<string, any> = {
     component: React.lazy(() => import("@/examples/badge-demo")),
     file: "src/examples/badge-demo.tsx",
   },
+  "badge-blue": {
+    name: "badge-blue",
+    component: React.lazy(() => import("@/examples/badge-blue")),
+    file: "src/examples/badge-blue.tsx",
+  },
+  "badge-green": {
+    name: "badge-green",
+    component: React.lazy(() => import("@/examples/badge-green")),
+    file: "src/examples/badge-green.tsx",
+  },
+  "badge-red": {
+    name: "badge-red",
+    component: React.lazy(() => import("@/examples/badge-red")),
+    file: "src/examples/badge-red.tsx",
+  },
+  "badge-orange": {
+    name: "badge-orange",
+    component: React.lazy(() => import("@/examples/badge-orange")),
+    file: "src/examples/badge-orange.tsx",
+  },
+  "badge-purple": {
+    name: "badge-purple",
+    component: React.lazy(() => import("@/examples/badge-purple")),
+    file: "src/examples/badge-purple.tsx",
+  },
+  "badge-grey": {
+    name: "badge-grey",
+    component: React.lazy(() => import("@/examples/badge-grey")),
+    file: "src/examples/badge-grey.tsx",
+  },
+  "badge-small": {
+    name: "badge-small",
+    component: React.lazy(() => import("@/examples/badge-small")),
+    file: "src/examples/badge-small.tsx",
+  },
+  "badge-large": {
+    name: "badge-large",
+    component: React.lazy(() => import("@/examples/badge-large")),
+    file: "src/examples/badge-large.tsx",
+  },
+  "badge-rounded": {
+    name: "badge-rounded",
+    component: React.lazy(() => import("@/examples/badge-rounded")),
+    file: "src/examples/badge-rounded.tsx",
+  },
+  "badge-icon": {
+    name: "badge-icon",
+    component: React.lazy(() => import("@/examples/badge-icon")),
+    file: "src/examples/badge-icon.tsx",
+  },
   "button-demo": {
     name: "button-demo",
     component: React.lazy(() => import("@/examples/button-demo")),
@@ -51,6 +101,52 @@ export const Registry: Record<string, any> = {
     component: React.lazy(() => import("@/examples/date-picker-demo")),
     file: "src/examples/date-picker-demo.tsx",
   },
+  "date-picker-single": {
+    name: "date-picker-single",
+    component: React.lazy(() => import("@/examples/date-picker-single")),
+    file: "src/examples/date-picker-single.tsx",
+  },
+  "date-picker-single-time": {
+    name: "date-picker-single-time",
+    component: React.lazy(() => import("@/examples/date-picker-single-time")),
+    file: "src/examples/date-picker-single-time.tsx",
+  },
+  "date-picker-single-presets": {
+    name: "date-picker-single-presets",
+    component: React.lazy(
+      () => import("@/examples/date-picker-single-presets")
+    ),
+    file: "src/examples/date-picker-single-presets.tsx",
+  },
+  "date-picker-single-presets-time": {
+    name: "date-picker-single-presets-time",
+    component: React.lazy(
+      () => import("@/examples/date-picker-single-presets-time")
+    ),
+    file: "src/examples/date-picker-single-presets-time.tsx",
+  },
+  "date-picker-range": {
+    name: "date-picker-range",
+    component: React.lazy(() => import("@/examples/date-picker-range")),
+    file: "src/examples/date-picker-range.tsx",
+  },
+  "date-picker-range-time": {
+    name: "date-picker-range-time",
+    component: React.lazy(() => import("@/examples/date-picker-range-time")),
+    file: "src/examples/date-picker-range-time.tsx",
+  },
+  "date-picker-range-presets": {
+    name: "date-picker-range-presets",
+    component: React.lazy(() => import("@/examples/date-picker-range-presets")),
+    file: "src/examples/date-picker-range-presets.tsx",
+  },
+  "date-picker-range-presets-time": {
+    name: "date-picker-range-presets-time",
+    component: React.lazy(
+      () => import("@/examples/date-picker-range-presets-time")
+    ),
+    file: "src/examples/date-picker-range-presets-time.tsx",
+  },
   "drawer-demo": {
     name: "drawer-demo",
     component: React.lazy(() => import("@/examples/drawer-demo")),
@@ -75,6 +171,26 @@ export const Registry: Record<string, any> = {
     name: "input-demo",
     component: React.lazy(() => import("@/examples/input-demo")),
     file: "src/examples/input-demo.tsx",
+  },
+  "input-password": {
+    name: "input-password",
+    component: React.lazy(() => import("@/examples/input-password")),
+    file: "src/examples/input-password.tsx",
+  },
+  "input-search": {
+    name: "input-search",
+    component: React.lazy(() => import("@/examples/input-search")),
+    file: "src/examples/input-search.tsx",
+  },
+  "input-disabled": {
+    name: "input-disabled",
+    component: React.lazy(() => import("@/examples/input-disabled")),
+    file: "src/examples/input-disabled.tsx",
+  },
+  "input-small": {
+    name: "input-small",
+    component: React.lazy(() => import("@/examples/input-small")),
+    file: "src/examples/input-small.tsx",
   },
   "kbd-demo": {
     name: "kbd-demo",
