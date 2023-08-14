@@ -9,7 +9,9 @@ import { CodeBlock } from "./code-block"
   
   then hackily Typed
 */
-const getRecursiveChildText = (reactNode: ReactElement): string | undefined => {
+export const getRecursiveChildText = (
+  reactNode: ReactElement
+): string | undefined => {
   const children = reactNode.props.children || undefined
   if (Array.isArray(reactNode)) {
     // Multiple children

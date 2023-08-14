@@ -7,7 +7,7 @@ import { CodeBlock } from "@/components/code-block"
 import { Command } from "@/components/command"
 import { ComponentExample } from "@/components/component-example"
 import { Snippet } from "@/components/snippet"
-import { Text, clx } from "@medusajs/ui"
+import { Code, Text, clx } from "@medusajs/ui"
 
 interface MdxProps {
   code: string
@@ -37,6 +37,15 @@ const components = {
       {...props}
     />
   ),
+  code: (props: React.HTMLAttributes<HTMLElement>) => {
+    return <Code {...props} />
+  },
+  li: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => {
+    return <Text className={clx("text-ui-fg-subtle", className)} {...props} />
+  },
+  hr: ({ className, ...props }: React.HTMLAttributes<HTMLHRElement>) => {
+    return <hr className={clx("mb-4", className)} {...props} />
+  },
   CodeBlock,
   Command,
   ComponentExample,
