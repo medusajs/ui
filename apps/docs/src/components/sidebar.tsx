@@ -41,10 +41,9 @@ export function SidebarNavItems({ items, pathname }: SidebarItemsProps) {
     <ul className="txt-compact-small-plus grid grid-flow-row auto-rows-max gap-0.5">
       {items.map((item, index) => {
         return (
-          <li>
+          <li key={index}>
             {item.href && !item.disabled ? (
               <Link
-                key={index}
                 href={item.href}
                 className={clx(
                   "bg-ui-bg-base text-ui-fg-muted group flex w-full items-center justify-between rounded-md border border-transparent px-3 py-1.5 transition-all",
@@ -64,7 +63,6 @@ export function SidebarNavItems({ items, pathname }: SidebarItemsProps) {
               </Link>
             ) : (
               <span
-                key={index}
                 className={clx(
                   "text-ui-fg-muted flex w-full items-center justify-between rounded-md px-3 py-1.5",
                   item.disabled && "text-ui-fg-disabled"
