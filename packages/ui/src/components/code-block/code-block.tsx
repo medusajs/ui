@@ -57,11 +57,16 @@ const Root = ({
   )
 }
 
+type HeaderProps = {
+  hideLabels?: boolean
+}
+
 const HeaderComponent = ({
   children,
   className,
+  hideLabels = false,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) => {
+}: React.HTMLAttributes<HTMLDivElement> & HeaderProps) => {
   const { snippets, active, setActive } = useCodeBlockContext()
   return (
     <div
@@ -71,21 +76,22 @@ const HeaderComponent = ({
       )}
       {...props}
     >
-      {snippets.map((snippet) => (
-        <div
-          className={clx(
-            "text-ui-code-text-subtle txt-compact-small-plus cursor-pointer rounded-full border border-transparent px-3 py-2 transition-all",
-            {
-              "text-ui-code-text-base border-ui-code-border bg-ui-code-bg-base cursor-default":
-                active.label === snippet.label,
-            }
-          )}
-          key={snippet.label}
-          onClick={() => setActive(snippet)}
-        >
-          {snippet.label}
-        </div>
-      ))}
+      {!hideLabels &&
+        snippets.map((snippet) => (
+          <div
+            className={clx(
+              "text-ui-code-text-subtle txt-compact-small-plus cursor-pointer rounded-full border border-transparent px-3 py-2 transition-all",
+              {
+                "text-ui-code-text-base border-ui-code-border bg-ui-code-bg-base cursor-default":
+                  active.label === snippet.label,
+              }
+            )}
+            key={snippet.label}
+            onClick={() => setActive(snippet)}
+          >
+            {snippet.label}
+          </div>
+        ))}
       {children}
     </div>
   )

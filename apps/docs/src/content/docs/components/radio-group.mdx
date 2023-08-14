@@ -1,5 +1,5 @@
 ---
-title: "RadioGroup"
+title: "Radio Group"
 description: "A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time."
 component: true
 ---
@@ -8,14 +8,28 @@ component: true
 
 ## Usage
 
+---
+
 <Snippet>```import {RadioGroup} from "@medusajs/ui"```</Snippet>
 
 <Snippet>
   ```
-  <RadioGroup.Root>
+  <RadioGroup>
     <RadioGroup.Item value="1" id="radio_1" />
     <RadioGroup.Item value="2" id="radio_2" />
     <RadioGroup.Item value="3" id="radio_3" />
-  </RadioGroup.Root>
+  </RadioGroup>
   ```
 </Snippet>
+
+## Examples
+
+---
+
+### With Descriptions
+
+<ComponentExample name="radio-group-descriptions" />
+
+### With a disabled item
+
+<ComponentExample name="radio-group-disabled" />

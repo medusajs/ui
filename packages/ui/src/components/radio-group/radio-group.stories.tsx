@@ -5,9 +5,9 @@ import { Label } from "@/components/label"
 import { Text } from "@/components/text"
 import { RadioGroup } from "./radio-group"
 
-const meta: Meta<typeof RadioGroup.Root> = {
+const meta: Meta<typeof RadioGroup> = {
   title: "Components/RadioGroup",
-  component: RadioGroup.Root,
+  component: RadioGroup,
   parameters: {
     layout: "centered",
   },
@@ -15,16 +15,16 @@ const meta: Meta<typeof RadioGroup.Root> = {
 
 export default meta
 
-type Story = StoryObj<typeof RadioGroup.Root>
+type Story = StoryObj<typeof RadioGroup>
 
 export const Default: Story = {
   render: () => {
     return (
-      <RadioGroup.Root>
+      <RadioGroup>
         <RadioGroup.Item value="1" />
         <RadioGroup.Item value="2" />
         <RadioGroup.Item value="3" />
-      </RadioGroup.Root>
+      </RadioGroup>
     )
   },
 }
@@ -32,7 +32,7 @@ export const Default: Story = {
 export const WithLabel: Story = {
   render: () => {
     return (
-      <RadioGroup.Root>
+      <RadioGroup>
         <div className="flex items-center gap-x-3">
           <RadioGroup.Item value="1" id="radio_1" />
           <Label htmlFor="radio_1" weight="plus">
@@ -51,7 +51,7 @@ export const WithLabel: Story = {
             Radio 3
           </Label>
         </div>
-      </RadioGroup.Root>
+      </RadioGroup>
     )
   },
 }
@@ -59,7 +59,7 @@ export const WithLabel: Story = {
 export const WithLabelAndDescription: Story = {
   render: () => {
     return (
-      <RadioGroup.Root>
+      <RadioGroup>
         <div className="flex items-start gap-x-3">
           <RadioGroup.Item value="1" id="radio_1" />
           <div className="flex flex-col gap-y-0.5">
@@ -93,7 +93,7 @@ export const WithLabelAndDescription: Story = {
             </Text>
           </div>
         </div>
-      </RadioGroup.Root>
+      </RadioGroup>
     )
   },
 }
@@ -101,11 +101,11 @@ export const WithLabelAndDescription: Story = {
 export const Disabled: Story = {
   render: () => {
     return (
-      <RadioGroup.Root>
+      <RadioGroup>
         <RadioGroup.Item value="1" disabled />
         <RadioGroup.Item value="2" />
         <RadioGroup.Item value="3" disabled checked />
-      </RadioGroup.Root>
+      </RadioGroup>
     )
   },
 }
