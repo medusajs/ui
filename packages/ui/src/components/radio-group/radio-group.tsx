@@ -22,7 +22,7 @@ Root.displayName = "RadioGroup.Root"
 const Item = React.forwardRef<
   React.ElementRef<typeof Primitives.Item>,
   React.ComponentPropsWithoutRef<typeof Primitives.Item>
->(({ className, children, ...props }, ref) => {
+>(({ className, ...props }, ref) => {
   return (
     <Primitives.Item
       ref={ref}
@@ -46,7 +46,6 @@ const Item = React.forwardRef<
 })
 Item.displayName = "RadioGroup.Item"
 
-export const RadioGroup = {
-  Root,
-  Item,
-}
+const RadioGroup = Object.assign(Root, { Item })
+
+export { RadioGroup }
