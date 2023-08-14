@@ -37,7 +37,9 @@ const components = {
       {...props}
     />
   ),
-  Code,
+  code: (props: React.HTMLAttributes<HTMLElement>) => {
+    return <Code {...props} />
+  },
   li: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => {
     return <Text className={clx("text-ui-fg-subtle", className)} {...props} />
   },
