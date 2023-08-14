@@ -1,6 +1,5 @@
 "use client"
 
-import { Text, clx } from "@medusajs/ui"
 import { useMDXComponent } from "next-contentlayer/hooks"
 import * as React from "react"
 
@@ -10,6 +9,7 @@ import { ComponentExample } from "@/components/component-example"
 import { IconSearch } from "@/components/icon-search"
 import { PackageInstall } from "@/components/package-install"
 import { Snippet } from "@/components/snippet"
+import { Code, Text, clx } from "@medusajs/ui"
 
 interface MdxProps {
   code: string
@@ -39,8 +39,16 @@ const components = {
       {...props}
     />
   ),
+  code: (props: React.HTMLAttributes<HTMLElement>) => {
+    return <Code {...props} />
+  },
+  li: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => {
+    return <Text className={clx("text-ui-fg-subtle", className)} {...props} />
+  },
+  hr: ({ className, ...props }: React.HTMLAttributes<HTMLHRElement>) => {
+    return <hr className={clx("mb-4", className)} {...props} />
+  },
   CodeBlock,
-  Command,
   ComponentExample,
   Snippet,
   PackageInstall,
