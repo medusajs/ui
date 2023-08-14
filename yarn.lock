@@ -8843,6 +8843,7 @@ __metadata:
     "@medusajs/icons": "*"
     "@medusajs/ui": "*"
     "@medusajs/ui-preset": "*"
+    "@radix-ui/react-dialog": ^1.0.4
     "@radix-ui/react-scroll-area": ^1.0.4
     "@radix-ui/react-tabs": ^1.0.4
     "@types/node": 20.4.9

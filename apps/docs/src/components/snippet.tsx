@@ -51,7 +51,7 @@ const Snippet = ({ children }: { children: ReactElement }) => {
     (_, g1, g2, g3) => `${g1} ${g2} ${g3}`
   )
 
-  return <CodeBlock className="my-4" code={code} />
+  return <CodeBlock className="my-4 w-full overflow-auto" code={code} />
 }
 
 export { Snippet }

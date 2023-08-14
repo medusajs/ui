@@ -14,10 +14,7 @@ const CodeBlock = ({
       snippets={[{ language: "tsx", label: "TSX", code }]}
       className={className}
     >
-      <Primitive.Body
-        hideLineNumbers
-        className="max-h-[400px] overflow-y-auto"
-      />
+      <Primitive.Body hideLineNumbers className="max-h-[400px] overflow-auto" />
     </Primitive>
   )
 }

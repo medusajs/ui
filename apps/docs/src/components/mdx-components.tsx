@@ -1,13 +1,15 @@
 "use client"
 
+import { Text, clx } from "@medusajs/ui"
 import { useMDXComponent } from "next-contentlayer/hooks"
 import * as React from "react"
 
 import { CodeBlock } from "@/components/code-block"
 import { Command } from "@/components/command"
 import { ComponentExample } from "@/components/component-example"
+import { IconSearch } from "@/components/icon-search"
+import { PackageInstall } from "@/components/package-install"
 import { Snippet } from "@/components/snippet"
-import { Text, clx } from "@medusajs/ui"
 
 interface MdxProps {
   code: string
@@ -41,6 +43,8 @@ const components = {
   Command,
   ComponentExample,
   Snippet,
+  PackageInstall,
+  IconSearch,
 }
 
 const Mdx = ({ code }: MdxProps) => {

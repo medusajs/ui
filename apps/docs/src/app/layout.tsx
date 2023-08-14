@@ -1,9 +1,11 @@
-import { Navbar } from "@/components/navbar"
-import { ThemeProvider } from "@/components/providers"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import { Sidebar } from "../components/sidebar"
-import { docsConfig } from "../config/docs"
+
+import { Navbar } from "@/components/navbar"
+import { ThemeProvider } from "@/components/providers"
+import { Sidebar } from "@/components/sidebar"
+import { docsConfig } from "@/config/docs"
+
 import "../styles/globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -31,10 +33,10 @@ export default function RootLayout({
         >
           <div className="w-full">
             <Navbar />
-            <div className="max-w-xxl mx-auto grid w-full grid-cols-[280px_1fr] px-1.5">
+            <div className="lg:max-w-xxl grid w-full grid-cols-1 px-1.5 lg:mx-auto lg:grid-cols-[280px_1fr]">
               <Sidebar items={docsConfig.sidebarNav} />
-              <div className="relative flex w-full flex-1 items-start justify-center px-16 py-[112px]">
-                <main className="h-full w-full max-w-[720px] px-px">
+              <div className="relative flex w-full flex-1 items-start justify-center px-3 py-6 md:px-8 lg:px-16 lg:py-[112px]">
+                <main className="h-full w-full lg:max-w-[720px] lg:px-px">
                   {children}
                 </main>
               </div>

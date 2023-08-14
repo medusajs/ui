@@ -44,8 +44,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Installation",
           href: "/docs/installation",
-          label: "WIP",
-          disabled: true,
           items: [],
         },
         {
@@ -70,8 +68,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Medusa Admin Extension",
           href: "/docs/installation/medusa-admin-extension",
-          label: "WIP",
-          disabled: true,
           items: [],
         },
         {
@@ -87,8 +83,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Overview",
           href: "/docs/icons/overview",
-          disabled: true,
-          label: "WIP",
           items: [],
         },
       ],
