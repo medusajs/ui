@@ -37,6 +37,21 @@ const components = {
       {...props}
     />
   ),
+  code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+    <code
+      className={clx(
+        "border-ui-tag-neutral-border bg-ui-tag-neutral-bg text-ui-tag-neutral-text txt-compact-small inline-flex rounded-md border px-[6px] font-mono",
+        className
+      )}
+      {...props}
+    />
+  ),
+  li: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => {
+    return <Text className={clx("text-ui-fg-subtle", className)} {...props} />
+  },
+  hr: ({ className, ...props }: React.HTMLAttributes<HTMLHRElement>) => {
+    return <hr className={clx("mb-4", className)} {...props} />
+  },
   CodeBlock,
   Command,
   ComponentExample,
