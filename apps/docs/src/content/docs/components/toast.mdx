@@ -8,6 +8,9 @@ component: true
 
 ## Usage
 
+---
+
+<br />
 Add the Toaster component somewhere in your tree
 
 <Snippet>```import {Toaster} from "@medusajs/ui"```</Snippet>
@@ -27,7 +30,6 @@ The <Code>useToast</Code> hook returns a <Code>toast</Code> function that you ca
 const { toast } = useToast()
 
 return (
-
   <Button 
     onClick={() => 
       toast({ 
@@ -41,3 +43,27 @@ return (
 )
 ```
 </Snippet>
+
+## Examples
+
+---
+
+### Warning
+
+<ComponentExample name="toaster-warning" />
+
+### Error
+
+<ComponentExample name="toaster-error" />
+
+### Success
+
+<ComponentExample name="toaster-success" />
+
+### Loading
+
+<ComponentExample name="toaster-loading" />
+
+### With Action
+
+<ComponentExample name="toaster-with-action" />
