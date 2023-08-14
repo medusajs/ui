@@ -29,7 +29,7 @@ You can install it with the following command:
 
 <Command className="my-4">`yarn add -D @medusajs/ui-preset`</Command>
 
-After you have installed Tailwind CSS and the Medusa UI preset, you need to add the following to your `tailwind.config.js` file:
+After you have installed Tailwind CSS and the Medusa UI preset, you need to add the following to your <Code>tailwind.config.js</Code> file:
 
 <Snippet>
 ```
@@ -41,7 +41,7 @@ module.exports = {
 </Snippet>
 
 In order for the styles to be applied correctly to the components, you will also need to ensure that
-`@medusajs/ui` is included in the content field of your `tailwind.config.js` file:
+<Code>@medusajs/ui</Code> is included in the content field of your <Code>tailwind.config.js</Code> file:
 
 <Snippet>
 ```
@@ -55,7 +55,7 @@ module.exports = {
 ```
 </Snippet>
 
-If you are working within a monorepo, you may need to add the path to the `@medusajs/ui` package in your `tailwind.config.js` like so:
+If you are working within a monorepo, you may need to add the path to the <Code>@medusajs/ui</Code> package in your <Code>tailwind.config.js</Code> like so:
 
 <Snippet>
 ```
@@ -64,7 +64,7 @@ const path = require("path")
 const uiPath = path.resolve(require.resolve("@medusajs/ui"), "../..", "\*_/_.{js,jsx,ts,tsx}")
 
 module.exports = {
-content: [
+  content: [
     // ...
     uiPath,
   ],
