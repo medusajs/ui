@@ -22,6 +22,10 @@ export function rehypeComponent() {
 
           source = source.replaceAll("export default", "export")
 
+          // Trim newline at the end of file. It's correct, but it makes source display look off
+          if (source.endsWith("\n"))
+            source = source.substring(0, source.length - 1)
+
           node.children?.push(
             u("element", {
               tagName: "span",

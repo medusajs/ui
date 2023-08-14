@@ -5,6 +5,8 @@ description: "How to install and use Medusa UI in a standalone project."
 
 ## Installation
 
+---
+
 Medusa UI is a React UI library and while it's intended for usage within Medusa projects, it can also be used in any React project.
 
 <br />
@@ -62,22 +64,23 @@ const path = require("path")
 const uiPath = path.resolve(require.resolve("@medusajs/ui"), "../..", "\*_/_.{js,jsx,ts,tsx}")
 
 module.exports = {
-  content: [
+content: [
     // ...
     uiPath,
   ],
   // ...
 };
+
 ```
 </Snippet>
 <br/>
 
 ## Start building
-
+___
 You are now ready to start building your application with Medusa UI. You can import the components like so:
 
 <Snippet>
 ```
-import { Button, Drawer } from "@medusajs/ui"
+import {Button, Drawer} from "@medusajs/ui"
 ```
 </Snippet>

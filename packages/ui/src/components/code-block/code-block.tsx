@@ -149,7 +149,7 @@ const Body = ({
         >
           {({ style, tokens, getLineProps, getTokenProps }) => (
             <pre
-              className="whitespace-pre-wrap bg-transparent font-mono text-sm"
+              className="txt-compact-small whitespace-pre-wrap bg-transparent font-mono"
               style={{
                 ...style,
                 background: "transparent",
