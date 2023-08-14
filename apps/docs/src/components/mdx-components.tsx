@@ -7,7 +7,7 @@ import { CodeBlock } from "@/components/code-block"
 import { Command } from "@/components/command"
 import { ComponentExample } from "@/components/component-example"
 import { Snippet } from "@/components/snippet"
-import { Text, clx } from "@medusajs/ui"
+import { Code, Text, clx } from "@medusajs/ui"
 
 interface MdxProps {
   code: string
@@ -37,15 +37,7 @@ const components = {
       {...props}
     />
   ),
-  code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
-    <code
-      className={clx(
-        "border-ui-tag-neutral-border bg-ui-tag-neutral-bg text-ui-tag-neutral-text txt-compact-small inline-flex rounded-md border px-[6px] font-mono",
-        className
-      )}
-      {...props}
-    />
-  ),
+  Code,
   li: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => {
     return <Text className={clx("text-ui-fg-subtle", className)} {...props} />
   },

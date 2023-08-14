@@ -6,7 +6,8 @@ description: "How to install and use Medusa UI in a standalone project."
 ## Installation
 
 Medusa UI is a React UI library and while it's intended for usage within Medusa projects, it can also be used in any React project.
-<br/>
+
+<br />
 
 ### Install Medusa UI
 
@@ -14,13 +15,15 @@ Install the React UI library with the following command:
 
 <Command className="my-4">`yarn add @medusajs/medusa-ui`</Command>
 
-<br/>
+<br />
 ### Configuring Tailwind CSS
 
-The components are styled using Tailwind CSS, and in order to use them, you need to install Tailwind CSS in your project as well.
+The components are styled using Tailwind CSS, and in order to use them, you will need to install Tailwind CSS in your project as well.
 For more information on how to install Tailwind CSS, please refer to the [Tailwind CSS documentation](https://tailwindcss.com/docs/installation).
-<br/>
-All of the classes used for Medusa UI is shipped in a Tailwind CSS. You install it with the following command:
+
+<br />
+All of the classes used for Medusa UI are shipped as a Tailwind CSS customization.
+You can install it with the following command:
 
 <Command className="my-4">`yarn add -D @medusajs/ui-preset`</Command>
 
@@ -56,7 +59,7 @@ If you are working within a monorepo, you may need to add the path to the `@medu
 ```
 const path = require("path")
 
-const uiPath = path.resolve(require.resolve("@medusajs/ui"), "../..", "**/*.{js,jsx,ts,tsx}")
+const uiPath = path.resolve(require.resolve("@medusajs/ui"), "../..", "\*_/_.{js,jsx,ts,tsx}")
 
 module.exports = {
   content: [
@@ -78,4 +81,3 @@ You are now ready to start building your application with Medusa UI. You can imp
 import { Button, Drawer } from "@medusajs/ui"
 ```
 </Snippet>
-
