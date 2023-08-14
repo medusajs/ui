@@ -2,7 +2,7 @@ import { Label, RadioGroup } from "@medusajs/ui"
 
 export default function RadioGroupDemo() {
   return (
-    <RadioGroup.Root>
+    <RadioGroup>
       <div className="flex items-center gap-x-3">
         <RadioGroup.Item value="1" id="radio_1" />
         <Label htmlFor="radio_1" weight="plus">
@@ -21,6 +21,6 @@ export default function RadioGroupDemo() {
           Radio 3
         </Label>
       </div>
-    </RadioGroup.Root>
+    </RadioGroup>
   )
 }

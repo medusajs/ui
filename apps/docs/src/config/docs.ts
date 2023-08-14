@@ -122,7 +122,7 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "CodeBlock",
+          title: "Code Block",
           href: "/docs/components/code-block",
           items: [],
         },
@@ -142,7 +142,7 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "DatePicker",
+          title: "Date Picker",
           href: "/docs/components/date-picker",
           items: [],
         },
@@ -152,12 +152,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "DropdownMenu",
+          title: "Dropdown Menu",
           href: "/docs/components/dropdown-menu",
           items: [],
         },
         {
-          title: "FocusModal",
+          title: "Focus Modal",
           href: "/docs/components/focus-modal",
           items: [],
         },
@@ -187,7 +187,7 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "RadioGroup",
+          title: "Radio Group",
           href: "/docs/components/radio-group",
           items: [],
         },

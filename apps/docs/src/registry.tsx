@@ -192,6 +192,11 @@ export const Registry: Record<string, any> = {
     component: React.lazy(() => import("@/examples/input-small")),
     file: "src/examples/input-small.tsx",
   },
+  "input-error": {
+    name: "input-error",
+    component: React.lazy(() => import("@/examples/input-error")),
+    file: "src/examples/input-error.tsx",
+  },
   "kbd-demo": {
     name: "kbd-demo",
     component: React.lazy(() => import("@/examples/kbd-demo")),
@@ -212,6 +217,16 @@ export const Registry: Record<string, any> = {
     component: React.lazy(() => import("@/examples/radio-group-demo")),
     file: "src/examples/radio-group-demo.tsx",
   },
+  "radio-group-descriptions": {
+    name: "radio-group-descriptions",
+    component: React.lazy(() => import("@/examples/radio-group-descriptions")),
+    file: "src/examples/radio-group-descriptions.tsx",
+  },
+  "radio-group-disabled": {
+    name: "radio-group-disabled",
+    component: React.lazy(() => import("@/examples/radio-group-disabled")),
+    file: "src/examples/radio-group-disabled.tsx",
+  },
   "select-demo": {
     name: "select-demo",
     component: React.lazy(() => import("@/examples/select-demo")),
@@ -221,6 +236,26 @@ export const Registry: Record<string, any> = {
     name: "switch-demo",
     component: React.lazy(() => import("@/examples/switch-demo")),
     file: "src/examples/switch-demo.tsx",
+  },
+  "switch-small": {
+    name: "switch-small",
+    component: React.lazy(() => import("@/examples/switch-small")),
+    file: "src/examples/switch-small.tsx",
+  },
+  "switch-disabled": {
+    name: "switch-disabled",
+    component: React.lazy(() => import("@/examples/switch-disabled")),
+    file: "src/examples/switch-disabled.tsx",
+  },
+  "switch-checked": {
+    name: "switch-checked",
+    component: React.lazy(() => import("@/examples/switch-checked")),
+    file: "src/examples/switch-checked.tsx",
+  },
+  "switch-checked-disabled": {
+    name: "switch-checked-disabled",
+    component: React.lazy(() => import("@/examples/switch-checked-disabled")),
+    file: "src/examples/switch-checked-disabled.tsx",
   },
   "table-demo": {
     name: "table-demo",
@@ -232,6 +267,11 @@ export const Registry: Record<string, any> = {
     component: React.lazy(() => import("@/examples/text-demo")),
     file: "src/examples/text-demo.tsx",
   },
+  "text-examples": {
+    name: "text-examples",
+    component: React.lazy(() => import("@/examples/text-examples")),
+    file: "src/examples/text-examples.tsx",
+  },
   "textarea-demo": {
     name: "textarea-demo",
     component: React.lazy(() => import("@/examples/textarea-demo")),
@@ -241,6 +281,31 @@ export const Registry: Record<string, any> = {
     name: "toaster-demo",
     component: React.lazy(() => import("@/examples/toaster-demo")),
     file: "src/examples/toaster-demo.tsx",
+  },
+  "toaster-warning": {
+    name: "toaster-warning",
+    component: React.lazy(() => import("@/examples/toaster-warning")),
+    file: "src/examples/toaster-warning.tsx",
+  },
+  "toaster-error": {
+    name: "toaster-error",
+    component: React.lazy(() => import("@/examples/toaster-error")),
+    file: "src/examples/toaster-error.tsx",
+  },
+  "toaster-success": {
+    name: "toaster-success",
+    component: React.lazy(() => import("@/examples/toaster-success")),
+    file: "src/examples/toaster-success.tsx",
+  },
+  "toaster-loading": {
+    name: "toaster-loading",
+    component: React.lazy(() => import("@/examples/toaster-loading")),
+    file: "src/examples/toaster-loading.tsx",
+  },
+  "toaster-with-action": {
+    name: "toaster-with-action",
+    component: React.lazy(() => import("@/examples/toaster-with-action")),
+    file: "src/examples/toaster-with-action.tsx",
   },
   "tooltip-demo": {
     name: "tooltip-demo",
@@ -378,5 +443,60 @@ export const Registry: Record<string, any> = {
     name: "label-xsmall-regular",
     component: React.lazy(() => import("@/examples/label-xsmall-plus")),
     file: "src/examples/label-xsmall-plus.tsx",
+  },
+  "calendar-single": {
+    name: "calendar-single",
+    component: React.lazy(() => import("@/examples/calendar-single")),
+    file: "src/examples/calendar-single.tsx",
+  },
+  "calendar-range": {
+    name: "calendar-range",
+    component: React.lazy(() => import("@/examples/calendar-range")),
+    file: "src/examples/calendar-range.tsx",
+  },
+  "checkbox-default": {
+    name: "checkbox-default",
+    component: React.lazy(() => import("@/examples/checkbox-default")),
+    file: "src/examples/checkbox-default.tsx",
+  },
+  "checkbox-checked": {
+    name: "checkbox-checked",
+    component: React.lazy(() => import("@/examples/checkbox-checked")),
+    file: "src/examples/checkbox-checked.tsx",
+  },
+  "checkbox-disabled": {
+    name: "checkbox-disabled",
+    component: React.lazy(() => import("@/examples/checkbox-disabled")),
+    file: "src/examples/checkbox-disabled.tsx",
+  },
+  "checkbox-indeterminate": {
+    name: "checkbox-indeterminate",
+    component: React.lazy(() => import("@/examples/checkbox-indeterminate")),
+    file: "src/examples/checkbox-indeterminate.tsx",
+  },
+  "code-block-single": {
+    name: "code-block-single",
+    component: React.lazy(() => import("@/examples/code-block-single")),
+    file: "src/examples/code-block-single.tsx",
+  },
+  "code-block-no-lines": {
+    name: "code-block-no-lines",
+    component: React.lazy(() => import("@/examples/code-block-no-lines")),
+    file: "src/examples/code-block-no-lines.tsx",
+  },
+  "code-block-no-header": {
+    name: "code-block-no-header",
+    component: React.lazy(() => import("@/examples/code-block-no-header")),
+    file: "src/examples/code-block-no-header.tsx",
+  },
+  "container-layout": {
+    name: "container-layout",
+    component: React.lazy(() => import("@/examples/container-layout")),
+    file: "src/examples/container-layout.tsx",
+  },
+  "dropdown-menu-sorting": {
+    name: "dropdown-menu-sorting",
+    component: React.lazy(() => import("@/examples/dropdown-menu-sorting")),
+    file: "src/examples/dropdown-menu-sorting.tsx",
   },
 }
