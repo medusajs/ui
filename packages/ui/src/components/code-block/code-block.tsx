@@ -46,7 +46,7 @@ const Root = ({
     <CodeBlockContext.Provider value={{ snippets, active, setActive }}>
       <div
         className={clx(
-          "border-ui-code-border min-w-[512px] overflow-hidden rounded-lg border",
+          "border-ui-code-border overflow-hidden rounded-lg border",
           className
         )}
         {...props}
