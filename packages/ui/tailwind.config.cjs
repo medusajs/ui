@@ -1,8 +1,6 @@
-const preset = require("@medusajs/ui-preset")
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  presets: [preset],
+  presets: [require("@medusajs/ui-preset")],
   content: ["./src/**/*.{ts,tsx,js,jsx}"],
-  darkMode: "class", // or 'media' or 'class
+  darkMode: ["class", '[data-mode="dark"]'],
 }

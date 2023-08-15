@@ -5,16 +5,17 @@ import * as React from "react"
 
 import { clx } from "@/utils/clx"
 
-export type TooltipProps = Primitives.TooltipContentProps &
-  Pick<
-    Primitives.TooltipProps,
-    "open" | "defaultOpen" | "onOpenChange" | "delayDuration"
-  > & {
-    content: React.ReactNode
-    side?: "bottom" | "left" | "top" | "right"
-    onClick?: React.ButtonHTMLAttributes<HTMLButtonElement>["onClick"]
-    maxWidth?: number
-  }
+interface TooltipProps
+  extends Omit<Primitives.TooltipContentProps, "content" | "onClick">,
+    Pick<
+      Primitives.TooltipProps,
+      "open" | "defaultOpen" | "onOpenChange" | "delayDuration"
+    > {
+  content: React.ReactNode
+  onClick?: React.MouseEventHandler<HTMLButtonElement>
+  side?: "bottom" | "left" | "top" | "right"
+  maxWidth?: number
+}
 
 const Tooltip = ({
   children,

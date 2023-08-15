@@ -60,7 +60,10 @@ const Row = ({ prop, type, defaultValue }: PropData) => {
       <Table.Cell>{prop}</Table.Cell>
       <Table.Cell>
         {isEnum(type) ? (
-          <Tooltip content={type.values.map((v) => `"${v}"`).join(" | ")}>
+          <Tooltip
+            content={type.values.map((v) => `"${v}"`).join(" | ")}
+            className="font-mono"
+          >
             <div className="flex items-center gap-x-1">
               <span>enum</span>
               <InformationCircleSolid className="text-ui-fg-subtle" />

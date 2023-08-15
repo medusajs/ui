@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Inter, Roboto_Mono } from "next/font/google"
 
 import { Navbar } from "@/components/navbar"
 import { ThemeProvider } from "@/components/providers"
@@ -8,7 +8,11 @@ import { docsConfig } from "@/config/docs"
 
 import "../styles/globals.css"
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"], variable: "--inter" })
+const robotoMono = Roboto_Mono({
+  subsets: ["latin"],
+  variable: "--roboto-mono",
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,7 +28,7 @@ export default function RootLayout({
     <html lang="en" className="h-full w-full">
       <head />
       <body
-        className={`bg-ui-bg-base h-full max-h-screen w-full ${inter.className}`}
+        className={`bg-ui-bg-base h-screen w-full ${inter.variable} ${robotoMono.variable}`}
       >
         <ThemeProvider
           attribute="class"
