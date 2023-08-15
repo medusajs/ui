@@ -1,9 +1,9 @@
 "use client"
 
-import { useTheme } from "next-themes"
-import { colors as allColors } from "../../../../packages/ui-preset/src/theme/tokens/colors"
-import React from "react"
 import { Copy, clx } from "@medusajs/ui"
+import { useTheme } from "next-themes"
+import React from "react"
+import { colors as allColors } from "../../../../packages/ui-preset/src/theme/tokens/colors"
 
 type Color = {
   name: string
@@ -33,6 +33,34 @@ interface ColorBlockProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const ColorBlock = ({ colour, className, ...props }: ColorBlockProps) => {
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => setMounted(true), [])
+
+  if (!mounted) {
+    return (
+      <div className="flex flex-row items-center gap-x-2">
+        <div
+          className={
+            "border-ui-border-base h-[48px] w-[48px] rounded-lg border p-1"
+          }
+        >
+          <div
+            className={clx(
+              "bg-ui-bg-component h-full w-full animate-pulse rounded-[4px]",
+              className
+            )}
+            {...props}
+          />
+        </div>
+        <div className="flex flex-col items-start">
+          <div className="bg-ui-bg-component h-[20px] w-[85px] animate-pulse rounded-sm" />
+          <div className="bg-ui-bg-subtle h-[20px] w-[120px] animate-pulse rounded-sm" />
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="flex flex-row items-center gap-x-2">
       <div
