@@ -13,7 +13,7 @@ type CopyProps = {
 const Copy = React.forwardRef<
   HTMLButtonElement,
   React.HTMLAttributes<HTMLButtonElement> & CopyProps
->(({ className, content, ...props }, ref) => {
+>(({ children, className, content, ...props }, ref) => {
   const [done, setDone] = useState(false)
 
   const copyToClipboard = () => {
@@ -34,7 +34,7 @@ const Copy = React.forwardRef<
         onClick={copyToClipboard}
         {...props}
       >
-        {done ? <CheckCircleSolid /> : <SquareTwoStack />}
+        {children ? children : done ? <CheckCircleSolid /> : <SquareTwoStack />}
       </button>
     </Tooltip>
   )
