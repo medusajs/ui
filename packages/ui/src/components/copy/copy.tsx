@@ -15,22 +15,36 @@ const Copy = React.forwardRef<
   React.HTMLAttributes<HTMLButtonElement> & CopyProps
 >(({ children, className, content, ...props }, ref) => {
   const [done, setDone] = useState(false)
+  const [open, setOpen] = useState(false)
+  const [text, setText] = useState("Copy")
 
   const copyToClipboard = () => {
     setDone(true)
     copy(content)
+
     setTimeout(() => {
       setDone(false)
-    }, 2500)
+    }, 2000)
   }
 
+  React.useEffect(() => {
+    if (done) {
+      setText("Copied")
+      return
+    }
+
+    setTimeout(() => {
+      setText("Copy")
+    }, 500)
+  }, [done])
+
   return (
-    <Tooltip content={"Copy"}>
+    <Tooltip content={text} open={done || open} onOpenChange={setOpen}>
       <button
         ref={ref}
         aria-label="Copy code snippet"
         type="button"
-        className={clx("text-ui-code-icon", className)}
+        className={clx("text-ui-code-icon w-fit", className)}
         onClick={copyToClipboard}
         {...props}
       >

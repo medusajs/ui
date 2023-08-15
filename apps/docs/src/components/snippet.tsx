@@ -1,7 +1,7 @@
 "use client"
 
+import { CodeBlock } from "@/components/code-block"
 import { ReactElement } from "react"
-import { CodeBlock } from "./code-block"
 
 /*
   Helper function from:

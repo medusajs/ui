@@ -1,6 +1,6 @@
 import * as React from "react"
 import type { IconProps } from "../types"
-const EllipseBlueSolid = React.forwardRef<SVGSVGElement, IconProps>(
+const EllipsePurpleSolid = React.forwardRef<SVGSVGElement, IconProps>(
   ({ color = "currentColor", ...props }, ref) => {
     return (
       <svg
@@ -13,7 +13,7 @@ const EllipseBlueSolid = React.forwardRef<SVGSVGElement, IconProps>(
       >
         <g clipPath="url(#a)" filter="url(#b)">
           <rect width={10} height={10} x={5} y={5} fill="#fff" rx={5} />
-          <circle cx={10} cy={10} r={3} fill="#2563EB" />
+          <circle cx={10} cy={10} r={3} fill="#7C3AED" />
         </g>
         <defs>
           <clipPath id="a">
@@ -40,7 +40,7 @@ const EllipseBlueSolid = React.forwardRef<SVGSVGElement, IconProps>(
             <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0" />
             <feBlend
               in2="BackgroundImageFix"
-              result="effect1_dropShadow_2733_2048"
+              result="effect1_dropShadow_3645_3437"
             />
             <feColorMatrix
               in="SourceAlpha"
@@ -50,15 +50,15 @@ const EllipseBlueSolid = React.forwardRef<SVGSVGElement, IconProps>(
             <feMorphology
               in="SourceAlpha"
               radius={1}
-              result="effect2_dropShadow_2733_2048"
+              result="effect2_dropShadow_3645_3437"
             />
             <feOffset dy={1} />
             <feGaussianBlur stdDeviation={1} />
             <feComposite in2="hardAlpha" operator="out" />
             <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0" />
             <feBlend
-              in2="effect1_dropShadow_2733_2048"
-              result="effect2_dropShadow_2733_2048"
+              in2="effect1_dropShadow_3645_3437"
+              result="effect2_dropShadow_3645_3437"
             />
             <feColorMatrix
               in="SourceAlpha"
@@ -69,18 +69,18 @@ const EllipseBlueSolid = React.forwardRef<SVGSVGElement, IconProps>(
               in="SourceAlpha"
               operator="dilate"
               radius={1}
-              result="effect3_dropShadow_2733_2048"
+              result="effect3_dropShadow_3645_3437"
             />
             <feOffset />
             <feComposite in2="hardAlpha" operator="out" />
             <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0" />
             <feBlend
-              in2="effect2_dropShadow_2733_2048"
-              result="effect3_dropShadow_2733_2048"
+              in2="effect2_dropShadow_3645_3437"
+              result="effect3_dropShadow_3645_3437"
             />
             <feBlend
               in="SourceGraphic"
-              in2="effect3_dropShadow_2733_2048"
+              in2="effect3_dropShadow_3645_3437"
               result="shape"
             />
           </filter>
@@ -89,5 +89,5 @@ const EllipseBlueSolid = React.forwardRef<SVGSVGElement, IconProps>(
     )
   }
 )
-EllipseBlueSolid.displayName = "EllipseBlueSolid"
-export default EllipseBlueSolid
+EllipsePurpleSolid.displayName = "EllipsePurpleSolid"
+export default EllipsePurpleSolid

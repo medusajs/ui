@@ -10,7 +10,7 @@ import { ModeToggle } from "./mode-toggle"
 
 const Navbar = () => {
   return (
-    <div className="border-ui-border-base bg-ui-bg-base sticky top-0 z-[999] w-full border-b">
+    <div className="border-ui-border-base bg-ui-bg-base sticky top-0 z-[30] w-full border-b">
       <div className="container flex items-center justify-between px-4 py-3 md:px-8">
         <div className="block lg:hidden">
           <MobileNavbar />

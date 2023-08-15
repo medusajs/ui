@@ -1,5 +1,5 @@
+import { PropTable } from "@/components/props-table"
 import { PropDataMap } from "@/types/props"
-import { PropTable } from "../components/props-table"
 
 const timeInputProps: PropDataMap = [
   {

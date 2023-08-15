@@ -39,7 +39,7 @@ const ColorBlock = ({ colour, className, ...props }: ColorBlockProps) => {
 
   if (!mounted) {
     return (
-      <div className="flex flex-row items-center gap-x-2">
+      <div className="flex w-fit flex-row items-center gap-x-2">
         <div
           className={
             "border-ui-border-base h-[48px] w-[48px] rounded-lg border p-1"
@@ -142,7 +142,7 @@ const Colors = () => {
             {section.charAt(0).toUpperCase() + section.slice(1)}
           </h2>
           <hr className="mb-4" />
-          <div className="mb-8 grid grid-cols-1 gap-4 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="xs:grid-cols-2 mb-8 grid grid-cols-1 gap-4 gap-y-10 sm:grid-cols-3 ">
             {colors.map((colour) => (
               <Copy
                 content={cssVarToTailwindClass(colour.name)}
