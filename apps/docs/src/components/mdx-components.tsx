@@ -1,5 +1,6 @@
 "use client"
 
+import { Code, Text, clx } from "@medusajs/ui"
 import { useMDXComponent } from "next-contentlayer/hooks"
 import * as React from "react"
 
@@ -7,8 +8,8 @@ import { CodeBlock } from "@/components/code-block"
 import { ComponentExample } from "@/components/component-example"
 import { IconSearch } from "@/components/icon-search"
 import { PackageInstall } from "@/components/package-install"
+import { PropsTable } from "@/components/props-table"
 import { Snippet } from "@/components/snippet"
-import { Code, Text, clx } from "@medusajs/ui"
 
 interface MdxProps {
   code: string
@@ -47,6 +48,7 @@ const components = {
   hr: ({ className, ...props }: React.HTMLAttributes<HTMLHRElement>) => {
     return <hr className={clx("mb-4", className)} {...props} />
   },
+  PropsTable,
   CodeBlock,
   ComponentExample,
   Snippet,
