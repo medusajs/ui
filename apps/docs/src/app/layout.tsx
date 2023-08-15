@@ -33,9 +33,9 @@ export default function RootLayout({
         >
           <div className="w-full">
             <Navbar />
-            <div className="lg:max-w-xxl grid w-full grid-cols-1 px-1.5 lg:mx-auto lg:grid-cols-[280px_1fr]">
+            <div className="container grid w-full grid-cols-1 px-0 lg:mx-auto lg:grid-cols-[280px_1fr]">
               <Sidebar items={docsConfig.sidebarNav} />
-              <div className="relative flex w-full flex-1 items-start justify-center px-3 py-6 md:px-8 lg:px-16 lg:py-[112px]">
+              <div className="relative flex w-full flex-1 items-start justify-center px-4 pb-8 pt-16 md:px-8 lg:px-16 lg:py-[112px]">
                 <main className="h-full w-full lg:max-w-[720px] lg:px-px">
                   {children}
                 </main>

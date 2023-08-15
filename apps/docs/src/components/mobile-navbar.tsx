@@ -1,6 +1,6 @@
 "use client"
 
-import { BarsThree } from "@medusajs/icons"
+import { BarsThree, XMark } from "@medusajs/icons"
 import { Badge, Button, clx } from "@medusajs/ui"
 import * as Dialog from "@radix-ui/react-dialog"
 import Link, { LinkProps } from "next/link"
@@ -8,26 +8,37 @@ import { usePathname, useRouter } from "next/navigation"
 import * as React from "react"
 
 import { docsConfig } from "@/config/docs"
+import { useMatchMedia } from "../hooks/use-match-media"
 
 const MobileNavbar = () => {
   const [open, setOpen] = React.useState(false)
   const pathname = usePathname()
 
+  const isMobileView = useMatchMedia("(max-width: 1024px)")
+
+  React.useEffect(() => {
+    if (!isMobileView) {
+      setOpen(false)
+    }
+  }, [isMobileView, open])
+
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
-        <Button variant={"secondary"} format={"icon"}>
-          <BarsThree />
+        <Button
+          variant={isMobileView ? "transparent" : "secondary"}
+          format={"icon"}
+        >
+          {open ? <XMark /> : <BarsThree />}
         </Button>
       </Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-x-0 bottom-0 top-[56px]" />
         <Dialog.Content
           className={clx(
-            "md:w-sidebar shadow-elevation-modal bg-ui-bg-base absolute inset-0 top-[56px] w-full flex-1 border-r p-6 md:bottom-0 md:left-0",
+            "shadow-elevation-modal bg-ui-bg-base absolute inset-0 top-[56px] w-full flex-1 border-r p-6 md:bottom-0 md:left-0 md:max-w-[66%]",
             "data-[state=open]:animate-in data-[state=closed]:animate-out transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500",
             "data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left",
-            "overflow-y-auto"
+            "z-50 overflow-y-auto"
           )}
         >
           <div className="flex h-full w-full flex-col">
@@ -39,8 +50,8 @@ const MobileNavbar = () => {
                       <Link
                         href={item.href}
                         className={clx(
-                          "text-ui-fg-muted mb-0.5 rounded-md px-3 py-1.5 text-xs font-medium leading-5 transition-all",
-                          "hover:text-ui-fg-base",
+                          "bg-ui-bg-base text-ui-fg-muted group flex w-full items-center justify-between rounded-md border border-transparent px-3 py-1.5 transition-all",
+                          "hover:bg-ui-bg-base-hover text-ui-fg-subtle",
                           item.disabled &&
                             "bg-ui-bg-base-disabled text-ui-fg-disabled cursor-not-allowed",
                           {
@@ -84,7 +95,7 @@ const MobileNavbar = () => {
                                 href={nested.href}
                                 onOpenChange={setOpen}
                                 className={clx(
-                                  "bg-ui-bg-base text-ui-fg-muted group flex w-full items-center justify-between rounded-md border border-transparent px-3 py-1.5 transition-all",
+                                  "bg-ui-bg-base group flex w-full items-center justify-between rounded-md border border-transparent px-3 py-1.5 transition-all",
                                   "hover:bg-ui-bg-base-hover text-ui-fg-subtle",
                                   nested.disabled &&
                                     "bg-ui-bg-base-disabled text-ui-fg-disabled cursor-not-allowed",
