@@ -38,22 +38,22 @@ export const docsConfig: DocsConfig = {
       items: [
         {
           title: "Introduction",
-          href: "/docs",
+          href: "/",
           items: [],
         },
         {
           title: "Installation",
-          href: "/docs/installation",
+          href: "/installation",
           items: [],
         },
         {
           title: "Colors",
-          href: "/docs/colors",
+          href: "/colors",
           items: [],
         },
         {
           title: "Typography",
-          href: "/docs/typography",
+          href: "/typography",
           disabled: true,
           label: "WIP",
           items: [],
@@ -65,12 +65,12 @@ export const docsConfig: DocsConfig = {
       items: [
         {
           title: "Medusa Admin Extension",
-          href: "/docs/installation/medusa-admin-extension",
+          href: "/installation/medusa-admin-extension",
           items: [],
         },
         {
           title: "Standalone Project",
-          href: "/docs/installation/standalone-project",
+          href: "/installation/standalone-project",
           items: [],
         },
       ],
@@ -80,7 +80,7 @@ export const docsConfig: DocsConfig = {
       items: [
         {
           title: "Overview",
-          href: "/docs/icons/overview",
+          href: "/icons/overview",
           items: [],
         },
       ],
@@ -90,132 +90,132 @@ export const docsConfig: DocsConfig = {
       items: [
         {
           title: "Avatar",
-          href: "/docs/components/avatar",
+          href: "/components/avatar",
           items: [],
         },
         {
           title: "Badge",
-          href: "/docs/components/badge",
+          href: "/components/badge",
           items: [],
         },
         {
           title: "Button",
-          href: "/docs/components/button",
+          href: "/components/button",
           items: [],
         },
         {
           title: "Calendar",
-          href: "/docs/components/calendar",
+          href: "/components/calendar",
           items: [],
         },
         {
           title: "Checkbox",
-          href: "/docs/components/checkbox",
+          href: "/components/checkbox",
           items: [],
         },
         {
           title: "Code Block",
-          href: "/docs/components/code-block",
+          href: "/components/code-block",
           items: [],
         },
         {
           title: "Command",
-          href: "/docs/components/command",
+          href: "/components/command",
           items: [],
         },
         {
           title: "Container",
-          href: "/docs/components/container",
+          href: "/components/container",
           items: [],
         },
         {
           title: "Copy",
-          href: "/docs/components/copy",
+          href: "/components/copy",
           items: [],
         },
         {
           title: "Date Picker",
-          href: "/docs/components/date-picker",
+          href: "/components/date-picker",
           items: [],
         },
         {
           title: "Drawer",
-          href: "/docs/components/drawer",
+          href: "/components/drawer",
           items: [],
         },
         {
           title: "Dropdown Menu",
-          href: "/docs/components/dropdown-menu",
+          href: "/components/dropdown-menu",
           items: [],
         },
         {
           title: "Focus Modal",
-          href: "/docs/components/focus-modal",
+          href: "/components/focus-modal",
           items: [],
         },
         {
           title: "Heading",
-          href: "/docs/components/heading",
+          href: "/components/heading",
           items: [],
         },
         {
           title: "Input",
-          href: "/docs/components/input",
+          href: "/components/input",
           items: [],
         },
         {
           title: "Kbd",
-          href: "/docs/components/kbd",
+          href: "/components/kbd",
           items: [],
         },
         {
           title: "Label",
-          href: "/docs/components/label",
+          href: "/components/label",
           items: [],
         },
         {
           title: "Prompt",
-          href: "/docs/components/prompt",
+          href: "/components/prompt",
           items: [],
         },
         {
           title: "Radio Group",
-          href: "/docs/components/radio-group",
+          href: "/components/radio-group",
           items: [],
         },
         {
           title: "Select",
-          href: "/docs/components/select",
+          href: "/components/select",
           items: [],
         },
         {
           title: "Switch",
-          href: "/docs/components/switch",
+          href: "/components/switch",
           items: [],
         },
         {
           title: "Table",
-          href: "/docs/components/table",
+          href: "/components/table",
           items: [],
         },
         {
           title: "Text",
-          href: "/docs/components/text",
+          href: "/components/text",
           items: [],
         },
         {
           title: "Textarea",
-          href: "/docs/components/textarea",
+          href: "/components/textarea",
           items: [],
         },
         {
           title: "Toast",
-          href: "/docs/components/toast",
+          href: "/components/toast",
           items: [],
         },
         {
           title: "Tooltip",
-          href: "/docs/components/tooltip",
+          href: "/components/tooltip",
           items: [],
         },
       ],
@@ -225,21 +225,21 @@ export const docsConfig: DocsConfig = {
       items: [
         {
           title: "usePrompt",
-          href: "/docs/hooks/use-prompt",
+          href: "/hooks/use-prompt",
           label: "WIP",
           disabled: true,
           items: [],
         },
         {
           title: "useToast",
-          href: "/docs/hooks/use-toast",
+          href: "/hooks/use-toast",
           label: "WIP",
           disabled: true,
           items: [],
         },
         {
           title: "useToggleState",
-          href: "/docs/hooks/use-toggle-state",
+          href: "/hooks/use-toggle-state",
           label: "WIP",
           disabled: true,
           items: [],
@@ -251,7 +251,7 @@ export const docsConfig: DocsConfig = {
       items: [
         {
           title: "clx",
-          href: "/docs/utils/clx",
+          href: "/utils/clx",
           items: [],
         },
       ],
