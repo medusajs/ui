@@ -20,8 +20,8 @@ const PropTable = ({ props }: PropTableProps) => {
         </Table.Row>
       </Table.Header>
       <Table.Body className="border-b-0 [&_tr:last-child]:border-b-0">
-        {props.map((propData) => (
-          <Row {...propData} />
+        {props.map((propData, index) => (
+          <Row key={index} {...propData} />
         ))}
       </Table.Body>
     </Table>
