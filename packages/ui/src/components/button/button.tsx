@@ -20,10 +20,10 @@ const buttonVariants = cva(
           "shadow-buttons-danger text-ui-fg-on-inverted border-ui-border-danger bg-ui-button-danger after:button-danger-gradient hover:bg-ui-button-danger-hover hover:after:button-danger-hover-gradient active:bg-ui-button-danger-pressed active:after:button-danger-pressed-gradient focus:shadow-buttons-danger-focus",
       },
       size: {
-        sm: "txt-compact-xsmall-plus gap-x-0.5 px-[7px] py-[1px]",
-        md: "txt-compact-small-plus gap-x-1.5 px-[11px] py-[5px]",
-        lg: "txt-compact-medium-plus gap-x-2 px-[15px] py-[9px]",
-        xl: "txt-compact-large-plus gap-x-2 px-[19px] py-[13px]",
+        small: "txt-compact-xsmall-plus gap-x-0.5 px-[7px] py-[1px]",
+        base: "txt-compact-small-plus gap-x-1.5 px-[11px] py-[5px]",
+        large: "txt-compact-medium-plus gap-x-2 px-[15px] py-[9px]",
+        xlarge: "txt-compact-large-plus gap-x-2 px-[19px] py-[13px]",
       },
       format: {
         default: "",
@@ -32,27 +32,27 @@ const buttonVariants = cva(
     },
     defaultVariants: {
       variant: "primary",
-      size: "md",
+      size: "base",
       format: "default",
     },
     compoundVariants: [
       {
-        size: "sm",
+        size: "small",
         format: "icon",
         className: "px-px py-px",
       },
       {
-        size: "md",
+        size: "base",
         format: "icon",
         className: "px-[5px] py-[5px]",
       },
       {
-        size: "lg",
+        size: "large",
         format: "icon",
         className: "px-[9px] py-[9px]",
       },
       {
-        size: "xl",
+        size: "xlarge",
         format: "icon",
         className: "px-[13px] py-[13px]",
       },

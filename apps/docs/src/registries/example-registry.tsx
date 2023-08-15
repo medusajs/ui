@@ -1,6 +1,6 @@
 import * as React from "react"
 
-export const Registry: Record<string, any> = {
+export const ExampleRegistry: Record<string, any> = {
   "avatar-demo": {
     name: "avatar-demo",
     component: React.lazy(() => import("@/examples/avatar-demo")),

@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Registry } from "../registry"
+import { ExampleRegistry } from "../registries/example-registry"
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/tabs"
 import { Spinner } from "@medusajs/icons"
@@ -17,7 +17,7 @@ export function ComponentExample({
   ...props
 }: ComponentExampleProps) {
   const Preview = React.useMemo(() => {
-    const Component = Registry[name]?.component
+    const Component = ExampleRegistry[name]?.component
 
     if (!Component) {
       return <p>Component {name} not found in registry</p>
