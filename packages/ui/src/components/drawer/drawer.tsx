@@ -71,7 +71,7 @@ const Header = ({
       <div className="flex items-center gap-x-2">
         <Kbd>esc</Kbd>
         <Close asChild>
-          <Button variant="transparent" size={"sm"} format={"icon"}>
+          <Button variant="transparent" size={"small"} format={"icon"}>
             <XMark />
           </Button>
         </Close>

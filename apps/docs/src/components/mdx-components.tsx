@@ -6,10 +6,11 @@ import * as React from "react"
 
 import { CodeBlock } from "@/components/code-block"
 import { ComponentExample } from "@/components/component-example"
+import { ComponentProps } from "@/components/component-props"
 import { IconSearch } from "@/components/icon-search"
 import { PackageInstall } from "@/components/package-install"
-import { PropsTable } from "@/components/props-table"
 import { Snippet } from "@/components/snippet"
+import Link from "next/link"
 
 interface MdxProps {
   code: string
@@ -30,15 +31,35 @@ const components = {
   p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => {
     return <Text className={clx("text-ui-fg-subtle", className)} {...props} />
   },
-  a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
-    <a
-      className={clx(
-        "txt-medium text-ui-fg-interactive hover:text-ui-fg-interactive-hover",
-        className
-      )}
-      {...props}
-    />
-  ),
+  a: ({ className, href, ...props }: React.ComponentPropsWithoutRef<"a">) => {
+    const isInternal = href && href?.startsWith("/")
+
+    if (isInternal) {
+      return (
+        <Link
+          className={clx(
+            "txt-medium text-ui-fg-interactive hover:text-ui-fg-interactive-hover",
+            className
+          )}
+          href={href}
+          {...props}
+        />
+      )
+    }
+
+    return (
+      <a
+        className={clx(
+          "txt-medium text-ui-fg-interactive hover:text-ui-fg-interactive-hover",
+          className
+        )}
+        href={href}
+        rel="noopener noreferrer"
+        target="_blank"
+        {...props}
+      />
+    )
+  },
   code: (props: React.HTMLAttributes<HTMLElement>) => {
     return <Code {...props} />
   },
@@ -48,7 +69,7 @@ const components = {
   hr: ({ className, ...props }: React.HTMLAttributes<HTMLHRElement>) => {
     return <hr className={clx("mb-4", className)} {...props} />
   },
-  PropsTable,
+  ComponentProps,
   CodeBlock,
   ComponentExample,
   Snippet,

@@ -7,6 +7,8 @@ import { clx } from "@/utils/clx"
 const textVariants = cva("", {
   variants: {
     size: {
+      xsmall: "txt-compact-xsmall",
+      small: "txt-compact-small",
       base: "txt-medium",
       large: "txt-large",
       xlarge: "txt-xlarge",
@@ -31,6 +33,7 @@ interface TextProps
   extends React.ComponentPropsWithoutRef<"p">,
     VariantProps<typeof textVariants> {
   asChild?: boolean
+  as?: "p" | "span" | "div"
 }
 
 const Text = React.forwardRef<HTMLParagraphElement, TextProps>(
@@ -38,6 +41,7 @@ const Text = React.forwardRef<HTMLParagraphElement, TextProps>(
     {
       className,
       asChild = false,
+      as = "p",
       size = "base",
       weight = "regular",
       family = "sans",
@@ -46,7 +50,7 @@ const Text = React.forwardRef<HTMLParagraphElement, TextProps>(
     },
     ref
   ) => {
-    const Component = asChild ? Slot : "p"
+    const Component = asChild ? Slot : as
 
     return (
       <Component

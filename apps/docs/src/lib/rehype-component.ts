@@ -1,9 +1,9 @@
+import { UnistNode, UnistTree } from "@/types/unist"
 import fs from "fs"
 import path from "path"
 import { u } from "unist-builder"
 import { visit } from "unist-util-visit"
-import { UnistNode, UnistTree } from "@/types/unist"
-import { Registry } from "../registry"
+import { ExampleRegistry } from "../registries/example-registry"
 
 export function rehypeComponent() {
   return async (tree: UnistTree) => {
@@ -14,7 +14,7 @@ export function rehypeComponent() {
         if (!name) return null
 
         try {
-          const component = Registry[name]
+          const component = ExampleRegistry[name]
           const src = component.file
 
           const filePath = path.join(process.cwd(), src)
