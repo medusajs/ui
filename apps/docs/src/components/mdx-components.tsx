@@ -5,6 +5,7 @@ import { useMDXComponent } from "next-contentlayer/hooks"
 import * as React from "react"
 
 import { CodeBlock } from "@/components/code-block"
+import { Colors } from "@/components/colors"
 import { ComponentExample } from "@/components/component-example"
 import { ComponentProps } from "@/components/component-props"
 import { IconSearch } from "@/components/icon-search"
@@ -75,6 +76,7 @@ const components = {
   Snippet,
   PackageInstall,
   IconSearch,
+  Colors,
 }
 
 const Mdx = ({ code }: MdxProps) => {

@@ -3,6 +3,9 @@ import { allDocs } from "contentlayer/generated"
 import { notFound } from "next/navigation"
 
 import { Mdx } from "@/components/mdx-components"
+import { Metadata } from "next"
+import { siteConfig } from "../../config/site"
+import { absoluteUrl } from "../../lib/absolute-url"
 
 interface DocPageProps {
   params: {
@@ -20,6 +23,44 @@ async function getDocFromParams({ params }: DocPageProps) {
   }
 
   return doc
+}
+
+export async function generateMetadata({
+  params,
+}: DocPageProps): Promise<Metadata> {
+  const doc = await getDocFromParams({ params })
+
+  if (!doc) {
+    return {}
+  }
+
+  const title = `${doc.title} - ${siteConfig.name}`
+
+  return {
+    title: title,
+    description: doc.description,
+    openGraph: {
+      title: title,
+      description: doc.description,
+      type: "article",
+      url: absoluteUrl(doc.slug),
+      images: [
+        {
+          url: siteConfig.ogImage,
+          width: 1200,
+          height: 630,
+          alt: siteConfig.name,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: doc.title,
+      description: doc.description,
+      images: [siteConfig.ogImage],
+      creator: "@medusajs",
+    },
+  }
 }
 
 export async function generateStaticParams(): Promise<

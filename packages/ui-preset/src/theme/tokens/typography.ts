@@ -149,7 +149,7 @@ export const typography = {
     "fontWeight": "400",
     "fontFamily": "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji"
   },
-  ".txt-compact-large-plus": {
+  ".txt-large-plus-compact": {
     "fontSize": "1rem",
     "lineHeight": "1.25rem",
     "fontWeight": "500",
