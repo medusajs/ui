@@ -109,14 +109,17 @@ const Colors = () => {
   return (
     <div>
       {Object.entries(colors).map(([section, colors]) => (
-        <div className="mb-16">
+        <div className="mb-16" key={`colours-section-${section}`}>
           <h2 className="h2-docs mb-4 mt-10">
             {section.charAt(0).toUpperCase() + section.slice(1)}
           </h2>
           <hr className="mb-4" />
-          <div className="mb-8 grid grid-cols-3 gap-4 gap-y-10">
+          <div className="mb-8 grid grid-cols-1 gap-4 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
             {colors.map((colour) => (
-              <Copy content={cssVarToTailwindClass(colour.name)}>
+              <Copy
+                content={cssVarToTailwindClass(colour.name)}
+                key={`colours-section-${section}-${colour.name}`}
+              >
                 <ColorBlock colour={colour} />
               </Copy>
             ))}
