@@ -51,13 +51,6 @@ export const docsConfig: DocsConfig = {
           href: "/colors",
           items: [],
         },
-        {
-          title: "Typography",
-          href: "/typography",
-          disabled: true,
-          label: "WIP",
-          items: [],
-        },
       ],
     },
     {
