@@ -1,11 +1,11 @@
 "use client"
 
+import { Spinner } from "@medusajs/icons"
 import * as React from "react"
 import { ExampleRegistry } from "../registries/example-registry"
 
+import { CodeBlock } from "@/components/code-block"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/tabs"
-import { Spinner } from "@medusajs/icons"
-import { CodeBlock } from "./code-block"
 
 interface ComponentExampleProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string

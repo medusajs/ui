@@ -1,6 +1,7 @@
 import preset from "@medusajs/ui-preset"
 import path from "path"
 import type { Config } from "tailwindcss"
+import defaultTheme from "tailwindcss/defaultTheme"
 
 // Get two levels up from require.resolve("@medusajs/ui")
 const root = path.join(require.resolve("@medusajs/ui"), "../..")
@@ -47,6 +48,10 @@ const config: Config = {
       minWidth: {
         xl: "1419px",
       },
+    },
+    fontFamily: {
+      sans: ["var(--inter)", ...defaultTheme.fontFamily.sans],
+      mono: ["var(--roboto-mono)", ...defaultTheme.fontFamily.mono],
     },
   },
 }

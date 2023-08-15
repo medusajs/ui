@@ -2,6 +2,7 @@
 
 import { Code, Text, clx } from "@medusajs/ui"
 import { useMDXComponent } from "next-contentlayer/hooks"
+import Link from "next/link"
 import * as React from "react"
 
 import { CodeBlock } from "@/components/code-block"
@@ -11,7 +12,6 @@ import { ComponentProps } from "@/components/component-props"
 import { IconSearch } from "@/components/icon-search"
 import { PackageInstall } from "@/components/package-install"
 import { Snippet } from "@/components/snippet"
-import Link from "next/link"
 
 interface MdxProps {
   code: string

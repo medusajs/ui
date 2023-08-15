@@ -7,12 +7,10 @@ import { colorToRGBA } from "./colors"
  * handle shadows.
  */
 const SPECIAL_IDENTIFIERS = [
-  "--buttons-primary",
-  "--buttons-secondary",
-  "--buttons-danger",
-  "--buttons-primary-focus",
-  "--buttons-secondary-focus",
-  "--buttons-danger-focus",
+  "--buttons-colored",
+  "--buttons-neutral",
+  "--buttons-neutral-focus",
+  "--buttons-colored-focus",
 ]
 
 function createDropShadowVariable(effects: Effect[], identifier: string) {

@@ -1,6 +1,6 @@
 "use client"
 
-import { BarsThree, XMark } from "@medusajs/icons"
+import { Sidebar, XMark } from "@medusajs/icons"
 import { Badge, Button, clx } from "@medusajs/ui"
 import * as Dialog from "@radix-ui/react-dialog"
 import Link, { LinkProps } from "next/link"
@@ -29,21 +29,21 @@ const MobileNavbar = () => {
           variant={isMobileView ? "transparent" : "secondary"}
           format={"icon"}
         >
-          {open ? <XMark /> : <BarsThree />}
+          {open ? <XMark /> : <Sidebar />}
         </Button>
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="absolute inset-0" />
         <Dialog.Content
           className={clx(
-            "shadow-elevation-modal bg-ui-bg-base absolute inset-0 top-[56px] w-full flex-1 border-r p-6 md:bottom-0 md:left-0 md:max-w-[66%]",
+            "shadow-elevation-modal bg-ui-bg-base fixed inset-x-0 bottom-0 top-[56px] w-full flex-1 border-r p-6",
             "data-[state=open]:animate-in data-[state=closed]:animate-out transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500",
             "data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left",
-            "z-50 overflow-y-auto"
+            "z-20 overflow-y-auto"
           )}
         >
           <div className="flex h-full w-full flex-col">
-            <ul className="mb-8">
+            <ul className="mb-4">
               {docsConfig.mainNav.map((item, index) => {
                 return (
                   <li key={index}>
@@ -51,7 +51,7 @@ const MobileNavbar = () => {
                       <Link
                         href={item.href}
                         className={clx(
-                          "bg-ui-bg-base text-ui-fg-muted group flex w-full items-center justify-between rounded-md border border-transparent px-3 py-1.5 transition-all",
+                          "bg-ui-bg-base text-ui-fg-muted txt-compact-small-plus group flex w-full items-center justify-between rounded-md border border-transparent px-3 py-1.5 transition-all",
                           "hover:bg-ui-bg-base-hover text-ui-fg-subtle",
                           item.disabled &&
                             "bg-ui-bg-base-disabled text-ui-fg-disabled cursor-not-allowed",
@@ -66,7 +66,7 @@ const MobileNavbar = () => {
                     ) : (
                       <span
                         className={clx(
-                          "text-ui-fg-muted mb-0.5 rounded-md px-3 py-1.5 text-xs font-medium leading-5 transition-all",
+                          "text-ui-fg-muted txt-compact-small-plus mb-0.5 rounded-md px-3 py-1.5 transition-all",
                           "hover:text-ui-fg-base",
                           item.disabled &&
                             "bg-ui-bg-base-disabled text-ui-fg-disabled cursor-not-allowed"

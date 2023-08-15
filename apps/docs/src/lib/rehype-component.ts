@@ -1,9 +1,10 @@
-import { UnistNode, UnistTree } from "@/types/unist"
 import fs from "fs"
 import path from "path"
 import { u } from "unist-builder"
 import { visit } from "unist-util-visit"
+
 import { ExampleRegistry } from "../registries/example-registry"
+import { UnistNode, UnistTree } from "../types/unist"
 
 export function rehypeComponent() {
   return async (tree: UnistTree) => {

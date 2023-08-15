@@ -6,18 +6,18 @@ import { clx } from "@/utils/clx"
 import { Spinner } from "@medusajs/icons"
 
 const buttonVariants = cva(
-  "disabled:bg-ui-bg-disabled disabled:border-ui-border-base disabled:text-ui-fg-disabled relative inline-flex w-fit items-center justify-center overflow-hidden rounded-lg border outline-none transition-all after:absolute after:inset-0 after:content-[''] disabled:!shadow-none",
+  "disabled:bg-ui-bg-disabled disabled:border-ui-border-base disabled:text-ui-fg-disabled relative inline-flex w-fit items-center justify-center overflow-hidden rounded-lg border outline-none transition-all after:absolute after:inset-0 after:content-[''] disabled:!shadow-none disabled:after:hidden",
   {
     variants: {
       variant: {
         primary:
-          "shadow-buttons-primary text-ui-fg-on-inverted border-ui-border-loud bg-ui-button-inverted after:button-inverted-gradient hover:bg-ui-button-inverted-hover hover:after:button-inverted-hover-gradient active:bg-ui-button-inverted-pressed active:after:button-inverted-pressed-gradient focus:shadow-buttons-primary-focus",
+          "shadow-buttons-colored text-ui-fg-on-inverted border-ui-border-loud bg-ui-button-inverted after:button-inverted-gradient hover:bg-ui-button-inverted-hover hover:after:button-inverted-hover-gradient active:bg-ui-button-inverted-pressed active:after:button-inverted-pressed-gradient focus:shadow-buttons-colored-focus",
         secondary:
-          "shadow-buttons-secondary text-ui-fg-base border-ui-border-loud-muted bg-ui-button-neutral after:button-neutral-gradient hover:bg-ui-button-neutral-hover hover:after:button-neutral-hover-gradient active:bg-ui-button-neutral-pressed active:after:button-neutral-pressed-gradient focus:shadow-buttons-secondary-focus bg-clip-padding",
+          "shadow-buttons-neutral text-ui-fg-base border-ui-border-loud-muted bg-ui-button-neutral after:button-neutral-gradient hover:bg-ui-button-neutral-hover hover:after:button-neutral-hover-gradient active:bg-ui-button-neutral-pressed active:after:button-neutral-pressed-gradient focus:shadow-buttons-neutral-focus bg-clip-padding",
         transparent:
-          "text-ui-fg-base border-ui-border-loud-transparent bg-ui-button-transparent hover:bg-ui-button-transparent-hover hover:border-ui-border-loud-muted active:bg-ui-button-transparent-pressed active:border-ui-border-base focus:shadow-borders-focus focus:bg-ui-bg-base focus:border-ui-border-base disabled:!border-transparent disabled:bg-transparent disabled:shadow-none",
+          "text-ui-fg-base border-ui-border-transparent bg-ui-button-transparent hover:bg-ui-button-transparent-hover hover:border-ui-border-loud-muted active:bg-ui-button-transparent-pressed active:border-ui-border-base focus:shadow-borders-focus focus:bg-ui-bg-base focus:border-ui-border-base disabled:!border-transparent disabled:bg-transparent disabled:shadow-none",
         danger:
-          "shadow-buttons-danger text-ui-fg-on-inverted border-ui-border-danger bg-ui-button-danger after:button-danger-gradient hover:bg-ui-button-danger-hover hover:after:button-danger-hover-gradient active:bg-ui-button-danger-pressed active:after:button-danger-pressed-gradient focus:shadow-buttons-danger-focus",
+          "shadow-buttons-neutral text-ui-fg-on-color border-ui-border-danger bg-ui-button-danger after:button-danger-gradient hover:bg-ui-button-danger-hover hover:after:button-danger-hover-gradient active:bg-ui-button-danger-pressed active:after:button-danger-pressed-gradient focus:shadow-buttons-neutral-focus",
       },
       size: {
         small: "txt-compact-xsmall-plus gap-x-0.5 px-[7px] py-[1px]",

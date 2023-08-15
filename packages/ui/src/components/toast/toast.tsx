@@ -94,7 +94,7 @@ const Toast = React.forwardRef<
       <Primitives.Root
         ref={ref}
         className={clx(
-          "bg-ui-bg-base shadow-elevation-flyout flex h-fit min-h-[74px] w-full overflow-hidden rounded-md md:max-w-[440px]",
+          "bg-ui-bg-base border-ui-border-base flex h-fit min-h-[74px] w-full overflow-hidden rounded-md border shadow-[0_4px_12px_rgba(0,0,0,0.05)] md:max-w-[440px]",
           "data-[state=open]:animate-in data-[state=closed]:animate-out data-[swipe=end]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:slide-out-to-right-full data-[state=open]:slide-in-from-top-full data-[swipe=cancel]:translate-x-0 data-[swipe=end]:translate-x-[var(--radix-toast-swipe-end-x)] data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)] data-[swipe=move]:transition-none",
           className
         )}

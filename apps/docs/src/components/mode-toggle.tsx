@@ -4,7 +4,8 @@ import { Moon, Sun } from "@medusajs/icons"
 import { Button } from "@medusajs/ui"
 import { useTheme } from "next-themes"
 import * as React from "react"
-import { useMatchMedia } from "../hooks/use-match-media"
+
+import { useMatchMedia } from "@/hooks/use-match-media"
 
 const ModeToggle = () => {
   const { setTheme, theme } = useTheme()

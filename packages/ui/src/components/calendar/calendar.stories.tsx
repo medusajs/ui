@@ -10,7 +10,6 @@ const Demo = ({ mode, ...args }: Parameters<typeof Calendar>[0]) => {
   const [dateRange, setDateRange] = React.useState<DateRange | undefined>(
     undefined
   )
-  const [multiple, setMultiple] = React.useState<Date[]>([])
 
   return (
     <div className="flex flex-col items-center gap-y-4">
@@ -22,10 +21,12 @@ const Demo = ({ mode, ...args }: Parameters<typeof Calendar>[0]) => {
       />
 
       {mode === "single" && (
-        <Text>Selected Date: {date ? date.toDateString() : "None"}</Text>
+        <Text className="text-ui-fg-base">
+          Selected Date: {date ? date.toDateString() : "None"}
+        </Text>
       )}
       {mode === "range" && (
-        <Text>
+        <Text className="text-ui-fg-base">
           Selected Range:{" "}
           {dateRange
             ? `${dateRange.from?.toDateString()} – ${

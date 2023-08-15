@@ -144,13 +144,13 @@ export const theme = {
             "DEFAULT": "var(--border-error)"
           },
           "loud": {
-            "DEFAULT": "var(--border-loud)",
-            "transparent": {
-              "DEFAULT": "var(--border-loud-transparent)"
-            }
+            "DEFAULT": "var(--border-loud)"
           },
           "danger": {
             "DEFAULT": "var(--border-danger)"
+          },
+          "transparent": {
+            "DEFAULT": "var(--border-transparent)"
           }
         },
         "bg": {
@@ -286,11 +286,9 @@ export const theme = {
       "borders-interactive-with-focus": "var(--borders-interactive-with-focus)",
       "details-switch-background-focus": "var(--details-switch-background-focus)",
       "elevation-flyout": "var(--elevation-flyout)",
-      "borders-base-w-shadow": "var(--borders-base-w-shadow)",
       "details-switch-background": "var(--details-switch-background)",
       "borders-base": "var(--borders-base)",
       "elevation-tooltip": "var(--elevation-tooltip)",
-      "borders-strong-w-shadow": "var(--borders-strong-w-shadow)",
       "borders-interactive-with-shadow": "var(--borders-interactive-with-shadow)",
       "elevation-card-hover": "var(--elevation-card-hover)",
       "elevation-modal": "var(--elevation-modal)",
@@ -298,7 +296,9 @@ export const theme = {
       "buttons-neutral": "var(--buttons-neutral)",
       "buttons-colered-focus": "var(--buttons-colered-focus)",
       "buttons-colored": "var(--buttons-colored)",
-      "buttons-neutral-focus": "var(--buttons-neutral-focus)"
+      "buttons-neutral-focus": "var(--buttons-neutral-focus)",
+      "borders-base-with-shadow": "var(--borders-base-with-shadow)",
+      "borders-strong-with-shadow": "var(--borders-strong-with-shadow)"
     }
   }
 }
