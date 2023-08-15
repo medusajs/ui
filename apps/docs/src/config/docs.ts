@@ -41,16 +41,6 @@ export const docsConfig: DocsConfig = {
           href: "/",
           items: [],
         },
-        {
-          title: "Installation",
-          href: "/installation",
-          items: [],
-        },
-        {
-          title: "Colors",
-          href: "/colors",
-          items: [],
-        },
       ],
     },
     {
@@ -64,6 +54,16 @@ export const docsConfig: DocsConfig = {
         {
           title: "Standalone Project",
           href: "/installation/standalone-project",
+          items: [],
+        },
+      ],
+    },
+    {
+      title: "Colors",
+      items: [
+        {
+          title: "Overview",
+          href: "/colors/overview",
           items: [],
         },
       ],
