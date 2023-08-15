@@ -96,6 +96,11 @@ export const Registry: Record<string, any> = {
     component: React.lazy(() => import("@/examples/copy-demo")),
     file: "src/examples/copy-demo.tsx",
   },
+  "copy-custom-display": {
+    name: "copy-custom-display",
+    component: React.lazy(() => import("@/examples/copy-custom-display")),
+    file: "src/examples/copy-custom-display.tsx",
+  },
   "date-picker-demo": {
     name: "date-picker-demo",
     component: React.lazy(() => import("@/examples/date-picker-demo")),

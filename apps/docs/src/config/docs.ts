@@ -49,8 +49,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Colors",
           href: "/colors",
-          disabled: true,
-          label: "WIP",
           items: [],
         },
         {
