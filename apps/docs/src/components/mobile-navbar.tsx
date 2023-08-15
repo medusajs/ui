@@ -33,6 +33,7 @@ const MobileNavbar = () => {
         </Button>
       </Dialog.Trigger>
       <Dialog.Portal>
+        <Dialog.Overlay className="absolute inset-0" />
         <Dialog.Content
           className={clx(
             "shadow-elevation-modal bg-ui-bg-base absolute inset-0 top-[56px] w-full flex-1 border-r p-6 md:bottom-0 md:left-0 md:max-w-[66%]",
