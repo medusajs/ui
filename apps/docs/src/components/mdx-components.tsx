@@ -8,7 +8,9 @@ import { ComponentExample } from "@/components/component-example"
 import { IconSearch } from "@/components/icon-search"
 import { PackageInstall } from "@/components/package-install"
 import { Snippet } from "@/components/snippet"
+import { Colors } from "@/components/colors"
 import { Code, Text, clx } from "@medusajs/ui"
+import { useTheme } from "next-themes"
 
 interface MdxProps {
   code: string
@@ -52,6 +54,7 @@ const components = {
   Snippet,
   PackageInstall,
   IconSearch,
+  Colors,
 }
 
 const Mdx = ({ code }: MdxProps) => {
