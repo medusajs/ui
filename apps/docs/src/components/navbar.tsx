@@ -1,23 +1,20 @@
 "use client"
 
-import { Moon, Sun } from "@medusajs/icons"
-import { Button, clx } from "@medusajs/ui"
-import { useTheme } from "next-themes"
+import { clx } from "@medusajs/ui"
 import Link from "next/link"
-import * as React from "react"
 
 import { Logo } from "@/components/logo"
 import { MobileNavbar } from "@/components/mobile-navbar"
 import { docsConfig } from "@/config/docs"
+import { ModeToggle } from "./mode-toggle"
 
 const Navbar = () => {
-  const { setTheme, theme } = useTheme()
-
-  const isDarkMode = React.useMemo(() => theme === "dark", [theme])
-
   return (
     <div className="border-ui-border-base bg-ui-bg-base sticky top-0 z-50 w-full border-b">
-      <div className="container flex items-center justify-between px-6 py-3">
+      <div className="container flex items-center justify-between px-4 py-3 md:px-8">
+        <div className="block lg:hidden">
+          <MobileNavbar />
+        </div>
         <div className="flex items-center gap-x-6">
           <Link href="https://docs.medusajs.com" rel="noreferrer">
             <Logo className="text-ui-fg-base" />
@@ -60,20 +57,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="flex items-center gap-x-2">
-          <Button
-            variant="secondary"
-            format="icon"
-            type="button"
-            onClick={() => {
-              setTheme(isDarkMode ? "light" : "dark")
-            }}
-            className="text-ui-fg-muted hover:text-ui-fg-base"
-          >
-            {isDarkMode ? <Sun /> : <Moon />}
-          </Button>
-          <div className="block lg:hidden">
-            <MobileNavbar />
-          </div>
+          <ModeToggle />
         </div>
       </div>
     </div>
