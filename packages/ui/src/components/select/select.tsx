@@ -21,6 +21,7 @@ import * as React from "react"
 
 import { Badge } from "@/components/badge"
 import { clx } from "@/utils/clx"
+import { inputBaseStyles } from "../input"
 
 const ALLOWED_SEARCH_KEYDOWN_CODES = ["Enter", "Escape", "ArrowUp", "ArrowDown"]
 const SCROLL_TOLERANCE = 30
@@ -232,6 +233,7 @@ const Trigger = React.forwardRef<
           "focus:border-ui-fg-interactive focus:shadow-borders-active focus:outline-none":
             !disabled,
         },
+        inputBaseStyles,
         "data-[placeholder=true]:text-ui-fg-muted",
         "data-[state=open]:border-ui-fg-interactive data-[state=open]:shadow-borders-active",
         "data-[disabled]:bg-ui-bg-disabled data-[disabled]:text-ui-fg-disabled data-[placeholder]:data-[disabled]:text-ui-fg-disabled data-[disabled]:cursor-not-allowed",
@@ -368,7 +370,7 @@ const Content = React.forwardRef<
     <DropdownPrimitive.Content
       ref={menuRef}
       className={clx(
-        "bg-ui-bg-base shadow-elevation-flyout relative z-50 w-full min-w-[8rem] overflow-auto rounded-lg",
+        "bg-ui-bg-base shadow-elevation-flyout relative z-50 w-full min-w-[8rem] overflow-auto rounded-lg p-1",
         "data-[state=open]:animate-in data-[state=open]:fade-in-0",
         "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
         "data-[side=bottom]:translate-y-2 data-[side=left]:-translate-x-2 data-[side=right]:translate-x-2 data-[side=top]:-translate-y-2",
@@ -420,11 +422,14 @@ const Item = React.forwardRef<
     <DropdownPrimitive.Item
       ref={itemRef}
       className={clx(
-        "relative flex w-full cursor-default select-none items-center rounded-md py-2 pl-10 pr-3 text-sm",
+        "text-ui-fg-base relative flex w-full cursor-default select-none items-center rounded-md py-2 pl-10 pr-3",
         "hover:bg-ui-bg-base-hover",
         "focus:bg-ui-bg-base-hover focus:outline-none",
         "data-[disabled]:text-ui-fg-disabled data-[disabled]:cursor-not-allowed data-[disabled]:hover:bg-transparent",
-        { "font-medium": isSelected },
+        {
+          "txt-compact-small-plus": isSelected,
+          "txt-compact-small": !isSelected,
+        },
         className
       )}
       {...props}

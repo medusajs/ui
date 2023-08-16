@@ -393,7 +393,7 @@ const PaginatedSelect = () => {
             <Select.Separator />
             <div className="flex justify-between p-2">
               <Button
-                size="sm"
+                size="small"
                 variant="secondary"
                 onClick={() => setCursor((cursor) => cursor - pageSize)}
                 disabled={cursor === 0}
@@ -405,7 +405,7 @@ const PaginatedSelect = () => {
                 {Math.ceil(manyItems.length / pageSize)}
               </Label>
               <Button
-                size="sm"
+                size="small"
                 variant="secondary"
                 onClick={() => setCursor((cursor) => cursor + pageSize)}
                 disabled={manyItems.length - pageSize < cursor}
