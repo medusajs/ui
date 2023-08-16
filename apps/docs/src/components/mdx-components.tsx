@@ -12,6 +12,7 @@ import { ComponentProps } from "@/components/component-props"
 import { IconSearch } from "@/components/icon-search"
 import { PackageInstall } from "@/components/package-install"
 import { Snippet } from "@/components/snippet"
+import { HookValues } from "@/components/hook-values"
 
 interface MdxProps {
   code: string
@@ -27,7 +28,7 @@ const components = {
     return <h2 className={clx("h2-docs mb-4 mt-10", className)} {...props} />
   },
   h3: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => {
-    return <h3 className={clx("h3-docs mt-6", className)} {...props} />
+    return <h3 className={clx("h3-docs mt-10", className)} {...props} />
   },
   p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => {
     return <Text className={clx("text-ui-fg-subtle", className)} {...props} />
@@ -77,6 +78,7 @@ const components = {
   PackageInstall,
   IconSearch,
   Colors,
+  HookValues,
 }
 
 const Mdx = ({ code }: MdxProps) => {

@@ -1,28 +1,16 @@
-"use client"
-
+import { HookData, HookDataMap } from "@/types/hooks"
+import { EnumType, FunctionType, ObjectType } from "@/types/props"
 import { InformationCircleSolid } from "@medusajs/icons"
 import { Table, Tooltip } from "@medusajs/ui"
 
-import {
-  EnumType,
-  FunctionType,
-  ObjectType,
-  PropData,
-  PropDataMap,
-} from "@/types/props"
-
-type PropTableProps = {
-  props: PropDataMap
-}
-
-const PropTable = ({ props }: PropTableProps) => {
+const HookTable = ({ props }: { props: HookDataMap }) => {
   return (
     <Table>
       <Table.Header className="border-t-0">
         <Table.Row>
-          <Table.HeaderCell>Prop</Table.HeaderCell>
+          <Table.HeaderCell>Value</Table.HeaderCell>
           <Table.HeaderCell>Type</Table.HeaderCell>
-          <Table.HeaderCell className="text-right">Default</Table.HeaderCell>
+          <Table.HeaderCell>Description</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
       <Table.Body className="border-b-0 [&_tr:last-child]:border-b-0">
@@ -34,7 +22,7 @@ const PropTable = ({ props }: PropTableProps) => {
   )
 }
 
-const Row = ({ prop, type, defaultValue }: PropData) => {
+const Row = ({ value, type, description }: HookData) => {
   const isEnum = (t: unknown): t is EnumType => {
     return (t as EnumType).type !== undefined && (t as EnumType).type === "enum"
   }
@@ -53,33 +41,11 @@ const Row = ({ prop, type, defaultValue }: PropData) => {
     )
   }
 
-  const defaultValueRenderer = (
-    v: string | number | boolean | null | undefined
-  ) => {
-    if (v === undefined) {
-      return "-"
-    }
-
-    if (typeof v === "boolean") {
-      return v ? "true" : "false"
-    }
-
-    if (v === null) {
-      return "null"
-    }
-
-    if (typeof v === "string") {
-      return `"${v}"`
-    }
-
-    return v
-  }
-
   const isComplexType = isEnum(type) || isObject(type) || isFunction(type)
 
   return (
     <Table.Row className="code-body">
-      <Table.Cell>{prop}</Table.Cell>
+      <Table.Cell>{value}</Table.Cell>
       <Table.Cell>
         {!isComplexType && type.toString()}
         {isEnum(type) && (
@@ -118,11 +84,9 @@ const Row = ({ prop, type, defaultValue }: PropData) => {
           </Tooltip>
         )}
       </Table.Cell>
-      <Table.Cell className="text-right">
-        {defaultValueRenderer(defaultValue)}
-      </Table.Cell>
+      <Table.Cell>{description}</Table.Cell>
     </Table.Row>
   )
 }
 
-export { PropTable }
+export { HookTable }

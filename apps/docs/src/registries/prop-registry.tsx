@@ -14,6 +14,18 @@ export const PropRegistry: Record<string, PropRegistryItem> = {
   calendar: {
     table: React.lazy(() => import("../props/calendar")),
   },
+  "code-block": {
+    table: React.lazy(() => import("../props/code-block")),
+  },
+  "code-block-header": {
+    table: React.lazy(() => import("../props/code-block-header")),
+  },
+  "code-block-body": {
+    table: React.lazy(() => import("../props/code-block-body")),
+  },
+  copy: {
+    table: React.lazy(() => import("../props/copy")),
+  },
   "date-picker": {
     table: React.lazy(() => import("../props/date-picker")),
   },
@@ -29,8 +41,23 @@ export const PropRegistry: Record<string, PropRegistryItem> = {
   label: {
     table: React.lazy(() => import("../props/label")),
   },
+  select: {
+    table: React.lazy(() => import("../props/select")),
+  },
+  "select-trigger": {
+    table: React.lazy(() => import("../props/select-trigger")),
+  },
+  "select-value": {
+    table: React.lazy(() => import("../props/select-value")),
+  },
+  "select-item": {
+    table: React.lazy(() => import("../props/select-item")),
+  },
   switch: {
     table: React.lazy(() => import("../props/switch")),
+  },
+  "table-pagination": {
+    table: React.lazy(() => import("../props/table-pagination")),
   },
   text: {
     table: React.lazy(() => import("../props/text")),

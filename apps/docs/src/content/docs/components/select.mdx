@@ -30,6 +30,48 @@ component: true
   ```
 </Snippet>
 
+## API Reference
+
+---
+
+This component is based on the [Radix UI Dropdown Menu]("https://www.radix-ui.com/primitives/docs/components/dropdown-menu") primitives
+and makes use of [Downshift](https://www.downshift-js.com/) hooks for statefulness.
+
+### Select
+
+<ComponentProps component="select" />
+
+### Select.Trigger
+
+<ComponentProps component="select-trigger" />
+
+### Select.TriggerIcon
+
+This component is based on the `div` element and supports all props of this element.
+
+<br />
+If no children are provided, it uses the `ChevronUpDown` icon by default.
+
+### Select.Value
+
+This component is based on the `div` element and supports all props of this element.
+
+<ComponentProps component="select-value" />
+
+### Select.Item
+
+<ComponentProps component="select-item" />
+
+### Select.SelectAll
+
+This component is based on the `div` element and supports all props of this element.
+
+### useSelectContext
+
+This hook can be used to access the underlying state of the select, via the context that wraps it. It returns the value of [Downshift's `useSelect` hook](https://www.downshift-js.com/use-select/) as well as a few additional properties.
+
+<HookValues hook="useSelectContext" />
+
 ## Examples
 
 ---
