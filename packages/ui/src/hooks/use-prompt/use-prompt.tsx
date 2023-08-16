@@ -6,10 +6,10 @@ import { DialogProps } from "./dialog"
 
 import Dialog from "./dialog"
 
-type UsePromptProps = Omit<DialogProps, "onConfirm" | "onCancel" | "open">
+type PromptProps = Omit<DialogProps, "onConfirm" | "onCancel" | "open">
 
 const usePrompt = () => {
-  const dialog = async (props: UsePromptProps): Promise<boolean> => {
+  const dialog = async (props: PromptProps): Promise<boolean> => {
     return new Promise((resolve) => {
       let open = true
 
