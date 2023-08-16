@@ -6,6 +6,7 @@
     "module": "ES2020",
     "moduleResolution": "Node",
     "sourceMap": true,
+    "inlineSources": true,
     "declaration": true,
     "outDir": "./dist",
     "importHelpers": true,
