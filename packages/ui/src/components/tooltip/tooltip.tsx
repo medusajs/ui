@@ -27,7 +27,7 @@ const Tooltip = ({
   maxWidth = 220,
   className,
   side,
-  sideOffset = 4,
+  sideOffset = 8,
   onClick,
   ...props
 }: TooltipProps) => {
