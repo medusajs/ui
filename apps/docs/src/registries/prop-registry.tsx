@@ -47,8 +47,17 @@ export const PropRegistry: Record<string, PropRegistryItem> = {
   "select-trigger": {
     table: React.lazy(() => import("../props/select-trigger")),
   },
+  "select-value": {
+    table: React.lazy(() => import("../props/select-value")),
+  },
+  "select-item": {
+    table: React.lazy(() => import("../props/select-item")),
+  },
   switch: {
     table: React.lazy(() => import("../props/switch")),
+  },
+  "table-pagination": {
+    table: React.lazy(() => import("../props/table-pagination")),
   },
   text: {
     table: React.lazy(() => import("../props/text")),

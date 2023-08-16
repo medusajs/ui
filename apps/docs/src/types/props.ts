@@ -16,7 +16,7 @@ export type FunctionType = {
   signature: string
 }
 
-type PropType =
+export type PropType =
   | "string"
   | "number"
   | "boolean"
