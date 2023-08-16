@@ -293,7 +293,7 @@ export const theme = {
       "elevation-modal": "var(--elevation-modal)",
       "elevation-card-rest": "var(--elevation-card-rest)",
       "buttons-neutral": "var(--buttons-neutral)",
-      "buttons-colered-focus": "var(--buttons-colered-focus)",
+      "buttons-colored-focus": "var(--buttons-colored-focus)",
       "buttons-colored": "var(--buttons-colored)",
       "buttons-neutral-focus": "var(--buttons-neutral-focus)",
       "borders-base-with-shadow": "var(--borders-base-with-shadow)",

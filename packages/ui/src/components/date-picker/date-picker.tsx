@@ -13,26 +13,41 @@ import { Calendar } from "@/components/calendar"
 import { TimeInput } from "@/components/time-input"
 import { clx } from "@/utils/clx"
 import { isBrowserLocaleClockType24h } from "@/utils/is-browser-locale-hour-cycle-24h"
+import { cva } from "class-variance-authority"
+
+const displayVariants = cva(
+  clx(
+    "text-ui-fg-base bg-ui-bg-field border-ui-border-base transition-fg shadow-buttons-neutral flex w-full items-center gap-x-2 rounded-md border outline-none",
+    "hover:bg-ui-bg-field-hover",
+    "focus:border-ui-border-interactive focus:shadow-borders-active data-[state=open]:shadow-borders-active data-[state=open]:border-ui-border-interactive",
+    "disabled:bg-ui-bg-disabled disabled:text-ui-fg-disabled disabled:shadow-none",
+    "aria-[invalid=true]:!border-ui-border-error aria-[invalid=true]:!shadow-borders-error"
+  ),
+  {
+    variants: {
+      size: {
+        base: "text-compact-small txt-compact-medium h-10 px-3 py-[9px]",
+        small: "text-compact-medium txt-compact-small h-8 px-2 py-[5px]",
+      },
+    },
+    defaultVariants: {
+      size: "base",
+    },
+  }
+)
 
 const Display = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<"button"> & {
     placeholder?: string
+    size?: "small" | "base"
   }
->(({ className, children, placeholder, ...props }, ref) => {
+>(({ className, children, placeholder, size = "base", ...props }, ref) => {
   return (
     <Primitives.Trigger asChild>
       <button
         ref={ref}
-        className={clx(
-          "txt-compact-small grid w-full grid-cols-[20px_1fr] items-center gap-x-2 rounded-md border px-3 py-[9px]",
-          "border-ui-border-loud-muted bg-ui-bg-subtle shadow-buttons-secondary outline-none transition-all",
-          "disabled:bg-ui-bg-disabled disabled:text-ui-fg-disabled disabled:border-ui-border-base disabled:shadow-none",
-          "focus:border-ui-border-interactive focus:shadow-borders-active",
-          "hover:bg-ui-bg-subtle-hover",
-          "active:bg-ui-bg-subtle-pressed",
-          className
-        )}
+        className={clx(displayVariants({ size }), className)}
         {...props}
       >
         <CalendarIcon className="text-ui-fg-muted h-5 w-5" />
@@ -56,10 +71,10 @@ const Flyout = React.forwardRef<
   return (
     <Primitives.Content
       ref={ref}
-      sideOffset={4}
-      align="start"
+      sideOffset={8}
+      align="center"
       className={clx(
-        "txt-compact-small shadow-elevation-flyout bg-ui-bg-base z-[100] rounded-lg",
+        "txt-compact-small shadow-elevation-flyout bg-ui-bg-base z-30 rounded-lg",
         "animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
         "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
         className
@@ -172,6 +187,7 @@ const PresetContainer = <TPreset extends Preset, TValue>({
               className={clx(
                 "txt-compact-small-plus w-full overflow-hidden text-ellipsis whitespace-nowrap rounded-md p-2 text-left",
                 "text-ui-fg-subtle hover:bg-ui-bg-base-hover outline-none transition-all",
+                "focus:bg-ui-bg-base-hover",
                 {
                   "!bg-ui-bg-base-pressed": matchesCurrent(preset),
                 }
@@ -216,7 +232,14 @@ type CalendarProps = {
 interface PickerProps extends CalendarProps {
   className?: string
   disabled?: boolean
+  required?: boolean
+  size?: "small" | "base"
   showTimePicker?: boolean
+  id?: string
+  "aria-invalid"?: boolean
+  "aria-label"?: string
+  "aria-labelledby"?: string
+  "aria-required"?: boolean
 }
 
 interface SingleProps extends PickerProps {
@@ -229,6 +252,7 @@ interface SingleProps extends PickerProps {
 const SingleDatePicker = ({
   defaultValue,
   value,
+  size = "base",
   onChange,
   presets,
   showTimePicker,
@@ -304,6 +328,11 @@ const SingleDatePicker = ({
         placeholder="Pick a date"
         disabled={disabled}
         className={className}
+        aria-required={props.required || props["aria-required"]}
+        aria-invalid={props["aria-invalid"]}
+        aria-label={props["aria-label"]}
+        aria-labelledby={props["aria-labelledby"]}
+        size={size}
       >
         {formattedDate}
       </Display>
@@ -338,6 +367,7 @@ const SingleDatePicker = ({
                     onChange={handleTimeChange}
                     isDisabled={!date}
                     value={time}
+                    isRequired={props.required}
                   />
                 </div>
               )}
@@ -378,6 +408,7 @@ const RangeDatePicker = ({
   defaultValue,
   value,
   onChange,
+  size = "base",
   showTimePicker,
   presets,
   disabled,
@@ -485,6 +516,11 @@ const RangeDatePicker = ({
         placeholder="Pick a date"
         disabled={disabled}
         className={className}
+        aria-required={props.required || props["aria-required"]}
+        aria-invalid={props["aria-invalid"]}
+        aria-label={props["aria-label"]}
+        aria-labelledby={props["aria-labelledby"]}
+        size={size}
       >
         {displayRange}
       </Display>
@@ -526,6 +562,7 @@ const RangeDatePicker = ({
                       onChange={(v) => handleTimeChange(v, "start")}
                       aria-label="Start date time"
                       isDisabled={!range?.from}
+                      isRequired={props.required}
                     />
                   </div>
                   <Minus className="text-ui-fg-muted" />
@@ -536,6 +573,7 @@ const RangeDatePicker = ({
                       onChange={(v) => handleTimeChange(v, "end")}
                       aria-label="End date time"
                       isDisabled={!range?.to}
+                      isRequired={props.required}
                     />
                   </div>
                 </div>

@@ -3,36 +3,12 @@ import { PropDataMap } from "@/types/props"
 
 const selectProps: PropDataMap = [
   {
-    prop: "multi",
-    type: "boolean",
-    defaultValue: false,
-  },
-  {
-    prop: "search",
-    type: "boolean",
-    defaultValue: false,
-  },
-  {
-    prop: "onChange",
+    prop: "size",
     type: {
-      type: "function",
-      signature:
-        "(value: SelectItem) => void |\n(values: SelectItem[]) => void",
+      type: "enum",
+      values: ["base", "small"],
     },
-  },
-  {
-    prop: "onSearch",
-    type: {
-      type: "function",
-      signature: "(searchTerm: string) => void",
-    },
-  },
-  {
-    prop: "onScrollToBottom",
-    type: {
-      type: "function",
-      signature: "() => void",
-    },
+    defaultValue: "base",
   },
 ]
 

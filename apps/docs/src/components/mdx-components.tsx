@@ -12,7 +12,6 @@ import { ComponentProps } from "@/components/component-props"
 import { IconSearch } from "@/components/icon-search"
 import { PackageInstall } from "@/components/package-install"
 import { Snippet } from "@/components/snippet"
-import { HookValues } from "@/components/hook-values"
 
 interface MdxProps {
   code: string
@@ -78,7 +77,6 @@ const components = {
   PackageInstall,
   IconSearch,
   Colors,
-  HookValues,
 }
 
 const Mdx = ({ code }: MdxProps) => {

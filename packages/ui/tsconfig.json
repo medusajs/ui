@@ -24,6 +24,6 @@
       "@/utils/*": ["./utils/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", ".eslintrc.js"],
   "exclude": ["storybook-static", "node_modules", "dist", "build"]
 }
