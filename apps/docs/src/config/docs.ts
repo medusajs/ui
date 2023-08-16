@@ -229,8 +229,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "useToggleState",
           href: "/hooks/use-toggle-state",
-          label: "WIP",
-          disabled: true,
           items: [],
         },
       ],

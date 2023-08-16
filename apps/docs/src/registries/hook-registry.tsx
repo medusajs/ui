@@ -17,4 +17,7 @@ export const HookRegistry: Record<string, HookRegistryItem> = {
   PromptProps: {
     table: React.lazy(() => import("../props/hooks/PromptProps")),
   },
+  useToggleState: {
+    table: React.lazy(() => import("../props/hooks/useToggleState")),
+  },
 }
