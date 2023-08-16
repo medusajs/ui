@@ -14,9 +14,11 @@ export const effects = {
     "--borders-interactive-with-focus": "0px 1px 2px 0px rgba(219, 234, 254, 0.5), 0px 0px 0px 1px rgba(96, 165, 250, 1), 0px 0px 0px 2px rgba(23, 23, 23, 1), 0px 0px 0px 4px rgba(96, 165, 250, 0.8)",
     "--elevation-card-rest": "0px 0px 0px 1px rgba(255, 255, 255, 0.12), 0px 1px 2px -1px rgba(255, 255, 255, 0.16), 0px 2px 4px 0px rgba(0, 0, 0, 0.4)",
     "--elevation-tooltip": "0px 0px 0px 1px rgba(255, 255, 255, 0.12), 0px 4px 8px 0px rgba(0, 0, 0, 0.32)",
+    "--elevation-card-hover": "0px 0px 0px 1px rgba(255, 255, 255, 0.12), 0px 1px 2px -1px rgba(255, 255, 255, 0.16), 0px 2px 8px 0px rgba(0, 0, 0, 0.4)",
+    "--borders-active": "0px 0px 0px 3px rgba(59, 130, 246, 0.25)",
+    "--borders-error": "0px 0px 0px 3px rgba(225, 29, 72, 0.25)",
     "--elevation-flyout": "0px 0px 0px 1px rgba(255, 255, 255, 0.12), 0px 8px 16px 0px rgba(0, 0, 0, 0.32)",
-    "--elevation-modal": "0px 0px 0px 1px rgba(23, 23, 23, 1) inset, 0px 0px 0px 2px rgba(48, 48, 48, 0.24) inset, 0px 0px 0px 1px rgba(255, 255, 255, 0.12), 0px 16px 32px 0px rgba(0, 0, 0, 0.32), 0px 2px 24px 0px rgba(0, 0, 0, 0.32)",
-    "--elevation-card-hover": "0px 0px 0px 1px rgba(255, 255, 255, 0.12), 0px 1px 2px -1px rgba(255, 255, 255, 0.16), 0px 2px 8px 0px rgba(0, 0, 0, 0.4)"
+    "--elevation-modal": "0px 0px 0px 1px rgba(23, 23, 23, 1) inset, 0px 0px 0px 2px rgba(48, 48, 48, 0.4) inset, 0px 0px 0px 1px rgba(255, 255, 255, 0.12), 0px 16px 32px 0px rgba(0, 0, 0, 0.32), 0px 2px 24px 0px rgba(0, 0, 0, 0.32)"
   },
   "light": {
     "--borders-focus": "0px 0px 0px 1px rgba(255, 255, 255, 1), 0px 0px 0px 3px rgba(59, 130, 246, 0.6)",

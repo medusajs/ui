@@ -5,8 +5,8 @@ export const colors = {
     "--border-interactive": "rgba(96, 165, 250, 1)",
     "--bg-highlight": "rgba(23, 37, 84, 1)",
     "--fg-interactive-hover": "rgba(59, 130, 246, 1)",
-    "--fg-error": "rgba(225, 29, 72, 1)",
     "--bg-interactive": "rgba(147, 197, 253, 1)",
+    "--fg-error": "rgba(251, 113, 133, 1)",
     "--border-error": "rgba(244, 63, 94, 1)",
     "--button-danger": "rgba(159, 18, 57, 1)",
     "--button-danger-gradient-from": "rgba(255, 255, 255, 1)",
@@ -64,7 +64,6 @@ export const colors = {
     "--tag-blue-bg": "rgba(23, 37, 84, 1)",
     "--fg-disabled": "rgba(63, 63, 63, 1)",
     "--bg-subtle": "rgba(10, 10, 10, 1)",
-    "--tag-neutral-border": "rgba(52, 52, 58, 1)",
     "--tag-green-bg": "rgba(2, 44, 34, 1)",
     "--tag-purple-text": "rgba(139, 92, 246, 1)",
     "--bg-subtle-pressed": "rgba(38, 38, 38, 1)",
@@ -97,7 +96,8 @@ export const colors = {
     "--button-inverted-hover-gradient-to": "rgba(0, 0, 0, 1)",
     "--button-danger-hover": "rgba(159, 18, 57, 1)",
     "--button-danger-hover-gradient-from": "rgba(255, 255, 255, 1)",
-    "--button-danger-hover-gradient-to": "rgba(255, 255, 255, 0)"
+    "--button-danger-hover-gradient-to": "rgba(255, 255, 255, 0)",
+    "--tag-neutral-border": "rgba(48, 48, 48, 1)"
   },
   "light": {
     "--code-text-base": "rgba(249, 250, 251, 1)",
