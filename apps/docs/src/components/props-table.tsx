@@ -3,7 +3,13 @@
 import { InformationCircleSolid } from "@medusajs/icons"
 import { Table, Tooltip } from "@medusajs/ui"
 
-import { EnumType, PropData, PropDataMap } from "@/types/props"
+import {
+  EnumType,
+  FunctionType,
+  ObjectType,
+  PropData,
+  PropDataMap,
+} from "@/types/props"
 
 type PropTableProps = {
   props: PropDataMap
@@ -33,6 +39,20 @@ const Row = ({ prop, type, defaultValue }: PropData) => {
     return (t as EnumType).type !== undefined && (t as EnumType).type === "enum"
   }
 
+  const isObject = (t: unknown): t is ObjectType => {
+    return (
+      (t as ObjectType).type !== undefined &&
+      (t as ObjectType).type === "object"
+    )
+  }
+
+  const isFunction = (t: unknown): t is FunctionType => {
+    return (
+      (t as FunctionType).type !== undefined &&
+      (t as FunctionType).type === "function"
+    )
+  }
+
   const defaultValueRenderer = (
     v: string | number | boolean | null | undefined
   ) => {
@@ -55,11 +75,14 @@ const Row = ({ prop, type, defaultValue }: PropData) => {
     return v
   }
 
+  const isComplexType = isEnum(type) || isObject(type) || isFunction(type)
+
   return (
     <Table.Row className="code-body">
       <Table.Cell>{prop}</Table.Cell>
       <Table.Cell>
-        {isEnum(type) ? (
+        {!isComplexType && type.toString()}
+        {isEnum(type) && (
           <Tooltip
             content={type.values.map((v) => `"${v}"`).join(" | ")}
             className="font-mono"
@@ -69,8 +92,30 @@ const Row = ({ prop, type, defaultValue }: PropData) => {
               <InformationCircleSolid className="text-ui-fg-subtle" />
             </div>
           </Tooltip>
-        ) : (
-          type.toString()
+        )}
+        {isObject(type) && (
+          <Tooltip
+            content={<pre>{type.shape}</pre>}
+            className="font-mono"
+            maxWidth={500}
+          >
+            <div className="flex items-center gap-x-1">
+              <span>{type.name}</span>
+              <InformationCircleSolid className="text-ui-fg-subtle" />
+            </div>
+          </Tooltip>
+        )}
+        {isFunction(type) && (
+          <Tooltip
+            content={<pre>{type.signature}</pre>}
+            className="font-mono"
+            maxWidth={500}
+          >
+            <div className="flex items-center gap-x-1">
+              <span>function</span>
+              <InformationCircleSolid className="text-ui-fg-subtle" />
+            </div>
+          </Tooltip>
         )}
       </Table.Cell>
       <Table.Cell className="text-right">

@@ -118,10 +118,14 @@ type BodyProps = {
 const Body = ({
   className,
   hideLineNumbers = false,
+  ...props
 }: React.HTMLAttributes<HTMLDivElement> & BodyProps) => {
   const { active } = useCodeBlockContext()
   return (
-    <div className={clx("bg-ui-code-bg-base relative p-4", className)}>
+    <div
+      className={clx("bg-ui-code-bg-base relative p-4", className)}
+      {...props}
+    >
       <Copy
         content={active.code}
         className="text-ui-code-icon absolute right-4 top-4"

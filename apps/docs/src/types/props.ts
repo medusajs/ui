@@ -5,7 +5,26 @@ export type EnumType = {
   values: (string | number | boolean)[]
 }
 
-type PropType = "string" | "number" | "boolean" | "array" | EnumType | string
+export type ObjectType = {
+  type: "object"
+  name: string
+  shape: string
+}
+
+export type FunctionType = {
+  type: "function"
+  signature: string
+}
+
+type PropType =
+  | "string"
+  | "number"
+  | "boolean"
+  | "array"
+  | EnumType
+  | ObjectType
+  | FunctionType
+  | string
 
 export type PropData = {
   prop: string
