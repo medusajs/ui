@@ -15,8 +15,8 @@ export const components = {
     "backgroundImage": "linear-gradient(0deg, var(--button-inverted-gradient-from), var(--button-inverted-gradient-to))",
     "opacity": "16%"
   },
-  ".bg-toggle-off-hover-gradient": {
-    "backgroundImage": "linear-gradient(0deg, var(--bg-toggle-off-hover-gradient-from), var(--bg-toggle-off-hover-gradient-to))",
+  ".bg-switch-off-hover-gradient": {
+    "backgroundImage": "linear-gradient(0deg, var(--bg-switch-off-hover-gradient-from), var(--bg-switch-off-hover-gradient-to))",
     "opacity": "6%"
   },
   ".button-inverted-pressed-gradient": {

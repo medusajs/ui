@@ -7,7 +7,7 @@ import { effects } from "./theme/tokens/effects"
 import { typography } from "./theme/tokens/typography"
 
 export default plugin(
-  function medusaUi({ addBase, addComponents, config, theme }) {
+  function medusaUi({ addBase, addComponents, config }) {
     const [darkMode, className = ".dark"] = ([] as string[]).concat(
       config("darkMode", "media")
     )
@@ -44,6 +44,9 @@ export default plugin(
         fontFamily: {
           sans: FONT_FAMILY_SANS,
           mono: FONT_FAMILY_MONO,
+        },
+        transitionProperty: {
+          fg: "color, background-color, border-color, box-shadow",
         },
       },
     },
