@@ -193,16 +193,16 @@ export const theme = {
           "overlay": {
             "DEFAULT": "var(--bg-overlay)"
           },
-          "toggle": {
-            "off": {
-              "DEFAULT": "var(--bg-toggle-off)",
-              "hover": {
-                "DEFAULT": "var(--bg-toggle-off-hover)"
-              }
-            }
-          },
           "disabled": {
             "DEFAULT": "var(--bg-disabled)"
+          },
+          "switch": {
+            "off": {
+              "hover": {
+                "DEFAULT": "var(--bg-switch-off-hover)"
+              },
+              "DEFAULT": "var(--bg-switch-off)"
+            }
           }
         },
         "fg": {
@@ -284,9 +284,8 @@ export const theme = {
       "borders-error": "var(--borders-error)",
       "details-switch-handle": "var(--details-switch-handle)",
       "borders-interactive-with-focus": "var(--borders-interactive-with-focus)",
-      "details-switch-background-focus": "var(--details-switch-background-focus)",
       "elevation-flyout": "var(--elevation-flyout)",
-      "details-switch-background": "var(--details-switch-background)",
+      "details-switch-background-focus": "var(--details-switch-background-focus)",
       "borders-base": "var(--borders-base)",
       "elevation-tooltip": "var(--elevation-tooltip)",
       "borders-interactive-with-shadow": "var(--borders-interactive-with-shadow)",
@@ -298,7 +297,8 @@ export const theme = {
       "buttons-colored": "var(--buttons-colored)",
       "buttons-neutral-focus": "var(--buttons-neutral-focus)",
       "borders-base-with-shadow": "var(--borders-base-with-shadow)",
-      "borders-strong-with-shadow": "var(--borders-strong-with-shadow)"
+      "borders-strong-with-shadow": "var(--borders-strong-with-shadow)",
+      "details-switch-background": "var(--details-switch-background)"
     }
   }
 }

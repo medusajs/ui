@@ -7,7 +7,7 @@ import * as React from "react"
 import { clx } from "@/utils/clx"
 
 const switchVariants = cva(
-  "bg-ui-bg-toggle-off hover:bg-ui-bg-toggle-off-hover data-[state=unchecked]:hover:after:bg-toggle-off-hover-gradient before:shadow-details-switch-background focus:shadow-details-switch-background-focus data-[state=checked]:bg-ui-bg-interactive disabled:!bg-ui-bg-disabled group relative inline-flex items-center rounded-full outline-none transition-all before:absolute before:inset-0 before:rounded-full before:content-[''] after:absolute after:inset-0 after:rounded-full after:content-[''] disabled:cursor-not-allowed",
+  "bg-ui-bg-swiitch-off hover:bg-ui-bg-switch-off-hover data-[state=unchecked]:hover:after:bg-switch-off-hover-gradient before:shadow-details-switch-background focus:shadow-details-switch-background-focus data-[state=checked]:bg-ui-bg-interactive disabled:!bg-ui-bg-disabled group relative inline-flex items-center rounded-full outline-none transition-all before:absolute before:inset-0 before:rounded-full before:content-[''] after:absolute after:inset-0 after:rounded-full after:content-[''] disabled:cursor-not-allowed",
   {
     variants: {
       size: {
@@ -22,7 +22,7 @@ const switchVariants = cva(
 )
 
 const thumbVariants = cva(
-  "bg-ui-bg-base shadow-details-switch-handle group-disabled:bg-ui-bg-disabled pointer-events-none z-10 h-[14px] w-[14px] rounded-full transition-all",
+  "bg-ui-fg-on-color shadow-details-switch-handle group-disabled:bg-ui-bg-disabled pointer-events-none z-10 h-[14px] w-[14px] rounded-full transition-all",
   {
     variants: {
       size: {

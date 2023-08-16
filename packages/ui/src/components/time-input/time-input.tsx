@@ -13,6 +13,7 @@ import {
 } from "@react-stately/datepicker"
 import * as React from "react"
 
+import { inputBaseStyles } from "@/components/input"
 import { clx } from "@/utils/clx"
 
 type TimeSegmentProps = {
@@ -33,14 +34,10 @@ const TimeSegment = ({ segment, state }: TimeSegmentProps) => {
     <div
       {...segmentProps}
       ref={ref}
-      style={{
-        ...segmentProps.style,
-      }}
       className={clx(
-        "w-full rounded-md border px-2 py-[5px] text-left uppercase tabular-nums",
-        "border-ui-border-loud-muted bg-ui-bg-subtle shadow-buttons-secondary text-ui-fg-base outline-none transition-all",
-        "focus:border-ui-border-interactive focus:shadow-borders-active",
-        "hover:bg-ui-bg-subtle-hover",
+        "txt-compact-medium w-full rounded-md border px-2 py-[5px] text-left uppercase tabular-nums",
+        inputBaseStyles,
+        "group-aria-[invalid=true]/time-input:!border-ui-border-error group-aria-[invalid=true]/time-input:focus:!shadow-borders-error group-invalid/time-input:!border-ui-border-error group-invalid/time-input:focus:!shadow-borders-error",
         {
           "text-ui-fg-muted !w-fit border-none bg-transparent px-0 shadow-none":
             isDecorator,
@@ -54,7 +51,7 @@ const TimeSegment = ({ segment, state }: TimeSegmentProps) => {
       <span
         aria-hidden="true"
         className={clx(
-          "txt-compact-small text-ui-fg-muted pointer-events-none block w-full text-left",
+          "txt-compact-medium text-ui-fg-muted pointer-events-none block w-full text-left",
           {
             hidden: !segment.isPlaceholder,
             "h-0": !segment.isPlaceholder,
@@ -88,6 +85,7 @@ const TimeInput = React.forwardRef<HTMLDivElement, TimeInputProps>(
       hourCycle: hourCycle,
       locale: locale,
       shouldForceLeadingZeros: true,
+      autoFocus: true,
       ...props,
     })
 
@@ -102,7 +100,11 @@ const TimeInput = React.forwardRef<HTMLDivElement, TimeInputProps>(
     )
 
     return (
-      <div {...fieldProps} ref={ref} className="flex w-full gap-x-2">
+      <div
+        {...fieldProps}
+        ref={innerRef}
+        className="group/time-input inline-flex w-full gap-x-2"
+      >
         {state.segments.map((segment, i) => (
           <TimeSegment key={i} segment={segment} state={state} />
         ))}

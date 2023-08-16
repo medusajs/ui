@@ -18,7 +18,10 @@ export const effects = {
     "--borders-active": "0px 0px 0px 3px rgba(59, 130, 246, 0.25)",
     "--borders-error": "0px 0px 0px 3px rgba(225, 29, 72, 0.25)",
     "--elevation-flyout": "0px 0px 0px 1px rgba(255, 255, 255, 0.12), 0px 8px 16px 0px rgba(0, 0, 0, 0.32)",
-    "--elevation-modal": "0px 0px 0px 1px rgba(23, 23, 23, 1) inset, 0px 0px 0px 2px rgba(48, 48, 48, 0.4) inset, 0px 0px 0px 1px rgba(255, 255, 255, 0.12), 0px 16px 32px 0px rgba(0, 0, 0, 0.32), 0px 2px 24px 0px rgba(0, 0, 0, 0.32)"
+    "--elevation-modal": "0px 0px 0px 1px rgba(23, 23, 23, 1) inset, 0px 0px 0px 2px rgba(48, 48, 48, 0.4) inset, 0px 0px 0px 1px rgba(255, 255, 255, 0.12), 0px 16px 32px 0px rgba(0, 0, 0, 0.32), 0px 2px 24px 0px rgba(0, 0, 0, 0.32)",
+    "--details-switch-handle": "0px 0px 2px 1px rgba(255, 255, 255, 1) inset, 0px 1px 0px 0px rgba(255, 255, 255, 1) inset, 0px 0px 0px 0.5px rgba(0, 0, 0, 0.16), 0px 5px 4px 0px rgba(0, 0, 0, 0.1), 0px 3px 3px 0px rgba(0, 0, 0, 0.1), 0px 1px 2px 0px rgba(0, 0, 0, 0.1), 0px 0px 1px 0px rgba(0, 0, 0, 0.1)",
+    "--details-switch-background": "0px 1px 1px 0px rgba(0, 0, 0, 0.1) inset, 0px 2px 4px 0px rgba(0, 0, 0, 0.1) inset, 0px 0px 0px 0.5px rgba(255, 255, 255, 0.16) inset, 0px 0px 8px 0px rgba(0, 0, 0, 0.1) inset, 0px 2px 4px 0px rgba(0, 0, 0, 0.2)",
+    "--details-switch-background-focus": "0px 0px 0px 1px rgba(23, 23, 23, 1), 0px 0px 0px 3px rgba(96, 165, 250, 0.8), 0px 1px 1px 0px rgba(0, 0, 0, 0.1) inset, 0px 2px 4px 0px rgba(0, 0, 0, 0.1) inset, 0px 0px 0px 0.5px rgba(255, 255, 255, 0.16) inset, 0px 0px 8px 0px rgba(0, 0, 0, 0.1) inset, 0px 2px 4px 0px rgba(0, 0, 0, 0.2)"
   },
   "light": {
     "--borders-focus": "0px 0px 0px 1px rgba(255, 255, 255, 1), 0px 0px 0px 3px rgba(59, 130, 246, 0.6)",
@@ -28,9 +31,8 @@ export const effects = {
     "--borders-error": "0px 0px 0px 3px rgba(225, 29, 72, 0.15)",
     "--details-switch-handle": "0px 0px 2px 1px rgba(255, 255, 255, 1) inset, 0px 1px 0px 0px rgba(255, 255, 255, 1) inset, 0px 0px 0px 0.5px rgba(0, 0, 0, 0.02), 0px 5px 4px 0px rgba(0, 0, 0, 0.02), 0px 3px 3px 0px rgba(0, 0, 0, 0.04), 0px 1px 2px 0px rgba(0, 0, 0, 0.12), 0px 0px 1px 0px rgba(0, 0, 0, 0.08)",
     "--borders-interactive-with-focus": "0px 1px 2px 0px rgba(30, 58, 138, 0.5), 0px 0px 0px 1px rgba(59, 130, 246, 1), 0px 0px 0px 2px rgba(255, 255, 255, 1), 0px 0px 0px 4px rgba(59, 130, 246, 0.6)",
-    "--details-switch-background-focus": "0px 0px 0px 1px rgba(255, 255, 255, 1), 0px 0px 0px 3px rgba(59, 130, 246, 0.6), 0px 1px 1px 0px rgba(0, 0, 0, 0.04) inset, 0px 2px 4px 0px rgba(0, 0, 0, 0.04) inset, 0px 0px 0px 0.5px rgba(0, 0, 0, 0.06) inset, 0px 0px 8px 0px rgba(0, 0, 0, 0.02) inset, 0px 1px 0px 0px rgba(255, 255, 255, 1), 0px 2px 4px 0px rgba(0, 0, 0, 0.04)",
     "--elevation-flyout": "0px 0px 0px 1px rgba(0, 0, 0, 0.08), 0px 8px 16px 0px rgba(0, 0, 0, 0.08)",
-    "--details-switch-background": "0px 1px 1px 0px rgba(0, 0, 0, 0.04) inset, 0px 2px 4px 0px rgba(0, 0, 0, 0.04) inset, 0px 0px 0px 0.5px rgba(0, 0, 0, 0.06) inset, 0px 0px 8px 0px rgba(0, 0, 0, 0.02) inset, 0px 1px 0px 0px rgba(255, 255, 255, 1), 0px 2px 4px 0px rgba(0, 0, 0, 0.04)",
+    "--details-switch-background-focus": "0px 0px 0px 1px rgba(255, 255, 255, 1), 0px 0px 0px 3px rgba(59, 130, 246, 0.6), 0px 1px 1px 0px rgba(0, 0, 0, 0.04) inset, 0px 2px 4px 0px rgba(0, 0, 0, 0.04) inset, 0px 0px 0px 0.5px rgba(0, 0, 0, 0.06) inset, 0px 0px 8px 0px rgba(0, 0, 0, 0.02) inset, 0px 2px 4px 0px rgba(0, 0, 0, 0.04)",
     "--borders-base": "0px 0px 0px 1px rgba(229, 229, 229, 1)",
     "--elevation-tooltip": "0px 0px 0px 1px rgba(0, 0, 0, 0.08), 0px 4px 8px 0px rgba(0, 0, 0, 0.08)",
     "--borders-interactive-with-shadow": "0px 1px 2px 0px rgba(30, 58, 138, 0.5), 0px 0px 0px 1px rgba(59, 130, 246, 1)",
@@ -42,6 +44,7 @@ export const effects = {
     "--buttons-colored": "0px 1px 0px 0px rgba(255, 255, 255, 0.16) inset, 0px 0.5px 0px 0px rgba(0, 0, 0, 0.12), 0px 1px 0px 0px rgba(0, 0, 0, 0.12)",
     "--buttons-neutral-focus": "0px 0.5px 0px 0px rgba(0, 0, 0, 0.12), 0px 1px 0px 0px rgba(0, 0, 0, 0.12), 0px 0px 0px 1px rgba(255, 255, 255, 1), 0px 0px 0px 3px rgba(59, 130, 246, 0.6)",
     "--borders-base-with-shadow": "0px 1px 2px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 1px rgba(229, 229, 229, 1)",
-    "--borders-strong-with-shadow": "0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 0px 0px 1px rgba(212, 212, 212, 1)"
+    "--borders-strong-with-shadow": "0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 0px 0px 1px rgba(212, 212, 212, 1)",
+    "--details-switch-background": "0px 1px 1px 0px rgba(0, 0, 0, 0.04) inset, 0px 2px 4px 0px rgba(0, 0, 0, 0.04) inset, 0px 0px 0px 0.5px rgba(0, 0, 0, 0.06) inset, 0px 0px 8px 0px rgba(0, 0, 0, 0.02) inset, 0px 2px 4px 0px rgba(0, 0, 0, 0.04)"
   }
 }
