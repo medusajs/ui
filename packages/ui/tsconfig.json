@@ -6,10 +6,9 @@
     "module": "ES2020",
     "moduleResolution": "Node",
     "sourceMap": true,
+    "inlineSources": true,
     "declaration": true,
     "outDir": "./dist",
-    "baseUrl": "./src",
-    "rootDir": "./src",
     "importHelpers": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -17,11 +16,11 @@
     "alwaysStrict": true,
     "skipLibCheck": true,
     "paths": {
-      "@medusajs/ui": ["./index.tsx"],
-      "@/components/*": ["./components/*"],
-      "@/providers/*": ["./providers/*"],
-      "@/hooks/*": ["./hooks/*"],
-      "@/utils/*": ["./utils/*"]
+      "@medusajs/ui": ["./src/index.tsx"],
+      "@/components/*": ["./src/components/*"],
+      "@/providers/*": ["./src/providers/*"],
+      "@/hooks/*": ["./src/hooks/*"],
+      "@/utils/*": ["./src/utils/*"]
     }
   },
   "include": ["src"],
