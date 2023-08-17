@@ -44,9 +44,6 @@ export const PropRegistry: Record<string, PropRegistryItem> = {
   select: {
     table: React.lazy(() => import("../props/select")),
   },
-  "select-trigger": {
-    table: React.lazy(() => import("../props/select-trigger")),
-  },
   "select-value": {
     table: React.lazy(() => import("../props/select-value")),
   },
@@ -67,8 +64,5 @@ export const PropRegistry: Record<string, PropRegistryItem> = {
   },
   tooltip: {
     table: React.lazy(() => import("../props/tooltip")),
-  },
-  useToggleState: {
-    table: React.lazy(() => import("../props/useToggleState")),
   },
 }

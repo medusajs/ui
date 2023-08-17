@@ -4,6 +4,7 @@
     "outDir": "./dist/cjs",
     "module": "CommonJS"
   },
+  "include": ["src"],
   "exclude": [
     "storybook-static",
     "node_modules",

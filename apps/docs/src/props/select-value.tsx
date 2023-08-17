@@ -5,10 +5,7 @@ const selectValueProps: PropDataMap = [
   {
     prop: "placeholder",
     type: "string",
-  },
-  {
-    prop: "value",
-    type: "string",
+    defaultValue: undefined,
   },
 ]
 

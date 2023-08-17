@@ -1,58 +1,58 @@
 import { Select } from "@medusajs/ui"
 
-export default function SelectGroupedItems() {
-  const currencies = [
-    {
-      value: "eur",
-      label: "EUR",
-    },
-    {
-      value: "usd",
-      label: "USD",
-    },
-    {
-      value: "dkk",
-      label: "DKK",
-    },
-  ]
-
-  const regions = [
-    { value: "na", label: "NA" },
-    { value: "eu", label: "EU" },
-  ]
-
-  const onChange = (value: any) =>
-    console.log(
-      `Currently selected: ${
-        Array.isArray(value)
-          ? `[${value.map((val) => val.value)}]`
-          : value.value
-      }`
-    )
-
+export default function SelectDemo() {
   return (
     <div className="w-[256px]">
-      <Select onChange={onChange}>
+      <Select>
         <Select.Trigger>
-          <Select.Value placeholder="Select a currency ..." />
-          <Select.TriggerIcon />
+          <Select.Value placeholder="Select a currency" />
         </Select.Trigger>
         <Select.Content>
-          <Select.Label>Currencies</Select.Label>
-          {currencies.map((item) => (
-            <Select.Item key={item.value} item={item}>
-              {item.label}
-            </Select.Item>
-          ))}
-          <Select.Separator />
-          <Select.Label>Regions</Select.Label>
-          {regions.map((item) => (
-            <Select.Item key={item.value} item={item}>
-              {item.label}
-            </Select.Item>
+          {data.map((group) => (
+            <Select.Group key={group.label}>
+              <Select.Label>{group.label}</Select.Label>
+              {group.items.map((item) => (
+                <Select.Item key={item.value} value={item.value}>
+                  {item.label}
+                </Select.Item>
+              ))}
+            </Select.Group>
           ))}
         </Select.Content>
       </Select>
     </div>
   )
 }
+
+const data = [
+  {
+    label: "Shirts",
+    items: [
+      {
+        value: "dress-shirt-solid",
+        label: "Solid Dress Shirt",
+      },
+      {
+        value: "dress-shirt-check",
+        label: "Check Dress Shirt",
+      },
+    ],
+  },
+  {
+    label: "T-Shirts",
+    items: [
+      {
+        value: "v-neck",
+        label: "V-Neck",
+      },
+      {
+        value: "crew-neck",
+        label: "Crew Neck",
+      },
+      {
+        value: "henley",
+        label: "Henley",
+      },
+    ],
+  },
+]
