@@ -8,7 +8,9 @@ const nextConfig = {
       fallback: [
         {
           source: "/:path*",
-          destination: `${process.env.NEXT_PUBLIC_DOCS_URL}/:path*`,
+          destination: `${
+            process.env.NEXT_PUBLIC_DOCS_URL || "https://localhost:3002"
+          }/:path*`,
           basePath: false,
         },
       ],
