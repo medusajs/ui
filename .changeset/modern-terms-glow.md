@@ -1,4 +1,6 @@
 ---
+"@medusajs/eslint-config-ui": patch
+"@medusajs/tsconfig-ui": patch
 "@medusajs/icons": major
 "@medusajs/ui": major
 "@medusajs/ui-preset": major
