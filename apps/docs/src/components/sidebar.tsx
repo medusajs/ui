@@ -5,6 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 import { SidebarNavItem } from "@/types/nav"
+import { ScrollArea } from "./scroll-area"
 
 export interface DocsSidebarNavProps {
   items: SidebarNavItem[]
@@ -16,15 +17,19 @@ export function Sidebar({ items }: DocsSidebarNavProps) {
   return (
     <aside className="border-ui-border-base w-sidebar relative hidden h-full border-r lg:block">
       {items.length ? (
-        <div className="sticky inset-x-0 bottom-0 top-[56px] h-screen max-h-[calc(100vh-56px)] w-full overflow-auto p-6">
-          {items.map((item, index) => (
-            <div key={index} className={clx("pb-6")}>
-              <h4 className="text-ui-fg-muted mb-0.5 rounded-md px-3 py-1.5 text-xs font-medium uppercase leading-5">
-                {item.title}
-              </h4>
-              <SidebarNavItems items={item.items} pathname={pathname} />
+        <div className="sticky inset-x-0 bottom-0 top-[56px] h-screen max-h-[calc(100vh-56px)] w-full">
+          <ScrollArea>
+            <div className="h-full w-full p-6">
+              {items.map((item, index) => (
+                <div key={index} className={clx("pb-6")}>
+                  <h4 className="text-ui-fg-muted mb-0.5 rounded-md px-3 py-1.5 text-xs font-medium uppercase leading-5">
+                    {item.title}
+                  </h4>
+                  <SidebarNavItems items={item.items} pathname={pathname} />
+                </div>
+              ))}
             </div>
-          ))}
+          </ScrollArea>
         </div>
       ) : null}
     </aside>
