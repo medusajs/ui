@@ -32,7 +32,8 @@ const Navbar = () => {
                       item.disabled &&
                         "bg-ui-bg-base-disabled text-ui-fg-disabled cursor-not-allowed",
                       {
-                        "text-ui-fg-base": item.href === "/",
+                        "text-ui-fg-base":
+                          item.href === "https://docs.medusajs.com/ui",
                       }
                     )}
                     rel={item.external ? "noreferrer" : ""}
