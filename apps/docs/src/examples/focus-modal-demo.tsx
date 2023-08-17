@@ -2,7 +2,7 @@ import { Button, FocusModal, Heading, Input, Label, Text } from "@medusajs/ui"
 
 export default function FocusModalDemo() {
   return (
-    <FocusModal.Root>
+    <FocusModal>
       <FocusModal.Trigger asChild>
         <Button>Edit Variant</Button>
       </FocusModal.Trigger>
@@ -28,6 +28,6 @@ export default function FocusModalDemo() {
           </div>
         </FocusModal.Body>
       </FocusModal.Content>
-    </FocusModal.Root>
+    </FocusModal>
   )
 }

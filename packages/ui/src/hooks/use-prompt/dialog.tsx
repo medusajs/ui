@@ -44,6 +44,10 @@ const Dialog = ({
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
+    if (!verificationText) {
+      return
+    }
+
     if (validInput) {
       onConfirm()
     }
@@ -66,14 +70,14 @@ const Dialog = ({
   return (
     <Prompt open={open}>
       <Prompt.Content>
-        <Prompt.Header>
-          <Prompt.Title>{title}</Prompt.Title>
-          <Prompt.Description>{description}</Prompt.Description>
-        </Prompt.Header>
-        {verificationText && (
-          <form onSubmit={handleFormSubmit}>
-            <fieldset className="border-ui-border-base mt-6 flex flex-col gap-y-4 border-y p-6">
-              <Label htmlFor="verificationText" className="text-subtle">
+        <form onSubmit={handleFormSubmit}>
+          <Prompt.Header>
+            <Prompt.Title>{title}</Prompt.Title>
+            <Prompt.Description>{description}</Prompt.Description>
+          </Prompt.Header>
+          {verificationText && (
+            <div className="border-ui-border-base mt-6 flex flex-col gap-y-4 border-y p-6">
+              <Label htmlFor="verificationText" className="text-ui-fg-subtle">
                 Please type{" "}
                 <span className="text-ui-fg-base txt-compact-medium-plus">
                   {verificationText}
@@ -87,19 +91,19 @@ const Dialog = ({
                 placeholder={verificationText}
                 onChange={handleUserInput}
               />
-            </fieldset>
-          </form>
-        )}
-        <Prompt.Footer>
-          <Prompt.Cancel onClick={onCancel}>{cancelText}</Prompt.Cancel>
-          <Prompt.Action
-            onClick={verificationText ? undefined : onConfirm}
-            disabled={!validInput}
-            type={verificationText ? "submit" : "button"}
-          >
-            {confirmText}
-          </Prompt.Action>
-        </Prompt.Footer>
+            </div>
+          )}
+          <Prompt.Footer>
+            <Prompt.Cancel onClick={onCancel}>{cancelText}</Prompt.Cancel>
+            <Prompt.Action
+              disabled={!validInput}
+              type={verificationText ? "submit" : "button"}
+              onClick={verificationText ? undefined : onConfirm}
+            >
+              {confirmText}
+            </Prompt.Action>
+          </Prompt.Footer>
+        </form>
       </Prompt.Content>
     </Prompt>
   )

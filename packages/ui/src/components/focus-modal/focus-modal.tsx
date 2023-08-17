@@ -93,10 +93,11 @@ const Body = ({
 }
 Body.displayName = "FocusModal.Body"
 
-export const FocusModal = {
-  Root,
+const FocusModal = Object.assign(Root, {
   Trigger,
   Content,
   Header,
   Body,
-}
+})
+
+export { FocusModal }
