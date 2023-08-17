@@ -6,8 +6,7 @@ import { ThemeProvider } from "@/components/providers"
 import { Sidebar } from "@/components/sidebar"
 import { docsConfig } from "@/config/docs"
 
-import { siteConfig } from "../config/site"
-import { absoluteUrl } from "../lib/absolute-url"
+import { siteConfig } from "@/config/site"
 import "../styles/globals.css"
 
 const inter = Inter({ subsets: ["latin"], variable: "--inter" })
@@ -17,32 +16,9 @@ const robotoMono = Roboto_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Medusa UI",
-  description: "Documentation for Medusa UI",
-  metadataBase: process.env.VERCEL_URL
-    ? new URL(`https://${process.env.VERCEL_URL}`)
-    : new URL("http://localhost:3000"),
-  openGraph: {
-    title: "Medusa UI",
-    description: "Documentation for Medusa UI",
-    type: "article",
-    url: absoluteUrl("/"),
-    images: [
-      {
-        url: siteConfig.ogImage,
-        width: 1200,
-        height: 630,
-        alt: siteConfig.name,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Medusa UI",
-    description: "Documentation for Medusa UI",
-    images: [siteConfig.ogImage],
-    creator: "@medusajs",
-  },
+  title: siteConfig.name,
+  description: siteConfig.description,
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL!),
 }
 
 export default function RootLayout({

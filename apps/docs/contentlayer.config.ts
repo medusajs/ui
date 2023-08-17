@@ -1,5 +1,5 @@
-import { rehypeComponent } from "./src/lib/rehype-component"
 import { defineDocumentType, makeSource } from "contentlayer/source-files"
+import { rehypeComponent } from "./src/lib/rehype-component"
 
 export const Doc = defineDocumentType(() => ({
   name: "Doc",
@@ -13,7 +13,7 @@ export const Doc = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: "string",
-      resolve: (doc) => `/${doc._raw.flattenedPath}`,
+      resolve: (doc) => `/ui/${doc._raw.flattenedPath}`,
     },
     slugAsParams: {
       type: "string",
