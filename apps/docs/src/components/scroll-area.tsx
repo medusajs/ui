@@ -8,7 +8,7 @@ type ScrollbarProps = React.ComponentProps<typeof Primitives.Scrollbar>
 const Scrollbar = ({ className, ...props }: ScrollbarProps) => {
   return (
     <Primitives.Scrollbar
-      className="bg-ui-bg-base flex touch-none select-none p-0.5 transition-colors duration-[160ms] ease-out data-[orientation=horizontal]:h-2.5 data-[orientation=vertical]:w-2.5 data-[orientation=horizontal]:flex-col"
+      className="bg-ui-bg-base flex touch-none select-none p-0.5 transition-colors ease-out data-[orientation=horizontal]:h-2.5 data-[orientation=vertical]:w-2.5 data-[orientation=horizontal]:flex-col"
       {...props}
     />
   )
