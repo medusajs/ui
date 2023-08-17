@@ -1,6 +1,6 @@
 {
   "name": "@medusajs/ui-preset",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Medusa UI preset",
   "license": "MIT",
   "author": "Kasper Kristensen <kasper@medusajs.com>",
