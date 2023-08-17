@@ -9,6 +9,7 @@ import { CodeBlock } from "@/components/code-block"
 import { Colors } from "@/components/colors"
 import { ComponentExample } from "@/components/component-example"
 import { ComponentProps } from "@/components/component-props"
+import { HookValues } from "@/components/hook-values"
 import { IconSearch } from "@/components/icon-search"
 import { PackageInstall } from "@/components/package-install"
 import { Snippet } from "@/components/snippet"
@@ -70,6 +71,7 @@ const components = {
   hr: ({ className, ...props }: React.HTMLAttributes<HTMLHRElement>) => {
     return <hr className={clx("mb-4", className)} {...props} />
   },
+  HookValues,
   ComponentProps,
   CodeBlock,
   ComponentExample,
