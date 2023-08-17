@@ -1,40 +1,15 @@
 import { Select } from "@medusajs/ui"
 
 export default function SelectSmall() {
-  const currencies = [
-    {
-      value: "eur",
-      label: "EUR",
-    },
-    {
-      value: "usd",
-      label: "USD",
-    },
-    {
-      value: "dkk",
-      label: "DKK",
-    },
-  ]
-
-  const onChange = (value: any) =>
-    console.log(
-      `Currently selected: ${
-        Array.isArray(value)
-          ? `[${value.map((val) => val.value)}]`
-          : value.value
-      }`
-    )
-
   return (
     <div className="w-[256px]">
-      <Select onChange={onChange}>
-        <Select.Trigger size="small">
-          <Select.Value placeholder="Select a currency ..." />
-          <Select.TriggerIcon />
+      <Select size="small">
+        <Select.Trigger>
+          <Select.Value placeholder="Select a currency" />
         </Select.Trigger>
         <Select.Content>
           {currencies.map((item) => (
-            <Select.Item key={item.value} item={item}>
+            <Select.Item key={item.value} value={item.value}>
               {item.label}
             </Select.Item>
           ))}
@@ -43,3 +18,18 @@ export default function SelectSmall() {
     </div>
   )
 }
+
+const currencies = [
+  {
+    value: "eur",
+    label: "EUR",
+  },
+  {
+    value: "usd",
+    label: "USD",
+  },
+  {
+    value: "dkk",
+    label: "DKK",
+  },
+]

@@ -40,7 +40,7 @@ export const effects = {
     "--elevation-modal": "0px 0px 0px 1px rgba(255, 255, 255, 1) inset, 0px 0px 0px 2px rgba(229, 229, 229, 0.4) inset, 0px 0px 0px 1px rgba(0, 0, 0, 0.08), 0px 16px 32px 0px rgba(0, 0, 0, 0.08), 0px 2px 24px 0px rgba(0, 0, 0, 0.08)",
     "--elevation-card-rest": "0px 0px 0px 1px rgba(0, 0, 0, 0.08), 0px 1px 2px -1px rgba(0, 0, 0, 0.08), 0px 2px 4px 0px rgba(0, 0, 0, 0.04)",
     "--buttons-neutral": "0px 0.5px 0px 0px rgba(0, 0, 0, 0.12), 0px 1px 0px 0px rgba(0, 0, 0, 0.12)",
-    "--buttons-colered-focus": "0px 2px 0px 0px rgba(255, 255, 255, 0.16) inset, 0px 0.5px 0px 0px rgba(0, 0, 0, 0.12), 0px 1px 0px 0px rgba(0, 0, 0, 0.12), 0px 0px 0px 1px rgba(255, 255, 255, 1), 0px 0px 0px 3px rgba(59, 130, 246, 0.6)",
+    "--buttons-colored-focus": "0px 1px 0px 0px rgba(255, 255, 255, 0.16) inset, 0px 0.5px 0px 0px rgba(0, 0, 0, 0.12), 0px 1px 0px 0px rgba(0, 0, 0, 0.12), 0px 0px 0px 1px rgba(255, 255, 255, 1), 0px 0px 0px 3px rgba(59, 130, 246, 0.6)",
     "--buttons-colored": "0px 1px 0px 0px rgba(255, 255, 255, 0.16) inset, 0px 0.5px 0px 0px rgba(0, 0, 0, 0.12), 0px 1px 0px 0px rgba(0, 0, 0, 0.12)",
     "--buttons-neutral-focus": "0px 0.5px 0px 0px rgba(0, 0, 0, 0.12), 0px 1px 0px 0px rgba(0, 0, 0, 0.12), 0px 0px 0px 1px rgba(255, 255, 255, 1), 0px 0px 0px 3px rgba(59, 130, 246, 0.6)",
     "--borders-base-with-shadow": "0px 1px 2px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 1px rgba(229, 229, 229, 1)",

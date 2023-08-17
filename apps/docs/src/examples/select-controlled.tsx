@@ -1,9 +1,12 @@
 import { Select } from "@medusajs/ui"
+import * as React from "react"
 
 export default function SelectDemo() {
+  const [value, setValue] = React.useState<string | undefined>()
+
   return (
     <div className="w-[256px]">
-      <Select disabled>
+      <Select onValueChange={setValue} value={value}>
         <Select.Trigger>
           <Select.Value placeholder="Select a currency" />
         </Select.Trigger>

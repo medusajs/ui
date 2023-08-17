@@ -1,7 +1,8 @@
-import { HookData, HookDataMap } from "@/types/hooks"
-import { EnumType, FunctionType, ObjectType } from "@/types/props"
 import { InformationCircleSolid } from "@medusajs/icons"
 import { Table, Tooltip } from "@medusajs/ui"
+
+import { HookData, HookDataMap } from "@/types/hooks"
+import { EnumType, FunctionType, ObjectType } from "@/types/props"
 
 const HookTable = ({ props }: { props: HookDataMap }) => {
   return (
