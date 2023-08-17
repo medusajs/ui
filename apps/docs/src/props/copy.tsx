@@ -6,6 +6,11 @@ const copyProps: PropDataMap = [
     prop: "content",
     type: "string",
   },
+  {
+    prop: "asChild",
+    type: "boolean",
+    defaultValue: false,
+  },
 ]
 
 const Props = () => {
