@@ -7,15 +7,26 @@ node_modules
 .yarn/*
 !.yarn/releases
 !.yarn/plugins
+!.yarn/patches
 .pnp.*
 
 # testing
 coverage
 
+# storybook
+storybook-static
+build-storybook.log
+
 # next.js
 .next/
 out/
 build
+
+# build output
+dist
+
+# stats
+stats/
 
 # misc
 .DS_Store

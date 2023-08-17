@@ -1,4 +1,5 @@
 {
+  "name": "medusa-ui",
   "private": true,
   "scripts": {
     "test": "turbo run test",
@@ -8,24 +9,42 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "release": "changeset publish",
     "version": "changeset version && yarn install --no-immutable",
-    "release:next": "changeset publish --no-git-tags --snapshot --tag next",
-    "version:next": "changeset version --snapshot next",
-    "release:snapshot": "changeset publish --no-git-tags --snapshot --tag snapshot"
+    "release:beta": "changeset publish --no-git-tags --snapshot --tag beta",
+    "version:beta": "changeset version --snapshot beta",
+    "release:alpha": "changeset publish --no-git-tags --snapshot --tag alpha",
+    "version:alpha": "changeset version --snapshot alpha",
+    "release:snapshot": "changeset publish --no-git-tags --snapshot --tag snapshot",
+    "generate:icons": "rimraf ./packages/icons/src/components && toolbox icons -o './packages/icons/src/components'",
+    "generate:tokens": "toolbox tokens -o './packages/ui-preset/src/theme'"
   },
   "devDependencies": {
-    "@turbo/gen": "^1.9.7",
-    "eslint": "^7.32.0",
-    "eslint-config-custom": "*",
+    "@babel/core": "^7.20.12",
+    "@babel/node": "^7.20.7",
+    "@babel/preset-env": "^7.16.4",
+    "@babel/preset-react": "^7.16.0",
+    "@babel/preset-typescript": "^7.18.6",
+    "@medusajs/eslint-config-ui": "*",
+    "@medusajs/toolbox": "*",
+    "babel-loader": "^9.1.2",
+    "eslint": "^8.44.0",
     "prettier": "^2.5.1",
-    "turbo": "latest"
+    "prettier-plugin-tailwindcss": "^0.3.0",
+    "rimraf": "^5.0.1",
+    "turbo": "latest",
+    "typescript": "^5.1.6"
   },
-  "name": "medusa-ui",
-  "packageManager": "yarn@3.5.0",
+  "packageManager": "yarn@3.5.1",
   "workspaces": [
-    "apps/*",
-    "packages/*"
+    "packages/*",
+    "tools/*",
+    "configs/*",
+    "apps/*"
   ],
   "dependencies": {
-    "@changesets/cli": "^2.26.1"
+    "@changesets/cli": "^2.26.1",
+    "eslint-plugin-react-hooks": "^4.6.0"
+  },
+  "resolutions": {
+    "class-variance-authority@^0.6.1": "patch:class-variance-authority@npm%3A0.6.1#./.yarn/patches/class-variance-authority-npm-0.6.1-22a468e86e.patch"
   }
 }
