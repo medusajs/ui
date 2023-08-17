@@ -18,7 +18,9 @@ const robotoMono = Roboto_Mono({
 export const metadata: Metadata = {
   title: siteConfig.name,
   description: siteConfig.description,
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL!),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
+  ),
 }
 
 export default function RootLayout({
