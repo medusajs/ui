@@ -504,4 +504,19 @@ export const ExampleRegistry: Record<string, any> = {
     component: React.lazy(() => import("@/examples/dropdown-menu-sorting")),
     file: "src/examples/dropdown-menu-sorting.tsx",
   },
+  "use-prompt-demo": {
+    name: "use-prompt-demo",
+    component: React.lazy(() => import("@/examples/use-prompt-demo")),
+    file: "src/examples/use-prompt-demo.tsx",
+  },
+  "use-prompt-verification": {
+    name: "use-prompt-demo",
+    component: React.lazy(() => import("@/examples/use-prompt-verification")),
+    file: "src/examples/use-prompt-verification.tsx",
+  },
+  "use-toggle-state-demo": {
+    name: "use-toggle-state",
+    component: React.lazy(() => import("@/examples/use-toggle-state-demo")),
+    file: "src/examples/use-toggle-state-demo.tsx",
+  },
 }

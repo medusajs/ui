@@ -219,22 +219,16 @@ export const docsConfig: DocsConfig = {
         {
           title: "usePrompt",
           href: "/hooks/use-prompt",
-          label: "WIP",
-          disabled: true,
           items: [],
         },
         {
           title: "useToast",
           href: "/hooks/use-toast",
-          label: "WIP",
-          disabled: true,
           items: [],
         },
         {
           title: "useToggleState",
           href: "/hooks/use-toggle-state",
-          label: "WIP",
-          disabled: true,
           items: [],
         },
       ],

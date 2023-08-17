@@ -42,7 +42,9 @@ const Title = React.forwardRef<
 >(({ className, children, ...props }, ref) => {
   return (
     <Primitives.Title ref={ref} className={clx(className)} {...props} asChild>
-      <Heading level="h2">{children}</Heading>
+      <Heading level="h2" className="text-ui-fg-base">
+        {children}
+      </Heading>
     </Primitives.Title>
   )
 })
@@ -76,7 +78,7 @@ const Description = React.forwardRef<
   return (
     <Primitives.Description
       ref={ref}
-      className={clx("text-subtle txt-compact-medium", className)}
+      className={clx("text-ui-fg-subtle txt-compact-medium", className)}
       {...props}
     />
   )
@@ -86,10 +88,10 @@ Description.displayName = "Prompt.Description"
 const Action = React.forwardRef<
   React.ElementRef<typeof Primitives.Action>,
   Omit<React.ComponentPropsWithoutRef<typeof Primitives.Action>, "asChild">
->(({ className, children, ...props }, ref) => {
+>(({ className, children, type, ...props }, ref) => {
   return (
     <Primitives.Action ref={ref} className={className} {...props} asChild>
-      <Button>{children}</Button>
+      <Button type={type}>{children}</Button>
     </Primitives.Action>
   )
 })
