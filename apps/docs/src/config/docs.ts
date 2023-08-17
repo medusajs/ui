@@ -10,26 +10,26 @@ export const docsConfig: DocsConfig = {
     {
       title: "Docs",
       external: true,
-      href: "https://docs.medusajs.com",
+      href: `${process.env.NEXT_PUBLIC_DOCS_URL}`,
     },
     {
       title: "User Guide",
       external: true,
-      href: "https://docs.medusajs.com/user-guide",
+      href: `${process.env.NEXT_PUBLIC_DOCS_URL}/user-guide`,
     },
     {
       title: "Store API",
       external: true,
-      href: "https://docs.medusajs.com/api/store",
+      href: `${process.env.NEXT_PUBLIC_DOCS_URL}/api/store`,
     },
     {
       title: "Admin API",
       external: true,
-      href: "https://docs.medusajs.com/api/admin",
+      href: `${process.env.NEXT_PUBLIC_DOCS_URL}/api/admin`,
     },
     {
       title: "UI",
-      href: "/",
+      href: `${process.env.NEXT_PUBLIC_DOCS_URL}/ui`,
     },
   ],
   sidebarNav: [
