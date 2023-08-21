@@ -4,9 +4,9 @@ import * as React from "react"
 import { Button } from "@/components/button"
 import { FocusModal } from "./focus-modal"
 
-const meta: Meta<typeof FocusModal.Root> = {
+const meta: Meta<typeof FocusModal> = {
   title: "Components/FocusModal",
-  component: FocusModal.Root,
+  component: FocusModal,
   parameters: {
     layout: "centered",
   },
@@ -14,12 +14,12 @@ const meta: Meta<typeof FocusModal.Root> = {
 
 export default meta
 
-type Story = StoryObj<typeof FocusModal.Root>
+type Story = StoryObj<typeof FocusModal>
 
 export const Default: Story = {
   render: () => {
     return (
-      <FocusModal.Root>
+      <FocusModal>
         <FocusModal.Trigger asChild>
           <Button>Edit Variant</Button>
         </FocusModal.Trigger>
@@ -29,7 +29,7 @@ export const Default: Story = {
           </FocusModal.Header>
           <FocusModal.Body></FocusModal.Body>
         </FocusModal.Content>
-      </FocusModal.Root>
+      </FocusModal>
     )
   },
 }
