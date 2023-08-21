@@ -13,6 +13,7 @@ import { HookValues } from "@/components/hook-values"
 import { IconSearch } from "@/components/icon-search"
 import { PackageInstall } from "@/components/package-install"
 import { Snippet } from "@/components/snippet"
+import { FigmaLink } from "@/components/figma-link"
 
 interface MdxProps {
   code: string
@@ -79,6 +80,7 @@ const components = {
   PackageInstall,
   IconSearch,
   Colors,
+  FigmaLink,
 }
 
 const Mdx = ({ code }: MdxProps) => {
