@@ -3,6 +3,11 @@
   "version": "0.0.0",
   "author": "Kasper Kristensen <kasper@medusajs.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/medusajs/ui.git",
+    "directory": "packages/ui"
+  },
   "main": "./dist/cjs/index.js",
   "types": "./dist/cjs/index.d.ts",
   "module": "./dist/esm/index.js",
