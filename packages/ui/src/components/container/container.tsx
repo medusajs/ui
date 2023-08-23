@@ -4,7 +4,7 @@ import { clx } from "@/utils/clx"
 
 const Container = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
+  React.ComponentPropsWithoutRef<"div">
 >(({ className, ...props }, ref) => {
   return (
     <div

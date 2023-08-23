@@ -122,6 +122,7 @@ const Day = ({ date, displayMonth }: DayProps) => {
     <button
       ref={ref}
       {...buttonPropsRest}
+      type="button"
       className={clx("relative", buttonClassName)}
     >
       {buttonChildren}

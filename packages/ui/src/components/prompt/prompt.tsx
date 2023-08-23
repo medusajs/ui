@@ -91,7 +91,9 @@ const Action = React.forwardRef<
 >(({ className, children, type, ...props }, ref) => {
   return (
     <Primitives.Action ref={ref} className={className} {...props} asChild>
-      <Button type={type}>{children}</Button>
+      <Button type={type} variant="danger">
+        {children}
+      </Button>
     </Primitives.Action>
   )
 })

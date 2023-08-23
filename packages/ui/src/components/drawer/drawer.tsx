@@ -57,13 +57,13 @@ const Content = React.forwardRef<
 })
 Content.displayName = "Drawer.Content"
 
-const Header = ({
-  children,
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => {
+const Header = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<"div">
+>(({ children, className, ...props }, ref) => {
   return (
     <div
+      ref={ref}
       className="border-ui-border-base flex items-start justify-between gap-x-4 border-b px-8 py-6"
       {...props}
     >
@@ -78,15 +78,21 @@ const Header = ({
       </div>
     </div>
   )
-}
+})
 Header.displayName = "Drawer.Header"
 
-const Body = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => {
-  return <div className={clx("flex-1 px-8 pb-16 pt-6", className)} {...props} />
-}
+const Body = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<"div">
+>(({ className, ...props }, ref) => {
+  return (
+    <div
+      ref={ref}
+      className={clx("flex-1 px-8 pb-16 pt-6", className)}
+      {...props}
+    />
+  )
+})
 Body.displayName = "Drawer.Body"
 
 const Footer = ({
