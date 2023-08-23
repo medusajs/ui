@@ -21,3 +21,4 @@ jobs:
           workingDir: "/packages/ui/"
           buildScriptName: "storybook:build"
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          onlyChanged: true
