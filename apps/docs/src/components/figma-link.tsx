@@ -1,5 +1,5 @@
 import { ArrowUpRightOnBox } from "@medusajs/icons"
-import FigmaIcon from "../assets//figma.png"
+import FigmaIcon from "../assets/figma-logo.png"
 
 const FigmaLink = () => {
   return (
@@ -10,8 +10,10 @@ const FigmaLink = () => {
       role="button"
       aria-label="Open Medusa UI Figma File"
     >
-      <div className="bg-ui-bg-base border-ui-border-base mr-4 flex h-[40px] w-[40px] items-center justify-center rounded-lg border">
-        <img src={FigmaIcon.src} />
+      <div className="bg-ui-bg-base border-ui-border-base mr-4 flex h-[40px] w-[40px] items-center justify-center overflow-hidden rounded-lg border">
+        <div className="h-[32px] w-[32px] overflow-hidden rounded-md">
+          <img src={FigmaIcon.src} />
+        </div>
       </div>
       <div>
         <p className="txt-compact-medium-plus text-ui-fg-base">Medusa UI</p>
