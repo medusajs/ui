@@ -27,7 +27,7 @@ const buttonVariants = cva(
           "hover:bg-ui-button-transparent-hover",
           "active:bg-ui-button-transparent-pressed active:border-ui-border-base",
           "focus:shadow-borders-focus focus:bg-ui-bg-base focus:border-ui-border-base",
-          "disabled:bg-transparent disabled:shadow-none"
+          "disabled:!border-none disabled:!bg-transparent disabled:!shadow-none"
         ),
         danger: clx(
           "shadow-buttons-neutral text-ui-fg-on-color border-ui-border-danger bg-ui-button-danger after:button-danger-gradient",

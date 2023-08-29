@@ -2853,6 +2853,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@medusajs/ui@workspace:packages/ui"
   dependencies:
+    "@faker-js/faker": ^8.0.2
     "@medusajs/eslint-config-ui": "*"
     "@medusajs/icons": "*"
     "@medusajs/tsconfig-ui": "*"
@@ -2869,6 +2870,7 @@ __metadata:
     "@radix-ui/react-select": ^1.2.2
     "@radix-ui/react-slot": ^1.0.2
     "@radix-ui/react-switch": ^1.0.3
+    "@radix-ui/react-tabs": ^1.0.4
     "@radix-ui/react-toast": ^1.1.4
     "@radix-ui/react-tooltip": ^1.0.6
     "@react-aria/datepicker": ^3.5.0

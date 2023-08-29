@@ -2,13 +2,39 @@
 
 import { XMark } from "@medusajs/icons"
 import * as Primitives from "@radix-ui/react-dialog"
+import * as Tabs from "@radix-ui/react-tabs"
 import * as React from "react"
 
 import { Kbd } from "@/components/kbd"
 import { clx } from "@/utils/clx"
 import { Button } from "../button"
 
-const Root = Primitives.Root
+interface FocusModalProps
+  extends React.ComponentPropsWithoutRef<typeof Primitives.Root> {
+  defaultTab?: string
+  tab?: string
+  onTabChange?: (tab: string) => void
+}
+
+const Root = ({
+  defaultTab,
+  tab,
+  onTabChange,
+  children,
+  ...props
+}: FocusModalProps) => {
+  return (
+    <Primitives.Root {...props}>
+      <Tabs.Root
+        defaultValue={defaultTab}
+        value={tab}
+        onValueChange={onTabChange}
+      >
+        {children}
+      </Tabs.Root>
+    </Primitives.Root>
+  )
+}
 Root.displayName = "FocusModal.Root"
 
 const Trigger = Primitives.Trigger
@@ -66,7 +92,7 @@ const Header = React.forwardRef<
     <div
       ref={ref}
       className={clx(
-        "border-ui-border-base flex items-start justify-between gap-x-4 border-b p-4",
+        "border-ui-border-base flex items-center justify-between gap-x-4 border-b px-4 py-2",
         className
       )}
       {...props}
@@ -79,7 +105,7 @@ const Header = React.forwardRef<
         </Primitives.Close>
         <Kbd>esc</Kbd>
       </div>
-      <div>{children}</div>
+      {children}
     </div>
   )
 })
@@ -93,11 +119,49 @@ const Body = React.forwardRef<
 })
 Body.displayName = "FocusModal.Body"
 
+const TabsList = React.forwardRef<
+  React.ElementRef<typeof Tabs.List>,
+  React.ComponentPropsWithoutRef<typeof Tabs.List>
+>(({ className, ...props }, ref) => {
+  return (
+    <Tabs.List
+      ref={ref}
+      className={clx("ml-2 flex w-full items-center", className)}
+      {...props}
+    />
+  )
+})
+TabsList.displayName = "FocusModal.TabsList"
+
+const TabsTrigger = React.forwardRef<
+  React.ElementRef<typeof Tabs.Trigger>,
+  React.ComponentPropsWithoutRef<typeof Tabs.Trigger>
+>(({ className, type = "button", ...props }, ref) => {
+  return (
+    <Tabs.Trigger
+      ref={ref}
+      type={type}
+      className={clx(
+        "border-ui-border-base disabled:bg-ui-bg-disabled txt-compact-small-plus data-[state=active]:text-ui-fg-base data-[state=active]:bg-ui-bg-base bg-ui-bg-subtle hover:bg-ui-bg-subtle-hover text-ui-fg-muted transition-fg -my-2 flex min-w-[200px] items-center justify-start border-r px-4 py-[14px] first-of-type:border-l",
+        className
+      )}
+      {...props}
+    />
+  )
+})
+TabsTrigger.displayName = "FocusModal.TabsTrigger"
+
+const TabsContent = Tabs.Content
+TabsContent.displayName = "FocusModal.TabsContent"
+
 const FocusModal = Object.assign(Root, {
   Trigger,
   Content,
   Header,
   Body,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
 })
 
 export { FocusModal }
