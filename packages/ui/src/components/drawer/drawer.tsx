@@ -4,11 +4,11 @@ import { XMark } from "@medusajs/icons"
 import * as Primitives from "@radix-ui/react-dialog"
 import * as React from "react"
 
-import { Button } from "@/components/button"
 import { Heading } from "@/components/heading"
+import { IconButton } from "@/components/icon-button"
+import { Kbd } from "@/components/kbd"
+import { Text } from "@/components/text"
 import { clx } from "@/utils/clx"
-import { Kbd } from "../kbd"
-import { Text } from "../text"
 
 const Root = Primitives.Root
 Root.displayName = "Drawer.Root"
@@ -29,7 +29,7 @@ const Overlay = React.forwardRef<
   return (
     <Primitives.Overlay
       ref={ref}
-      className={clx("fixed inset-0 z-50", className)}
+      className={clx("bg-ui-bg-overlay fixed inset-0 z-50", className)}
       {...props}
     />
   )
@@ -71,9 +71,9 @@ const Header = React.forwardRef<
       <div className="flex items-center gap-x-2">
         <Kbd>esc</Kbd>
         <Close asChild>
-          <Button variant="transparent" size={"small"} format={"icon"}>
+          <IconButton variant="transparent">
             <XMark />
-          </Button>
+          </IconButton>
         </Close>
       </div>
     </div>

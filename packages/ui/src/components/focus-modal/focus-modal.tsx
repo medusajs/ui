@@ -5,9 +5,9 @@ import * as Primitives from "@radix-ui/react-dialog"
 import * as Tabs from "@radix-ui/react-tabs"
 import * as React from "react"
 
+import { IconButton } from "@/components/icon-button"
 import { Kbd } from "@/components/kbd"
 import { clx } from "@/utils/clx"
-import { Button } from "../button"
 
 interface FocusModalProps
   extends React.ComponentPropsWithoutRef<typeof Primitives.Root> {
@@ -53,7 +53,7 @@ const Overlay = React.forwardRef<
     <Primitives.Overlay
       ref={ref}
       className={clx(
-        "fixed inset-0 z-50",
+        "bg-ui-bg-overlay fixed inset-0 z-50",
         // "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",  // Re-enable when Admin UI has been cleaned up
         className
       )}
@@ -99,9 +99,9 @@ const Header = React.forwardRef<
     >
       <div className="flex items-center gap-x-2">
         <Primitives.Close asChild>
-          <Button variant="transparent" size={"small"} format={"icon"}>
+          <IconButton variant="transparent">
             <XMark />
-          </Button>
+          </IconButton>
         </Primitives.Close>
         <Kbd>esc</Kbd>
       </div>

@@ -10,8 +10,8 @@ import {
   type DayProps,
 } from "react-day-picker"
 
-import { buttonVariants } from "@/components/button"
 import { clx } from "@/utils/clx"
+import { iconButtonVariants } from "../icon-button"
 
 type OmitKeys<T, K extends keyof T> = {
   [P in keyof T as P extends K ? never : P]: T[P]
@@ -53,8 +53,7 @@ const Calendar = ({
           "txt-compact-small-plus absolute bottom-0 left-0 right-0 top-1 flex items-center justify-center text-ui-fg-base",
         nav: "space-x-1 flex items-center bg-ui-bg-base-pressed rounded-md w-full h-full justify-between p-0.5",
         nav_button: clx(
-          buttonVariants({ variant: "secondary", format: "icon" }),
-          "h-8 w-8"
+          iconButtonVariants({ variant: "primary", size: "base" })
         ),
         nav_button_previous: "!absolute left-0.5",
         nav_button_next: "!absolute right-0.5",

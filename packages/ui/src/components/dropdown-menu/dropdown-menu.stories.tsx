@@ -2,7 +2,7 @@ import { EllipsisHorizontal, PencilSquare, Plus, Trash } from "@medusajs/icons"
 import type { Meta, StoryObj } from "@storybook/react"
 import * as React from "react"
 
-import { Button } from "@/components/button"
+import { IconButton } from "@/components/icon-button"
 import { DropdownMenu } from "./dropdown-menu"
 
 const meta: Meta<typeof DropdownMenu> = {
@@ -23,9 +23,9 @@ const SortingDemo = () => {
     <div className="flex flex-col gap-y-2">
       <DropdownMenu>
         <DropdownMenu.Trigger asChild>
-          <Button variant="secondary" format={"icon"}>
+          <IconButton variant="primary">
             <EllipsisHorizontal />
-          </Button>
+          </IconButton>
         </DropdownMenu.Trigger>
         <DropdownMenu.Content className="w-[300px]">
           <DropdownMenu.RadioGroup
@@ -92,9 +92,9 @@ const SelectDemo = () => {
     <div className="flex flex-col gap-y-2">
       <DropdownMenu>
         <DropdownMenu.Trigger asChild>
-          <Button variant="secondary" format={"icon"}>
+          <IconButton>
             <EllipsisHorizontal />
-          </Button>
+          </IconButton>
         </DropdownMenu.Trigger>
         <DropdownMenu.Content className="w-[300px]">
           <DropdownMenu.Group>
@@ -182,9 +182,9 @@ export const SimpleMenu: Story = {
     return (
       <DropdownMenu>
         <DropdownMenu.Trigger asChild>
-          <Button variant="secondary" format={"icon"}>
+          <IconButton>
             <EllipsisHorizontal />
-          </Button>
+          </IconButton>
         </DropdownMenu.Trigger>
         <DropdownMenu.Content>
           <DropdownMenu.Item className="gap-x-2">

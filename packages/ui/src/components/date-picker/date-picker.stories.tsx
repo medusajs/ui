@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import * as React from "react"
 
-import { DatePicker } from "./date-picker"
+import { Alternative, DatePicker } from "./date-picker"
 
 const meta: Meta<typeof DatePicker> = {
   title: "Components/DatePicker",
@@ -9,7 +9,10 @@ const meta: Meta<typeof DatePicker> = {
   render: (args) => {
     return (
       <div className="w-[200px]">
-        <DatePicker {...args} />
+        <Alternative {...args}>
+          <Alternative.Value placeholder="Select a date" />
+          <Alternative.Calendar />
+        </Alternative>
       </div>
     )
   },

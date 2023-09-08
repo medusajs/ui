@@ -56,13 +56,6 @@ export const WithIcon: Story = {
   },
 }
 
-export const IconOnly: Story = {
-  args: {
-    children: <PlusMini />,
-    format: "icon",
-  },
-}
-
 export const Loading: Story = {
   args: {
     children: "Action",
