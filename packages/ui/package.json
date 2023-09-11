@@ -1,6 +1,6 @@
 {
   "name": "@medusajs/ui",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "author": "Kasper Kristensen <kasper@medusajs.com>",
   "license": "MIT",
   "repository": {
@@ -44,7 +44,7 @@
   "devDependencies": {
     "@medusajs/eslint-config-ui": "*",
     "@medusajs/tsconfig-ui": "*",
-    "@medusajs/ui-preset": "*",
+    "@medusajs/ui-preset": "^1.0.0",
     "@storybook/addon-essentials": "^7.0.23",
     "@storybook/addon-interactions": "^7.0.23",
     "@storybook/addon-links": "^7.0.23",
