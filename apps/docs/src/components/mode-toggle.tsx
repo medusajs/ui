@@ -1,7 +1,7 @@
 "use client"
 
 import { Moon, Sun } from "@medusajs/icons"
-import { Button } from "@medusajs/ui"
+import { IconButton } from "@medusajs/ui"
 import { useTheme } from "next-themes"
 import * as React from "react"
 
@@ -19,13 +19,12 @@ const ModeToggle = () => {
   const isMobileView = useMatchMedia("(max-width: 1024px)")
 
   return (
-    <Button
-      variant={isMobileView ? "transparent" : "secondary"}
-      format={"icon"}
+    <IconButton
+      variant={isMobileView ? "transparent" : "primary"}
       onClick={toggleTheme}
     >
       {isDarkMode ? <Moon /> : <Sun />}
-    </Button>
+    </IconButton>
   )
 }
 

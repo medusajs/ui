@@ -56,10 +56,10 @@ export const ExampleRegistry: Record<string, any> = {
     component: React.lazy(() => import("@/examples/badge-rounded")),
     file: "src/examples/badge-rounded.tsx",
   },
-  "badge-icon": {
+  "icon-badge-demo": {
     name: "badge-icon",
-    component: React.lazy(() => import("@/examples/badge-icon")),
-    file: "src/examples/badge-icon.tsx",
+    component: React.lazy(() => import("@/examples/icon-badge-demo")),
+    file: "src/examples/icon-badge-demo.tsx",
   },
   "button-demo": {
     name: "button-demo",
@@ -376,11 +376,6 @@ export const ExampleRegistry: Record<string, any> = {
     name: "button-with-icon",
     component: React.lazy(() => import("@/examples/button-with-icon")),
     file: "src/examples/button-with-icon.tsx",
-  },
-  "button-icon-only": {
-    name: "button-icon-only",
-    component: React.lazy(() => import("@/examples/button-icon-only")),
-    file: "src/examples/button-icon-only.tsx",
   },
   "button-loading": {
     name: "button-loading",

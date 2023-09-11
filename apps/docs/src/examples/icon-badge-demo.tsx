@@ -1,9 +1,9 @@
 import { BuildingTax } from "@medusajs/icons"
 import { Badge } from "@medusajs/ui"
 
-export default function BadgeIcon() {
+export default function IconBadgeDemo() {
   return (
-    <Badge type="icon">
+    <Badge>
       <BuildingTax />
     </Badge>
   )
