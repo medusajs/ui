@@ -2832,7 +2832,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@medusajs/ui-preset@*, @medusajs/ui-preset@workspace:packages/ui-preset":
+"@medusajs/ui-preset@*, @medusajs/ui-preset@^1.0.0, @medusajs/ui-preset@workspace:packages/ui-preset":
   version: 0.0.0-use.local
   resolution: "@medusajs/ui-preset@workspace:packages/ui-preset"
   dependencies:
@@ -2856,7 +2856,7 @@ __metadata:
     "@medusajs/eslint-config-ui": "*"
     "@medusajs/icons": "*"
     "@medusajs/tsconfig-ui": "*"
-    "@medusajs/ui-preset": "*"
+    "@medusajs/ui-preset": ^1.0.0
     "@radix-ui/react-alert-dialog": ^1.0.4
     "@radix-ui/react-avatar": ^1.0.3
     "@radix-ui/react-checkbox": ^1.0.4
