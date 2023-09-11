@@ -61,6 +61,46 @@ export const ExampleRegistry: Record<string, any> = {
     component: React.lazy(() => import("@/examples/icon-badge-demo")),
     file: "src/examples/icon-badge-demo.tsx",
   },
+  "icon-badge-base": {
+    name: "badge-icon-base",
+    component: React.lazy(() => import("@/examples/icon-badge-base")),
+    file: "src/examples/icon-badge-base.tsx",
+  },
+  "icon-badge-large": {
+    name: "badge-icon-large",
+    component: React.lazy(() => import("@/examples/icon-badge-large")),
+    file: "src/examples/icon-badge-large.tsx",
+  },
+  "icon-badge-grey": {
+    name: "badge-icon-grey",
+    component: React.lazy(() => import("@/examples/icon-badge-grey")),
+    file: "src/examples/icon-badge-grey.tsx",
+  },
+  "icon-badge-blue": {
+    name: "badge-icon-blue",
+    component: React.lazy(() => import("@/examples/icon-badge-blue")),
+    file: "src/examples/icon-badge-blue.tsx",
+  },
+  "icon-badge-green": {
+    name: "badge-icon-green",
+    component: React.lazy(() => import("@/examples/icon-badge-green")),
+    file: "src/examples/icon-badge-green.tsx",
+  },
+  "icon-badge-red": {
+    name: "badge-icon-red",
+    component: React.lazy(() => import("@/examples/icon-badge-red")),
+    file: "src/examples/icon-badge-red.tsx",
+  },
+  "icon-badge-orange": {
+    name: "badge-icon-orange",
+    component: React.lazy(() => import("@/examples/icon-badge-orange")),
+    file: "src/examples/icon-badge-orange.tsx",
+  },
+  "icon-badge-purple": {
+    name: "badge-icon-purple",
+    component: React.lazy(() => import("@/examples/icon-badge-purple")),
+    file: "src/examples/icon-badge-purple.tsx",
+  },
   "button-demo": {
     name: "button-demo",
     component: React.lazy(() => import("@/examples/button-demo")),
@@ -381,6 +421,11 @@ export const ExampleRegistry: Record<string, any> = {
     name: "button-loading",
     component: React.lazy(() => import("@/examples/button-loading")),
     file: "src/examples/button-loading.tsx",
+  },
+  "icon-button-demo": {
+    name: "icon-button-demo",
+    component: React.lazy(() => import("@/examples/icon-button-demo")),
+    file: "src/examples/icon-button-demo.tsx",
   },
   "select-small": {
     name: "select-small",

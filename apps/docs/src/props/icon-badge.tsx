@@ -1,7 +1,7 @@
 import { PropTable } from "@/components/props-table"
 import { PropDataMap } from "@/types/props"
 
-const badgeProps: PropDataMap = [
+const iconBadgeProps: PropDataMap = [
   {
     prop: "color",
     type: {
@@ -14,22 +14,14 @@ const badgeProps: PropDataMap = [
     prop: "size",
     type: {
       type: "enum",
-      values: ["small", "base", "large"],
-    },
-    defaultValue: "base",
-  },
-  {
-    prop: "rounded",
-    type: {
-      type: "enum",
-      values: ["base", "full"],
+      values: ["base", "large"],
     },
     defaultValue: "base",
   },
 ]
 
 const Props = () => {
-  return <PropTable props={badgeProps} />
+  return <PropTable props={iconBadgeProps} />
 }
 
 export default Props

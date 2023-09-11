@@ -65,4 +65,10 @@ export const PropRegistry: Record<string, PropRegistryItem> = {
   tooltip: {
     table: React.lazy(() => import("../props/tooltip")),
   },
+  "icon-badge": {
+    table: React.lazy(() => import("../props/icon-badge")),
+  },
+  "icon-button": {
+    table: React.lazy(() => import("../props/icon-button")),
+  },
 }

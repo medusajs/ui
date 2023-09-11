@@ -10,7 +10,9 @@ import * as React from "react"
 
 import { clx } from "@/utils/clx"
 
-const ProgressTabsRoot = ProgressTabsPrimitives.Root
+const ProgressTabsRoot = (props: ProgressTabsPrimitives.TabsProps) => {
+  return <ProgressTabsPrimitives.Root {...props} />
+}
 ProgressTabsRoot.displayName = "ProgressTabs"
 
 const ProgressTabsTrigger = React.forwardRef<
@@ -83,7 +85,18 @@ const ProgressTabsList = React.forwardRef<
 ))
 ProgressTabsList.displayName = "ProgressTabs.List"
 
-const ProgressTabsContent = ProgressTabsPrimitives.Content
+const ProgressTabsContent = React.forwardRef<
+  React.ElementRef<typeof ProgressTabsPrimitives.Content>,
+  React.ComponentPropsWithoutRef<typeof ProgressTabsPrimitives.Content>
+>(({ className, ...props }, ref) => {
+  return (
+    <ProgressTabsPrimitives.Content
+      ref={ref}
+      className={clx(className)}
+      {...props}
+    />
+  )
+})
 ProgressTabsContent.displayName = "ProgressTabs.Content"
 
 const ProgressTabs = Object.assign(ProgressTabsRoot, {

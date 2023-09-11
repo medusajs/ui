@@ -10,16 +10,36 @@ import { Kbd } from "@/components/kbd"
 import { Text } from "@/components/text"
 import { clx } from "@/utils/clx"
 
-const DrawerRoot = DrawerPrimitives.Root
+const DrawerRoot = (
+  props: React.ComponentPropsWithoutRef<typeof DrawerPrimitives.Root>
+) => {
+  return <DrawerPrimitives.Root {...props} />
+}
 DrawerRoot.displayName = "Drawer.Root"
 
-const DrawerTrigger = DrawerPrimitives.Trigger
+const DrawerTrigger = React.forwardRef<
+  React.ElementRef<typeof DrawerPrimitives.Trigger>,
+  React.ComponentPropsWithoutRef<typeof DrawerPrimitives.Trigger>
+>(({ className, ...props }, ref) => {
+  return (
+    <DrawerPrimitives.Trigger ref={ref} className={clx(className)} {...props} />
+  )
+})
 DrawerTrigger.displayName = "Drawer.Trigger"
 
-const DrawerClose = DrawerPrimitives.Close
+const DrawerClose = React.forwardRef<
+  React.ElementRef<typeof DrawerPrimitives.Close>,
+  React.ComponentPropsWithoutRef<typeof DrawerPrimitives.Close>
+>(({ className, ...props }, ref) => {
+  return (
+    <DrawerPrimitives.Close ref={ref} className={clx(className)} {...props} />
+  )
+})
 DrawerClose.displayName = "Drawer.Close"
 
-const DrawerPortal = DrawerPrimitives.Portal
+const DrawerPortal = (props: DrawerPrimitives.DialogPortalProps) => {
+  return <DrawerPrimitives.DialogPortal {...props} />
+}
 DrawerPortal.displayName = "Drawer.Portal"
 
 const DrawerOverlay = React.forwardRef<
@@ -47,7 +67,7 @@ const DrawerContent = React.forwardRef<
         ref={ref}
         className={clx(
           "bg-ui-bg-base shadow-elevation-modal border-ui-border-base fixed inset-y-2 right-2 z-50 flex w-full max-w-[560px] flex-1 flex-col rounded-lg border focus:outline-none",
-          "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:slide-out-to-right-1/2 data-[state=open]:slide-in-from-right-1/2 duration-200",
+          // "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:slide-out-to-right-1/2 data-[state=open]:slide-in-from-right-1/2 duration-200",
           className
         )}
         {...props}
@@ -70,11 +90,11 @@ const DrawerHeader = React.forwardRef<
       <div className={clx("flex flex-col gap-y-1", className)}>{children}</div>
       <div className="flex items-center gap-x-2">
         <Kbd>esc</Kbd>
-        <DrawerClose asChild>
+        <DrawerPrimitives.Close asChild>
           <IconButton variant="transparent">
             <XMark />
           </IconButton>
-        </DrawerClose>
+        </DrawerPrimitives.Close>
       </div>
     </div>
   )

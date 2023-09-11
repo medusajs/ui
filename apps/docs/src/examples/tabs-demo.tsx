@@ -2,14 +2,14 @@ import { Tabs, Text } from "@medusajs/ui"
 
 export default function TabsDemo() {
   return (
-    <div className="h-full w-full px-4">
+    <div className="h-full w-full p-4">
       <Tabs defaultValue="description">
         <Tabs.List>
           <Tabs.Trigger value="description">Description</Tabs.Trigger>
           <Tabs.Trigger value="sustainability">Sustainability </Tabs.Trigger>
           <Tabs.Trigger value="shipping">Shipping</Tabs.Trigger>
         </Tabs.List>
-        <div className="txt-compact-medium text-ui-fg-base mt-4 h-[300px] p-3">
+        <div className="txt-compact-medium text-ui-fg-base mt-4 p-3">
           <Tabs.Content value="description">
             <Text>
               Ultra soft and comfortable, this basic tee is a wardrobe staple.

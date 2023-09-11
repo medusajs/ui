@@ -5,7 +5,11 @@ import * as React from "react"
 
 import { clx } from "@/utils/clx"
 
-const TabsRoot = TabsPrimitives.Root
+const TabsRoot = (
+  props: React.ComponentPropsWithoutRef<typeof TabsPrimitives.Root>
+) => {
+  return <TabsPrimitives.Root {...props} />
+}
 TabsRoot.displayName = "Tabs"
 
 const TabsTrigger = React.forwardRef<
@@ -40,7 +44,12 @@ const TabsList = React.forwardRef<
 ))
 TabsList.displayName = "Tabs.List"
 
-const TabsContent = TabsPrimitives.Content
+const TabsContent = React.forwardRef<
+  React.ElementRef<typeof TabsPrimitives.Content>,
+  React.ComponentPropsWithoutRef<typeof TabsPrimitives.Content>
+>(({ className, ...props }, ref) => (
+  <TabsPrimitives.Content ref={ref} className={clx(className)} {...props} />
+))
 TabsContent.displayName = "Tabs.Content"
 
 const Tabs = Object.assign(TabsRoot, {

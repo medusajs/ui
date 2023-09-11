@@ -8,10 +8,19 @@ import { IconButton } from "@/components/icon-button"
 import { Kbd } from "@/components/kbd"
 import { clx } from "@/utils/clx"
 
-const FocusModalRoot = FocusModalPrimitives.Root
+const FocusModalRoot = (
+  props: React.ComponentPropsWithoutRef<typeof FocusModalPrimitives.Root>
+) => {
+  return <FocusModalPrimitives.Root {...props} />
+}
 FocusModalRoot.displayName = "FocusModal"
 
-const FocusModalTrigger = FocusModalPrimitives.Trigger
+const FocusModalTrigger = React.forwardRef<
+  React.ElementRef<typeof FocusModalPrimitives.Trigger>,
+  React.ComponentPropsWithoutRef<typeof FocusModalPrimitives.Trigger>
+>((props, ref) => {
+  return <FocusModalPrimitives.Trigger ref={ref} {...props} />
+})
 FocusModalTrigger.displayName = "FocusModal.Trigger"
 
 const FocusModalPortal = ({

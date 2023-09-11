@@ -2913,7 +2913,6 @@ __metadata:
     tailwind-merge: ^1.13.2
     tailwindcss: ^3.3.2
     tsc-alias: ^1.8.7
-    tsup: ^7.2.0
     typescript: ^5.1.6
     vite: ^4.3.9
     vitest: ^0.32.2
@@ -17708,7 +17707,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsup@npm:^7.1.0, tsup@npm:^7.2.0":
+"tsup@npm:^7.1.0":
   version: 7.2.0
   resolution: "tsup@npm:7.2.0"
   dependencies:

@@ -157,6 +157,16 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Icon Badge",
+          href: "/components/icon-badge",
+          items: [],
+        },
+        {
+          title: "Icon Button",
+          href: "/components/icon-button",
+          items: [],
+        },
+        {
           title: "Input",
           href: "/components/input",
           items: [],
