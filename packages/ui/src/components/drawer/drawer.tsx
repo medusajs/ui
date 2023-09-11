@@ -141,7 +141,7 @@ const DrawerDescription = React.forwardRef<
 ))
 DrawerDescription.displayName = "Drawer.Description"
 
-export const Drawer = Object.assign(DrawerRoot, {
+const Drawer = Object.assign(DrawerRoot, {
   Body: DrawerBody,
   Close: DrawerClose,
   Content: DrawerContent,
@@ -151,3 +151,5 @@ export const Drawer = Object.assign(DrawerRoot, {
   Title: DrawerTitle,
   Trigger: DrawerTrigger,
 })
+
+export { Drawer }
