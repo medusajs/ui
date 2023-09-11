@@ -79,6 +79,16 @@ export const docsConfig: DocsConfig = {
       ],
     },
     {
+      title: "Recipes",
+      items: [
+        {
+          title: "Wizard",
+          href: "/recipes/wizard",
+          items: [],
+        },
+      ],
+    },
+    {
       title: "Components",
       items: [
         {
@@ -264,16 +274,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "clx",
           href: "/utils/clx",
-          items: [],
-        },
-      ],
-    },
-    {
-      title: "Recipes",
-      items: [
-        {
-          title: "Focus Modal Wizard",
-          href: "/recipes/focus-modal-wizard",
           items: [],
         },
       ],
