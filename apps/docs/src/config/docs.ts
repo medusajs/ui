@@ -268,5 +268,15 @@ export const docsConfig: DocsConfig = {
         },
       ],
     },
+    {
+      title: "Recipes",
+      items: [
+        {
+          title: "Focus Modal Wizard",
+          href: "/recipes/focus-modal-wizard",
+          items: [],
+        },
+      ],
+    },
   ],
 }
