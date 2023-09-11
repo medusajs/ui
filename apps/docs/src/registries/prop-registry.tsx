@@ -20,11 +20,11 @@ export const PropRegistry: Record<string, PropRegistryItem> = {
   "code-block-header": {
     table: React.lazy(() => import("../props/code-block-header")),
   },
-  "code-block-body": {
-    table: React.lazy(() => import("../props/code-block-body")),
-  },
   copy: {
     table: React.lazy(() => import("../props/copy")),
+  },
+  "currency-input": {
+    table: React.lazy(() => import("../props/currency-input")),
   },
   "date-picker": {
     table: React.lazy(() => import("../props/date-picker")),

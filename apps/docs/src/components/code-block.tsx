@@ -11,10 +11,12 @@ const CodeBlock = ({
 }) => {
   return (
     <Primitive
-      snippets={[{ language: "tsx", label: "TSX", code }]}
+      snippets={[
+        { language: "tsx", label: "TSX", code, hideLineNumbers: true },
+      ]}
       className={className}
     >
-      <Primitive.Body hideLineNumbers className="max-h-[400px] overflow-auto" />
+      <Primitive.Body className="max-h-[400px] overflow-auto" />
     </Primitive>
   )
 }

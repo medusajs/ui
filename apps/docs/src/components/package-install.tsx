@@ -22,14 +22,14 @@ const PackageInstall = ({
   return (
     <CodeBlock
       snippets={[
-        { language: "bash", label: "yarn", code: yarn },
-        { language: "bash", label: "npm", code: npm },
-        { language: "bash", label: "pnpm", code: pnpm },
+        { language: "bash", label: "yarn", code: yarn, hideLineNumbers: true },
+        { language: "bash", label: "npm", code: npm, hideLineNumbers: true },
+        { language: "bash", label: "pnpm", code: pnpm, hideLineNumbers: true },
       ]}
       className={clx("mb-6 mt-8", className)}
     >
       <CodeBlock.Header className="py-3" />
-      <CodeBlock.Body hideLineNumbers />
+      <CodeBlock.Body />
     </CodeBlock>
   )
 }

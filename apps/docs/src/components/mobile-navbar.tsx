@@ -1,7 +1,7 @@
 "use client"
 
 import { Sidebar, XMark } from "@medusajs/icons"
-import { Badge, Button, clx } from "@medusajs/ui"
+import { Badge, IconButton, clx } from "@medusajs/ui"
 import * as Dialog from "@radix-ui/react-dialog"
 import Link, { LinkProps } from "next/link"
 import { usePathname, useRouter } from "next/navigation"
@@ -26,12 +26,9 @@ const MobileNavbar = () => {
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
-        <Button
-          variant={isMobileView ? "transparent" : "secondary"}
-          format={"icon"}
-        >
+        <IconButton variant={isMobileView ? "transparent" : "primary"}>
           {open ? <XMark /> : <Sidebar />}
-        </Button>
+        </IconButton>
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="absolute inset-0" />

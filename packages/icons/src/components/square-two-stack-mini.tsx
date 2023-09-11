@@ -1,6 +1,6 @@
 import * as React from "react"
 import type { IconProps } from "../types"
-const Square2StackMini = React.forwardRef<SVGSVGElement, IconProps>(
+const SquareTwoStackMini = React.forwardRef<SVGSVGElement, IconProps>(
   ({ color = "currentColor", ...props }, ref) => {
     return (
       <svg
@@ -22,5 +22,5 @@ const Square2StackMini = React.forwardRef<SVGSVGElement, IconProps>(
     )
   }
 )
-Square2StackMini.displayName = "Square2StackMini"
-export default Square2StackMini
+SquareTwoStackMini.displayName = "SquareTwoStackMini"
+export default SquareTwoStackMini

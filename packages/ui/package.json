@@ -42,7 +42,6 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@faker-js/faker": "^8.0.2",
     "@medusajs/eslint-config-ui": "*",
     "@medusajs/tsconfig-ui": "*",
     "@medusajs/ui-preset": "*",
@@ -101,18 +100,13 @@
     "@radix-ui/react-tooltip": "^1.0.6",
     "@react-aria/datepicker": "^3.5.0",
     "@react-stately/datepicker": "^3.5.0",
-    "@tanstack/react-table": "^8.9.3",
-    "@tanstack/react-virtual": "3.0.0-beta.55",
     "class-variance-authority": "^0.6.1",
     "clsx": "^1.2.1",
     "copy-to-clipboard": "^3.3.3",
     "date-fns": "^2.30.0",
-    "downshift": "^8.1.0",
-    "lodash": "^4.17.21",
     "prism-react-renderer": "^2.0.6",
     "react-currency-input-field": "^3.6.11",
     "react-day-picker": "^8.8.0",
-    "react-hook-form": "^7.46.1",
     "tailwind-merge": "^1.13.2"
   },
   "peerDependencies": {

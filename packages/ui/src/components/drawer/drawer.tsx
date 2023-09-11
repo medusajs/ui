@@ -1,7 +1,7 @@
 "use client"
 
 import { XMark } from "@medusajs/icons"
-import * as Primitives from "@radix-ui/react-dialog"
+import * as DrawerPrimitives from "@radix-ui/react-dialog"
 import * as React from "react"
 
 import { Heading } from "@/components/heading"
@@ -10,54 +10,54 @@ import { Kbd } from "@/components/kbd"
 import { Text } from "@/components/text"
 import { clx } from "@/utils/clx"
 
-const Root = Primitives.Root
-Root.displayName = "Drawer.Root"
+const DrawerRoot = DrawerPrimitives.Root
+DrawerRoot.displayName = "Drawer.Root"
 
-const Trigger = Primitives.Trigger
-Trigger.displayName = "Drawer.Trigger"
+const DrawerTrigger = DrawerPrimitives.Trigger
+DrawerTrigger.displayName = "Drawer.Trigger"
 
-const Close = Primitives.Close
-Close.displayName = "Drawer.Close"
+const DrawerClose = DrawerPrimitives.Close
+DrawerClose.displayName = "Drawer.Close"
 
-const Portal = Primitives.Portal
-Portal.displayName = "Drawer.Portal"
+const DrawerPortal = DrawerPrimitives.Portal
+DrawerPortal.displayName = "Drawer.Portal"
 
-const Overlay = React.forwardRef<
-  React.ElementRef<typeof Primitives.Overlay>,
-  React.ComponentPropsWithoutRef<typeof Primitives.Overlay>
+const DrawerOverlay = React.forwardRef<
+  React.ElementRef<typeof DrawerPrimitives.Overlay>,
+  React.ComponentPropsWithoutRef<typeof DrawerPrimitives.Overlay>
 >(({ className, ...props }, ref) => {
   return (
-    <Primitives.Overlay
+    <DrawerPrimitives.Overlay
       ref={ref}
       className={clx("bg-ui-bg-overlay fixed inset-0 z-50", className)}
       {...props}
     />
   )
 })
-Overlay.displayName = "Drawer.Overlay"
+DrawerOverlay.displayName = "Drawer.Overlay"
 
-const Content = React.forwardRef<
-  React.ElementRef<typeof Primitives.Content>,
-  React.ComponentPropsWithoutRef<typeof Primitives.Content>
+const DrawerContent = React.forwardRef<
+  React.ElementRef<typeof DrawerPrimitives.Content>,
+  React.ComponentPropsWithoutRef<typeof DrawerPrimitives.Content>
 >(({ className, ...props }, ref) => {
   return (
-    <Portal>
-      <Overlay />
-      <Primitives.Content
+    <DrawerPortal>
+      <DrawerOverlay />
+      <DrawerPrimitives.Content
         ref={ref}
         className={clx(
           "bg-ui-bg-base shadow-elevation-modal border-ui-border-base fixed inset-y-2 right-2 z-50 flex w-full max-w-[560px] flex-1 flex-col rounded-lg border focus:outline-none",
-          // "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:slide-out-to-right-1/2 data-[state=open]:slide-in-from-right-1/2 duration-200",
+          "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:slide-out-to-right-1/2 data-[state=open]:slide-in-from-right-1/2 duration-200",
           className
         )}
         {...props}
       />
-    </Portal>
+    </DrawerPortal>
   )
 })
-Content.displayName = "Drawer.Content"
+DrawerContent.displayName = "Drawer.Content"
 
-const Header = React.forwardRef<
+const DrawerHeader = React.forwardRef<
   HTMLDivElement,
   React.ComponentPropsWithoutRef<"div">
 >(({ children, className, ...props }, ref) => {
@@ -70,18 +70,18 @@ const Header = React.forwardRef<
       <div className={clx("flex flex-col gap-y-1", className)}>{children}</div>
       <div className="flex items-center gap-x-2">
         <Kbd>esc</Kbd>
-        <Close asChild>
+        <DrawerClose asChild>
           <IconButton variant="transparent">
             <XMark />
           </IconButton>
-        </Close>
+        </DrawerClose>
       </div>
     </div>
   )
 })
-Header.displayName = "Drawer.Header"
+DrawerHeader.displayName = "Drawer.Header"
 
-const Body = React.forwardRef<
+const DrawerBody = React.forwardRef<
   HTMLDivElement,
   React.ComponentPropsWithoutRef<"div">
 >(({ className, ...props }, ref) => {
@@ -93,9 +93,9 @@ const Body = React.forwardRef<
     />
   )
 })
-Body.displayName = "Drawer.Body"
+DrawerBody.displayName = "Drawer.Body"
 
-const Footer = ({
+const DrawerFooter = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => {
@@ -109,40 +109,45 @@ const Footer = ({
     />
   )
 }
-Footer.displayName = "Drawer.Footer"
+DrawerFooter.displayName = "Drawer.Footer"
 
-const Title = React.forwardRef<
-  React.ElementRef<typeof Primitives.Title>,
-  React.ComponentPropsWithoutRef<typeof Primitives.Title>
+const DrawerTitle = React.forwardRef<
+  React.ElementRef<typeof DrawerPrimitives.Title>,
+  React.ComponentPropsWithoutRef<typeof DrawerPrimitives.Title>
 >(({ className, children, ...props }, ref) => (
-  <Primitives.Title ref={ref} className={clx(className)} asChild {...props}>
+  <DrawerPrimitives.Title
+    ref={ref}
+    className={clx(className)}
+    asChild
+    {...props}
+  >
     <Heading level="h1">{children}</Heading>
-  </Primitives.Title>
+  </DrawerPrimitives.Title>
 ))
-Title.displayName = "Drawer.Title"
+DrawerTitle.displayName = "Drawer.Title"
 
-const Description = React.forwardRef<
-  React.ElementRef<typeof Primitives.Description>,
-  React.ComponentPropsWithoutRef<typeof Primitives.Description>
+const DrawerDescription = React.forwardRef<
+  React.ElementRef<typeof DrawerPrimitives.Description>,
+  React.ComponentPropsWithoutRef<typeof DrawerPrimitives.Description>
 >(({ className, children, ...props }, ref) => (
-  <Primitives.Description
+  <DrawerPrimitives.Description
     ref={ref}
     className={clx(className)}
     asChild
     {...props}
   >
     <Text>{children}</Text>
-  </Primitives.Description>
+  </DrawerPrimitives.Description>
 ))
-Description.displayName = "Drawer.Description"
+DrawerDescription.displayName = "Drawer.Description"
 
-export const Drawer = Object.assign(Root, {
-  Body,
-  Close,
-  Content,
-  Description,
-  Footer,
-  Header,
-  Title,
-  Trigger,
+export const Drawer = Object.assign(DrawerRoot, {
+  Body: DrawerBody,
+  Close: DrawerClose,
+  Content: DrawerContent,
+  Description: DrawerDescription,
+  Footer: DrawerFooter,
+  Header: DrawerHeader,
+  Title: DrawerTitle,
+  Trigger: DrawerTrigger,
 })

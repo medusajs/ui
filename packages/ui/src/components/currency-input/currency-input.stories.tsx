@@ -18,6 +18,5 @@ export const Default: Story = {
   args: {
     symbol: "$",
     code: "usd",
-    placeholder: "-",
   },
 }

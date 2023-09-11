@@ -106,6 +106,21 @@ export const ExampleRegistry: Record<string, any> = {
     component: React.lazy(() => import("@/examples/copy-as-child")),
     file: "src/examples/copy-as-child.tsx",
   },
+  "currency-input-demo": {
+    name: "currency-input-demo",
+    component: React.lazy(() => import("@/examples/currency-input-demo")),
+    file: "src/examples/currency-input-demo.tsx",
+  },
+  "currency-input-small": {
+    name: "currency-input-small",
+    component: React.lazy(() => import("@/examples/currency-input-small")),
+    file: "src/examples/currency-input-small.tsx",
+  },
+  "currency-input-base": {
+    name: "currency-input-base",
+    component: React.lazy(() => import("@/examples/currency-input-base")),
+    file: "src/examples/currency-input-base.tsx",
+  },
   "date-picker-demo": {
     name: "date-picker-demo",
     component: React.lazy(() => import("@/examples/date-picker-demo")),
@@ -171,6 +186,11 @@ export const ExampleRegistry: Record<string, any> = {
     name: "focus-modal-demo",
     component: React.lazy(() => import("@/examples/focus-modal-demo")),
     file: "src/examples/focus-modal-demo.tsx",
+  },
+  "focus-modal-with-tabs": {
+    name: "focus-modal-with-tabs",
+    component: React.lazy(() => import("@/examples/focus-modal-with-tabs")),
+    file: "src/examples/focus-modal-with-tabs.tsx",
   },
   "heading-demo": {
     name: "heading-demo",
@@ -271,6 +291,11 @@ export const ExampleRegistry: Record<string, any> = {
     name: "table-demo",
     component: React.lazy(() => import("@/examples/table-demo")),
     file: "src/examples/table-demo.tsx",
+  },
+  "tabs-demo": {
+    name: "tabs-demo",
+    component: React.lazy(() => import("@/examples/tabs-demo")),
+    file: "src/examples/tabs-demo.tsx",
   },
   "text-demo": {
     name: "text-demo",
@@ -476,6 +501,11 @@ export const ExampleRegistry: Record<string, any> = {
     name: "dropdown-menu-sorting",
     component: React.lazy(() => import("@/examples/dropdown-menu-sorting")),
     file: "src/examples/dropdown-menu-sorting.tsx",
+  },
+  "progress-tabs": {
+    name: "progress-tabs-demo",
+    component: React.lazy(() => import("@/examples/progress-tabs-demo")),
+    file: "src/examples/progress-tabs-demo.tsx",
   },
   "use-prompt-demo": {
     name: "use-prompt-demo",

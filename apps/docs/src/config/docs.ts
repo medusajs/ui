@@ -127,6 +127,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Currency Input",
+          href: "/components/currency-input",
+          items: [],
+        },
+        {
           title: "Date Picker",
           href: "/components/date-picker",
           items: [],
@@ -172,6 +177,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Progress Tabs",
+          href: "/components/progress-tabs",
+          items: [],
+        },
+        {
           title: "Radio Group",
           href: "/components/radio-group",
           items: [],
@@ -189,6 +199,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Table",
           href: "/components/table",
+          items: [],
+        },
+        {
+          title: "Tabs",
+          href: "/components/tabs",
           items: [],
         },
         {

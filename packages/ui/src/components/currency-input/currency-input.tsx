@@ -16,8 +16,8 @@ const currencyInputVariants = cva(
   {
     variants: {
       size: {
-        base: "txt-compact-medium h-10 px-3 py-[9px]",
-        small: "txt-compact-small h-8 px-2 py-[5px]",
+        base: "txt-compact-medium h-10 px-3",
+        small: "txt-compact-small h-8 px-2",
       },
     },
     defaultVariants: {
@@ -38,6 +38,13 @@ interface CurrencyInputProps
 
 const CurrencyInput = React.forwardRef<HTMLInputElement, CurrencyInputProps>(
   ({ size = "base", symbol, code, disabled, onInvalid, ...props }, ref) => {
+    const innerRef = React.useRef<HTMLInputElement>(null)
+
+    React.useImperativeHandle<HTMLInputElement | null, HTMLInputElement | null>(
+      ref,
+      () => innerRef.current
+    )
+
     const [valid, setValid] = React.useState(true)
 
     const onInnerInvalid = React.useCallback(
@@ -53,24 +60,47 @@ const CurrencyInput = React.forwardRef<HTMLInputElement, CurrencyInputProps>(
 
     return (
       <div
-        className={clx(currencyInputVariants({ size }), {
+        onClick={() => {
+          if (innerRef.current) {
+            innerRef.current.focus()
+          }
+        }}
+        className={clx("cursor-text", currencyInputVariants({ size }), {
           "text-ui-fg-disabled !bg-ui-bg-disabled !border-ui-border-base placeholder-ui-fg-disabled cursor-not-allowed !shadow-none":
             disabled,
           "border-ui-border-error focus-within:!shadow-borders-error invalid:focus:!shadow-borders-error":
-            props["aria-invalid"] && !valid,
+            props["aria-invalid"] || !valid,
         })}
       >
-        <Text className="text-ui-fg-muted uppercase">{code}</Text>
+        <span
+          className={clx({
+            "py-[9px]": size === "base",
+            "py-[5px]": size === "small",
+          })}
+          role="presentation"
+        >
+          <Text className="text-ui-fg-muted pointer-events-none select-none uppercase">
+            {code}
+          </Text>
+        </span>
         <Primitive
-          className="flex-1 appearance-none bg-transparent text-right outline-none"
+          className="h-full flex-1 appearance-none bg-transparent text-right outline-none"
           disabled={disabled}
           onInvalid={onInnerInvalid}
-          ref={ref}
+          ref={innerRef}
           {...props}
         />
-        <div className="w-fit min-w-[16px]">
-          <Text className="text-ui-fg-muted">{symbol}</Text>
-        </div>
+        <span
+          className={clx("w-fit min-w-[16px]", {
+            "py-[9px]": size === "base",
+            "py-[5px]": size === "small",
+          })}
+          role="presentation"
+        >
+          <Text className="text-ui-fg-muted pointer-events-none select-none">
+            {symbol}
+          </Text>
+        </span>
       </div>
     )
   }
