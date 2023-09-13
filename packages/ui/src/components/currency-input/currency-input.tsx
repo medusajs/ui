@@ -91,7 +91,7 @@ const CurrencyInput = React.forwardRef<HTMLInputElement, CurrencyInputProps>(
           {...props}
         />
         <span
-          className={clx("w-fit min-w-[16px]", {
+          className={clx("min-w-[16px]", {
             "py-[9px]": size === "base",
             "py-[5px]": size === "small",
           })}

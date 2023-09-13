@@ -1,17 +1,17 @@
+import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
 import * as React from "react"
 
 import { badgeColorVariants } from "@/components/badge"
 import { clx } from "@/utils/clx"
-import { Slot } from "@radix-ui/react-slot"
 
 const iconBadgeVariants = cva(
-  "inline-flex items-center justify-center overflow-hidden rounded-md",
+  "flex items-center justify-center overflow-hidden rounded-md border",
   {
     variants: {
       size: {
-        base: "h-6 w-6 p-0.5",
-        large: "h-[28px] w-[28px] p-1",
+        base: "h-6 w-6",
+        large: "h-7 w-7",
       },
     },
   }

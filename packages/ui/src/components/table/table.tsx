@@ -25,7 +25,7 @@ const Row = React.forwardRef<
   <tr
     ref={ref}
     className={clx(
-      "bg-ui-bg-base hover:bg-ui-bg-base-hover border-ui-border-base border-b",
+      "bg-ui-bg-base hover:bg-ui-bg-base-hover border-ui-border-base transition-fg border-b",
       "[&_td:last-child]:pr-8 [&_th:last-child]:pr-8",
       "[&_td:first-child]:pl-8 [&_th:first-child]:pl-8",
       className

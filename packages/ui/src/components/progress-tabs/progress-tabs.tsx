@@ -92,7 +92,7 @@ const ProgressTabsContent = React.forwardRef<
   return (
     <ProgressTabsPrimitives.Content
       ref={ref}
-      className={clx(className)}
+      className={clx("outline-none", className)}
       {...props}
     />
   )

@@ -48,7 +48,11 @@ const TabsContent = React.forwardRef<
   React.ElementRef<typeof TabsPrimitives.Content>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitives.Content>
 >(({ className, ...props }, ref) => (
-  <TabsPrimitives.Content ref={ref} className={clx(className)} {...props} />
+  <TabsPrimitives.Content
+    ref={ref}
+    className={clx("outline-none", className)}
+    {...props}
+  />
 ))
 TabsContent.displayName = "Tabs.Content"
 
