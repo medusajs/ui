@@ -78,6 +78,7 @@
     "tsc-alias": "^1.8.7",
     "typescript": "^5.1.6",
     "vite": "^4.3.9",
+    "vite-plugin-turbosnap": "^1.0.2",
     "vitest": "^0.32.2"
   },
   "dependencies": {

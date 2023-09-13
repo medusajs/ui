@@ -2917,6 +2917,7 @@ __metadata:
     tsc-alias: ^1.8.7
     typescript: ^5.1.6
     vite: ^4.3.9
+    vite-plugin-turbosnap: ^1.0.2
     vitest: ^0.32.2
   peerDependencies:
     react: ^18.0.0
@@ -18575,6 +18576,13 @@ __metadata:
   bin:
     vite-node: vite-node.mjs
   checksum: 6edb7aafcc30b97213435e7b3bfa43e2133feadd46680c0e54b44064f9e38f9b6e3a75f7c0ccde6bf3b6f34cb9681ec6510fb966a11f9ca7239e9473200a4a24
+  languageName: node
+  linkType: hard
+
+"vite-plugin-turbosnap@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "vite-plugin-turbosnap@npm:1.0.2"
+  checksum: c5da204cd9fa0dbf8a5f3c151681057da0f8cec3acbec94bdc04e525d410d85bd87c46b73498ba20c487fe61a68b1486b0f88bc51fec48d7053d1f3597411231
   languageName: node
   linkType: hard
 
