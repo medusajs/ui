@@ -10,9 +10,23 @@ interface ChipProps
 
 const chipVariants = cva("", {
   variants: {
-    size: {},
-    color: {},
-    rounded: {},
+    size: {
+      small: "px-1",
+      base: "px-1.5 py-px",
+      large: "px-2 py-[3px]",
+    },
+    color: {
+      grey: "",
+      blue: "",
+      green: "",
+      red: "",
+      orange: "",
+      purple: "",
+    },
+    rounded: {
+      base: "rounded-md",
+      full: "rounded-full",
+    },
   },
 })
 
