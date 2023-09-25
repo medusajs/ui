@@ -22,16 +22,9 @@ const Demo = () => {
       <Container className="h-full w-full overflow-hidden p-0">
         <ProgressTabs defaultValue="tab1">
           <ProgressTabs.List>
-            <ProgressTabs.Trigger value="tab1">
-              <ProgressTabs.Indicator status="completed" />
-              Tab 1
-            </ProgressTabs.Trigger>
-            <ProgressTabs.Trigger value="tab2">
-              <ProgressTabs.Indicator status="in_progress" />
-              Tab 2
-            </ProgressTabs.Trigger>
+            <ProgressTabs.Trigger value="tab1">Tab 1</ProgressTabs.Trigger>
+            <ProgressTabs.Trigger value="tab2">Tab 2</ProgressTabs.Trigger>
             <ProgressTabs.Trigger value="tab3" disabled>
-              <ProgressTabs.Indicator status="not_started" />
               Tab 3
             </ProgressTabs.Trigger>
           </ProgressTabs.List>

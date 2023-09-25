@@ -12,6 +12,7 @@ export default defineConfig({
       "@/providers": "/src/providers",
       "@/hooks": "/src/hooks",
       "@/utils": "/src/utils",
+      "@/types": "/src/types",
     },
   },
   test: {

@@ -75,7 +75,7 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
           <span className="pointer-events-none">
             <div
               className={clx(
-                "bg-ui-bg-disabled absolute inset-0 z-[2] flex items-center justify-center rounded-md"
+                "bg-ui-bg-disabled absolute inset-0 flex items-center justify-center rounded-md"
               )}
             >
               <Spinner className="animate-spin" />

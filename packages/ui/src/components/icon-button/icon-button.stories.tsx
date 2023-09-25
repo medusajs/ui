@@ -63,3 +63,21 @@ export const XLargeTransparent: Story = {
     children: <Plus />,
   },
 }
+
+export const Disabled: Story = {
+  args: {
+    variant: "primary",
+    size: "base",
+    children: <Plus />,
+    disabled: true,
+  },
+}
+
+export const IsLoading: Story = {
+  args: {
+    variant: "primary",
+    size: "base",
+    children: <Plus />,
+    isLoading: true,
+  },
+}

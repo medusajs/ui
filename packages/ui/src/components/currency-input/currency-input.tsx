@@ -37,7 +37,10 @@ interface CurrencyInputProps
 }
 
 const CurrencyInput = React.forwardRef<HTMLInputElement, CurrencyInputProps>(
-  ({ size = "base", symbol, code, disabled, onInvalid, ...props }, ref) => {
+  (
+    { size = "base", symbol, code, disabled, onInvalid, className, ...props },
+    ref
+  ) => {
     const innerRef = React.useRef<HTMLInputElement>(null)
 
     React.useImperativeHandle<HTMLInputElement | null, HTMLInputElement | null>(
@@ -65,15 +68,20 @@ const CurrencyInput = React.forwardRef<HTMLInputElement, CurrencyInputProps>(
             innerRef.current.focus()
           }
         }}
-        className={clx("cursor-text", currencyInputVariants({ size }), {
-          "text-ui-fg-disabled !bg-ui-bg-disabled !border-ui-border-base placeholder-ui-fg-disabled cursor-not-allowed !shadow-none":
-            disabled,
-          "border-ui-border-error focus-within:!shadow-borders-error invalid:focus:!shadow-borders-error":
-            props["aria-invalid"] || !valid,
-        })}
+        className={clx(
+          "cursor-text overflow-hidden",
+          currencyInputVariants({ size }),
+          {
+            "text-ui-fg-disabled !bg-ui-bg-disabled !border-ui-border-base placeholder-ui-fg-disabled cursor-not-allowed !shadow-none":
+              disabled,
+            "border-ui-border-error focus-within:!shadow-borders-error invalid:focus:!shadow-borders-error":
+              props["aria-invalid"] || !valid,
+          },
+          className
+        )}
       >
         <span
-          className={clx({
+          className={clx("w-fit flex-[0_0_auto]", {
             "py-[9px]": size === "base",
             "py-[5px]": size === "small",
           })}
@@ -91,7 +99,7 @@ const CurrencyInput = React.forwardRef<HTMLInputElement, CurrencyInputProps>(
           {...props}
         />
         <span
-          className={clx("min-w-[16px]", {
+          className={clx("flex-[0_0_16px] text-right", {
             "py-[9px]": size === "base",
             "py-[5px]": size === "small",
           })}

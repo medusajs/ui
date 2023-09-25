@@ -6,11 +6,11 @@ import * as Primitives from "@radix-ui/react-popover"
 import { TimeValue } from "@react-aria/datepicker"
 import { format } from "date-fns"
 import * as React from "react"
-import type { DateRange } from "react-day-picker"
 
 import { Button } from "@/components/button"
 import { Calendar as CalendarPrimitive } from "@/components/calendar"
 import { TimeInput } from "@/components/time-input"
+import type { DateRange } from "@/types"
 import { clx } from "@/utils/clx"
 import { isBrowserLocaleClockType24h } from "@/utils/is-browser-locale-hour-cycle-24h"
 import { cva } from "class-variance-authority"
@@ -50,8 +50,8 @@ const Display = React.forwardRef<
         className={clx(displayVariants({ size }), className)}
         {...props}
       >
-        <CalendarIcon className="text-ui-fg-muted h-5 w-5" />
-        <span className="w-full overflow-hidden text-ellipsis whitespace-nowrap text-left">
+        <CalendarIcon className="text-ui-fg-muted" />
+        <span className="flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-left">
           {children ? (
             children
           ) : placeholder ? (
@@ -74,7 +74,7 @@ const Flyout = React.forwardRef<
       sideOffset={8}
       align="center"
       className={clx(
-        "txt-compact-small shadow-elevation-flyout bg-ui-bg-base z-30 rounded-lg",
+        "txt-compact-small shadow-elevation-flyout bg-ui-bg-base z-30 w-fit rounded-lg",
         "animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
         "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
         className
@@ -278,6 +278,13 @@ const SingleDatePicker = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
 
+  /**
+   * Update the date when the value changes.
+   */
+  React.useEffect(() => {
+    setDate(value ?? defaultValue ?? undefined)
+  }, [value, defaultValue])
+
   React.useEffect(() => {
     if (date) {
       setMonth(date)
@@ -439,6 +446,13 @@ const RangeDatePicker = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
 
+  /**
+   * Update the range when the value changes.
+   */
+  React.useEffect(() => {
+    setRange(value ?? defaultValue ?? undefined)
+  }, [value, defaultValue])
+
   React.useEffect(() => {
     if (range) {
       setMonth(range.from)
@@ -525,80 +539,76 @@ const RangeDatePicker = ({
         {displayRange}
       </Display>
       <Flyout>
-        <div className="flex">
-          <div className="flex items-start">
-            {presets && presets.length > 0 && (
-              <div className="relative h-full w-[160px] border-r">
-                <div className="absolute inset-0 overflow-y-scroll p-3">
-                  <PresetContainer
-                    currentValue={range}
-                    presets={presets}
-                    onSelect={handleRangeChange}
+        <div className="flex items-start">
+          {presets && presets.length > 0 && (
+            <div className="relative h-full w-[160px] border-r">
+              <div className="absolute inset-0 overflow-y-scroll p-3">
+                <PresetContainer
+                  currentValue={range}
+                  presets={presets}
+                  onSelect={handleRangeChange}
+                />
+              </div>
+            </div>
+          )}
+          <div>
+            <CalendarPrimitive
+              mode="range"
+              selected={range}
+              onSelect={handleRangeChange}
+              month={month}
+              onMonthChange={setMonth}
+              numberOfMonths={2}
+              disabled={disabled}
+              classNames={{
+                months: "flex flex-row divide-x divide-ui-border-base",
+              }}
+              {...props}
+            />
+            {showTimePicker && (
+              <div className="border-ui-border-base flex items-center justify-evenly gap-x-3 border-t p-3">
+                <div className="flex flex-1 items-center gap-x-2">
+                  <span className="text-ui-fg-subtle">Start:</span>
+                  <TimeInput
+                    value={time.start}
+                    onChange={(v) => handleTimeChange(v, "start")}
+                    aria-label="Start date time"
+                    isDisabled={!range?.from}
+                    isRequired={props.required}
+                  />
+                </div>
+                <Minus className="text-ui-fg-muted" />
+                <div className="flex flex-1 items-center gap-x-2">
+                  <span className="text-ui-fg-subtle">End:</span>
+                  <TimeInput
+                    value={time.end}
+                    onChange={(v) => handleTimeChange(v, "end")}
+                    aria-label="End date time"
+                    isDisabled={!range?.to}
+                    isRequired={props.required}
                   />
                 </div>
               </div>
             )}
-            <div>
-              <CalendarPrimitive
-                mode="range"
-                selected={range}
-                onSelect={handleRangeChange}
-                month={month}
-                onMonthChange={setMonth}
-                numberOfMonths={2}
-                disabled={disabled}
-                classNames={{
-                  months:
-                    "flex flex-col sm:flex-row divide-y sm:divide-y-0 sm:divide-x divide-ui-border-base",
-                }}
-                {...props}
-              />
-              {showTimePicker && (
-                <div className="border-ui-border-base flex items-center justify-evenly gap-x-3 border-t p-3">
-                  <div className="flex flex-1 items-center gap-x-2">
-                    <span className="text-ui-fg-subtle">Start:</span>
-                    <TimeInput
-                      value={time.start}
-                      onChange={(v) => handleTimeChange(v, "start")}
-                      aria-label="Start date time"
-                      isDisabled={!range?.from}
-                      isRequired={props.required}
-                    />
-                  </div>
-                  <Minus className="text-ui-fg-muted" />
-                  <div className="flex flex-1 items-center gap-x-2">
-                    <span className="text-ui-fg-subtle">End:</span>
-                    <TimeInput
-                      value={time.end}
-                      onChange={(v) => handleTimeChange(v, "end")}
-                      aria-label="End date time"
-                      isDisabled={!range?.to}
-                      isRequired={props.required}
-                    />
-                  </div>
-                </div>
-              )}
-              <div className="flex items-center justify-between border-t p-3">
-                <p className={clx("text-ui-fg-subtle txt-compact-small-plus")}>
-                  <span className="text-ui-fg-muted">Range:</span>{" "}
-                  {displayRange}
-                </p>
-                <div className="flex items-center gap-x-2">
-                  <Button
-                    variant="secondary"
-                    type="button"
-                    onClick={handleCancel}
-                  >
-                    Cancel
-                  </Button>
-                  <Button
-                    variant="primary"
-                    type="button"
-                    onClick={() => setOpen(false)}
-                  >
-                    Apply
-                  </Button>
-                </div>
+            <div className="flex items-center justify-between border-t p-3">
+              <p className={clx("text-ui-fg-subtle txt-compact-small-plus")}>
+                <span className="text-ui-fg-muted">Range:</span> {displayRange}
+              </p>
+              <div className="flex items-center gap-x-2">
+                <Button
+                  variant="secondary"
+                  type="button"
+                  onClick={handleCancel}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  variant="primary"
+                  type="button"
+                  onClick={() => setOpen(false)}
+                >
+                  Apply
+                </Button>
               </div>
             </div>
           </div>
@@ -779,179 +789,4 @@ const DatePicker = ({ mode = "single", ...props }: DatePickerProps) => {
   return <RangeDatePicker {...(props as RangeProps)} />
 }
 
-type DatePickerContextType = PickerProps &
-  (
-    | {
-        mode: "single"
-        presets?: DatePreset[]
-        defaultValue?: Date
-        value?: Date
-        onChange?: (date: Date | undefined) => void
-      }
-    | {
-        mode: "range"
-        presets?: DateRangePreset[]
-        defaultValue?: DateRange
-        value?: DateRange
-        onChange?: (dateRange: DateRange | undefined) => void
-      }
-  )
-
-const DatePickerContext = React.createContext<DatePickerContextType | null>(
-  null
-)
-
-const useDatePickerContext = () => {
-  const context = React.useContext(DatePickerContext)
-
-  if (!context) {
-    throw new Error(
-      "useDatePickerContext must be used within a DatePickerProvider"
-    )
-  }
-
-  return context
-}
-
-const Root = ({
-  mode = "single",
-  children,
-  ...props
-}: React.PropsWithChildren<DatePickerProps>) => {
-  return (
-    <DatePickerContext.Provider
-      value={
-        {
-          ...props,
-          mode,
-        } as DatePickerContextType
-      }
-    >
-      <Primitives.Root>{children}</Primitives.Root>
-    </DatePickerContext.Provider>
-  )
-}
-Root.displayName = "DatePicker"
-
-const valueVariants = cva(
-  clx(
-    "text-ui-fg-base bg-ui-bg-field border-ui-border-base transition-fg shadow-buttons-neutral flex w-full items-center gap-x-2 rounded-md border outline-none",
-    "hover:bg-ui-bg-field-hover",
-    "focus:border-ui-border-interactive focus:shadow-borders-active data-[state=open]:shadow-borders-active data-[state=open]:border-ui-border-interactive",
-    "disabled:bg-ui-bg-disabled disabled:text-ui-fg-disabled disabled:shadow-none",
-    "aria-[invalid=true]:!border-ui-border-error aria-[invalid=true]:!shadow-borders-error"
-  ),
-  {
-    variants: {
-      size: {
-        base: "text-compact-small txt-compact-medium h-10 px-3 py-[9px]",
-        small: "text-compact-medium txt-compact-small h-8 px-2 py-[5px]",
-      },
-    },
-    defaultVariants: {
-      size: "base",
-    },
-  }
-)
-
-const Value = React.forwardRef<
-  HTMLButtonElement,
-  Omit<React.ComponentProps<"button">, "children"> & {
-    placeholder?: string
-  }
->(({ className, placeholder, ...props }, ref) => {
-  const {
-    mode,
-    value,
-    showTimePicker,
-    size = "base",
-    ...rest
-  } = useDatePickerContext()
-
-  const displayValue = React.useMemo(() => {
-    if (!value) {
-      return null
-    }
-
-    if (mode === "single") {
-      return formatDate(value, showTimePicker)
-    }
-
-    return `${value.from ? formatDate(value.from, showTimePicker) : ""} - ${
-      value.to ? formatDate(value.to, showTimePicker) : ""
-    }`
-  }, [mode, value, showTimePicker])
-
-  return (
-    <Primitives.Trigger asChild>
-      <button
-        ref={ref}
-        className={clx(valueVariants({ size }), className)}
-        aria-required={rest.required || rest["aria-required"]}
-        aria-invalid={rest["aria-invalid"]}
-        aria-label={rest["aria-label"]}
-        aria-labelledby={rest["aria-labelledby"]}
-        {...props}
-      >
-        <CalendarIcon className="text-ui-fg-muted h-5 w-5" />
-        <span className="flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-left">
-          {displayValue ? (
-            displayValue
-          ) : placeholder ? (
-            <span className="text-ui-fg-muted">{placeholder}</span>
-          ) : null}
-        </span>
-      </button>
-    </Primitives.Trigger>
-  )
-})
-Value.displayName = "DatePicker.Display"
-
-const Calendar = React.forwardRef<
-  React.ElementRef<typeof Primitives.Content>,
-  Omit<React.ComponentPropsWithoutRef<typeof Primitives.Content>, "children">
->(({ className, sideOffset = 8, ...props }, ref) => {
-  const { mode, value, defaultValue, onChange, presets, ...context } =
-    useDatePickerContext()
-
-  return (
-    <Primitives.Content
-      ref={ref}
-      sideOffset={sideOffset}
-      align="center"
-      className={clx(
-        "txt-compact-small shadow-elevation-flyout bg-ui-bg-base z-30 rounded-lg",
-        "animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
-        "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
-        className
-      )}
-      {...props}
-    >
-      {mode === "single" ? (
-        <SingleDatePicker
-          value={value}
-          defaultValue={defaultValue}
-          onChange={onChange}
-          presets={presets}
-          {...context}
-        />
-      ) : (
-        <RangeDatePicker
-          value={value}
-          defaultValue={defaultValue}
-          onChange={onChange}
-          presets={presets}
-          {...context}
-        />
-      )}
-    </Primitives.Content>
-  )
-})
-Calendar.displayName = "DatePicker.Calendar"
-
-const Alternative = Object.assign(Root, {
-  Value,
-  Calendar,
-})
-
-export { Alternative, DatePicker }
+export { DatePicker }
