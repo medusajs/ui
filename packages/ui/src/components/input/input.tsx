@@ -46,7 +46,7 @@ const Input = React.forwardRef<
       {isSearch && (
         <div
           className={clx(
-            "text-ui-fg-muted absolute bottom-0 left-0 z-[1] flex items-center justify-center",
+            "text-ui-fg-muted absolute bottom-0 left-0 flex items-center justify-center",
             {
               "h-10 w-11": size === "base",
               "h-8 w-9": size === "small",
@@ -75,7 +75,7 @@ const Input = React.forwardRef<
       {isPassword && (
         <div
           className={clx(
-            "absolute bottom-0 right-0 z-[1] flex w-11 items-center justify-center",
+            "absolute bottom-0 right-0 flex w-11 items-center justify-center",
             {
               "h-10 w-11": size === "base",
               "h-8 w-9": size === "small",
