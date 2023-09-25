@@ -22,7 +22,7 @@ const switchVariants = cva(
 )
 
 const thumbVariants = cva(
-  "bg-ui-fg-on-color shadow-details-switch-handle group-disabled:bg-ui-fg-disabled pointer-events-none z-10 h-[14px] w-[14px] rounded-full transition-all group-disabled:shadow-none",
+  "bg-ui-fg-on-color shadow-details-switch-handle group-disabled:bg-ui-fg-disabled pointer-events-none h-[14px] w-[14px] rounded-full transition-all group-disabled:shadow-none",
   {
     variants: {
       size: {

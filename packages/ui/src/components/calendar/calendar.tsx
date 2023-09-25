@@ -63,7 +63,7 @@ const Calendar = ({
           "txt-compact-small-plus text-ui-fg-muted m-0 box-border flex h-8 w-8 items-center justify-center p-0"
         ),
         row: "flex w-full mt-2 gap-x-2",
-        cell: "txt-compact-small-plus relative rounded-md p-0 text-center focus-within:relative focus-within:z-20",
+        cell: "txt-compact-small-plus relative rounded-md p-0 text-center focus-within:relative",
         day: "txt-compact-small-plus text-ui-fg-base bg-ui-bg-base border-ui-bg-base hover:bg-ui-bg-base-hover focus:!border-ui-border-interactive focus:shadow-borders-focus h-8 w-8 rounded-md border p-0 text-center outline-none transition-all",
         day_selected:
           "bg-ui-bg-interactive text-ui-fg-on-color hover:bg-ui-bg-interactive focus:bg-ui-bg-interactive",

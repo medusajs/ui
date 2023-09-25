@@ -106,7 +106,7 @@ const Content = React.forwardRef<
       <SelectPrimitive.Content
         ref={ref}
         className={clx(
-          "bg-ui-bg-base text-ui-fg-base shadow-elevation-flyout relative z-20 max-h-[200px] min-w-[var(--radix-select-trigger-width)] overflow-hidden rounded-lg",
+          "bg-ui-bg-base text-ui-fg-base shadow-elevation-flyout relative max-h-[200px] min-w-[var(--radix-select-trigger-width)] overflow-hidden rounded-lg",
           "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
           "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
           "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
