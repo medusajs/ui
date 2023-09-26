@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import * as React from "react"
 
+import { usePrompt } from "../../hooks/use-prompt"
+import { Button } from "../button"
+import { Drawer } from "../drawer"
 import { Select } from "./select"
 
 const meta: Meta<typeof Select> = {
@@ -151,5 +154,69 @@ export const Small: Story = {
         </Select>
       </div>
     )
+  },
+}
+
+const InModalDemo = () => {
+  const [open, setOpen] = React.useState(false)
+  const prompt = usePrompt()
+
+  const onClose = async () => {
+    const res = await prompt({
+      title: "Are you sure?",
+      description: "You have unsaved changes. Are you sure you want to close?",
+      confirmText: "Yes",
+      cancelText: "Cancel",
+    })
+
+    if (!res) {
+      return
+    }
+
+    setOpen(false)
+  }
+
+  return (
+    <Drawer open={open} onOpenChange={setOpen}>
+      <Drawer.Trigger asChild>
+        <Button>Edit Variant</Button>
+      </Drawer.Trigger>
+      <Drawer.Content>
+        <Drawer.Header>
+          <Drawer.Title>Edit Variant</Drawer.Title>
+        </Drawer.Header>
+        <Drawer.Body>
+          <Select size="small">
+            <Select.Trigger>
+              <Select.Value placeholder="Select" />
+            </Select.Trigger>
+            <Select.Content>
+              {data.map((group) => (
+                <Select.Group key={group.label}>
+                  <Select.Label>{group.label}</Select.Label>
+                  {group.items.map((item) => (
+                    <Select.Item key={item.value} value={item.value}>
+                      {item.label}
+                    </Select.Item>
+                  ))}
+                </Select.Group>
+              ))}
+            </Select.Content>
+          </Select>
+        </Drawer.Body>
+        <Drawer.Footer>
+          <Button variant="secondary" onClick={onClose}>
+            Cancel
+          </Button>
+          <Button>Save</Button>
+        </Drawer.Footer>
+      </Drawer.Content>
+    </Drawer>
+  )
+}
+
+export const InModal: Story = {
+  render: () => {
+    return <InModalDemo />
   },
 }
