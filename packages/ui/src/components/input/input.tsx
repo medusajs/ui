@@ -43,20 +43,6 @@ const Input = React.forwardRef<
 
   return (
     <div className="relative">
-      {isSearch && (
-        <div
-          className={clx(
-            "text-ui-fg-muted absolute bottom-0 left-0 flex items-center justify-center",
-            {
-              "h-10 w-11": size === "base",
-              "h-8 w-9": size === "small",
-            }
-          )}
-          role="img"
-        >
-          <MagnifyingGlassMini />
-        </div>
-      )}
       <input
         ref={ref}
         type={isPassword ? typeState : type}
@@ -72,6 +58,20 @@ const Input = React.forwardRef<
         )}
         {...props}
       />
+      {isSearch && (
+        <div
+          className={clx(
+            "text-ui-fg-muted absolute bottom-0 left-0 flex items-center justify-center",
+            {
+              "h-10 w-11": size === "base",
+              "h-8 w-9": size === "small",
+            }
+          )}
+          role="img"
+        >
+          <MagnifyingGlassMini />
+        </div>
+      )}
       {isPassword && (
         <div
           className={clx(
