@@ -1,103 +1,117 @@
 "use client"
 
 import { XMark } from "@medusajs/icons"
-import * as Primitives from "@radix-ui/react-dialog"
+import * as FocusModalPrimitives from "@radix-ui/react-dialog"
 import * as React from "react"
 
+import { IconButton } from "@/components/icon-button"
 import { Kbd } from "@/components/kbd"
 import { clx } from "@/utils/clx"
-import { Button } from "../button"
 
-const Root = Primitives.Root
-Root.displayName = "FocusModal.Root"
-
-const Trigger = Primitives.Trigger
-Trigger.displayName = "FocusModal.Trigger"
-
-const Portal = ({ className, ...props }: Primitives.DialogPortalProps) => {
-  return <Primitives.DialogPortal className={clx(className)} {...props} />
+const FocusModalRoot = (
+  props: React.ComponentPropsWithoutRef<typeof FocusModalPrimitives.Root>
+) => {
+  return <FocusModalPrimitives.Root {...props} />
 }
-Portal.displayName = "FocusModal.Portal"
+FocusModalRoot.displayName = "FocusModal"
 
-const Overlay = React.forwardRef<
-  React.ElementRef<typeof Primitives.Overlay>,
-  React.ComponentPropsWithoutRef<typeof Primitives.Overlay>
+const FocusModalTrigger = React.forwardRef<
+  React.ElementRef<typeof FocusModalPrimitives.Trigger>,
+  React.ComponentPropsWithoutRef<typeof FocusModalPrimitives.Trigger>
+>((props, ref) => {
+  return <FocusModalPrimitives.Trigger ref={ref} {...props} />
+})
+FocusModalTrigger.displayName = "FocusModal.Trigger"
+
+const FocusModalPortal = ({
+  className,
+  ...props
+}: FocusModalPrimitives.DialogPortalProps) => {
+  return (
+    <FocusModalPrimitives.DialogPortal className={clx(className)} {...props} />
+  )
+}
+FocusModalPortal.displayName = "FocusModal.Portal"
+
+const FocusModalOverlay = React.forwardRef<
+  React.ElementRef<typeof FocusModalPrimitives.Overlay>,
+  React.ComponentPropsWithoutRef<typeof FocusModalPrimitives.Overlay>
 >(({ className, ...props }, ref) => {
   return (
-    <Primitives.Overlay
+    <FocusModalPrimitives.Overlay
       ref={ref}
       className={clx(
-        "fixed inset-0 z-50",
-        // "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",  // Re-enable when Admin UI has been cleaned up
+        "bg-ui-bg-overlay fixed inset-0",
+        // "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
         className
       )}
       {...props}
     />
   )
 })
-Overlay.displayName = "FocusModal.Overlay"
+FocusModalOverlay.displayName = "FocusModal.Overlay"
 
-const Content = React.forwardRef<
-  React.ElementRef<typeof Primitives.Content>,
-  React.ComponentPropsWithoutRef<typeof Primitives.Content>
+const FocusModalContent = React.forwardRef<
+  React.ElementRef<typeof FocusModalPrimitives.Content>,
+  React.ComponentPropsWithoutRef<typeof FocusModalPrimitives.Content>
 >(({ className, ...props }, ref) => {
   return (
-    <Portal>
-      <Overlay />
-      <Primitives.Content
+    <FocusModalPortal>
+      <FocusModalOverlay />
+      <FocusModalPrimitives.Content
         ref={ref}
         className={clx(
-          "bg-ui-bg-base shadow-elevation-modal fixed inset-2 z-50 flex flex-col rounded-lg border focus:outline-none",
-          // "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 duration-200",  // Re-enable when Admin UI has been cleaned up
+          "bg-ui-bg-base shadow-elevation-modal fixed inset-2 flex flex-col overflow-hidden rounded-lg border focus:outline-none",
+          // "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 duration-200",
           className
         )}
         {...props}
       />
-    </Portal>
+    </FocusModalPortal>
   )
 })
-Content.displayName = "FocusModal.Content"
+FocusModalContent.displayName = "FocusModal.Content"
 
-const Header = ({
-  children,
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => {
+const FocusModalHeader = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<"div">
+>(({ children, className, ...props }, ref) => {
   return (
     <div
+      ref={ref}
       className={clx(
-        "border-ui-border-base flex items-start justify-between gap-x-4 border-b p-4",
+        "border-ui-border-base flex items-center justify-between gap-x-4 border-b px-4 py-2",
         className
       )}
       {...props}
     >
       <div className="flex items-center gap-x-2">
-        <Primitives.Close asChild>
-          <Button variant="transparent" size={"small"} format={"icon"}>
+        <FocusModalPrimitives.Close asChild>
+          <IconButton variant="transparent">
             <XMark />
-          </Button>
-        </Primitives.Close>
+          </IconButton>
+        </FocusModalPrimitives.Close>
         <Kbd>esc</Kbd>
       </div>
-      <div>{children}</div>
+      {children}
     </div>
   )
-}
-Header.displayName = "FocusModal.Header"
+})
+FocusModalHeader.displayName = "FocusModal.Header"
 
-const Body = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => {
-  return <div className={clx("flex-1", className)} {...props} />
-}
-Body.displayName = "FocusModal.Body"
+const FocusModalBody = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<"div">
+>(({ className, ...props }, ref) => {
+  return <div ref={ref} className={clx("flex-1", className)} {...props} />
+})
+FocusModalBody.displayName = "FocusModal.Body"
 
-const FocusModal = Object.assign(Root, {
-  Trigger,
-  Content,
-  Header,
-  Body,
+const FocusModal = Object.assign(FocusModalRoot, {
+  Trigger: FocusModalTrigger,
+  Content: FocusModalContent,
+  Header: FocusModalHeader,
+  Body: FocusModalBody,
 })
 
 export { FocusModal }

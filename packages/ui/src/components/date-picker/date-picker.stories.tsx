@@ -1,11 +1,16 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import * as React from "react"
 
+import { Button } from "@/components/button"
+import { DateRange } from "react-day-picker"
 import { DatePicker } from "./date-picker"
 
 const meta: Meta<typeof DatePicker> = {
   title: "Components/DatePicker",
   component: DatePicker,
+  parameters: {
+    layout: "centered",
+  },
   render: (args) => {
     return (
       <div className="w-[200px]">
@@ -147,4 +152,49 @@ export const RangeWithTimePickerAndPresets: Story = {
     showTimePicker: true,
     presets: rangePresets,
   },
+}
+
+const ControlledDemo = () => {
+  const [value, setValue] = React.useState<Date | undefined>(undefined)
+
+  return (
+    <div className="flex w-[200px] flex-col gap-y-4">
+      <DatePicker
+        value={value}
+        onChange={(value) => {
+          setValue(value)
+        }}
+      />
+      <Button onClick={() => setValue(undefined)}>Reset</Button>
+    </div>
+  )
+}
+
+export const Controlled: Story = {
+  render: () => <ControlledDemo />,
+}
+
+const ControlledRangeDemo = () => {
+  const [value, setValue] = React.useState<DateRange | undefined>(undefined)
+
+  React.useEffect(() => {
+    console.log("Value changed: ", value)
+  }, [value])
+
+  return (
+    <div className="flex w-[200px] flex-col gap-y-4">
+      <DatePicker
+        mode="range"
+        value={value}
+        onChange={(value) => {
+          setValue(value)
+        }}
+      />
+      <Button onClick={() => setValue(undefined)}>Reset</Button>
+    </div>
+  )
+}
+
+export const ControlledRange: Story = {
+  render: () => <ControlledRangeDemo />,
 }

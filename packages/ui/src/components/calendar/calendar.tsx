@@ -10,8 +10,8 @@ import {
   type DayProps,
 } from "react-day-picker"
 
-import { buttonVariants } from "@/components/button"
 import { clx } from "@/utils/clx"
+import { iconButtonVariants } from "../icon-button"
 
 type OmitKeys<T, K extends keyof T> = {
   [P in keyof T as P extends K ? never : P]: T[P]
@@ -53,8 +53,7 @@ const Calendar = ({
           "txt-compact-small-plus absolute bottom-0 left-0 right-0 top-1 flex items-center justify-center text-ui-fg-base",
         nav: "space-x-1 flex items-center bg-ui-bg-base-pressed rounded-md w-full h-full justify-between p-0.5",
         nav_button: clx(
-          buttonVariants({ variant: "secondary", format: "icon" }),
-          "h-8 w-8"
+          iconButtonVariants({ variant: "primary", size: "base" })
         ),
         nav_button_previous: "!absolute left-0.5",
         nav_button_next: "!absolute right-0.5",
@@ -64,7 +63,7 @@ const Calendar = ({
           "txt-compact-small-plus text-ui-fg-muted m-0 box-border flex h-8 w-8 items-center justify-center p-0"
         ),
         row: "flex w-full mt-2 gap-x-2",
-        cell: "txt-compact-small-plus relative rounded-md p-0 text-center focus-within:relative focus-within:z-20",
+        cell: "txt-compact-small-plus relative rounded-md p-0 text-center focus-within:relative",
         day: "txt-compact-small-plus text-ui-fg-base bg-ui-bg-base border-ui-bg-base hover:bg-ui-bg-base-hover focus:!border-ui-border-interactive focus:shadow-borders-focus h-8 w-8 rounded-md border p-0 text-center outline-none transition-all",
         day_selected:
           "bg-ui-bg-interactive text-ui-fg-on-color hover:bg-ui-bg-interactive focus:bg-ui-bg-interactive",
@@ -122,6 +121,7 @@ const Day = ({ date, displayMonth }: DayProps) => {
     <button
       ref={ref}
       {...buttonPropsRest}
+      type="button"
       className={clx("relative", buttonClassName)}
     >
       {buttonChildren}

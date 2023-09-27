@@ -25,7 +25,7 @@ const Row = React.forwardRef<
   <tr
     ref={ref}
     className={clx(
-      "bg-ui-bg-base hover:bg-ui-bg-base-hover border-ui-border-base border-b",
+      "bg-ui-bg-base hover:bg-ui-bg-base-hover border-ui-border-base transition-fg border-b",
       "[&_td:last-child]:pr-8 [&_th:last-child]:pr-8",
       "[&_td:first-child]:pl-8 [&_th:first-child]:pl-8",
       className
@@ -106,7 +106,7 @@ const Pagination = React.forwardRef<HTMLDivElement, TablePaginationProps>(
     ref
   ) => {
     const { from, to } = React.useMemo(() => {
-      const from = pageIndex * pageSize + 1
+      const from = count === 0 ? count : pageIndex * pageSize + 1
       const to = Math.min(count, (pageIndex + 1) * pageSize)
 
       return { from, to }
@@ -129,7 +129,7 @@ const Pagination = React.forwardRef<HTMLDivElement, TablePaginationProps>(
         <div className="flex items-center gap-x-2">
           <div className="inline-flex items-center gap-x-1 px-3 py-[5px]">
             <p>
-              {pageIndex + 1} of {pageCount}
+              {pageIndex + 1} of {Math.max(pageCount, 1)}
             </p>
           </div>
           <Button

@@ -4,6 +4,11 @@
   "description": "Medusa UI React icon library",
   "author": "Kasper Kristensen <kasper@medusajs.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/medusajs/ui.git",
+    "directory": "packages/icons"
+  },
   "main": "dist/cjs/medusa-icons.js",
   "main:umd": "dist/umd/medusa-icons.js",
   "module": "dist/esm/index.js",

@@ -20,7 +20,8 @@
       "@/components/*": ["./src/components/*"],
       "@/providers/*": ["./src/providers/*"],
       "@/hooks/*": ["./src/hooks/*"],
-      "@/utils/*": ["./src/utils/*"]
+      "@/utils/*": ["./src/utils/*"],
+      "@/types": ["./src/types"]
     }
   },
   "include": ["src", ".eslintrc.js"],

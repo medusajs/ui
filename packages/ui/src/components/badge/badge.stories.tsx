@@ -1,7 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react"
 import * as React from "react"
 
-import { BuildingTax, XMarkMini } from "@medusajs/icons"
 import { Badge } from "./badge"
 
 const meta: Meta<typeof Badge> = {
@@ -57,34 +56,13 @@ export const Purple: Story = {
 
 export const Default: Story = {
   args: {
-    type: "default",
+    rounded: "base",
   },
 }
 
 export const Rounded: Story = {
   args: {
-    type: "rounded",
-  },
-}
-
-export const Icon: Story = {
-  args: {
-    type: "icon",
-    children: <BuildingTax />,
-  },
-}
-
-export const IconRounded: Story = {
-  args: {
-    children: ["Badge", <XMarkMini key={"icon"} />],
-    type: "rounded",
-  },
-}
-
-export const IconDefault: Story = {
-  args: {
-    children: ["Badge", <XMarkMini key={"icon"} />],
-    type: "default",
+    rounded: "full",
   },
 }
 

@@ -6,11 +6,11 @@ import * as Primitives from "@radix-ui/react-popover"
 import { TimeValue } from "@react-aria/datepicker"
 import { format } from "date-fns"
 import * as React from "react"
-import type { DateRange } from "react-day-picker"
 
 import { Button } from "@/components/button"
-import { Calendar } from "@/components/calendar"
+import { Calendar as CalendarPrimitive } from "@/components/calendar"
 import { TimeInput } from "@/components/time-input"
+import type { DateRange } from "@/types"
 import { clx } from "@/utils/clx"
 import { isBrowserLocaleClockType24h } from "@/utils/is-browser-locale-hour-cycle-24h"
 import { cva } from "class-variance-authority"
@@ -50,8 +50,8 @@ const Display = React.forwardRef<
         className={clx(displayVariants({ size }), className)}
         {...props}
       >
-        <CalendarIcon className="text-ui-fg-muted h-5 w-5" />
-        <span className="w-full overflow-hidden text-ellipsis whitespace-nowrap text-left">
+        <CalendarIcon className="text-ui-fg-muted" />
+        <span className="flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-left">
           {children ? (
             children
           ) : placeholder ? (
@@ -69,20 +69,22 @@ const Flyout = React.forwardRef<
   React.ComponentProps<typeof Primitives.Content>
 >(({ className, children, ...props }, ref) => {
   return (
-    <Primitives.Content
-      ref={ref}
-      sideOffset={8}
-      align="center"
-      className={clx(
-        "txt-compact-small shadow-elevation-flyout bg-ui-bg-base z-30 rounded-lg",
-        "animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
-        "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
-        className
-      )}
-      {...props}
-    >
-      {children}
-    </Primitives.Content>
+    <Primitives.Portal>
+      <Primitives.Content
+        ref={ref}
+        sideOffset={8}
+        align="center"
+        className={clx(
+          "txt-compact-small shadow-elevation-flyout bg-ui-bg-base w-fit rounded-lg",
+          "animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
+          "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+          className
+        )}
+        {...props}
+      >
+        {children}
+      </Primitives.Content>
+    </Primitives.Portal>
   )
 })
 Flyout.displayName = "DatePicker.Flyout"
@@ -278,6 +280,13 @@ const SingleDatePicker = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
 
+  /**
+   * Update the date when the value changes.
+   */
+  React.useEffect(() => {
+    setDate(value ?? defaultValue ?? undefined)
+  }, [value, defaultValue])
+
   React.useEffect(() => {
     if (date) {
       setMonth(date)
@@ -351,7 +360,7 @@ const SingleDatePicker = ({
               </div>
             )}
             <div>
-              <Calendar
+              <CalendarPrimitive
                 mode="single"
                 month={month}
                 onMonthChange={setMonth}
@@ -439,6 +448,13 @@ const RangeDatePicker = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
 
+  /**
+   * Update the range when the value changes.
+   */
+  React.useEffect(() => {
+    setRange(value ?? defaultValue ?? undefined)
+  }, [value, defaultValue])
+
   React.useEffect(() => {
     if (range) {
       setMonth(range.from)
@@ -525,80 +541,76 @@ const RangeDatePicker = ({
         {displayRange}
       </Display>
       <Flyout>
-        <div className="flex">
-          <div className="flex items-start">
-            {presets && presets.length > 0 && (
-              <div className="relative h-full w-[160px] border-r">
-                <div className="absolute inset-0 overflow-y-scroll p-3">
-                  <PresetContainer
-                    currentValue={range}
-                    presets={presets}
-                    onSelect={handleRangeChange}
+        <div className="flex items-start">
+          {presets && presets.length > 0 && (
+            <div className="relative h-full w-[160px] border-r">
+              <div className="absolute inset-0 overflow-y-scroll p-3">
+                <PresetContainer
+                  currentValue={range}
+                  presets={presets}
+                  onSelect={handleRangeChange}
+                />
+              </div>
+            </div>
+          )}
+          <div>
+            <CalendarPrimitive
+              mode="range"
+              selected={range}
+              onSelect={handleRangeChange}
+              month={month}
+              onMonthChange={setMonth}
+              numberOfMonths={2}
+              disabled={disabled}
+              classNames={{
+                months: "flex flex-row divide-x divide-ui-border-base",
+              }}
+              {...props}
+            />
+            {showTimePicker && (
+              <div className="border-ui-border-base flex items-center justify-evenly gap-x-3 border-t p-3">
+                <div className="flex flex-1 items-center gap-x-2">
+                  <span className="text-ui-fg-subtle">Start:</span>
+                  <TimeInput
+                    value={time.start}
+                    onChange={(v) => handleTimeChange(v, "start")}
+                    aria-label="Start date time"
+                    isDisabled={!range?.from}
+                    isRequired={props.required}
+                  />
+                </div>
+                <Minus className="text-ui-fg-muted" />
+                <div className="flex flex-1 items-center gap-x-2">
+                  <span className="text-ui-fg-subtle">End:</span>
+                  <TimeInput
+                    value={time.end}
+                    onChange={(v) => handleTimeChange(v, "end")}
+                    aria-label="End date time"
+                    isDisabled={!range?.to}
+                    isRequired={props.required}
                   />
                 </div>
               </div>
             )}
-            <div>
-              <Calendar
-                mode="range"
-                selected={range}
-                onSelect={handleRangeChange}
-                month={month}
-                onMonthChange={setMonth}
-                numberOfMonths={2}
-                disabled={disabled}
-                classNames={{
-                  months:
-                    "flex flex-col sm:flex-row divide-y sm:divide-y-0 sm:divide-x divide-ui-border-base",
-                }}
-                {...props}
-              />
-              {showTimePicker && (
-                <div className="border-ui-border-base flex items-center justify-evenly gap-x-3 border-t p-3">
-                  <div className="flex flex-1 items-center gap-x-2">
-                    <span className="text-ui-fg-subtle">Start:</span>
-                    <TimeInput
-                      value={time.start}
-                      onChange={(v) => handleTimeChange(v, "start")}
-                      aria-label="Start date time"
-                      isDisabled={!range?.from}
-                      isRequired={props.required}
-                    />
-                  </div>
-                  <Minus className="text-ui-fg-muted" />
-                  <div className="flex flex-1 items-center gap-x-2">
-                    <span className="text-ui-fg-subtle">End:</span>
-                    <TimeInput
-                      value={time.end}
-                      onChange={(v) => handleTimeChange(v, "end")}
-                      aria-label="End date time"
-                      isDisabled={!range?.to}
-                      isRequired={props.required}
-                    />
-                  </div>
-                </div>
-              )}
-              <div className="flex items-center justify-between border-t p-3">
-                <p className={clx("text-ui-fg-subtle txt-compact-small-plus")}>
-                  <span className="text-ui-fg-muted">Range:</span>{" "}
-                  {displayRange}
-                </p>
-                <div className="flex items-center gap-x-2">
-                  <Button
-                    variant="secondary"
-                    type="button"
-                    onClick={handleCancel}
-                  >
-                    Cancel
-                  </Button>
-                  <Button
-                    variant="primary"
-                    type="button"
-                    onClick={() => setOpen(false)}
-                  >
-                    Apply
-                  </Button>
-                </div>
+            <div className="flex items-center justify-between border-t p-3">
+              <p className={clx("text-ui-fg-subtle txt-compact-small-plus")}>
+                <span className="text-ui-fg-muted">Range:</span> {displayRange}
+              </p>
+              <div className="flex items-center gap-x-2">
+                <Button
+                  variant="secondary"
+                  type="button"
+                  onClick={handleCancel}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  variant="primary"
+                  type="button"
+                  onClick={() => setOpen(false)}
+                >
+                  Apply
+                </Button>
               </div>
             </div>
           </div>
