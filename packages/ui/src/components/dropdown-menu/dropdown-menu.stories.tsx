@@ -3,6 +3,11 @@ import type { Meta, StoryObj } from "@storybook/react"
 import * as React from "react"
 
 import { Button } from "@/components/button"
+import { IconButton } from "@/components/icon-button"
+import { Select } from "@/components/select"
+
+import { DatePicker } from "../date-picker"
+import { FocusModal } from "../focus-modal"
 import { DropdownMenu } from "./dropdown-menu"
 
 const meta: Meta<typeof DropdownMenu> = {
@@ -23,9 +28,9 @@ const SortingDemo = () => {
     <div className="flex flex-col gap-y-2">
       <DropdownMenu>
         <DropdownMenu.Trigger asChild>
-          <Button variant="secondary" format={"icon"}>
+          <IconButton variant="primary">
             <EllipsisHorizontal />
-          </Button>
+          </IconButton>
         </DropdownMenu.Trigger>
         <DropdownMenu.Content className="w-[300px]">
           <DropdownMenu.RadioGroup
@@ -92,9 +97,9 @@ const SelectDemo = () => {
     <div className="flex flex-col gap-y-2">
       <DropdownMenu>
         <DropdownMenu.Trigger asChild>
-          <Button variant="secondary" format={"icon"}>
+          <IconButton>
             <EllipsisHorizontal />
-          </Button>
+          </IconButton>
         </DropdownMenu.Trigger>
         <DropdownMenu.Content className="w-[300px]">
           <DropdownMenu.Group>
@@ -182,9 +187,9 @@ export const SimpleMenu: Story = {
     return (
       <DropdownMenu>
         <DropdownMenu.Trigger asChild>
-          <Button variant="secondary" format={"icon"}>
+          <IconButton>
             <EllipsisHorizontal />
-          </Button>
+          </IconButton>
         </DropdownMenu.Trigger>
         <DropdownMenu.Content>
           <DropdownMenu.Item className="gap-x-2">
@@ -203,5 +208,68 @@ export const SimpleMenu: Story = {
         </DropdownMenu.Content>
       </DropdownMenu>
     )
+  },
+}
+
+const ComplexMenuDemo = () => {
+  return (
+    <FocusModal>
+      <FocusModal.Trigger asChild>
+        <Button>Open</Button>
+      </FocusModal.Trigger>
+      <FocusModal.Content>
+        <FocusModal.Header>
+          <Button>Save</Button>
+        </FocusModal.Header>
+        <FocusModal.Body className="item-center flex justify-center">
+          <div>
+            <DropdownMenu>
+              <DropdownMenu.Trigger asChild>
+                <Button>View</Button>
+              </DropdownMenu.Trigger>
+              <DropdownMenu.Content>
+                <DropdownMenu.Item className="gap-x-2">
+                  <PencilSquare className="text-ui-fg-subtle" />
+                  Edit
+                </DropdownMenu.Item>
+                <DropdownMenu.Item className="gap-x-2">
+                  <Plus className="text-ui-fg-subtle" />
+                  Add
+                </DropdownMenu.Item>
+                <DropdownMenu.Separator />
+                <DropdownMenu.Item className="gap-x-2">
+                  <Trash className="text-ui-fg-subtle" />
+                  Delete
+                </DropdownMenu.Item>
+                <DropdownMenu.Separator />
+                <div className="flex flex-col gap-y-2 p-2">
+                  <Select>
+                    <Select.Trigger>
+                      <Select.Value placeholder="Select" />
+                    </Select.Trigger>
+                    <Select.Content>
+                      <Select.Item value="1">One</Select.Item>
+                      <Select.Item value="2">Two</Select.Item>
+                      <Select.Item value="3">Three</Select.Item>
+                    </Select.Content>
+                  </Select>
+                  <DatePicker />
+                </div>
+                <div className="border-ui-border-base flex items-center gap-x-2 border-t p-2">
+                  <Button variant="secondary">Clear</Button>
+                  <Button>Apply</Button>
+                </div>
+              </DropdownMenu.Content>
+            </DropdownMenu>
+          </div>
+        </FocusModal.Body>
+      </FocusModal.Content>
+    </FocusModal>
+  )
+}
+
+export const ComplexMenu: Story = {
+  render: () => {
+    return <ComplexMenuDemo />
   },
 }

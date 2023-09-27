@@ -37,7 +37,7 @@ const EllipseGreenSolid = React.forwardRef<SVGSVGElement, IconProps>(
             <feOffset dy={2} />
             <feGaussianBlur stdDeviation={2} />
             <feComposite in2="hardAlpha" operator="out" />
-            <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0" />
+            <feColorMatrix values="0 0 0 0 0.0117647 0 0 0 0 0.027451 0 0 0 0 0.0705882 0 0 0 0.04 0" />
             <feBlend
               in2="BackgroundImageFix"
               result="effect1_dropShadow_2733_2026"
@@ -55,7 +55,7 @@ const EllipseGreenSolid = React.forwardRef<SVGSVGElement, IconProps>(
             <feOffset dy={1} />
             <feGaussianBlur stdDeviation={1} />
             <feComposite in2="hardAlpha" operator="out" />
-            <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0" />
+            <feColorMatrix values="0 0 0 0 0.0117647 0 0 0 0 0.027451 0 0 0 0 0.0705882 0 0 0 0.08 0" />
             <feBlend
               in2="effect1_dropShadow_2733_2026"
               result="effect2_dropShadow_2733_2026"
@@ -73,7 +73,7 @@ const EllipseGreenSolid = React.forwardRef<SVGSVGElement, IconProps>(
             />
             <feOffset />
             <feComposite in2="hardAlpha" operator="out" />
-            <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0" />
+            <feColorMatrix values="0 0 0 0 0.0117647 0 0 0 0 0.027451 0 0 0 0 0.0705882 0 0 0 0.08 0" />
             <feBlend
               in2="effect2_dropShadow_2733_2026"
               result="effect3_dropShadow_2733_2026"

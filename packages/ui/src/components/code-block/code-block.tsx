@@ -1,14 +1,15 @@
 "use client"
+import { Highlight, themes } from "prism-react-renderer"
+import * as React from "react"
 
 import { Copy } from "@/components/copy"
 import { clx } from "@/utils/clx"
-import { Highlight, themes } from "prism-react-renderer"
-import React, { createContext, useContext, useState } from "react"
 
 export type CodeSnippet = {
   label: string
   language: string
   code: string
+  hideLineNumbers?: boolean
 }
 
 type CodeBlockState = {
@@ -17,10 +18,10 @@ type CodeBlockState = {
   setActive: (active: CodeSnippet) => void
 } | null
 
-const CodeBlockContext = createContext<CodeBlockState>(null)
+const CodeBlockContext = React.createContext<CodeBlockState>(null)
 
 const useCodeBlockContext = () => {
-  const context = useContext(CodeBlockContext)
+  const context = React.useContext(CodeBlockContext)
 
   if (context === null)
     throw new Error(
@@ -40,7 +41,7 @@ const Root = ({
   children,
   ...props
 }: React.HTMLAttributes<HTMLDivElement> & RootProps) => {
-  const [active, setActive] = useState(snippets[0])
+  const [active, setActive] = React.useState(snippets[0])
 
   return (
     <CodeBlockContext.Provider value={{ snippets, active, setActive }}>
@@ -111,15 +112,10 @@ const Meta = ({
 
 const Header = Object.assign(HeaderComponent, { Meta })
 
-type BodyProps = {
-  hideLineNumbers?: boolean
-}
-
 const Body = ({
   className,
-  hideLineNumbers = false,
   ...props
-}: React.HTMLAttributes<HTMLDivElement> & BodyProps) => {
+}: React.HTMLAttributes<HTMLDivElement>) => {
   const { active } = useCodeBlockContext()
   return (
     <div
@@ -167,7 +163,7 @@ const Body = ({
             >
               {tokens.map((line, i) => (
                 <div key={i} {...getLineProps({ line })} className="flex">
-                  {!hideLineNumbers && (
+                  {!active.hideLineNumbers && (
                     <span className="text-ui-code-text-subtle">{i + 1}</span>
                   )}
                   <div className="pl-4">

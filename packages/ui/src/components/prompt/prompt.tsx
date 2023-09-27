@@ -26,7 +26,7 @@ const Overlay = React.forwardRef<
     <Primitives.Overlay
       ref={ref}
       className={clx(
-        "bg-ui-bg-overlay fixed inset-0 z-50 backdrop-blur-sm",
+        "bg-ui-bg-overlay fixed inset-0",
         // "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0", // Re-enable when Admin UI has been cleaned up
         className
       )}
@@ -60,7 +60,7 @@ const Content = React.forwardRef<
       <Primitives.Content
         ref={ref}
         className={clx(
-          "bg-ui-bg-base shadow-elevation-flyout fixed left-[50%] top-[50%] z-50 flex w-full max-w-[400px] translate-x-[-50%] translate-y-[-50%] flex-col rounded-lg border focus:outline-none",
+          "bg-ui-bg-base shadow-elevation-flyout fixed left-[50%] top-[50%] flex w-full max-w-[400px] translate-x-[-50%] translate-y-[-50%] flex-col rounded-lg border focus:outline-none",
           // "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] duration-200",  // Re-enable when Admin UI has been cleaned up
           className
         )}
@@ -91,7 +91,9 @@ const Action = React.forwardRef<
 >(({ className, children, type, ...props }, ref) => {
   return (
     <Primitives.Action ref={ref} className={className} {...props} asChild>
-      <Button type={type}>{children}</Button>
+      <Button type={type} variant="danger">
+        {children}
+      </Button>
     </Primitives.Action>
   )
 })

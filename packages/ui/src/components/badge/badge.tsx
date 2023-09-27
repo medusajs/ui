@@ -4,18 +4,8 @@ import * as React from "react"
 
 import { clx } from "@/utils/clx"
 
-const badgeVariants = cva("inline-flex items-center gap-x-0.5 border", {
+const badgeColorVariants = cva("", {
   variants: {
-    type: {
-      default: "rounded-md",
-      rounded: "rounded-full",
-      icon: "rounded-md",
-    },
-    size: {
-      small: "txt-compact-xsmall-plus px-1.5",
-      base: "txt-compact-small-plus px-2 py-0.5",
-      large: "txt-compact-medium-plus px-2.5 py-1",
-    },
     color: {
       green:
         "bg-ui-tag-green-bg text-ui-tag-green-text [&_svg]:text-ui-tag-green-icon border-ui-tag-green-border",
@@ -28,44 +18,58 @@ const badgeVariants = cva("inline-flex items-center gap-x-0.5 border", {
         "bg-ui-tag-purple-bg text-ui-tag-purple-text [&_svg]:text-ui-tag-purple-icon border-ui-tag-purple-border",
     },
   },
-  compoundVariants: [
-    {
-      type: "icon",
-      size: "large",
-      className: "p-1",
+  defaultVariants: {
+    color: "grey",
+  },
+})
+
+const badgeSizeVariants = cva("inline-flex items-center gap-x-0.5 border", {
+  variants: {
+    size: {
+      small: "txt-compact-xsmall-plus px-1.5",
+      base: "txt-compact-small-plus px-2 py-0.5",
+      large: "txt-compact-medium-plus px-2.5 py-1",
     },
-    {
-      type: "icon",
-      size: "base",
-      className: "p-0.5",
+    rounded: {
+      base: "rounded-md",
+      full: "rounded-full",
     },
-    {
-      type: "icon",
-      size: "small",
-      className: "p-0.5", // Icon does not get any smaller than `md`
-    },
-  ],
+  },
   defaultVariants: {
     size: "base",
-    type: "default",
-    color: "grey",
+    rounded: "base",
   },
 })
 
 interface BadgeProps
   extends Omit<React.HTMLAttributes<HTMLSpanElement>, "color">,
-    VariantProps<typeof badgeVariants> {
+    VariantProps<typeof badgeSizeVariants>,
+    VariantProps<typeof badgeColorVariants> {
   asChild?: boolean
 }
 
 const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
-  ({ className, size, type, color, asChild = false, ...props }, ref) => {
+  (
+    {
+      className,
+      size = "base",
+      rounded = "base",
+      color = "grey",
+      asChild = false,
+      ...props
+    },
+    ref
+  ) => {
     const Component = asChild ? Slot : "span"
 
     return (
       <Component
         ref={ref}
-        className={clx(badgeVariants({ size, type, color }), className)}
+        className={clx(
+          badgeColorVariants({ color }),
+          badgeSizeVariants({ size, rounded }),
+          className
+        )}
         {...props}
       />
     )
@@ -73,4 +77,4 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
 )
 Badge.displayName = "Badge"
 
-export { Badge }
+export { Badge, badgeColorVariants }
