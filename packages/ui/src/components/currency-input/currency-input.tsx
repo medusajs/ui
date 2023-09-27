@@ -69,7 +69,7 @@ const CurrencyInput = React.forwardRef<HTMLInputElement, CurrencyInputProps>(
           }
         }}
         className={clx(
-          "cursor-text overflow-hidden",
+          "w-full cursor-text justify-between overflow-hidden",
           currencyInputVariants({ size }),
           {
             "text-ui-fg-disabled !bg-ui-bg-disabled !border-ui-border-base placeholder-ui-fg-disabled cursor-not-allowed !shadow-none":
@@ -81,7 +81,7 @@ const CurrencyInput = React.forwardRef<HTMLInputElement, CurrencyInputProps>(
         )}
       >
         <span
-          className={clx("w-fit flex-[0_0_auto]", {
+          className={clx("w-fit", {
             "py-[9px]": size === "base",
             "py-[5px]": size === "small",
           })}
@@ -92,14 +92,14 @@ const CurrencyInput = React.forwardRef<HTMLInputElement, CurrencyInputProps>(
           </Text>
         </span>
         <Primitive
-          className="h-full flex-1 appearance-none bg-transparent text-right outline-none"
+          className="h-full min-w-0 flex-1 appearance-none bg-transparent text-right outline-none"
           disabled={disabled}
           onInvalid={onInnerInvalid}
           ref={innerRef}
           {...props}
         />
         <span
-          className={clx("flex-[0_0_16px] text-right", {
+          className={clx("w-fit min-w-[16px] text-right", {
             "py-[9px]": size === "base",
             "py-[5px]": size === "small",
           })}
