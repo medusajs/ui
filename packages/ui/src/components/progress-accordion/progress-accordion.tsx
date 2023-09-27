@@ -76,7 +76,7 @@ const Header = React.forwardRef<
     <Primitves.Header
       ref={ref}
       className={clx(
-        "group flex w-full flex-1 items-center gap-4 px-8",
+        "h3-core text-ui-fg-base group flex w-full flex-1 items-center gap-4 px-8",
         className
       )}
       {...props}
