@@ -42,12 +42,13 @@ SubMenuTrigger.displayName = "DropdownMenu.SubMenuTrigger"
 const SubMenuContent = React.forwardRef<
   React.ElementRef<typeof Primitives.SubContent>,
   React.ComponentPropsWithoutRef<typeof Primitives.SubContent>
->(({ className, ...props }, ref) => (
+>(({ className, collisionPadding = 8, ...props }, ref) => (
   <Primitives.Portal>
     <Primitives.SubContent
       ref={ref}
+      collisionPadding={collisionPadding}
       className={clx(
-        "bg-ui-bg-base text-ui-fg-base shadow-elevation-flyout min-w-[8rem] overflow-hidden rounded-lg border p-1",
+        "bg-ui-bg-base text-ui-fg-base shadow-elevation-flyout max-h-[var(--radix-popper-available-height)] min-w-[8rem] overflow-hidden rounded-lg border p-1",
         "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
         className
       )}
@@ -60,21 +61,33 @@ SubMenuContent.displayName = "DropdownMenu.SubMenuContent"
 const Content = React.forwardRef<
   React.ElementRef<typeof Primitives.Content>,
   React.ComponentPropsWithoutRef<typeof Primitives.Content>
->(({ className, sideOffset = 8, align = "start", ...props }, ref) => (
-  <Primitives.Portal>
-    <Primitives.Content
-      ref={ref}
-      sideOffset={sideOffset}
-      align={align}
-      className={clx(
-        "bg-ui-bg-base text-ui-fg-base shadow-elevation-flyout min-w-[300px] overflow-hidden rounded-lg p-1",
-        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
-        className
-      )}
-      {...props}
-    />
-  </Primitives.Portal>
-))
+>(
+  (
+    {
+      className,
+      sideOffset = 8,
+      collisionPadding = 8,
+      align = "start",
+      ...props
+    },
+    ref
+  ) => (
+    <Primitives.Portal>
+      <Primitives.Content
+        ref={ref}
+        sideOffset={sideOffset}
+        align={align}
+        collisionPadding={collisionPadding}
+        className={clx(
+          "bg-ui-bg-base text-ui-fg-base shadow-elevation-flyout max-h-[var(--radix-popper-available-height)] min-w-[300px] overflow-hidden rounded-lg p-1",
+          "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+          className
+        )}
+        {...props}
+      />
+    </Primitives.Portal>
+  )
+)
 Content.displayName = "DropdownMenu.Content"
 
 const Item = React.forwardRef<
