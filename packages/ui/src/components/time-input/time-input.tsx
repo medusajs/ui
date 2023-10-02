@@ -35,9 +35,9 @@ const TimeSegment = ({ segment, state }: TimeSegmentProps) => {
       {...segmentProps}
       ref={ref}
       className={clx(
-        "txt-compact-medium w-full rounded-md border px-2 py-[5px] text-left uppercase tabular-nums",
+        "txt-compact-medium w-full rounded-md px-2 py-[5px] text-left uppercase tabular-nums",
         inputBaseStyles,
-        "group-aria-[invalid=true]/time-input:!border-ui-border-error group-aria-[invalid=true]/time-input:focus:!shadow-borders-error group-invalid/time-input:!border-ui-border-error group-invalid/time-input:focus:!shadow-borders-error",
+        "group-aria-[invalid=true]/time-input:!shadow-borders-error group-invalid/time-input:!shadow-borders-error",
         {
           "text-ui-fg-muted !w-fit border-none bg-transparent px-0 shadow-none":
             isDecorator,

@@ -17,17 +17,17 @@ import { cva } from "class-variance-authority"
 
 const displayVariants = cva(
   clx(
-    "text-ui-fg-base bg-ui-bg-field border-ui-border-base transition-fg shadow-buttons-neutral flex w-full items-center gap-x-2 rounded-md border outline-none",
+    "text-ui-fg-base bg-ui-bg-field transition-fg shadow-buttons-neutral flex w-full items-center gap-x-2 rounded-md outline-none",
     "hover:bg-ui-bg-field-hover",
-    "focus:border-ui-border-interactive focus:shadow-borders-active data-[state=open]:shadow-borders-active data-[state=open]:border-ui-border-interactive",
-    "disabled:bg-ui-bg-disabled disabled:text-ui-fg-disabled disabled:shadow-none",
-    "aria-[invalid=true]:!border-ui-border-error aria-[invalid=true]:!shadow-borders-error"
+    "focus:shadow-borders-interactive-with-active data-[state=open]:shadow-borders-interactive-with-active",
+    "disabled:bg-ui-bg-disabled disabled:text-ui-fg-disabled disabled:shadow-buttons-neutral",
+    "aria-[invalid=true]:!shadow-borders-error"
   ),
   {
     variants: {
       size: {
-        base: "text-compact-small txt-compact-medium h-10 px-3 py-[9px]",
-        small: "text-compact-medium txt-compact-small h-8 px-2 py-[5px]",
+        base: "txt-compact-medium h-10 px-3 py-2.5",
+        small: "txt-compact-small h-8 px-2 py-1.5",
       },
     },
     defaultVariants: {

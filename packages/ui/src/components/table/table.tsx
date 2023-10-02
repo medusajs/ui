@@ -8,13 +8,11 @@ const Root = React.forwardRef<
   HTMLTableElement,
   React.HTMLAttributes<HTMLTableElement>
 >(({ className, ...props }, ref) => (
-  <div className="w-full overflow-auto">
-    <table
-      ref={ref}
-      className={clx("text-ui-fg-subtle txt-compact-small w-full", className)}
-      {...props}
-    />
-  </div>
+  <table
+    ref={ref}
+    className={clx("text-ui-fg-subtle txt-compact-small w-full", className)}
+    {...props}
+  />
 ))
 Root.displayName = "Table"
 

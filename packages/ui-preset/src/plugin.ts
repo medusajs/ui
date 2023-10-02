@@ -46,7 +46,7 @@ export default plugin(
           mono: FONT_FAMILY_MONO,
         },
         transitionProperty: {
-          fg: "color, background-color, border-color, box-shadow",
+          fg: "color, background-color, border-color, box-shadow, opacity",
         },
         keyframes: {
           "accordion-down": {
