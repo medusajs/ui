@@ -109,3 +109,53 @@ export const Disabled: Story = {
     )
   },
 }
+
+export const ChoiceBox: Story = {
+  render: () => {
+    return (
+      <RadioGroup>
+        <RadioGroup.ChoiceBox
+          value="1"
+          label="One"
+          description="The quick brown fox jumps over a lazy dog."
+        />
+        <RadioGroup.ChoiceBox
+          value="2"
+          label="Two"
+          description="The quick brown fox jumps over a lazy dog."
+        />
+        <RadioGroup.ChoiceBox
+          value="3"
+          label="Three"
+          description="The quick brown fox jumps over a lazy dog."
+          disabled
+        />
+      </RadioGroup>
+    )
+  },
+}
+
+export const ChoiceBoxDisabledSelected: Story = {
+  render: () => {
+    return (
+      <RadioGroup defaultValue={"3"}>
+        <RadioGroup.ChoiceBox
+          value="1"
+          label="One"
+          description="The quick brown fox jumps over a lazy dog."
+        />
+        <RadioGroup.ChoiceBox
+          value="2"
+          label="Two"
+          description="The quick brown fox jumps over a lazy dog."
+        />
+        <RadioGroup.ChoiceBox
+          value="3"
+          label="Three"
+          description="The quick brown fox jumps over a lazy dog."
+          disabled
+        />
+      </RadioGroup>
+    )
+  },
+}
