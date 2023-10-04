@@ -4,8 +4,8 @@ import * as Primitives from "@radix-ui/react-radio-group"
 import * as React from "react"
 
 import { clx } from "@/utils/clx"
+import { Hint } from "../hint"
 import { Label } from "../label"
-import { Text } from "../text"
 
 const Root = React.forwardRef<
   React.ElementRef<typeof Primitives.Root>,
@@ -109,18 +109,16 @@ const ChoiceBox = React.forwardRef<
           htmlFor={id}
           size="base"
           weight="plus"
-          className="group-disabled:text-ui-fg-disabled"
+          className="group-disabled:text-ui-fg-disabled cursor-pointer group-disabled:cursor-not-allowed"
         >
           {label}
         </Label>
-        <Text
-          size="base"
-          leading="compact"
+        <Hint
           className="text-ui-fg-subtle group-disabled:text-ui-fg-disabled"
           id={descriptionId}
         >
           {description}
-        </Text>
+        </Hint>
       </div>
     </Primitives.Item>
   )
