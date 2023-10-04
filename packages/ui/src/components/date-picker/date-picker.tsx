@@ -268,12 +268,7 @@ const SingleDatePicker = ({
   )
   const [month, setMonth] = React.useState<Date | undefined>(date)
 
-  const time: TimeValue = React.useMemo(() => {
-    const hour = date?.getHours() ?? 0
-    const minute = date?.getMinutes() ?? 0
-
-    return new Time(hour, minute, 0)
-  }, [date])
+  const [time, setTime] = React.useState<TimeValue>(new Time(0, 0))
 
   const initialDate = React.useMemo(() => {
     return date
@@ -300,27 +295,65 @@ const SingleDatePicker = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
 
-  const handleCancel = () => {
+  const onCancel = () => {
     setDate(initialDate)
+    setTime(new Time(0, 0))
     setOpen(false)
   }
 
-  const handleDateChange = (date: Date | undefined) => {
-    setDate(date)
-    onChange?.(date)
-  }
+  const onDateChange = (date: Date | undefined) => {
+    const newDate = date
 
-  const handleTimeChange = (time: TimeValue) => {
-    if (date) {
-      const newDate = new Date(date.getTime())
+    if (showTimePicker) {
+      /**
+       * If the time is cleared, and the date is
+       * changed then we want to reset the time.
+       */
+      if (newDate && !time) {
+        setTime(new Time(0, 0))
+      }
 
-      newDate.setHours(time.hour)
-      newDate.setMinutes(time.minute)
-      newDate.setSeconds(time.second)
+      /**
+       * If the time is set, and the date is changed
+       * then we want to update the date with the
+       * time.
+       */
+      if (newDate && time) {
+        newDate.setHours(time.hour)
+        newDate.setMinutes(time.minute)
+      }
 
       setDate(newDate)
       onChange?.(newDate)
     }
+  }
+
+  const onTimeChange = (time: TimeValue) => {
+    setTime(time)
+
+    if (!date) {
+      return
+    }
+
+    const newDate = new Date(date.getTime())
+
+    if (!time) {
+      /**
+       * When a segment of the time input is cleared,
+       * it will return `null` as the value is no longer
+       * a valid time. In this case, we want to set the
+       * time to for the date, effectivly resetting the
+       * input field.
+       */
+      newDate.setHours(0)
+      newDate.setMinutes(0)
+    } else {
+      newDate.setHours(time.hour)
+      newDate.setMinutes(time.minute)
+    }
+
+    setDate(newDate)
+    onChange?.(newDate)
   }
 
   const formattedDate = React.useMemo(() => {
@@ -354,7 +387,7 @@ const SingleDatePicker = ({
                   <PresetContainer
                     currentValue={date}
                     presets={presets}
-                    onSelect={handleDateChange}
+                    onSelect={onDateChange}
                   />
                 </div>
               </div>
@@ -365,7 +398,7 @@ const SingleDatePicker = ({
                 month={month}
                 onMonthChange={setMonth}
                 selected={date}
-                onSelect={handleDateChange}
+                onSelect={onDateChange}
                 disabled={disabled}
                 {...props}
               />
@@ -373,7 +406,7 @@ const SingleDatePicker = ({
                 <div className="border-ui-border-base border-t p-3">
                   <TimeInput
                     aria-label="Time"
-                    onChange={handleTimeChange}
+                    onChange={onTimeChange}
                     isDisabled={!date}
                     value={time}
                     isRequired={props.required}
@@ -385,7 +418,7 @@ const SingleDatePicker = ({
                   variant="secondary"
                   className="w-full"
                   type="button"
-                  onClick={handleCancel}
+                  onClick={onCancel}
                 >
                   Cancel
                 </Button>
@@ -430,18 +463,8 @@ const RangeDatePicker = ({
   )
   const [month, setMonth] = React.useState<Date | undefined>(range?.from)
 
-  const time = React.useMemo(() => {
-    const startHour = range?.from?.getHours() ?? 0
-    const startMinute = range?.from?.getMinutes() ?? 0
-
-    const endHour = range?.to?.getHours() ?? 0
-    const endMinute = range?.to?.getMinutes() ?? 0
-
-    return {
-      start: new Time(startHour, startMinute, 0),
-      end: new Time(endHour, endMinute, 0),
-    }
-  }, [range])
+  const [startTime, setStartTime] = React.useState<TimeValue>(new Time(0, 0))
+  const [endTime, setEndTime] = React.useState<TimeValue>(new Time(0, 0))
 
   const initialRange = React.useMemo(() => {
     return range
@@ -468,17 +491,50 @@ const RangeDatePicker = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
 
-  const handleRangeChange = (range: DateRange | undefined) => {
-    setRange(range)
-    onChange?.(range)
+  const onRangeChange = (range: DateRange | undefined) => {
+    const newRange = range
+
+    if (showTimePicker) {
+      if (newRange?.from && !startTime) {
+        setStartTime(new Time(0, 0))
+      }
+
+      if (newRange?.to && !endTime) {
+        setEndTime(new Time(0, 0))
+      }
+
+      if (newRange?.from && startTime) {
+        newRange.from.setHours(startTime.hour)
+        newRange.from.setMinutes(startTime.minute)
+      }
+
+      if (newRange?.to && endTime) {
+        newRange.to.setHours(endTime.hour)
+        newRange.to.setMinutes(endTime.minute)
+      }
+    }
+
+    setRange(newRange)
+    onChange?.(newRange)
   }
 
-  const handleCancel = () => {
+  const onCancel = () => {
     setRange(initialRange)
+    setStartTime(new Time(0, 0))
+    setEndTime(new Time(0, 0))
     setOpen(false)
   }
 
-  const handleTimeChange = (time: TimeValue, pos: "start" | "end") => {
+  const onTimeChange = (time: TimeValue, pos: "start" | "end") => {
+    switch (pos) {
+      case "start":
+        setStartTime(time)
+        break
+      case "end":
+        setEndTime(time)
+        break
+    }
+
     if (!range) {
       return
     }
@@ -490,8 +546,13 @@ const RangeDatePicker = ({
 
       const newDate = new Date(range.from.getTime())
 
-      newDate.setHours(time.hour)
-      newDate.setMinutes(time.minute)
+      if (!time) {
+        newDate.setHours(0)
+        newDate.setMinutes(0)
+      } else {
+        newDate.setHours(time.hour)
+        newDate.setMinutes(time.minute)
+      }
 
       setRange({
         ...range,
@@ -506,8 +567,13 @@ const RangeDatePicker = ({
 
       const newDate = new Date(range.to.getTime())
 
-      newDate.setHours(time.hour)
-      newDate.setMinutes(time.minute)
+      if (!time) {
+        newDate.setHours(0)
+        newDate.setMinutes(0)
+      } else {
+        newDate.setHours(time.hour)
+        newDate.setMinutes(time.minute)
+      }
 
       setRange({
         ...range,
@@ -541,76 +607,75 @@ const RangeDatePicker = ({
         {displayRange}
       </Display>
       <Flyout>
-        <div className="flex items-start">
-          {presets && presets.length > 0 && (
-            <div className="relative h-full w-[160px] border-r">
-              <div className="absolute inset-0 overflow-y-scroll p-3">
-                <PresetContainer
-                  currentValue={range}
-                  presets={presets}
-                  onSelect={handleRangeChange}
-                />
-              </div>
-            </div>
-          )}
-          <div>
-            <CalendarPrimitive
-              mode="range"
-              selected={range}
-              onSelect={handleRangeChange}
-              month={month}
-              onMonthChange={setMonth}
-              numberOfMonths={2}
-              disabled={disabled}
-              classNames={{
-                months: "flex flex-row divide-x divide-ui-border-base",
-              }}
-              {...props}
-            />
-            {showTimePicker && (
-              <div className="border-ui-border-base flex items-center justify-evenly gap-x-3 border-t p-3">
-                <div className="flex flex-1 items-center gap-x-2">
-                  <span className="text-ui-fg-subtle">Start:</span>
-                  <TimeInput
-                    value={time.start}
-                    onChange={(v) => handleTimeChange(v, "start")}
-                    aria-label="Start date time"
-                    isDisabled={!range?.from}
-                    isRequired={props.required}
-                  />
-                </div>
-                <Minus className="text-ui-fg-muted" />
-                <div className="flex flex-1 items-center gap-x-2">
-                  <span className="text-ui-fg-subtle">End:</span>
-                  <TimeInput
-                    value={time.end}
-                    onChange={(v) => handleTimeChange(v, "end")}
-                    aria-label="End date time"
-                    isDisabled={!range?.to}
-                    isRequired={props.required}
+        <div className="flex">
+          <div className="flex items-start">
+            {presets && presets.length > 0 && (
+              <div className="relative h-full w-[160px] border-r">
+                <div className="absolute inset-0 overflow-y-scroll p-3">
+                  <PresetContainer
+                    currentValue={range}
+                    presets={presets}
+                    onSelect={onRangeChange}
                   />
                 </div>
               </div>
             )}
-            <div className="flex items-center justify-between border-t p-3">
-              <p className={clx("text-ui-fg-subtle txt-compact-small-plus")}>
-                <span className="text-ui-fg-muted">Range:</span> {displayRange}
-              </p>
-              <div className="flex items-center gap-x-2">
-                <Button
-                  variant="secondary"
-                  type="button"
-                  onClick={handleCancel}
-                >
-                  Cancel
-                </Button>
-                <Button
-                  variant="primary"
-                  type="button"
-                  onClick={() => setOpen(false)}
-                >
-                  Apply
-                </Button>
+            <div>
+              <CalendarPrimitive
+                mode="range"
+                selected={range}
+                onSelect={onRangeChange}
+                month={month}
+                onMonthChange={setMonth}
+                numberOfMonths={2}
+                disabled={disabled}
+                classNames={{
+                  months: "flex flex-row divide-x divide-ui-border-base",
+                }}
+                {...props}
+              />
+              {showTimePicker && (
+                <div className="border-ui-border-base flex items-center justify-evenly gap-x-3 border-t p-3">
+                  <div className="flex flex-1 items-center gap-x-2">
+                    <span className="text-ui-fg-subtle">Start:</span>
+                    <TimeInput
+                      value={startTime}
+                      onChange={(v) => onTimeChange(v, "start")}
+                      aria-label="Start date time"
+                      isDisabled={!range?.from}
+                      isRequired={props.required}
+                    />
+                  </div>
+                  <Minus className="text-ui-fg-muted" />
+                  <div className="flex flex-1 items-center gap-x-2">
+                    <span className="text-ui-fg-subtle">End:</span>
+                    <TimeInput
+                      value={endTime}
+                      onChange={(v) => onTimeChange(v, "end")}
+                      aria-label="End date time"
+                      isDisabled={!range?.to}
+                      isRequired={props.required}
+                    />
+                  </div>
+                </div>
+              )}
+              <div className="flex items-center justify-between border-t p-3">
+                <p className={clx("text-ui-fg-subtle txt-compact-small-plus")}>
+                  <span className="text-ui-fg-muted">Range:</span>{" "}
+                  {displayRange}
+                </p>
+                <div className="flex items-center gap-x-2">
+                  <Button variant="secondary" type="button" onClick={onCancel}>
+                    Cancel
+                  </Button>
+                  <Button
+                    variant="primary"
+                    type="button"
+                    onClick={() => setOpen(false)}
+                  >
+                    Apply
+                  </Button>
+                </div>
               </div>
             </div>
           </div>

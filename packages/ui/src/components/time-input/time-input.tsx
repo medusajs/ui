@@ -23,6 +23,7 @@ type TimeSegmentProps = {
 
 const TimeSegment = ({ segment, state }: TimeSegmentProps) => {
   const ref = React.useRef<HTMLDivElement>(null)
+
   const { segmentProps } = useDateSegment(segment, state, ref)
 
   const isColon = segment.type === "literal" && segment.text === ":"
