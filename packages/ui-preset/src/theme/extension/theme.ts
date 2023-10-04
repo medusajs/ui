@@ -273,6 +273,38 @@ export const theme = {
           "muted": {
             "DEFAULT": "var(--fg-muted)"
           }
+        },
+        "contrast": {
+          "bg": {
+            "subtle": {
+              "DEFAULT": "var(--contrast-bg-subtle)"
+            },
+            "base": {
+              "DEFAULT": "var(--contrast-bg-base)",
+              "pressed": {
+                "DEFAULT": "var(--contrast-bg-base-pressed)"
+              },
+              "hover": {
+                "DEFAULT": "var(--contrast-bg-base-hover)"
+              }
+            },
+            "highlight": {
+              "DEFAULT": "var(--contrast-bg-highlight)"
+            }
+          },
+          "fg": {
+            "primary": {
+              "DEFAULT": "var(--contrast-fg-primary)"
+            },
+            "secondary": {
+              "DEFAULT": "var(--contrast-fg-secondary)"
+            }
+          },
+          "border": {
+            "base": {
+              "DEFAULT": "var(--contrast-border-base)"
+            }
+          }
         }
       }
     },

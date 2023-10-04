@@ -85,7 +85,15 @@ export const colors = {
     "--button-inverted-gradient-to": "rgba(24, 24, 26, 1)",
     "--bg-component": "rgba(39, 40, 45, 1)",
     "--bg-field": "rgba(39, 40, 45, 1)",
-    "--bg-field-hover": "rgba(46, 48, 53, 1)"
+    "--bg-field-hover": "rgba(46, 48, 53, 1)",
+    "--contrast-fg-primary": "rgba(28, 32, 36, 1)",
+    "--contrast-bg-base": "rgba(228, 228, 233, 1)",
+    "--contrast-fg-secondary": "rgba(96, 100, 108, 1)",
+    "--contrast-border-base": "rgba(185, 187, 198, 1)",
+    "--contrast-bg-base-pressed": "rgba(242, 242, 245, 1)",
+    "--contrast-bg-subtle": "rgba(211, 212, 219, 1)",
+    "--contrast-bg-base-hover": "rgba(235, 235, 239, 1)",
+    "--contrast-bg-highlight": "rgba(242, 242, 245, 1)"
   },
   "light": {
     "--button-inverted": "rgba(3, 7, 18, 1)",
@@ -185,6 +193,14 @@ export const colors = {
     "--bg-interactive": "rgba(59, 130, 246, 1)",
     "--bg-highlight-hover": "rgba(219, 234, 254, 1)",
     "--bg-switch-off-hover": "rgba(209, 213, 219, 1)",
-    "--bg-disabled": "rgba(243, 244, 246, 1)"
+    "--bg-disabled": "rgba(243, 244, 246, 1)",
+    "--contrast-bg-subtle": "rgba(46, 48, 53, 1)",
+    "--contrast-bg-base": "rgba(27, 27, 31, 1)",
+    "--contrast-fg-primary": "rgba(237, 238, 240, 1)",
+    "--contrast-border-base": "rgba(60, 63, 68, 1)",
+    "--contrast-bg-highlight": "rgba(53, 55, 60, 1)",
+    "--contrast-bg-base-pressed": "rgba(53, 55, 60, 1)",
+    "--contrast-bg-base-hover": "rgba(46, 48, 53, 1)",
+    "--contrast-fg-secondary": "rgba(173, 177, 184, 1)"
   }
 }
