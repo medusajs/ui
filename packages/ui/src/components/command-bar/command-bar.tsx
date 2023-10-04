@@ -78,7 +78,7 @@ const Bar = React.forwardRef<
     <div
       ref={ref}
       className={clx(
-        "relatove bg-ui-contrast-bg-base flex items-center overflow-hidden rounded-full px-1",
+        "bg-ui-contrast-bg-base relative flex items-center overflow-hidden rounded-full px-1",
         "after:shadow-elevation-flyout after:pointer-events-none after:absolute after:inset-0 after:rounded-full after:content-['']",
         className
       )}
