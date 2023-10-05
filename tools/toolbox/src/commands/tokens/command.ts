@@ -30,7 +30,10 @@ type Tokens = {
     dark: Record<string, string>
     light: Record<string, string>
   }
-  components: Record<string, CSSProperties>
+  components: {
+    dark: Record<string, CSSProperties>
+    light: Record<string, CSSProperties>
+  }
 }
 
 export async function generateTokens({ output }: GenerateTokensArgs) {
@@ -92,7 +95,10 @@ export async function generateTokens({ output }: GenerateTokensArgs) {
       dark: {},
       light: {},
     },
-    components: {},
+    components: {
+      dark: {},
+      light: {},
+    },
   }
 
   const typo = Object.values(textStyles.nodes).reduce((acc, curr) => {
@@ -236,7 +242,8 @@ export async function generateTokens({ output }: GenerateTokensArgs) {
             acc["colors"][lowerCaseTheme][fromVariable] = values.from
             acc["colors"][lowerCaseTheme][toVariable] = values.to
 
-            acc["components"][`.${gradientIdentifier}`] = component
+            acc["components"][lowerCaseTheme][`.${gradientIdentifier}`] =
+              component
           }
         } else {
           logger.warn(`Unsupported gradient type: ${values.type}`)
@@ -253,6 +260,10 @@ export async function generateTokens({ output }: GenerateTokensArgs) {
     }
 
     const [theme, type, variable] = curr.document.name.split("/")
+
+    if (!type || !variable) {
+      return acc
+    }
 
     const lowerCaseTheme = theme.toLowerCase()
     const lowerCaseType = type.toLowerCase()

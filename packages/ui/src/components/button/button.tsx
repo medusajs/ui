@@ -9,26 +9,25 @@ const buttonVariants = cva(
   clx(
     "transition-fg relative inline-flex w-fit items-center justify-center overflow-hidden rounded-md outline-none",
     "disabled:bg-ui-bg-disabled disabled:border-ui-border-base disabled:text-ui-fg-disabled disabled:shadow-buttons-neutral disabled:after:hidden",
-    "after:absolute after:inset-0 after:content-['']"
+    "after:transition-fg after:absolute after:inset-0 after:content-['']"
   ),
   {
     variants: {
       variant: {
         primary: clx(
           "shadow-buttons-inverted text-ui-fg-on-inverted bg-ui-button-inverted after:button-inverted-gradient",
-          "hover:bg-ui-button-inverted-hover",
-          "active:bg-ui-button-inverted-pressed",
-          "focus:!shadow-buttons-inverted-focus",
-          "after:opacity-[16%]"
+          "hover:bg-ui-button-inverted-hover hover:after:button-inverted-hover-gradient",
+          "active:bg-ui-button-inverted-pressed active:after:button-inverted-pressed-gradient",
+          "focus:!shadow-buttons-inverted-focus"
         ),
         secondary: clx(
           "shadow-buttons-neutral text-ui-fg-base bg-ui-button-neutral after:button-neutral-gradient",
-          "hover:bg-ui-button-neutral-hover",
+          "hover:bg-ui-button-neutral-hover hover:after:button-neutral-hover-gradient",
           "active:bg-ui-button-neutral-pressed active:after:button-neutral-pressed-gradient",
-          "focus:shadow-buttons-neutral-focus",
-          "after:opacity-[3%]"
+          "focus:shadow-buttons-neutral-focus"
         ),
         transparent: clx(
+          "after:hidden",
           "text-ui-fg-base bg-ui-button-transparent",
           "hover:bg-ui-button-transparent-hover",
           "active:bg-ui-button-transparent-pressed",
@@ -37,10 +36,9 @@ const buttonVariants = cva(
         ),
         danger: clx(
           "shadow-buttons-colored shadow-buttons-danger text-ui-fg-on-color bg-ui-button-danger after:button-danger-gradient",
-          "hover:bg-ui-button-danger-hover hover:after:opacity-0",
+          "hover:bg-ui-button-danger-hover hover:after:button-danger-hover-gradient",
           "active:bg-ui-button-danger-pressed active:after:button-danger-pressed-gradient",
-          "focus:shadow-buttons-danger-focus",
-          "after:opacity-[16%]"
+          "focus:shadow-buttons-danger-focus"
         ),
       },
       size: {

@@ -1,6 +1,6 @@
 import * as React from "react"
 import type { IconProps } from "../types"
-const ArrowPathMini = React.forwardRef<SVGSVGElement, IconProps>(
+const QuestionMark = React.forwardRef<SVGSVGElement, IconProps>(
   ({ color = "currentColor", ...props }, ref) => {
     return (
       <svg
@@ -16,11 +16,11 @@ const ArrowPathMini = React.forwardRef<SVGSVGElement, IconProps>(
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth={1.5}
-          d="M12.682 8.232h3.328L13.89 6.11a5.5 5.5 0 0 0-9.202 2.467m-.698 6.519v-3.328m0 0h3.328m-3.328 0 2.12 2.122a5.5 5.5 0 0 0 9.202-2.467m.698-6.519v3.327"
+          d="M7.44 5.515c1.17-1.025 3.07-1.025 4.241 0 1.173 1.025 1.173 2.687 0 3.712-.202.179-.43.326-.67.442-.744.36-1.45.999-1.45 1.827v.75m0 3h.008v.008H9.56v-.008Z"
         />
       </svg>
     )
   }
 )
-ArrowPathMini.displayName = "ArrowPathMini"
-export default ArrowPathMini
+QuestionMark.displayName = "QuestionMark"
+export default QuestionMark

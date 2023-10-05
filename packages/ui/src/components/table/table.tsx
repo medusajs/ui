@@ -1,8 +1,8 @@
+import { Minus } from "@medusajs/icons"
 import * as React from "react"
 
 import { Button } from "@/components/button"
 import { clx } from "@/utils/clx"
-import { Minus } from "@medusajs/icons"
 
 const Root = React.forwardRef<
   HTMLTableElement,

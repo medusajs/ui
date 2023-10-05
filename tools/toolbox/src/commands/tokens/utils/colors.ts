@@ -71,8 +71,8 @@ function calculateGradientDegree(handlebarPositions: Vector[]): number {
 
   const normalizedAngleDegrees = (angleDegrees + 360) % 360
 
-  // Rotate the angle by -90 degrees to get the correct angle for CSS gradients
-  const rotatedAngleDegrees = normalizedAngleDegrees - 90
+  // Rotate the angle by 90 degrees to get the correct angle for CSS gradients
+  const rotatedAngleDegrees = normalizedAngleDegrees + 90
 
   return rotatedAngleDegrees
 }

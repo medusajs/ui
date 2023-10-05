@@ -18,11 +18,11 @@ export default plugin(
       },
     })
 
-    addComponents(components)
     addComponents(typography)
 
     addBase({
       ":root": { ...colors.light, ...effects.light },
+      ...components.light,
     })
 
     if (darkMode === "class") {
@@ -33,6 +33,7 @@ export default plugin(
       addBase({
         "@media (prefers-color-scheme: dark)": {
           ":root": { ...colors.dark, ...effects.dark },
+          ...components.dark,
         },
       })
     }

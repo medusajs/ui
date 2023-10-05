@@ -292,17 +292,17 @@ export const theme = {
               "DEFAULT": "var(--contrast-bg-highlight)"
             }
           },
+          "border": {
+            "base": {
+              "DEFAULT": "var(--contrast-border-base)"
+            }
+          },
           "fg": {
             "primary": {
               "DEFAULT": "var(--contrast-fg-primary)"
             },
             "secondary": {
               "DEFAULT": "var(--contrast-fg-secondary)"
-            }
-          },
-          "border": {
-            "base": {
-              "DEFAULT": "var(--contrast-border-base)"
             }
           }
         }

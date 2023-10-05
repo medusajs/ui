@@ -1,9 +1,9 @@
+import { Spinner } from "@medusajs/icons"
+import { Slot } from "@radix-ui/react-slot"
 import { VariantProps, cva } from "class-variance-authority"
 import * as React from "react"
 
 import { clx } from "@/utils/clx"
-import { Spinner } from "@medusajs/icons"
-import { Slot } from "@radix-ui/react-slot"
 
 const iconButtonVariants = cva(
   clx(
@@ -15,15 +15,15 @@ const iconButtonVariants = cva(
       variant: {
         primary: clx(
           "shadow-buttons-neutral text-ui-fg-subtle bg-ui-button-neutral after:button-neutral-gradient",
-          "hover:bg-ui-button-neutral-hover",
-          "active:bg-ui-button-neutral-pressed",
+          "hover:bg-ui-button-neutral-hover hover:after:button-neutral-hover-gradient",
+          "active:bg-ui-button-neutral-pressed active:after:button-neutral-pressed-gradient",
           "focus:shadow-buttons-neutral-focus",
           "after:absolute after:inset-0 after:content-['']"
         ),
         transparent: clx(
-          "text-ui-fg-subtle border-ui-border-transparent bg-ui-button-transparent",
+          "text-ui-fg-subtle bg-ui-button-transparent",
           "hover:bg-ui-button-transparent-hover",
-          "active:bg-ui-button-transparent-pressed active:border-ui-border-base",
+          "active:bg-ui-button-transparent-pressed",
           "focus:shadow-buttons-neutral-focus focus:bg-ui-bg-base",
           "disabled:!bg-transparent disabled:!shadow-none"
         ),
