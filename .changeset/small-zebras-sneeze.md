@@ -11,6 +11,7 @@ feat(ui,ui-preset): Release 2.0.1
 - The styling of buttons, inputs, and the CommandBar has been adjusted to have a more consistent look and feel.
 - Fixed an issue that caused DropdownMenu.Content to overflow the viewport.
 - Fixed an issue with the DatePicker component where deleting a time segment would throw an error.
+- The Text component now accepts a `leading` prop to adjust the line height. It can be set to `normal` (default) or `compact`.
 
 ## `@medusajs/ui-preset`
 
