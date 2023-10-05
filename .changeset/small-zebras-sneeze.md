@@ -12,6 +12,7 @@ feat(ui,ui-preset): Release 2.0.1
 - Fixed an issue that caused DropdownMenu.Content to overflow the viewport.
 - Fixed an issue with the DatePicker component where deleting a time segment would throw an error.
 - The Text component now accepts a `leading` prop to adjust the line height. It can be set to `normal` (default) or `compact`.
+- Adds a new subcomponent to RadioGroup called RadioGroup.ChoiceBox. This component wraps the RadioGroup.Item component with a mandatory label and description.
 
 ## `@medusajs/ui-preset`
 
