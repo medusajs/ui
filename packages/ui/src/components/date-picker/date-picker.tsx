@@ -303,8 +303,20 @@ const SingleDatePicker = ({
 
   const onCancel = () => {
     setDate(initialDate)
-    setTime(new Time(0, 0))
+    setTime(
+      initialDate
+        ? new Time(initialDate.getHours(), initialDate.getMinutes())
+        : new Time(0, 0)
+    )
     setOpen(false)
+  }
+
+  const onOpenChange = (open: boolean) => {
+    if (!open) {
+      onCancel()
+    }
+
+    setOpen(open)
   }
 
   const onDateChange = (date: Date | undefined) => {
@@ -331,7 +343,6 @@ const SingleDatePicker = ({
     }
 
     setDate(newDate)
-    onChange?.(newDate)
   }
 
   const onTimeChange = (time: TimeValue) => {
@@ -359,7 +370,6 @@ const SingleDatePicker = ({
     }
 
     setDate(newDate)
-    onChange?.(newDate)
   }
 
   const formattedDate = React.useMemo(() => {
@@ -370,8 +380,13 @@ const SingleDatePicker = ({
     return formatDate(date, showTimePicker)
   }, [date, showTimePicker])
 
+  const onApply = () => {
+    setOpen(false)
+    onChange?.(date)
+  }
+
   return (
-    <Primitives.Root open={open} onOpenChange={setOpen}>
+    <Primitives.Root open={open} onOpenChange={onOpenChange}>
       <Display
         placeholder="Pick a date"
         disabled={disabled}
@@ -432,7 +447,7 @@ const SingleDatePicker = ({
                   variant="primary"
                   className="w-full"
                   type="button"
-                  onClick={() => setOpen(false)}
+                  onClick={onApply}
                 >
                   Apply
                 </Button>
@@ -538,9 +553,25 @@ const RangeDatePicker = ({
 
   const onCancel = () => {
     setRange(initialRange)
-    setStartTime(new Time(0, 0))
-    setEndTime(new Time(0, 0))
+    setStartTime(
+      initialRange?.from
+        ? new Time(initialRange.from.getHours(), initialRange.from.getMinutes())
+        : new Time(0, 0)
+    )
+    setEndTime(
+      initialRange?.to
+        ? new Time(initialRange.to.getHours(), initialRange.to.getMinutes())
+        : new Time(0, 0)
+    )
     setOpen(false)
+  }
+
+  const onOpenChange = (open: boolean) => {
+    if (!open) {
+      onCancel()
+    }
+
+    setOpen(open)
   }
 
   const onTimeChange = (time: TimeValue, pos: "start" | "end") => {
@@ -611,7 +642,7 @@ const RangeDatePicker = ({
   }, [range, showTimePicker])
 
   return (
-    <Primitives.Root open={open} onOpenChange={setOpen}>
+    <Primitives.Root open={open} onOpenChange={onOpenChange}>
       <Display
         placeholder="Pick a date"
         disabled={disabled}
