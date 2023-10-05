@@ -268,7 +268,13 @@ const SingleDatePicker = ({
   )
   const [month, setMonth] = React.useState<Date | undefined>(date)
 
-  const [time, setTime] = React.useState<TimeValue>(new Time(0, 0))
+  const [time, setTime] = React.useState<TimeValue>(
+    value
+      ? new Time(value.getHours(), value.getMinutes())
+      : defaultValue
+      ? new Time(defaultValue.getHours(), defaultValue.getMinutes())
+      : new Time(0, 0)
+  )
 
   const initialDate = React.useMemo(() => {
     return date
@@ -463,8 +469,20 @@ const RangeDatePicker = ({
   )
   const [month, setMonth] = React.useState<Date | undefined>(range?.from)
 
-  const [startTime, setStartTime] = React.useState<TimeValue>(new Time(0, 0))
-  const [endTime, setEndTime] = React.useState<TimeValue>(new Time(0, 0))
+  const [startTime, setStartTime] = React.useState<TimeValue>(
+    value?.from
+      ? new Time(value.from.getHours(), value.from.getMinutes())
+      : defaultValue?.from
+      ? new Time(defaultValue.from.getHours(), defaultValue.from.getMinutes())
+      : new Time(0, 0)
+  )
+  const [endTime, setEndTime] = React.useState<TimeValue>(
+    value?.to
+      ? new Time(value.to.getHours(), value.to.getMinutes())
+      : defaultValue?.to
+      ? new Time(defaultValue.to.getHours(), defaultValue.to.getMinutes())
+      : new Time(0, 0)
+  )
 
   const initialRange = React.useMemo(() => {
     return range
