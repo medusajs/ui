@@ -14,14 +14,14 @@ const iconButtonVariants = cva(
     variants: {
       variant: {
         primary: clx(
-          "shadow-buttons-neutral text-ui-fg-base bg-ui-button-neutral after:button-neutral-gradient",
+          "shadow-buttons-neutral text-ui-fg-subtle bg-ui-button-neutral after:button-neutral-gradient",
           "hover:bg-ui-button-neutral-hover",
           "active:bg-ui-button-neutral-pressed",
           "focus:shadow-buttons-neutral-focus",
           "after:absolute after:inset-0 after:content-['']"
         ),
         transparent: clx(
-          "text-ui-fg-base border-ui-border-transparent bg-ui-button-transparent",
+          "text-ui-fg-subtle border-ui-border-transparent bg-ui-button-transparent",
           "hover:bg-ui-button-transparent-hover",
           "active:bg-ui-button-transparent-pressed active:border-ui-border-base",
           "focus:shadow-buttons-neutral-focus focus:bg-ui-bg-base",
