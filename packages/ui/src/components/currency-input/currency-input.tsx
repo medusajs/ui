@@ -10,8 +10,8 @@ import { VariantProps, cva } from "class-variance-authority"
 const currencyInputVariants = cva(
   clx(
     "flex items-center gap-x-1",
-    "bg-ui-bg-field hover:bg-ui-bg-field-hover border-ui-border-base shadow-buttons-neutral placeholder-ui-fg-muted text-ui-fg-base transition-fg relative w-full rounded-md border",
-    "focus-within:border-ui-border-interactive focus-within:shadow-borders-active"
+    "bg-ui-bg-field hover:bg-ui-bg-field-hover shadow-buttons-neutral placeholder-ui-fg-muted text-ui-fg-base transition-fg relative w-full rounded-md",
+    "focus-within:shadow-borders-interactive-with-active"
   ),
   {
     variants: {
@@ -72,9 +72,9 @@ const CurrencyInput = React.forwardRef<HTMLInputElement, CurrencyInputProps>(
           "w-full cursor-text justify-between overflow-hidden",
           currencyInputVariants({ size }),
           {
-            "text-ui-fg-disabled !bg-ui-bg-disabled !border-ui-border-base placeholder-ui-fg-disabled cursor-not-allowed !shadow-none":
+            "text-ui-fg-disabled !bg-ui-bg-disabled !shadow-buttons-neutral !placeholder-ui-fg-disabled cursor-not-allowed":
               disabled,
-            "border-ui-border-error focus-within:!shadow-borders-error invalid:focus:!shadow-borders-error":
+            "!shadow-borders-error invalid:!shadow-borders-error":
               props["aria-invalid"] || !valid,
           },
           className
@@ -87,12 +87,19 @@ const CurrencyInput = React.forwardRef<HTMLInputElement, CurrencyInputProps>(
           })}
           role="presentation"
         >
-          <Text className="text-ui-fg-muted pointer-events-none select-none uppercase">
+          <Text
+            className={clx(
+              "text-ui-fg-muted pointer-events-none select-none uppercase",
+              {
+                "text-ui-fg-disabled": disabled,
+              }
+            )}
+          >
             {code}
           </Text>
         </span>
         <Primitive
-          className="h-full min-w-0 flex-1 appearance-none bg-transparent text-right outline-none"
+          className="h-full min-w-0 flex-1 appearance-none bg-transparent text-right outline-none disabled:cursor-not-allowed"
           disabled={disabled}
           onInvalid={onInnerInvalid}
           ref={innerRef}
@@ -105,7 +112,11 @@ const CurrencyInput = React.forwardRef<HTMLInputElement, CurrencyInputProps>(
           })}
           role="presentation"
         >
-          <Text className="text-ui-fg-muted pointer-events-none select-none">
+          <Text
+            className={clx("text-ui-fg-muted pointer-events-none select-none", {
+              "text-ui-fg-disabled": disabled,
+            })}
+          >
             {symbol}
           </Text>
         </span>

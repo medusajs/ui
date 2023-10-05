@@ -62,3 +62,17 @@ export const Loading: Story = {
     isLoading: true,
   },
 }
+
+export const Large: Story = {
+  args: {
+    children: "Action",
+    size: "large",
+  },
+}
+
+export const XLarge: Story = {
+  args: {
+    children: "Action",
+    size: "xlarge",
+  },
+}

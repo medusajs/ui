@@ -1,20 +1,18 @@
+import { Minus } from "@medusajs/icons"
 import * as React from "react"
 
 import { Button } from "@/components/button"
 import { clx } from "@/utils/clx"
-import { Minus } from "@medusajs/icons"
 
 const Root = React.forwardRef<
   HTMLTableElement,
   React.HTMLAttributes<HTMLTableElement>
 >(({ className, ...props }, ref) => (
-  <div className="w-full overflow-auto">
-    <table
-      ref={ref}
-      className={clx("text-ui-fg-subtle txt-compact-small w-full", className)}
-      {...props}
-    />
-  </div>
+  <table
+    ref={ref}
+    className={clx("text-ui-fg-subtle txt-compact-small w-full", className)}
+    {...props}
+  />
 ))
 Root.displayName = "Table"
 
@@ -50,7 +48,7 @@ const Header = React.forwardRef<
   <thead
     ref={ref}
     className={clx(
-      "border-ui-border-base txt-compact-small-plus border-y",
+      "border-ui-border-base txt-compact-small-plus [&_tr:hover]:bg-ui-bg-base border-y",
       className
     )}
     {...props}

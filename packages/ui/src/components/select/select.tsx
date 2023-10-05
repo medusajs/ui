@@ -1,16 +1,11 @@
 "use client"
 
-import {
-  ChevronDownMini,
-  ChevronUpDown,
-  ChevronUpMini,
-  EllipseMiniSolid,
-} from "@medusajs/icons"
+import { ChevronUpDown, EllipseMiniSolid } from "@medusajs/icons"
 import * as SelectPrimitive from "@radix-ui/react-select"
+import { cva } from "class-variance-authority"
 import * as React from "react"
 
 import { clx } from "@/utils/clx"
-import { cva } from "class-variance-authority"
 
 interface SelectProps
   extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root> {
@@ -47,10 +42,10 @@ const Value = SelectPrimitive.Value
 
 const triggerVariants = cva(
   clx(
-    "bg-ui-bg-field txt-compact-medium border-ui-border-base shadow-buttons-neutral transition-fg flex w-full select-none items-center justify-between rounded-md border outline-none",
+    "bg-ui-bg-field txt-compact-medium shadow-buttons-neutral transition-fg flex w-full select-none items-center justify-between rounded-md outline-none",
     "data-[placeholder]:text-ui-fg-muted text-ui-fg-base",
     "hover:bg-ui-bg-field-hover",
-    "focus:shadow-borders-active focus:border-ui-border-interactive data-[state=open]:!shadow-borders-active data-[state=open]:!border-ui-border-interactive",
+    "focus:shadow-borders-interactive-with-active data-[state=open]:!shadow-borders-interactive-with-active",
     "aria-[invalid=true]:border-ui-border-error aria-[invalid=true]:shadow-borders-error",
     "invalid::border-ui-border-error invalid:shadow-borders-error",
     "disabled:!bg-ui-bg-disabled disabled:!text-ui-fg-disabled",
@@ -121,9 +116,6 @@ const Content = React.forwardRef<
         collisionPadding={collisionPadding}
         {...props}
       >
-        <SelectPrimitive.ScrollUpButton className="text-ui-fg-muted bg-ui-bg-base flex h-[25px] cursor-default items-center justify-center">
-          <ChevronUpMini />
-        </SelectPrimitive.ScrollUpButton>
         <SelectPrimitive.Viewport
           className={clx(
             "p-1",
@@ -133,9 +125,6 @@ const Content = React.forwardRef<
         >
           {children}
         </SelectPrimitive.Viewport>
-        <SelectPrimitive.ScrollDownButton className="text-ui-fg-muted bg-ui-bg-base flex h-[25px] cursor-default items-center justify-center">
-          <ChevronDownMini />
-        </SelectPrimitive.ScrollDownButton>
       </SelectPrimitive.Content>
     </SelectPrimitive.Portal>
   )

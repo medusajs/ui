@@ -61,7 +61,7 @@ const Value = React.forwardRef<
     <div
       ref={ref}
       className={clx(
-        "txt-compact-small-plus text-ui-fg-subtle px-3 py-2.5",
+        "txt-compact-small-plus text-ui-contrast-fg-secondary px-3 py-2.5",
         className
       )}
       {...props}
@@ -78,8 +78,8 @@ const Bar = React.forwardRef<
     <div
       ref={ref}
       className={clx(
-        "relatove bg-ui-bg-base flex items-center overflow-hidden rounded-full px-1",
-        "after:shadow-elevation-modal after:pointer-events-none after:absolute after:inset-0 after:rounded-full after:content-['']",
+        "bg-ui-contrast-bg-base relative flex items-center overflow-hidden rounded-full px-1",
+        "after:shadow-elevation-flyout after:pointer-events-none after:absolute after:inset-0 after:rounded-full after:content-['']",
         className
       )}
       {...props}
@@ -95,7 +95,7 @@ const Seperator = React.forwardRef<
   return (
     <div
       ref={ref}
-      className={clx("bg-ui-border-base h-10 w-px", className)}
+      className={clx("bg-ui-contrast-border-base h-10 w-px", className)}
       {...props}
     />
   )
@@ -139,8 +139,8 @@ const Command = React.forwardRef<HTMLButtonElement, CommandProps>(
       <button
         ref={ref}
         className={clx(
-          "bg-ui-bg-base txt-compact-small-plus transition-fg text-ui-fg-base flex items-center gap-x-2 px-3 py-2.5 outline-none",
-          "focus:bg-ui-bg-highlight focus:hover:bg-ui-bg-base-hover hover:bg-ui-bg-base-hover active:bg-ui-bg-base-pressed focus:active:bg-ui-bg-base-pressed disabled:!bg-ui-bg-disabled disabled:!text-ui-fg-disabled",
+          "bg-ui-contrast-bg-base txt-compact-small-plus transition-fg text-ui-contrast-fg-primary flex items-center gap-x-2 px-3 py-2.5 outline-none",
+          "focus:bg-ui-contrast-bg-highlight focus:hover:bg-ui-contrast-bg-base-hover hover:bg-ui-contrast-bg-base-hover active:bg-ui-contrast-bg-base-pressed focus:active:bg-ui-contrast-bg-base-pressed disabled:!bg-ui-bg-disabled disabled:!text-ui-fg-disabled",
           "last-of-type:-mr-1 last-of-type:pr-4",
           className
         )}
@@ -149,7 +149,9 @@ const Command = React.forwardRef<HTMLButtonElement, CommandProps>(
         {...props}
       >
         <span>{label}</span>
-        <Kbd>{shortcut.toUpperCase()}</Kbd>
+        <Kbd className="bg-ui-contrast-bg-subtle border-ui-contrast-border-base text-ui-contrast-fg-secondary">
+          {shortcut.toUpperCase()}
+        </Kbd>
       </button>
     )
   }
