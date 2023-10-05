@@ -328,10 +328,10 @@ const SingleDatePicker = ({
         newDate.setHours(time.hour)
         newDate.setMinutes(time.minute)
       }
-
-      setDate(newDate)
-      onChange?.(newDate)
     }
+
+    setDate(newDate)
+    onChange?.(newDate)
   }
 
   const onTimeChange = (time: TimeValue) => {
