@@ -35,6 +35,7 @@ export { Textarea } from "./components/textarea"
 export { Toast } from "./components/toast"
 export { Toaster } from "./components/toaster"
 export { Tooltip } from "./components/tooltip"
+export { Popover } from "./components/popover"
 
 // Hooks
 export { usePrompt } from "./hooks/use-prompt"
