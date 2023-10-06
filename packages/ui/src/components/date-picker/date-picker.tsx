@@ -548,7 +548,6 @@ const RangeDatePicker = ({
     }
 
     setRange(newRange)
-    onChange?.(newRange)
   }
 
   const onCancel = () => {
@@ -641,6 +640,11 @@ const RangeDatePicker = ({
     }`
   }, [range, showTimePicker])
 
+  const onApply = () => {
+    setOpen(false)
+    onChange?.(range)
+  }
+
   return (
     <Primitives.Root open={open} onOpenChange={onOpenChange}>
       <Display
@@ -717,11 +721,7 @@ const RangeDatePicker = ({
                   <Button variant="secondary" type="button" onClick={onCancel}>
                     Cancel
                   </Button>
-                  <Button
-                    variant="primary"
-                    type="button"
-                    onClick={() => setOpen(false)}
-                  >
+                  <Button variant="primary" type="button" onClick={onApply}>
                     Apply
                   </Button>
                 </div>
