@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import * as React from "react"
+import { DateRange } from "react-day-picker"
 
 import { Button } from "@/components/button"
-import { DateRange } from "react-day-picker"
 import { DatePicker } from "./date-picker"
+import { Popover } from "@/components/popover"
 
 const meta: Meta<typeof DatePicker> = {
   title: "Components/DatePicker",
@@ -197,4 +198,46 @@ const ControlledRangeDemo = () => {
 
 export const ControlledRange: Story = {
   render: () => <ControlledRangeDemo />,
+}
+
+type NestedProps = {
+  value?: Date
+  onChange?: (value: Date | undefined) => void
+}
+const Nested = ({ value, onChange }: NestedProps) => {
+  return (
+    <Popover>
+      <Popover.Trigger asChild>
+        <Button>Open</Button>
+      </Popover.Trigger>
+      <Popover.Content>
+        <div className="px-3 py-2">
+          <DatePicker value={value} onChange={onChange} />
+        </div>
+        <Popover.Seperator />
+        <div className="px-3 py-2">
+          <DatePicker value={value} onChange={onChange} />
+        </div>
+        <Popover.Seperator />
+        <div className="flex items-center justify-between gap-x-2 px-3 py-2 [&_button]:w-full">
+          <Button variant="secondary">Clear</Button>
+          <Button>Apply</Button>
+        </div>
+      </Popover.Content>
+    </Popover>
+  )
+}
+
+const NestedDemo = () => {
+  const [value, setValue] = React.useState<Date | undefined>(undefined)
+
+  return (
+    <div className="flex w-[200px] flex-col gap-y-4">
+      <Nested value={value} onChange={setValue} />
+    </div>
+  )
+}
+
+export const NestedControlled: Story = {
+  render: () => <NestedDemo />,
 }
